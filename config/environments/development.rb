@@ -67,4 +67,16 @@ Rails.application.configure do
 
   # Uncomment if you wish to allow Action Cable access from any origin.
   # config.action_cable.disable_request_forgery_protection = true
+
+    # Setup Redis as the cache
+    config.cache_store = :redis_cache_store, {
+      url: ENV.fetch("REDIS_URL"),
+      namespace: "chronlife"
+    }
+
+    # Setup Redis as the session store, using Rails cache
+    config.session_store :cache_store,
+                         key: "_session_id",
+                         secure: false,
+                         httponly: true
 end
