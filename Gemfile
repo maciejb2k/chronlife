@@ -20,6 +20,10 @@ gem "sprockets-rails", "~> 3.4.2"
 gem "turbo-rails", "~> 1.4.0"
 gem "stimulus-rails", "~> 1.2.1"
 
+# Components
+gem "view_component", "~> 3.3.0"
+gem "view_component-contrib", "~> 0.1.4"
+
 # Redis support
 gem "redis", "~> 5.0.6"
 
@@ -38,6 +42,8 @@ gem "devise", "~> 4.9.2"
 gem "devise-two-factor", "~> 5.0.0"
 gem "omniauth-rails_csrf_protection", "~> 1.0.1"
 gem "omniauth-google-oauth2", "~> 1.1.1"
+gem 'omniauth-facebook', "~> 9.0.0"
+gem 'rqrcode', "~> 2.2.0"
 
 # Annotate models with database schema
 gem "annotate", "~> 3.2.0"
@@ -46,6 +52,8 @@ gem "annotate", "~> 3.2.0"
 gem 'active_storage_validations', '~> 1.0.3'
 gem 'phonelib', '~> 0.8.1'
 gem 'validates_timeliness', '~> 7.0.0.beta1'
+
+gem "htmlbeautifier"
 
 group :development, :test do
   gem "debug", "~> 1.8.0", platforms: %i[ mri mingw x64_mingw ]

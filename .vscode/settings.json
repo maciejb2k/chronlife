@@ -1,0 +1,25 @@
+{
+  "ruby.useBundler": true,
+  "ruby.useLanguageServer": true,
+  "ruby.format": "rubocop",
+  "ruby.lint": {
+    "rubocop": {
+      "useBundler": true
+    }
+  },
+
+  // Sorry for this hardcoded path, but I don't know why this fucking shit doesn't work with chruby
+  "vscode-erb-beautify.executePath": "/home/gigachad/.gem/ruby/3.2.0/bin/htmlbeautifier",
+  "vscode-erb-beautify.keepBlankLines": 1,
+
+  "[erb]": {
+    "editor.defaultFormatter": "aliariff.vscode-erb-beautify",
+    "editor.formatOnSave": true
+  },
+
+  "emmet.includeLanguages": {
+    "erb": "html"
+  },
+
+  "rubyLsp.rubyVersionManager": "chruby"
+}

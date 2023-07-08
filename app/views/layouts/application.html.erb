@@ -1,16 +1,21 @@
 <!DOCTYPE html>
-<html>
+<html lang="<%= I18n.locale %>">
   <head>
-    <title>Chronlife</title>
-    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title><%= yield(:title).presence || I18n.t("site.title") %></title>
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;900&display=swap" rel="stylesheet" />
+
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
-    <%= javascript_importmap_tags %>
+    <%= yield :head %>
   </head>
-
   <body>
-    <%= yield %>
+    <%= content_for?(:body) ? yield(:body) : yield %> <%=
+    javascript_importmap_tags %> <%= yield :javascript %>
   </body>
 </html>

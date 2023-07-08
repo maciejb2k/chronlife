@@ -1,6 +1,22 @@
 Rails.application.routes.draw do
-  # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
+  devise_for :users, controllers: {
+    sessions: "auth/sessions",
+    registrations: "auth/registrations",
+    confirmations: "auth/confirmations",
+    passwords: "auth/passwords",
+    omniauth_callbacks: "auth/omniauth_callbacks"
+  }
 
-  # Defines the root path route ("/")
-  # root "articles#index"
+  devise_scope :user do
+    get "/users/sign_in/otp" => "auth/otps#new"
+    post "/users/sign_in/otp" => "auth/otps#create"
+    get "/users/sign_in/recovery_code" => "auth/recovery_codes#new"
+    post "/users/sign_in/recovery_code" => "auth/recovery_codes#create"
+  end
+
+  authenticated :user do
+    root to: "dashboard#index", as: :authenticated_root
+  end
+
+  root to: "pages#home"
 end
