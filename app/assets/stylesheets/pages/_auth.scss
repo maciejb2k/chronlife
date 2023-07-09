@@ -1,6 +1,6 @@
 .auth {
   width: 100%;
-  min-height: 100vh;
+  height: 100vh;
   display: flex;
 
   &__content {
@@ -9,6 +9,23 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+    overflow-y: scroll;
+    scrollbar-color: #6969dd #e0e0e0;
+    scrollbar-width: thin;
+
+    /* Chrome, Edge, and Safari */
+    &::-webkit-scrollbar {
+      width: 0.8rem;
+    }
+
+    &::-webkit-scrollbar-track {
+      background: transparent;
+    }
+
+    &::-webkit-scrollbar-thumb {
+      border-radius: 1rem;
+      background-color: #dfdfdf;
+    }
   }
 
   &__sidebar {
@@ -18,8 +35,9 @@
 
   &__credits {
     position: absolute;
-    top: 7rem;
-    right: 7rem;
+    bottom: 5rem;
+    right: 5rem;
+    opacity: 0.1;
   }
 
   &__header {
@@ -37,13 +55,18 @@
     }
   }
 
+  &__header--center {
+    justify-content: center;
+  }
+
   &__main {
-    flex-grow: 1;
     display: flex;
+    flex-grow: 1;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    max-width: 40rem;
+    padding: 8rem 0;
+    width: 40rem;
   }
 
   &__heading {
@@ -52,6 +75,7 @@
   }
 
   &__title {
+    font-size: 3rem;
   }
 
   &__desc {
@@ -104,97 +128,204 @@
     }
   }
 
-  &__form {
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    gap: 1.6rem;
-    padding-bottom: 3rem;
+  &__link {
+    text-decoration: underline;
+  }
 
-    &__group {
-    }
+  &__text {
+    padding-bottom: 0.5rem;
+  }
+}
 
-    &__input {
-      width: 100%;
-      padding: 1.2rem 2rem;
-      border: 1px solid #000000;
-      border-radius: 0.5rem;
-      transition: border 0.1s ease-in-out;
-      border-radius: 1rem;
+.auth-form {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 1.6rem;
+  padding-bottom: 3rem;
 
-      &:focus {
-        border: 1px solid #000000;
-      }
-
-      &::placeholder {
-        color: #9b9b9b;
-      }
-    }
-
-    &__label {
-      display: block;
-      font-weight: 600;
-      padding-bottom: 0.5rem;
-    }
-
-    &__submit {
-      padding: 1.2rem 2rem;
-      border: 0.2rem solid #000000;
-      font-weight: 600;
-      border-radius: 1rem;
-      box-shadow: 0px 3px 0 rgba(0, 0, 0, 1);
-      margin-top: 2rem;
-      transition: background 0.1s ease-in-out;
-
-      &:hover {
-        cursor: pointer;
-      }
-    }
-
-    &__checkbox-input {
-      margin-right: 0.5rem;
-    }
-
-    &__checkbox-label {
-      user-select: none;
-    }
+  &__group {
   }
 
   &__link {
     text-decoration: underline;
   }
+
+  &__flash {
+    padding: 1rem;
+    background: #9cffae;
+    border: 0.2rem solid black;
+    border-radius: 0.5rem;
+    font-weight: 600;
+    margin-bottom: 2rem;
+    text-align: center;
+  }
+
+  &__success {
+    background: #95d430;
+  }
+
+  &__alert {
+    background: #ffe94a;
+  }
+
+  &__error {
+    padding-bottom: 2rem;
+
+    &__title {
+      font-size: 2rem;
+      padding-bottom: 1rem;
+    }
+
+    &__list {
+      list-style-type: circle;
+      list-style-position: inside;
+      padding: 1rem 2rem;
+      background: #ff5556;
+      border: 0.2rem solid black;
+      border-radius: 1rem;
+      font-weight: 600;
+    }
+  }
+
+  &__input {
+    width: 100%;
+    padding: 1.2rem 2rem;
+    border: 0.1rem solid #000000;
+    border-radius: 0.5rem;
+    transition: border 0.1s ease-in-out;
+    border-radius: 1rem;
+
+    &::placeholder {
+      color: #9b9b9b;
+    }
+  }
+
+  &__input--error {
+    border: 0.1rem solid #ff5556;
+  }
+
+  &__error-message {
+    color: #ff5556;
+    font-weight: 600;
+    display: block;
+    padding-top: 0.5rem;
+
+    &::first-letter {
+      text-transform: uppercase;
+    }
+  }
+
+  &__label {
+    display: block;
+    font-weight: 600;
+    padding-bottom: 0.5rem;
+  }
+
+  &__submit {
+    padding: 1.2rem 2rem;
+    border: 0.2rem solid #000000;
+    font-weight: 600;
+    border-radius: 1rem;
+    box-shadow: 3px 3px 0 rgba(0, 0, 0, 1);
+    margin-top: 2rem;
+    transition: background 0.1s ease-in-out;
+
+    &:hover {
+      cursor: pointer;
+    }
+  }
+
+  &__checkbox-input {
+    margin-right: 0.5rem;
+  }
+
+  &__checkbox-label {
+    user-select: none;
+  }
 }
 
 .auth--signup {
-  background: #fff5f0;
+  background: #fff2f2;
 
   .auth__sidebar {
-    background: asset-url("auth-illustration-2.jpg") no-repeat center center;
+    background: asset-url("auth-sidebar-signup.jpg") no-repeat center center;
     background-size: cover;
   }
 
-  .auth__form__submit {
-    background: #f8b67c;
+  .auth-form__submit {
+    background: #f4aaab;
 
     &:hover {
-      background: #ffb472;
+      background: #e69698;
     }
   }
 }
 
 .auth--login {
-  background: #fffcee;
+  background: #fffdf7;
 
   .auth__sidebar {
-    background: asset-url("auth-illustration-1.jpg") no-repeat center center;
+    background: asset-url("auth-sidebar-login.jpg") no-repeat center center;
     background-size: cover;
   }
 
-  .auth__form__submit {
-    background: #fddb31;
+  .auth-form__submit {
+    background: #98c1a1;
 
     &:hover {
-      background: #ffdb28;
+      background: #84b08d;
+    }
+  }
+}
+
+.auth--reset {
+  background: #fff4ec;
+
+  .auth__sidebar {
+    background: asset-url("auth-sidebar-reset.jpg") no-repeat center center;
+    background-size: cover;
+  }
+
+  .auth-form__submit {
+    background: #ff9561;
+
+    &:hover {
+      background: #ff9561;
+    }
+  }
+}
+
+.auth--change-password {
+  background: #fffbee;
+
+  .auth__sidebar {
+    background: asset-url("auth-sidebar-change.jpg") no-repeat center center;
+    background-size: cover;
+  }
+
+  .auth-form__submit {
+    background: #fdd76c;
+
+    &:hover {
+      background: #fdd76c;
+    }
+  }
+}
+
+.auth--setup {
+  background: #edfff6;
+
+  .auth__sidebar {
+    background: asset-url("auth-sidebar-setup.jpg") no-repeat center right;
+    background-size: cover;
+  }
+
+  .auth-form__submit {
+    background: #6cc884;
+
+    &:hover {
+      background: #56a36b;
     }
   }
 }

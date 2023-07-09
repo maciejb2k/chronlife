@@ -1,7 +1,9 @@
 <div class="auth auth--signup">
   <div class="auth__content">
     <header class="auth__header">
-      <%= image_tag "logo_pl.png", class: "auth__header__logo", alt: "" %>
+      <%= link_to root_path do %>
+        <%= image_tag "logo_pl.png", class: "auth__header__logo", alt: "" %>
+      <% end %>
       <%= link_to 'Strona Główna', root_path, class: "auth__header__link" %>
     </header>
 
@@ -24,35 +26,44 @@
         <span class="auth__separator__line"></span>
       </p>
 
-      <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { class: "auth__form" }) do |f| %>
-        <%= render "devise/shared/error_messages", resource: resource %>
+      <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { class: "auth-form" }) do |f| %>
+        <% if resource.errors.any? %>
+          <div class="auth-form__error" data-turbo-cache="false">
+            <h2 class="auth-form__error__title">Nie można wysłać formularza:</h2>
+            <ul class="auth-form__error__list">
+              <% resource.errors.full_messages.each do |message| %>
+                <li class="auth-form__error__item"><%= message %></li>
+              <% end %>
+            </ul>
+          </div>
+        <% end %>
 
-        <div class="auth__form__group">
-          <%= f.label :email, "E-Mail", class: "auth__form__label" %>
+        <div class="auth-form__group">
+          <%= f.label :email, "E-Mail", class: "auth-form__label" %>
           <%= f.email_field :email, autofocus: true, autocomplete: "email",
-          class: "auth__form__input", placeholder: "jan.kowalski@gmail.com" %>
+          class: "auth-form__input", placeholder: "jan.kowalski@gmail.com" %>
         </div>
 
-        <div class="auth__form__group">
-          <%= f.label :password, "Hasło", class: "auth__form__label" %>
+        <div class="auth-form__group">
+          <%= f.label :password, "Hasło", class: "auth-form__label" %>
           <%= f.password_field :password, autocomplete: "new-password",
-          class: "auth__form__input", placeholder: "•••••••••••••" %>
+          class: "auth-form__input", placeholder: "•••••••••••••" %>
         </div>
 
-        <div class="auth__form__group">
-          <%= f.label :password_confirmation, "Potwierdź hasło", class: "auth__form__label"  %>
+        <div class="auth-form__group">
+          <%= f.label :password_confirmation, "Potwierdź hasło", class: "auth-form__label"  %>
           <%= f.password_field :password_confirmation, autocomplete: "new-password",
-          class: "auth__form__input", placeholder: "•••••••••••••" %>
+          class: "auth-form__input", placeholder: "•••••••••••••" %>
         </div>
 
-        <div class="auth__form__group">
-          <%= f.check_box :remember_me, class: "auth__form__checkbox-input" %>
-          <%= f.label :remember_me, class: "aero__  form__checkbox-label" do %>
-            Akceptuję <%= link_to "regulamin", new_user_session_path, class: "auth__link" %> i <%= link_to "politykę platformy", new_user_session_path, class: "auth__link" %>
+        <div class="auth-form__group">
+          <%= f.check_box :remember_me, class: "auth-form__checkbox-input" %>
+          <%= f.label :remember_me, class: "auth-form__checkbox-label" do %>
+            Akceptuję <%= link_to "regulamin", root_path, class: "auth__link" %> i <%= link_to "politykę platformy", new_user_session_path, class: "auth__link" %>
           <% end %>
         </div>
 
-        <%= f.submit "Zarejestruj się", class: "auth__form__submit" %>
+        <%= f.submit "Zarejestruj się", class: "auth-form__submit" %>
       <% end %>
       <p class="auth__text">
         Masz już konto? <%= link_to "Zaloguj się", new_user_session_path, class: "auth__link" %>
@@ -60,5 +71,6 @@
     </div>
   </div>
   <div class="auth__sidebar">
+    <%= link_to "Ilustracja z Freepik", "https://www.freepik.com/free-vector/hand-drawn-crowd-people-walking-illustration_21559642.htm?epik=dj0yJnU9MTNQbzBTLTAxTTNyTmppcnZKYXJJckZObUVmNEhoVXEmcD0wJm49ZDZIMVNIMnhlbzFINlBCVnNmdHhMQSZ0PUFBQUFBR1NxU0lj", class: "auth__credits" %>
   </div>
 </div>

@@ -56,7 +56,6 @@ class User < ApplicationRecord
   accepts_nested_attributes_for :account
 
   before_create :set_patient_role!
-  after_create :create_account!
 
   def patient?
     roles.exists?(name: "patient")
@@ -93,10 +92,6 @@ class User < ApplicationRecord
 
   def two_factor_backup_codes_generated?
     otp_backup_codes.present?
-  end
-
-  def setup_account!
-    build_account if account.nil?
   end
 
   def set_specialist_role!

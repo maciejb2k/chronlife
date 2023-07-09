@@ -37,10 +37,11 @@ class Account < ApplicationRecord
   has_one_attached :avatar
   has_one_attached :cover_photo
 
-  validates :first_name, length: { maximum: 50 }, allow_blank: true
-  validates :last_name, length: { maximum: 50 }, allow_blank: true
-  validates :username, uniqueness: true, format: { with: /\A[a-z0-9_]+\z/i },
-                       length: { maximum: 50 }, allow_blank: true
+  validates :first_name, presence: true, length: { maximum: 50 }
+  validates :last_name, presence: true, length: { maximum: 50 }
+  validates :username, presence: true, uniqueness: true, format: { with: /\A[a-z0-9_]+\z/i },
+                       length: { maximum: 50 }
+
   validates :bio, length: { maximum: 100 }, allow_blank: true
   validates :sex, inclusion: { in: %w[male female other] }, allow_blank: true
   validates :birthday, timeliness: {

@@ -41,7 +41,7 @@ Rails.application.configure do
 
   config.action_mailer.perform_caching = false
 
-  config.action_mailer.default_url_options = { host: "localhost" }
+  config.action_mailer.default_url_options = { host: "localhost:3000" }
 
   # Print deprecation notices to the Rails logger.
   config.active_support.deprecation = :log
@@ -70,15 +70,15 @@ Rails.application.configure do
   # Uncomment if you wish to allow Action Cable access from any origin.
   # config.action_cable.disable_request_forgery_protection = true
 
-    # Setup Redis as the cache
-    config.cache_store = :redis_cache_store, {
-      url: ENV.fetch("REDIS_URL"),
-      namespace: "chronlife"
-    }
+  # Setup Redis as the cache
+  config.cache_store = :redis_cache_store, {
+    url: ENV.fetch("REDIS_URL"),
+    namespace: "chronlife"
+  }
 
-    # Setup Redis as the session store, using Rails cache
-    config.session_store :cache_store,
-                         key: "_session_id",
-                         secure: false,
-                         httponly: true
+  # Setup Redis as the session store, using Rails cache
+  config.session_store :cache_store,
+                       key: "_session_id",
+                       secure: false,
+                       httponly: true
 end

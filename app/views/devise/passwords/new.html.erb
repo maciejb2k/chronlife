@@ -1,16 +1,45 @@
-<h2>Forgot your password?</h2>
+<div class="auth auth--reset">
+  <div class="auth__content">
+    <header class="auth__header">
+      <%= link_to root_path do %>
+        <%= image_tag "logo_pl.png", class: "auth__header__logo", alt: "" %>
+      <% end %>
+      <%= link_to 'Strona Główna', root_path, class: "auth__header__link" %>
+    </header>
 
-<%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f| %>
-  <%= render "devise/shared/error_messages", resource: resource %>
+    <div class="auth__main">
+      <div class=auth__heading>
+        <h1 class="auth__title">Zapomniałeś hasła?</h1>
+        <p class="auth__desc">Podaj E-Mail i ustalimy nowe hasło.</p>
+      </div>
 
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+      <%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post, class: "auth-form" }) do |f| %>
+        <% if resource.errors.any? %>
+          <div class="auth-form__error" data-turbo-cache="false">
+            <h2 class="auth-form__error__title">Nie można wysłać formularza:</h2>
+            <ul class="auth-form__error__list">
+              <% resource.errors.full_messages.each do |message| %>
+                <li class="auth-form__error__item"><%= message %></li>
+              <% end %>
+            </ul>
+          </div>
+        <% end %>
+
+        <div class="auth-form__group">
+          <%= f.label :email, "E-Mail", class: "auth-form__label" %>
+          <%= f.email_field :email, autofocus: true, autocomplete: "email",
+          class: "auth-form__input", placeholder: "jan.kowalski@gmail.com" %>
+        </div>
+
+        <%= f.submit "Przypomnij hasło", class: "auth-form__submit" %>
+      <% end %>
+
+      <p class="auth__text">
+        Pamiętasz jednak hasło? <%= link_to "Zaloguj się", new_user_session_path, class: "auth__link" %>
+      </p>
+    </div>
   </div>
-
-  <div class="actions">
-    <%= f.submit "Send me reset password instructions" %>
+  <div class="auth__sidebar">
+    <%= link_to "Ilustracja z Freepik", "https://www.freepik.com/free-vector/flat-couple-with-cute-dog-home_15614429.htm#from_view=detail_alsolike", class: "auth__credits" %>
   </div>
-<% end %>
-
-<%= render "devise/shared/links" %>
+</div>

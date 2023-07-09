@@ -1,0 +1,23 @@
+<div class="auth auth--setup">
+  <div class="auth__content">
+    <header class="auth__header">
+      <%= link_to root_path do %>
+        <%= image_tag "logo_pl.png", class: "auth__header__logo", alt: "" %>
+      <% end %>
+      <%= link_to 'Wyloguj się', root_path, class: "auth__header__link" %>
+    </header>
+
+    <div class="auth__main">
+      <div class=auth__heading>
+        <h1 class="auth__title">Uzupełnij profil</h1>
+        <p class="auth__desc">Żeby zacząć korzystać z platformy, musisz podać te dane.</p>
+      </div>
+
+      <%= render "form", account: @account %>
+    </div>
+  </div>
+
+  <div class="auth__sidebar">
+    <%= link_to "Ilustracja z Freepik", "https://www.freepik.com/free-vector/flat-pension-people-walk-park-kids-playing-riding-bicycle_27869309.htm#query=people&position=20&from_view=search&track=sph", class: "auth__credits" %>
+  </div>
+</div>

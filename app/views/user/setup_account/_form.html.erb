@@ -1,0 +1,45 @@
+<%= form_with model: account, url: setup_account_path, method: :post, html: { class: "auth-form" } do |f| %>
+  <% if alert %>
+    <div class="auth-form__flash auth-form__alert">
+      <%= alert %>
+    </div>
+  <% end %>
+
+  <% if notice %>
+    <div class="auth-form__flash auth-form__success">
+      <%= notice %>
+    </div>
+  <% end %>
+
+  <div class="auth-form__group">
+    <%= f.label :first_name, "Imię", class: "auth-form__label" %>
+    <%= f.text_field :first_name, class: "auth-form__input #{'auth-form__input--error' if @account.errors[:first_name].present?}", placeholder: "Jan" %>
+    <% if @account.errors[:first_name].present? %>
+      <span class="auth-form__error-message">
+        <%= @account.errors[:first_name].first %>
+      </span>
+    <% end %>
+  </div>
+
+  <div class="auth-form__group">
+    <%= f.label :last_name, "Nazwisko", class: "auth-form__label" %>
+    <%= f.text_field :last_name, class: "auth-form__input #{'auth-form__input--error' if @account.errors[:last_name].present?}", placeholder: "Kowalski" %>
+    <% if @account.errors[:last_name].present? %>
+      <span class="auth-form__error-message">
+        <%= @account.errors[:last_name].first %>
+      </span>
+    <% end %>
+  </div>
+
+  <div class="auth-form__group">
+    <%= f.label :username, "Nazwa użytkownika", class: "auth-form__label" %>
+    <%= f.text_field :username, class: "auth-form__input #{'auth-form__input--error' if @account.errors[:username].present?}", placeholder: "jan.kowalski" %>
+    <% if @account.errors[:username].present? %>
+      <span class="auth-form__error-message">
+        <%= @account.errors[:username].first %>
+      </span>
+    <% end %>
+  </div>
+
+  <%= f.submit "Zapisz", class: "auth-form__submit" %>
+<% end %>
