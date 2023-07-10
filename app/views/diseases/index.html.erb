@@ -1,0 +1,7 @@
+<section class="page-diseases">
+  <h1>Choroby</h1>
+  <% @diseases.each do |disease| %>
+    Nazwa: <%= disease.name %><br>
+    Opis: <%= disease.description %><br>
+  <% end %>
+</section>

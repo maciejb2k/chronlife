@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_07_06_125125) do
+ActiveRecord::Schema[7.0].define(version: 2023_07_10_092137) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pgcrypto"
   enable_extension "plpgsql"
@@ -27,7 +27,6 @@ ActiveRecord::Schema[7.0].define(version: 2023_07_06_125125) do
     t.string "city", default: "", null: false
     t.string "phone_number", default: "", null: false
     t.string "education", default: "", null: false
-    t.boolean "is_completed", default: false, null: false
     t.boolean "is_verified", default: false, null: false
     t.string "specialization", default: "", null: false
     t.string "specialization_description", default: "", null: false
@@ -65,6 +64,51 @@ ActiveRecord::Schema[7.0].define(version: 2023_07_06_125125) do
     t.uuid "blob_id", null: false
     t.string "variation_digest", null: false
     t.index ["blob_id", "variation_digest"], name: "index_active_storage_variant_records_uniqueness", unique: true
+  end
+
+  create_table "disease_categories", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
+    t.string "name", default: "", null: false
+    t.string "description", default: "", null: false
+    t.string "icon", default: "", null: false
+    t.string "color", default: "", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["name"], name: "index_disease_categories_on_name", unique: true
+  end
+
+  create_table "diseases", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
+    t.date "diagnosed_at", null: false
+    t.string "diagnosed_by", default: "", null: false
+    t.integer "severity", default: 1, null: false
+    t.string "color", default: "", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.uuid "account_id", null: false
+    t.uuid "predefined_disease_id", null: false
+    t.uuid "disease_category_id"
+    t.index ["account_id", "predefined_disease_id"], name: "index_diseases_on_account_id_and_predefined_disease_id"
+    t.index ["account_id"], name: "index_diseases_on_account_id"
+    t.index ["disease_category_id"], name: "index_diseases_on_disease_category_id"
+    t.index ["predefined_disease_id"], name: "index_diseases_on_predefined_disease_id"
+  end
+
+  create_table "predefined_diseases", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
+    t.string "name", default: "", null: false
+    t.string "related_names", default: [], array: true
+    t.text "description", default: "", null: false
+    t.string "icd10_code", default: "", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["name"], name: "index_predefined_diseases_on_name", unique: true
+  end
+
+  create_table "predefined_symptoms", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
+    t.string "name", default: "", null: false
+    t.string "related_names", default: [], array: true
+    t.text "description", default: "", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["name"], name: "index_predefined_symptoms_on_name", unique: true
   end
 
   create_table "roles", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
@@ -119,6 +163,9 @@ ActiveRecord::Schema[7.0].define(version: 2023_07_06_125125) do
   add_foreign_key "accounts", "users"
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "diseases", "accounts"
+  add_foreign_key "diseases", "disease_categories"
+  add_foreign_key "diseases", "predefined_diseases"
   add_foreign_key "user_roles", "roles"
   add_foreign_key "user_roles", "users"
 end

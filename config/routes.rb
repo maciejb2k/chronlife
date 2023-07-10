@@ -22,4 +22,6 @@ Rails.application.routes.draw do
 
   get "/setup_account" => "setup_account#new"
   post "/setup_account" => "setup_account#create"
+
+  resources :diseases, only: [:index]
 end

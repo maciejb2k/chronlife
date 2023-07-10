@@ -34,3 +34,4 @@
 .env
 
 node_modules/
+doc/

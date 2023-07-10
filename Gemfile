@@ -53,7 +53,17 @@ gem 'active_storage_validations', '~> 1.0.3'
 gem 'phonelib', '~> 0.8.1'
 gem 'validates_timeliness', '~> 7.0.0.beta1'
 
+# ERB Formatter
 gem "htmlbeautifier"
+
+# For profiling
+gem 'rack-mini-profiler'
+
+# For memory profiling
+gem 'memory_profiler'
+
+# For call-stack profiling flamegraphs
+gem 'stackprof'
 
 group :development, :test do
   gem "debug", "~> 1.8.0", platforms: %i[ mri mingw x64_mingw ]

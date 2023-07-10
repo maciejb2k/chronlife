@@ -1,9 +1,48 @@
 <% content_for :body do %>
   <div class="dashboard">
-    <nav>
-
-    </nav>
-    <%= yield %>
+    <header class="header">
+      <div class="header__logo-wrapper">
+        <%= link_to root_path do %>
+          <%= image_tag "logo_pl.png", alt: "Logo", class: "header__logo" %>
+        <% end %>
+      </div>
+      <div class="header__links-group">
+        <%= link_to "Tablica", root_path, method: :delete, class: "header__link header__link--home" %>
+        <%= link_to "Moje Zdrowie", root_path, method: :delete, class: "header__link header__link--health" %>
+        <%= link_to "Grupy", root_path, method: :delete, class: "header__link  header__link--groups" %>
+      </div>
+      <div class="header__right">
+        <div class="header__buttons">
+          <button class="header__button">
+            <i data-feather="bell" class="header__button__icon"></i>
+          </button>
+          <button class="header__button">
+            <i data-feather="inbox" class="header__button__icon"></i>
+          </button>
+          <button class="header__button">
+            <i data-feather="message-circle" class="header__button__icon"></i>
+          </button>
+        </div>
+        <button class="header__profile">
+          <%= image_tag "avatar-placeholder.png", alt: "Avatar", class: "header__profile-image" %>
+          <i data-feather="chevron-down" class="header__button__icon"></i>
+        </button>
+      </div>
+    </header>
+    <div class="dashboard__content">
+      <div class="sidebar">
+        <ul class="sidebar__items">
+          <li class="sidebar__item">
+            <%= link_to diseases_path, class: "sidebar__link" do %>
+              Choroby
+            <% end %>
+          </li>
+        </ul>
+      </div>
+      <main class="main">
+        <%= yield %>
+      </main>
+    </div>
   </div>
 <% end %>
 

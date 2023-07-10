@@ -11,12 +11,14 @@
 
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-    <%= javascript_importmap_tags %>
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
+    <%= javascript_importmap_tags %>
+
     <%= yield :head %>
   </head>
   <body>
     <%= content_for?(:body) ? yield(:body) : yield %>
+
     <%= yield :javascript %>
   </body>
 </html>
