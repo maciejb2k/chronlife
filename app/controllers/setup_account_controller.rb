@@ -1,4 +1,4 @@
-class SetupAccountController < BaseController
+class SetupAccountController < BaseUserController
   skip_before_action :user_account_setup
   before_action :user_account_already_setup
 
