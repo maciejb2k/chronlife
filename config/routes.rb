@@ -14,14 +14,12 @@ Rails.application.routes.draw do
     post "/users/sign_in/recovery_code" => "auth/recovery_codes#create"
   end
 
-  scope module: "user" do
-    get "/setup_account" => "setup_account#new"
-    post "/setup_account" => "setup_account#create"
-
-    authenticated :user do
-      root to: "dashboard#index", as: :authenticated_root
-    end
+  authenticated :user do
+    root to: "dashboard#index", as: :authenticated_root
   end
 
   root to: "pages#home"
+
+  get "/setup_account" => "setup_account#new"
+  post "/setup_account" => "setup_account#create"
 end

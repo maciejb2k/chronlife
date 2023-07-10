@@ -1,4 +1,4 @@
-class User::BaseController < ApplicationController
+class BaseController < ApplicationController
   before_action :authenticate_user!
   before_action :user_account_setup
 
