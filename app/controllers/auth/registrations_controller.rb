@@ -9,4 +9,8 @@ class Auth::RegistrationsController < Devise::RegistrationsController
   def sign_up_params
     params.require(:user).permit(sign_up_params_attributes)
   end
+
+  def after_inactive_sign_up_path_for(_resource)
+    new_user_session_path
+  end
 end

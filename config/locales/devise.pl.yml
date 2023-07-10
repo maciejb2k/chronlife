@@ -3,7 +3,7 @@
 pl:
   devise:
     confirmations:
-      confirmed: "Twoje konto zostało aktywowane. Zostałeś pomyślnie zalogowany."
+      confirmed: "Twoje konto zostało aktywowane. Możesz się zalogować."
       send_instructions: "Za chwilę otrzymasz email z instrukcją jak aktywować konto."
       send_paranoid_instructions: "Jeśli Twój adres email istnieje w naszej bazie, za chwilę powinieneś otrzymać instrukcję jak aktywować konto."
     failure:

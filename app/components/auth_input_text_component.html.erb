@@ -1,0 +1,7 @@
+<%= @form.label @field, @label, class: "auth-form__label" %>
+<%= @form.public_send(@type, @field, @options) %>
+<% if @model.errors[@field].present? %>
+  <span class="auth-form__error-message">
+    <%= @model.errors[@field].first %>
+  </span>
+<% end %>

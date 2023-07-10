@@ -12,34 +12,49 @@
   <% end %>
 
   <div class="auth-form__group">
-    <%= f.label :first_name, "Imię", class: "auth-form__label" %>
-    <%= f.text_field :first_name, class: "auth-form__input #{'auth-form__input--error' if @account.errors[:first_name].present?}", placeholder: "Jan" %>
-    <% if @account.errors[:first_name].present? %>
-      <span class="auth-form__error-message">
-        <%= @account.errors[:first_name].first %>
-      </span>
-    <% end %>
+    <%= render(
+      AuthInputTextComponent.new(
+        form: f,
+        model: @account,
+        type: :text_field,
+        field: :first_name,
+        label: "Imię",
+        options: {
+          placeholder: "Jan"
+        }
+      ))
+    %>
   </div>
 
   <div class="auth-form__group">
-    <%= f.label :last_name, "Nazwisko", class: "auth-form__label" %>
-    <%= f.text_field :last_name, class: "auth-form__input #{'auth-form__input--error' if @account.errors[:last_name].present?}", placeholder: "Kowalski" %>
-    <% if @account.errors[:last_name].present? %>
-      <span class="auth-form__error-message">
-        <%= @account.errors[:last_name].first %>
-      </span>
-    <% end %>
+    <%= render(
+      AuthInputTextComponent.new(
+        form: f,
+        model: @account,
+        type: :text_field,
+        field: :last_name,
+        label: "Nazwisko",
+        options: {
+          placeholder: "Kowalski"
+        }
+      ))
+    %>
   </div>
 
   <div class="auth-form__group">
-    <%= f.label :username, "Nazwa użytkownika", class: "auth-form__label" %>
-    <%= f.text_field :username, class: "auth-form__input #{'auth-form__input--error' if @account.errors[:username].present?}", placeholder: "jan.kowalski" %>
-    <% if @account.errors[:username].present? %>
-      <span class="auth-form__error-message">
-        <%= @account.errors[:username].first %>
-      </span>
-    <% end %>
+    <%= render(
+      AuthInputTextComponent.new(
+        form: f,
+        model: @account,
+        type: :text_field,
+        field: :username,
+        label: "Nazwa użytkownika",
+        options: {
+          placeholder: "jan.kowalski"
+        }
+      ))
+    %>
   </div>
 
-  <%= f.submit "Zapisz", class: "auth-form__submit" %>
+  <%= f.submit "Rozpocznij", class: "auth-form__submit" %>
 <% end %>

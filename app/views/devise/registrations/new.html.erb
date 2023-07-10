@@ -27,33 +27,53 @@
       </p>
 
       <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { class: "auth-form" }) do |f| %>
-        <% if resource.errors.any? %>
-          <div class="auth-form__error" data-turbo-cache="false">
-            <h2 class="auth-form__error__title">Nie można wysłać formularza:</h2>
-            <ul class="auth-form__error__list">
-              <% resource.errors.full_messages.each do |message| %>
-                <li class="auth-form__error__item"><%= message %></li>
-              <% end %>
-            </ul>
-          </div>
-        <% end %>
-
         <div class="auth-form__group">
-          <%= f.label :email, "E-Mail", class: "auth-form__label" %>
-          <%= f.email_field :email, autofocus: true, autocomplete: "email",
-          class: "auth-form__input", placeholder: "jan.kowalski@gmail.com" %>
+          <%= render(
+            AuthInputTextComponent.new(
+              form: f,
+              model: resource,
+              type: :text_field,
+              field: :email,
+              label: "E-Mail",
+              options: {
+                autofocus: true,
+                autocomplete: "email",
+                placeholder: "jan.kowalski@gmail.com"
+              }
+            ))
+          %>
         </div>
 
         <div class="auth-form__group">
-          <%= f.label :password, "Hasło", class: "auth-form__label" %>
-          <%= f.password_field :password, autocomplete: "new-password",
-          class: "auth-form__input", placeholder: "•••••••••••••" %>
+          <%= render(
+            AuthInputTextComponent.new(
+              form: f,
+              model: resource,
+              type: :password_field,
+              field: :password,
+              label: "Hasło",
+              options: {
+                autocomplete: "new-password",
+                placeholder: "•••••••••••••"
+              }
+            ))
+          %>
         </div>
 
         <div class="auth-form__group">
-          <%= f.label :password_confirmation, "Potwierdź hasło", class: "auth-form__label"  %>
-          <%= f.password_field :password_confirmation, autocomplete: "new-password",
-          class: "auth-form__input", placeholder: "•••••••••••••" %>
+          <%= render(
+            AuthInputTextComponent.new(
+              form: f,
+              model: resource,
+              type: :password_field,
+              field: :password_confirmation,
+              label: "Potwierdź hasło",
+              options: {
+                autocomplete: "new-password",
+                placeholder: "•••••••••••••"
+              }
+            ))
+          %>
         </div>
 
         <div class="auth-form__group">
