@@ -1,4 +1,6 @@
 class BaseController < ApplicationController
+  layout "dashboard"
+
   before_action :authenticate_user!
   before_action :user_account_setup
 

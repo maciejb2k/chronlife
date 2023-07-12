@@ -1,46 +1,220 @@
 <% content_for :body do %>
   <div class="dashboard">
-    <header class="header">
-      <div class="header__logo-wrapper">
-        <%= link_to root_path do %>
-          <%= image_tag "logo_pl.png", alt: "Logo", class: "header__logo" %>
+    <div class="sidebar">
+      <div class="sidebar__profile">
+        <%= image_tag "avatar.jpg", alt: "Logo", class: "sidebar__profile__picture" %>
+        <%= link_to authenticated_root_path, class: "sidebar__profile__info" do %>
+          <p class="sidebar__profile__name">Maciej Biel</p>
+          <p class="sidebar__profile__email">@maciejbiel</p>
         <% end %>
       </div>
-      <div class="header__links-group">
-        <%= link_to "Tablica", root_path, method: :delete, class: "header__link header__link--home" %>
-        <%= link_to "Moje Zdrowie", root_path, method: :delete, class: "header__link header__link--health" %>
-        <%= link_to "Grupy", root_path, method: :delete, class: "header__link  header__link--groups" %>
-      </div>
-      <div class="header__right">
-        <div class="header__buttons">
-          <button class="header__button">
-            <i data-feather="bell" class="header__button__icon"></i>
-          </button>
-          <button class="header__button">
-            <i data-feather="inbox" class="header__button__icon"></i>
-          </button>
-          <button class="header__button">
-            <i data-feather="message-circle" class="header__button__icon"></i>
-          </button>
+      <nav class="sidebar__nav">
+        <div class="sidebar__nav__group">
+          <p class="sidebar__nav__title">Szybka nawigacja:</p>
+          <ul class="sidebar__items">
+            <li class="sidebar__item">
+              <%= link_to diseases_path, class: "sidebar__link" do %>
+                <div class="sidebar__link__group">
+                  <span class="sidebar__link__icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-home"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline></svg>
+                  </span>
+                  <span class="sidebar__link__text">Strona główna</span>
+                </div>
+                <span class="sidebar__link__icon">
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevron-right"><polyline points="9 18 15 12 9 6"></polyline></svg>
+                </span>
+              <% end %>
+            </li>
+          </ul>
         </div>
-        <button class="header__profile">
-          <%= image_tag "avatar-placeholder.png", alt: "Avatar", class: "header__profile-image" %>
-          <i data-feather="chevron-down" class="header__button__icon"></i>
-        </button>
+
+        <div class="sidebar__nav__group">
+          <p class="sidebar__nav__title">Twoje zdrowie:</p>
+          <ul class="sidebar__items">
+            <li class="sidebar__item">
+              <%= link_to diseases_path, class: "sidebar__link" do %>
+                <div class="sidebar__link__group">
+                  <span class="sidebar__link__icon">
+
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-smile"><circle cx="12" cy="12" r="10"></circle><path d="M8 14s1.5 2 4 2 4-2 4-2"></path><line x1="9" y1="9" x2="9.01" y2="9"></line><line x1="15" y1="9" x2="15.01" y2="9"></line></svg>
+                  </span>
+                  <span class="sidebar__link__text">Choroby</span>
+                </div>
+                <span class="sidebar__link__icon">
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevron-right"><polyline points="9 18 15 12 9 6"></polyline></svg>
+                </span>
+              <% end %>
+            </li>
+            <li class="sidebar__item">
+              <%= link_to diseases_path, class: "sidebar__link" do %>
+                <div class="sidebar__link__group">
+                  <span class="sidebar__link__icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-users"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>
+                  </span>
+                  <span class="sidebar__link__text">Grupy chorych</span>
+                </div>
+                <span class="sidebar__link__icon">
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevron-right"><polyline points="9 18 15 12 9 6"></polyline></svg>
+                </span>
+              <% end %>
+            </li>
+            <li class="sidebar__item">
+              <%= link_to diseases_path, class: "sidebar__link" do %>
+                <div class="sidebar__link__group">
+                  <span class="sidebar__link__icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-activity"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline></svg>
+                  </span>
+                  <span class="sidebar__link__text">Monitorowanie zdrowia</span>
+                </div>
+                <span class="sidebar__link__icon">
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevron-right"><polyline points="9 18 15 12 9 6"></polyline></svg>
+                </span>
+              <% end %>
+            </li>
+            <li class="sidebar__item">
+              <%= link_to diseases_path, class: "sidebar__link" do %>
+                <div class="sidebar__link__group">
+                  <span class="sidebar__link__icon">
+                    <svg xmlns="http://www.w3.org/2000/svg"  viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-file-plus"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="12" y1="18" x2="12" y2="12"></line><line x1="9" y1="15" x2="15" y2="15"></line></svg>
+                  </span>
+                  <span class="sidebar__link__text">Wyniki badań</span>
+                </div>
+                <span class="sidebar__link__icon">
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevron-right"><polyline points="9 18 15 12 9 6"></polyline></svg>
+                </span>
+              <% end %>
+            </li>
+            <li class="sidebar__item">
+              <%= link_to diseases_path, class: "sidebar__link" do %>
+                <div class="sidebar__link__group">
+                  <span class="sidebar__link__icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-edit-3"><path d="M12 20h9"></path><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"></path></svg>
+                  </span>
+                  <span class="sidebar__link__text">Notatki</span>
+                </div>
+                <span class="sidebar__link__icon">
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevron-right"><polyline points="9 18 15 12 9 6"></polyline></svg>
+                </span>
+              <% end %>
+            </li>
+          </ul>
+        </div>
+
+        <div class="sidebar__nav__group sidebar__nav__group--social">
+          <p class="sidebar__nav__title">Społeczność:</p>
+          <ul class="sidebar__items">
+            <li class="sidebar__item">
+              <%= link_to diseases_path, class: "sidebar__link" do %>
+                <div class="sidebar__link__group">
+                  <span class="sidebar__link__icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-book-open"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"></path><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"></path></svg>
+                  </span>
+                  <span class="sidebar__link__text">Strefa wiedzy</span>
+                </div>
+                <span class="sidebar__link__icon">
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevron-right"><polyline points="9 18 15 12 9 6"></polyline></svg>
+                </span>
+              <% end %>
+            </li>
+            <li class="sidebar__item">
+              <%= link_to diseases_path, class: "sidebar__link" do %>
+                <div class="sidebar__link__group">
+                  <span class="sidebar__link__icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-user-plus"><path d="M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="8.5" cy="7" r="4"></circle><line x1="20" y1="8" x2="20" y2="14"></line><line x1="23" y1="11" x2="17" y2="11"></line></svg>
+                  </span>
+                  <span class="sidebar__link__text">Specjaliści</span>
+                </div>
+                <span class="sidebar__link__icon">
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevron-right"><polyline points="9 18 15 12 9 6"></polyline></svg>
+                </span>
+              <% end %>
+            </li>
+            <li class="sidebar__item">
+              <%= link_to diseases_path, class: "sidebar__link" do %>
+                <div class="sidebar__link__group">
+                  <span class="sidebar__link__icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-map-pin"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
+                  </span>
+                  <span class="sidebar__link__text">Wydarzenia</span>
+                </div>
+                <span class="sidebar__link__icon">
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevron-right"><polyline points="9 18 15 12 9 6"></polyline></svg>
+                </span>
+              <% end %>
+            </li>
+          </ul>
+        </div>
+
+        <div class="sidebar__nav__group sidebar__nav__group--account">
+          <p class="sidebar__nav__title">Twoje konto:</p>
+          <ul class="sidebar__items">
+            <li class="sidebar__item">
+              <%= link_to diseases_path, class: "sidebar__link" do %>
+                <div class="sidebar__link__group">
+                  <span class="sidebar__link__icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-user"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
+                  </span>
+                  <span class="sidebar__link__text">Profil</span>
+                </div>
+                <span class="sidebar__link__icon">
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevron-right"><polyline points="9 18 15 12 9 6"></polyline></svg>
+                </span>
+              <% end %>
+            </li>
+            <li class="sidebar__item">
+              <%= link_to diseases_path, class: "sidebar__link" do %>
+                <div class="sidebar__link__group">
+                  <span class="sidebar__link__icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-settings"><circle cx="12" cy="12" r="3"></circle><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"></path></svg>
+                  </span>
+                  <span class="sidebar__link__text">Ustawienia</span>
+                </div>
+                <span class="sidebar__link__icon">
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevron-right"><polyline points="9 18 15 12 9 6"></polyline></svg>
+                </span>
+              <% end %>
+            </li>
+          </ul>
+        </div>
+      </nav>
+      <div class="sidebar__footer">
+        <p class="sidebar__footer__text" >&copy; 2023 - Przewlekli.pl</p>
       </div>
-    </header>
+    </div>
     <div class="dashboard__content">
-      <div class="sidebar">
-        <ul class="sidebar__items">
-          <li class="sidebar__item">
-            <%= link_to diseases_path, class: "sidebar__link" do %>
-              Choroby
-            <% end %>
-          </li>
-        </ul>
-      </div>
+      <header class="header">
+        <h1 class="header__title"><%= yield(:dashboard_title) %></h1>
+        <div class="header__right">
+          <div class="header__search">
+            <div class="header__search__icon-container">
+              <svg class="header__search__icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-search"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+            </div>
+            <input type="text" class="header__search__input" placeholder="Szukaj">
+          </div>
+          <%= link_to authenticated_root_path, class: "header__main-button" do %>
+            <svg xmlns="http://www.w3.org/2000/svg" class="header__main-button__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-sunset"><path d="M17 18a5 5 0 0 0-10 0"></path><line x1="12" y1="9" x2="12" y2="2"></line><line x1="4.22" y1="10.22" x2="5.64" y2="11.64"></line><line x1="1" y1="18" x2="3" y2="18"></line><line x1="21" y1="18" x2="23" y2="18"></line><line x1="18.36" y1="11.64" x2="19.78" y2="10.22"></line><line x1="23" y1="22" x2="1" y2="22"></line><polyline points="16 5 12 9 8 5"></polyline></svg>
+            MojeZdrowie&#8482;
+          <% end %>
+          <div class="header__buttons">
+            <button class="header__button">
+              <svg class="header__button__icon"  xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-user"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
+            </button>
+            <button class="header__button">
+              <svg class="header__button__icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-message-circle"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"></path></svg>
+            </button>
+            <button class="header__button">
+              <svg class="header__button__icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-bell"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"></path><path d="M13.73 21a2 2 0 0 1-3.46 0"></path></svg>
+            </button>
+            <button class="header__button">
+              <svg class="header__button__icon" xmlns="http://www.w3.org/2000/svg"  viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-more-horizontal"><circle cx="12" cy="12" r="1"></circle><circle cx="19" cy="12" r="1"></circle><circle cx="5" cy="12" r="1"></circle></svg>
+            </button>
+          </div>
+        </div>
+      </header>
       <main class="main">
-        <%= yield %>
+        <div class="main__container">
+          <%= yield %>
+        </div>
       </main>
     </div>
   </div>

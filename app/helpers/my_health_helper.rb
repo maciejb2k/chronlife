@@ -1,0 +1,2 @@
+module MyHealthHelper
+end

@@ -1,0 +1,2 @@
+class MyHealthController < BaseController
+end

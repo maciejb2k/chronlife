@@ -1,25 +1,82 @@
+$dashboard-bg: #fff;
+$dashboard-sidebar: #fcf9f7;
+$dashboard-header: #ffffff;
+$dashboard-sidebar-buttons: #ffffff;
+$dashboard-borders: 0;
+
 .dashboard {
   width: 100%;
   height: 100vh;
-  max-height: 100%;
-  background: #fffced;
+  display: flex;
+  background: $dashboard-bg;
 
   &__content {
+    flex-grow: 1;
     display: flex;
-    align-items: stretch;
+    flex-direction: column;
   }
 
   .header {
     width: 100%;
+    background: $dashboard-header;
     height: 10rem;
     padding: 0 5rem;
     display: flex;
     align-items: center;
     justify-content: space-between;
-    border-bottom: 0.3rem solid #000000;
+    border-bottom: 0.1rem solid #e2e8f3;
 
-    &__logo {
-      max-width: 23rem;
+    &__title {
+      font-size: 2.6rem;
+      color: #232b39;
+    }
+
+    &__main-button {
+      height: 4rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 1rem;
+      padding: 0 2.6rem;
+      font-weight: 600;
+      color: #ffffff;
+      background: #f18449;
+      border-radius: 0.3rem;
+      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+
+      &__icon {
+        width: 1.8rem;
+        height: 1.8rem;
+        color: #ffd2ba;
+      }
+    }
+
+    &__search {
+      display: flex;
+      border-radius: 0.3rem;
+      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+
+      &__input {
+        height: 4rem;
+        padding: 0 2rem 0 1rem;
+        background: #f6f6f6;
+        min-width: 26rem;
+      }
+
+      &__icon-container {
+        height: 4rem;
+        width: 4rem;
+        background: #f6f6f6;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      &__icon {
+        width: 2rem;
+        height: 2rem;
+        color: #9e9e9e;
+      }
     }
 
     &__links-group {
@@ -30,32 +87,10 @@
       gap: 1rem;
     }
 
-    &__link {
-      padding: 1.2rem 2rem;
-      background: #000000;
-      color: #000000;
-      font-weight: 600;
-      border-radius: 0.5rem;
-      border: 2px solid black;
-      box-shadow: 0.1rem 0.4rem 0rem #000000;
-    }
-
-    &__link--home {
-      background: #ffe94a;
-    }
-
-    &__link--health {
-      background: #95d430;
-    }
-
-    &__link--groups {
-      background: #eb5a5a;
-    }
-
     &__right {
       display: flex;
       align-items: center;
-      gap: 3rem;
+      gap: 5rem;
     }
 
     &__buttons {
@@ -68,17 +103,17 @@
     &__button {
       width: 4rem;
       height: 4rem;
-      border: 2px solid #000000;
       border-radius: 50%;
-      background-color: #ffffff;
-      box-shadow: 0.1rem 0.3rem 0rem #616161, 0 0.4rem 0rem #000000;
+      background-color: #f6f6f6;
+      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
       display: flex;
       align-items: center;
       justify-content: center;
 
       &__icon {
-        width: 2rem;
-        height: 2rem;
+        width: 1.8rem;
+        height: 1.8rem;
+        color: #232b39;
       }
     }
 
@@ -92,12 +127,151 @@
       width: 4rem;
       height: 4rem;
       border-radius: 50%;
-      border: 2px solid black;
+      box-shadow: 0 2px 3px rgba(0, 0, 0, 0.2);
     }
   }
 
   .sidebar {
-    height: 100%;
-    width: 30rem;
+    border-right: 0.1rem solid $dashboard-borders;
+    width: 38rem;
+    background: $dashboard-sidebar;
+    display: flex;
+    flex-direction: column;
+
+    &__profile {
+      padding: 4rem 3rem;
+      display: flex;
+      align-items: center;
+      gap: 2rem;
+      border-bottom: 0.1rem solid $dashboard-borders;
+
+      &__picture {
+        width: 6rem;
+        height: 6rem;
+        border-radius: 50%;
+        box-shadow: 0 2px 3px rgba(0, 0, 0, 0.2);
+      }
+
+      &__name {
+        font-size: 1.6rem;
+        font-weight: 600;
+        color: #232b39;
+      }
+
+      &__email {
+        font-size: 1.4rem;
+        font-weight: 400;
+        color: #686e79;
+      }
+    }
+
+    &__logo-wrapper {
+      background: $dashboard-sidebar;
+      padding: 5.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-bottom: 0.1rem solid $dashboard-borders;
+    }
+
+    &__logo {
+      max-width: 22rem;
+    }
+
+    &__nav {
+      flex-grow: 1;
+      padding: 0 3rem 4rem;
+      border-bottom: 0.1rem solid $dashboard-borders;
+      display: flex;
+      flex-direction: column;
+      gap: 3rem;
+      overflow-y: scroll;
+
+      /* Firefox */
+      & {
+        scrollbar-width: thin;
+        scrollbar-color: #ab8f14 #dfe9eb;
+      }
+
+      /* Chrome, Edge and Safari */
+      &::-webkit-scrollbar {
+        width: 5px;
+        width: 5px;
+      }
+      &::-webkit-scrollbar-track {
+        border-radius: 5px;
+        background: 0;
+      }
+
+      &::-webkit-scrollbar-thumb {
+        border-radius: 5px;
+        background-color: #d3d3d3;
+      }
+
+      &__title {
+        font-size: 1.4rem;
+        font-weight: 600;
+        margin-bottom: 0.5rem;
+        color: #6f7379;
+      }
+    }
+
+    &__items {
+      display: flex;
+      flex-direction: column;
+      gap: 0rem;
+    }
+
+    &__link {
+      padding: 1rem 0;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      font-weight: 600;
+      font-size: 1.6rem;
+      cursor: pointer;
+      border-radius: 0.3rem;
+      color: #232b39;
+
+      &__group {
+        display: flex;
+        align-items: center;
+        gap: 2rem;
+      }
+
+      &__icon {
+        display: block;
+        width: 2rem;
+        height: 2rem;
+        color: #c55a21;
+      }
+    }
+
+    &__footer {
+      padding: 3rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 1rem;
+      border-top: 0.1rem solid $dashboard-borders;
+
+      &__icon {
+        width: 2rem;
+        height: 2rem;
+        color: #7f8694;
+      }
+
+      &__text {
+        font-size: 1.4rem;
+        font-weight: 400;
+        color: #232b39;
+      }
+    }
+  }
+
+  .main {
+    padding: 4rem 5rem;
+    flex-grow: 1;
+    overflow-y: scroll;
   }
 }

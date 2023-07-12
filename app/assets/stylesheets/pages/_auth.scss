@@ -92,7 +92,7 @@
     padding: 1.5rem 3rem;
     align-items: center;
     justify-content: center;
-    border: 1px solid #000000;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
     border-radius: 0.5rem;
     font-weight: 600;
     width: 40rem;
@@ -191,10 +191,10 @@
   &__input {
     width: 100%;
     padding: 1.2rem 2rem;
-    border: 0.1rem solid #000000;
-    border-radius: 0.5rem;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+    border-radius: 0.1rem;
     transition: border 0.1s ease-in-out;
-    border-radius: 1rem;
+    border-radius: 0.3rem;
 
     &::placeholder {
       color: #9b9b9b;
@@ -224,10 +224,9 @@
 
   &__submit {
     padding: 1.2rem 2rem;
-    border: 0.2rem solid #000000;
     font-weight: 600;
-    border-radius: 1rem;
-    box-shadow: 3px 3px 0 rgba(0, 0, 0, 1);
+    box-shadow: 0 2px 3px rgba(0, 0, 0, 0.1);
+    border-radius: 0.3rem;
     margin-top: 2rem;
     transition: background 0.1s ease-in-out;
 
@@ -246,7 +245,7 @@
 }
 
 .auth--signup {
-  background: #fff2f2;
+  background: #fff7f7;
 
   .auth__sidebar {
     background: asset-url("auth-sidebar-signup.jpg") no-repeat center center;
