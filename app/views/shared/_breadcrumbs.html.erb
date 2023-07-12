@@ -1,0 +1,14 @@
+<ol class="dash-breadcrumbs">
+  <% breadcrumbs.each do |crumb| %>
+    <li class="dash-breadcrumbs__item">
+      <% if crumb.link? %>
+        <%= link_to crumb.name, crumb.path, class: "dash-breadcrumbs__item dash-breadcrumbs__item--link" %>
+      <% else %>
+        <%= crumb.name %>
+      <% end %>
+      <% unless crumb == breadcrumbs.last %>
+        <span class="dash-breadcrumbs__separator">/</span>
+      <% end %>
+    </li>
+  <% end %>
+</ol>

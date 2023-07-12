@@ -1,7 +1,33 @@
-<section class="page-diseases">
-  <h1>Choroby</h1>
-  <% @diseases.each do |disease| %>
-    Nazwa: <%= disease.name %><br>
-    Opis: <%= disease.description %><br>
-  <% end %>
-</section>
+<div class="diseases">
+  <header class="dash-header diseases__header">
+    <div>
+      <h1 class="dash-header__title">Choroby</h1>
+      <%= render "shared/breadcrumbs" %>
+    </div>
+    <%= link_to new_disease_path, class: "dash-button dash-button--new" do %>
+      <svg class="dash-button__icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-plus"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
+      Dodaj nową chorobę
+    <% end %>
+  </header>
+  <div class="diseases__content">
+    <% if @diseases.any? %>
+      <% @diseases.each do |disease| %>
+        <%= link_to post, class: "page-blog__post" do %>
+          <%= image_tag post.photo, class: "page-blog__post__photo", alt: "" %>
+          <div class="page-blog__post__content">
+            <p class="page-blog__post__date">
+              <%= post.created_at.strftime('%d/%m/%Y') %>r.
+            </p>
+            <h2 class="page-blog__post__title"><%= post.title %></h2>
+            <p class="page-blog__post__desc"><%= post.description %></p>
+            <p class="page-blog__post__link">Czytaj więcej</p>
+          </div>
+        <% end %>
+      <% end %>
+    <% else %>
+      <p class="diseases__content__empty">
+        Na razie nie dodałeś żadnych chorób.
+      </p>
+    <% end %>
+  </div>
+</div>

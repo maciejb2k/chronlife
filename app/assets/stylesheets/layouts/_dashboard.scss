@@ -19,12 +19,16 @@ $dashboard-borders: 0;
   .header {
     width: 100%;
     background: $dashboard-header;
-    height: 10rem;
+    height: 9rem;
     padding: 0 5rem;
     display: flex;
     align-items: center;
     justify-content: space-between;
     border-bottom: 0.1rem solid #e2e8f3;
+
+    &__logo {
+      max-width: 18rem;
+    }
 
     &__title {
       font-size: 2.6rem;
@@ -42,7 +46,7 @@ $dashboard-borders: 0;
       color: #ffffff;
       background: #f18449;
       border-radius: 0.3rem;
-      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
 
       &__icon {
         width: 1.8rem;
@@ -54,19 +58,19 @@ $dashboard-borders: 0;
     &__search {
       display: flex;
       border-radius: 0.3rem;
-      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
 
       &__input {
         height: 4rem;
         padding: 0 2rem 0 1rem;
-        background: #f6f6f6;
+        background: #ececec;
         min-width: 26rem;
       }
 
       &__icon-container {
         height: 4rem;
         width: 4rem;
-        background: #f6f6f6;
+        background: #ececec;
         display: flex;
         align-items: center;
         justify-content: center;
@@ -104,8 +108,8 @@ $dashboard-borders: 0;
       width: 4rem;
       height: 4rem;
       border-radius: 50%;
-      background-color: #f6f6f6;
-      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+      background-color: #ececec;
+      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
       display: flex;
       align-items: center;
       justify-content: center;
@@ -270,7 +274,7 @@ $dashboard-borders: 0;
   }
 
   .main {
-    padding: 4rem 5rem;
+    padding: 2rem 5rem;
     flex-grow: 1;
     overflow-y: scroll;
   }

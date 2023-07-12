@@ -8,7 +8,13 @@
 // Utils
 @import "sass-utils/variables";
 
+// Layouts
+@import "layouts/dashboard";
+
+// Components
+@import "components/dashboard";
+
 // Pages
 @import "pages/home";
 @import "pages/auth";
-@import "pages/dashboard";
+@import "pages/diseases";

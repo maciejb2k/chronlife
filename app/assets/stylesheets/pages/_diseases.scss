@@ -1,2 +1,14 @@
 .diseases {
+  &__header {
+  }
+
+  &__content {
+    padding: 3rem;
+    border-bottom: 0.1rem solid #e2e8f3;
+
+    &__empty {
+      text-align: center;
+      color: #727d92;
+    }
+  }
 }

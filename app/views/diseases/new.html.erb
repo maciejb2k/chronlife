@@ -1,0 +1,12 @@
+<div class="new-diseases">
+  <header class="dash-header">
+    <div>
+      <h1 class="dash-header__title">Dodaj nową chorobę</h1>
+      <%= render "shared/breadcrumbs" %>
+    </div>
+    <%= link_to diseases_path, class: "dash-button dash-button--back" do %>
+      <svg class="dash-button__icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-left"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>
+      Powrót
+    <% end %>
+  </header>
+</div>
