@@ -1,0 +1,16 @@
+<%= form_with model: disease, url: setup_account_path, method: :post, html: { class: "dash-form" } do |f| %>
+  <div class="dash-form__container">
+    <div class="dash-form__group">
+      <div class="dash-form__group__left">
+        <%= f.label :name, class: "dash-form__label" do %>
+          Nazwa choroby
+        <% end %>
+        <p class="dash-form__description">Wybierz jedną z listy predefiniowanych.</p>
+      </div>
+      <div class="dash-form__group__right">
+        <%= f.text_field :name, class: "dash-form__input" %>
+      </div>
+    </div>
+  </div>
+  <%= f.submit "Zapisz", class: "dash-form__submit dash-button dash-button--new" %>
+<% end %>

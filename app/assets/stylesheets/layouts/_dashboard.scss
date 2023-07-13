@@ -58,19 +58,22 @@ $dashboard-borders: 0;
     &__search {
       display: flex;
       border-radius: 0.3rem;
-      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+      border: 0.1rem solid #ebebeb;
 
       &__input {
         height: 4rem;
         padding: 0 2rem 0 1rem;
-        background: #ececec;
+        border-radius: 0.3rem;
+        background: #ffffff;
         min-width: 26rem;
       }
 
       &__icon-container {
         height: 4rem;
+        border-radius: 0.3rem;
         width: 4rem;
-        background: #ececec;
+        background: #ffffff;
         display: flex;
         align-items: center;
         justify-content: center;
@@ -108,7 +111,8 @@ $dashboard-borders: 0;
       width: 4rem;
       height: 4rem;
       border-radius: 50%;
-      background-color: #ececec;
+      background-color: #fff;
+      border: 0.1rem solid #ebebeb;
       box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
       display: flex;
       align-items: center;
