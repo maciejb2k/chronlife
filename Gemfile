@@ -65,6 +65,9 @@ gem 'memory_profiler'
 # For call-stack profiling flamegraphs
 gem 'stackprof'
 
+# Pagination
+gem "pagy", "~> 6.0.4"
+
 group :development, :test do
   gem "debug", "~> 1.8.0", platforms: %i[ mri mingw x64_mingw ]
   gem "faker", "~> 3.2.0"

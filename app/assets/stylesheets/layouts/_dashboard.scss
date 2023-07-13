@@ -1,14 +1,8 @@
-$dashboard-bg: #fff;
-$dashboard-sidebar: #fcf9f7;
-$dashboard-header: #ffffff;
-$dashboard-sidebar-buttons: #ffffff;
-$dashboard-borders: 0;
-
 .dashboard {
   width: 100%;
   height: 100vh;
   display: flex;
-  background: $dashboard-bg;
+  background: $dash-bg;
 
   &__content {
     flex-grow: 1;
@@ -18,13 +12,13 @@ $dashboard-borders: 0;
 
   .header {
     width: 100%;
-    background: $dashboard-header;
+    background: $dash-header;
     height: 9rem;
     padding: 0 5rem;
     display: flex;
     align-items: center;
     justify-content: space-between;
-    border-bottom: 0.1rem solid #e2e8f3;
+    border-bottom: 0.1rem solid $dash-base-border;
 
     &__logo {
       max-width: 18rem;
@@ -32,7 +26,7 @@ $dashboard-borders: 0;
 
     &__title {
       font-size: 2.6rem;
-      color: #232b39;
+      color: $dash-text-dark;
     }
 
     &__main-button {
@@ -43,14 +37,15 @@ $dashboard-borders: 0;
       gap: 1rem;
       padding: 0 2.6rem;
       font-weight: 600;
+      font-size: 1.4rem;
       color: #ffffff;
-      background: #f18449;
+      background: $dash-base;
       border-radius: 0.3rem;
       box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
 
       &__icon {
-        width: 1.8rem;
-        height: 1.8rem;
+        width: 1.6rem;
+        height: 1.6rem;
         color: #ffd2ba;
       }
     }
@@ -121,7 +116,7 @@ $dashboard-borders: 0;
       &__icon {
         width: 1.8rem;
         height: 1.8rem;
-        color: #232b39;
+        color: $dash-text-dark;
       }
     }
 
@@ -140,9 +135,10 @@ $dashboard-borders: 0;
   }
 
   .sidebar {
-    border-right: 0.1rem solid $dashboard-borders;
+    border-right: 0.1rem solid $dash-base-border;
     width: 38rem;
-    background: $dashboard-sidebar;
+    background: $dash-sidebar;
+    flex-shrink: 0;
     display: flex;
     flex-direction: column;
 
@@ -151,7 +147,6 @@ $dashboard-borders: 0;
       display: flex;
       align-items: center;
       gap: 2rem;
-      border-bottom: 0.1rem solid $dashboard-borders;
 
       &__picture {
         width: 6rem;
@@ -163,7 +158,7 @@ $dashboard-borders: 0;
       &__name {
         font-size: 1.6rem;
         font-weight: 600;
-        color: #232b39;
+        color: $dash-text-dark;
       }
 
       &__email {
@@ -174,12 +169,11 @@ $dashboard-borders: 0;
     }
 
     &__logo-wrapper {
-      background: $dashboard-sidebar;
+      background: $dash-sidebar;
       padding: 5.5rem;
       display: flex;
       align-items: center;
       justify-content: center;
-      border-bottom: 0.1rem solid $dashboard-borders;
     }
 
     &__logo {
@@ -189,7 +183,6 @@ $dashboard-borders: 0;
     &__nav {
       flex-grow: 1;
       padding: 0 3rem 4rem;
-      border-bottom: 0.1rem solid $dashboard-borders;
       display: flex;
       flex-direction: column;
       gap: 3rem;
@@ -239,7 +232,7 @@ $dashboard-borders: 0;
       font-size: 1.6rem;
       cursor: pointer;
       border-radius: 0.3rem;
-      color: #232b39;
+      color: $dash-text-dark;
 
       &__group {
         display: flex;
@@ -251,7 +244,7 @@ $dashboard-borders: 0;
         display: block;
         width: 2rem;
         height: 2rem;
-        color: #c55a21;
+        color: $dash-base--dark;
       }
     }
 
@@ -261,7 +254,7 @@ $dashboard-borders: 0;
       align-items: center;
       justify-content: center;
       gap: 1rem;
-      border-top: 0.1rem solid $dashboard-borders;
+      border-top: 0.1rem solid $dash-base-border;
 
       &__icon {
         width: 2rem;
@@ -272,7 +265,7 @@ $dashboard-borders: 0;
       &__text {
         font-size: 1.4rem;
         font-weight: 400;
-        color: #232b39;
+        color: $dash-text-dark;
       }
     }
   }

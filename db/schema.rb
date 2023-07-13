@@ -77,8 +77,8 @@ ActiveRecord::Schema[7.0].define(version: 2023_07_10_092137) do
   end
 
   create_table "diseases", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
-    t.date "diagnosed_at", null: false
-    t.string "diagnosed_by", default: "", null: false
+    t.date "diagnosed_at"
+    t.boolean "diagnosed_by_hp", default: false, null: false
     t.integer "severity", default: 1, null: false
     t.string "color", default: "", null: false
     t.datetime "created_at", null: false
@@ -86,7 +86,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_07_10_092137) do
     t.uuid "account_id", null: false
     t.uuid "predefined_disease_id", null: false
     t.uuid "disease_category_id"
-    t.index ["account_id", "predefined_disease_id"], name: "index_diseases_on_account_id_and_predefined_disease_id"
+    t.index ["account_id", "predefined_disease_id"], name: "index_diseases_on_account_id_and_predefined_disease_id", unique: true
     t.index ["account_id"], name: "index_diseases_on_account_id"
     t.index ["disease_category_id"], name: "index_diseases_on_disease_category_id"
     t.index ["predefined_disease_id"], name: "index_diseases_on_predefined_disease_id"

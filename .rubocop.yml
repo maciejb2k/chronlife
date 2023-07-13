@@ -48,3 +48,6 @@ Lint/MissingSuper:
   Exclude:
     - 'app/components/**/*'
     - 'app/services/**/*'
+
+Rails/UniqueValidationWithoutIndex:
+  Enabled: false

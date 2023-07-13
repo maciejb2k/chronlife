@@ -10,20 +10,33 @@
     <% end %>
   </header>
   <div class="page-diseases__content">
-    <% if @diseases.any? %>
-      <% @diseases.each do |disease| %>
-        <%= link_to new_disease_path, class: "diseases" do %>
-          <div class="diseases__container">
-            <div class="diseases__title">
-              <%= disease.name %>
+    <div class="diseases">
+      <% if @diseases.any? %>
+        <% @diseases.each do |disease| %>
+          <%= link_to new_disease_path, class: "disease" do %>
+            <div class="disease__content">
+              <h3 class="disease__title">
+                <%= disease.predefined_disease.name %>
+              </h3>
+              <div class="disease__more">
+                Przejdź do choroby
+              </div>
             </div>
-          </div>
+          <% end %>
         <% end %>
+      <% else %>
+        <p class="no-results">
+          Na razie nie dodałeś żadnych chorób.
+        </p>
       <% end %>
-    <% else %>
-      <p class="no-results">
-        Na razie nie dodałeś żadnych chorób.
-      </p>
-    <% end %>
+    </div>
+  </div>
+  <div class="dash-pagination">
+    <div class="dash-pagination__controls">
+      <%== pagy_nav(@pagy) if @pagy.pages > 1 %>
+    </div>
+    <div class="dash-pagination__info">
+      <%== pagy_info(@pagy) %>
+    </div>
   </div>
 </div>

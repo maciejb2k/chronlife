@@ -3,12 +3,16 @@ Rails.logger.info "[ChronLife] Seeding..."
 PredefinedDisease.create(
   [
     {
-      name: "stwardnienie rozsiane",
+      name: "atopowe zapalenie skóry",
       description: "Lorem ipsum dolor sit amet."
     },
     {
+      name: "stwardnienie rozsiane",
+      description: "Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet."
+    },
+    {
       name: "nadwaga",
-      description: "Lorem ipsum dolor sit amet."
+      description: "Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet."
     },
     {
       name: "cukrzyca",
@@ -40,10 +44,6 @@ PredefinedDisease.create(
     },
     {
       name: "łuszczyca",
-      description: "Lorem ipsum dolor sit amet."
-    },
-    {
-      name: "atopowe zapalenie skóry",
       description: "Lorem ipsum dolor sit amet."
     },
     {

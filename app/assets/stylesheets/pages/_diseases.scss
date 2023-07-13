@@ -1,11 +1,51 @@
 .page-diseases {
   &__content {
-    padding: 3rem;
-    border-bottom: 0.1rem solid #e2e8f3;
+    padding: 3rem 0;
+    border-bottom: 0.1rem solid $dash-base-border;
   }
 
   .no-results {
     text-align: center;
-    color: #727d92;
+    color: $dash-text-light;
+  }
+
+  .diseases {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+  }
+
+  .disease {
+    position: relative;
+    background: #ffffff;
+    padding: 3rem;
+    display: flex;
+    border: 0.1rem solid $dash-base-border;
+    border-radius: 0.3rem;
+    box-shadow: 0 0.2rem 0.3rem rgba(22, 36, 65, 0.1);
+
+    &__content {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    &__title {
+      font-size: 1.8rem;
+      color: $dash-text-dark;
+      font-weight: 700;
+      margin-bottom: 0.4rem;
+
+      &::first-letter {
+        text-transform: capitalize;
+      }
+    }
+
+    &__more {
+      font-size: 1.4rem;
+      font-weight: 400;
+      color: $dash-text-light;
+      text-decoration: underline;
+    }
   }
 }

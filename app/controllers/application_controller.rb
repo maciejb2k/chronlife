@@ -1,4 +1,6 @@
 class ApplicationController < ActionController::Base
+  include Pagy::Backend
+
   helper_method :breadcrumbs
 
   def breadcrumbs
