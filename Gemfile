@@ -33,6 +33,9 @@ gem "jbuilder", "~> 2.11.5"
 # Sass support
 gem "sassc-rails", "~> 2.1.2"
 
+# Tailwind CSS support
+gem "cssbundling-rails"
+
 # Load environment variables
 gem "dotenv-rails", "~> 2.8.1"
 

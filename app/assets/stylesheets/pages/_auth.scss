@@ -195,6 +195,8 @@
     border-radius: 0.1rem;
     transition: border 0.1s ease-in-out;
     border-radius: 0.3rem;
+    font-size: 1.6rem;
+    border: 0;
 
     &::placeholder {
       color: #9b9b9b;
@@ -265,7 +267,7 @@
   background: #fffdf7;
 
   .auth__sidebar {
-    background: asset-url("auth-sidebar-login.jpg") no-repeat center center;
+    background: url("/assets/auth-sidebar-login.jpg") no-repeat center center;
     background-size: cover;
   }
 
@@ -282,7 +284,8 @@
   background: #fff4ec;
 
   .auth__sidebar {
-    background: asset-url("auth-sidebar-reset.jpg") no-repeat center center;
+    background: asset-url("/assets/auth-sidebar-reset.jpg") no-repeat center
+      center;
     background-size: cover;
   }
 
@@ -299,7 +302,8 @@
   background: #fffbee;
 
   .auth__sidebar {
-    background: asset-url("auth-sidebar-change.jpg") no-repeat center center;
+    background: asset-url("/assets/auth-sidebar-change.jpg") no-repeat center
+      center;
     background-size: cover;
   }
 
@@ -316,7 +320,7 @@
   background: #edfff6;
 
   .auth__sidebar {
-    background: asset-url("auth-sidebar-setup.jpg") no-repeat center right;
+    background: url("/assets/auth-sidebar-setup.jpg") no-repeat center right;
     background-size: cover;
   }
 

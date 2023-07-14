@@ -27,8 +27,9 @@
 #  fk_rails_...  (predefined_disease_id => predefined_diseases.id)
 #
 class Disease < ApplicationRecord
-  belongs_to :account, dependent: :destroy
-  belongs_to :predefined_disease, dependent: :destroy
+  belongs_to :account
+  belongs_to :predefined_disease
+  belongs_to :disease_category, optional: true
 
   validates :diagnosed_at, timeliness: { on_or_before: -> { Time.zone.now }, type: :date },
                            allow_blank: true
