@@ -18,7 +18,8 @@
         <p class="dash-form__group__description">Wybierz jedną z listy predefiniowanych.</p>
       </div>
       <div class="dash-form__group__right">
-        <%= f.select :predefined_disease_id, options_for_select(@predefined_diseases), {}, class: "dash-form__input" %>
+        <%= f.select :predefined_disease_id, options_for_select(@predefined_diseases, @selected_disease_id),
+            { include_blank: true }, class: "dash-form__input", disabled: @selected_disease_id.present? %>
       </div>
     </div>
   </div>

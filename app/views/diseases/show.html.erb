@@ -1,0 +1,18 @@
+<div class="page-disease">
+  <header class="dash-header page-disease__header">
+    <div>
+      <h1 class="dash-header__title"><%= @disease_name %></h1>
+      <%= render "shared/breadcrumbs" %>
+    </div>
+  </header>
+  <div class="page-disease__content">
+    <p style="color: green"><%= notice %></p>
+
+    <div>
+      <%= link_to "Edit this disease", edit_disease_path(@disease) %> |
+      <%= link_to "Back to diseases", diseases_path %>
+
+      <%= button_to "Destroy this disease", @disease, method: :delete %>
+    </div>
+  </div>
+</div>

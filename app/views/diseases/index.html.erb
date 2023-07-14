@@ -10,14 +10,39 @@
     <% end %>
   </header>
   <div class="page-diseases__content">
+
+    <div
+  data-controller="notification"
+  data-notification-delay-value="2000"
+  class="transition transform duration-1000 hidden"
+  data-transition-enter-from="opacity-0 translate-x-6"
+  data-transition-enter-to="opacity-100 translate-x-0"
+  data-transition-leave-from="opacity-100 translate-x-0"
+  data-transition-leave-to="opacity-0 translate-x-6"
+>
+      <p>This alert will magically disappear!</p>
+
+      <button data-action="notification#hide">Close</button>
+    </div>
     <div class="diseases">
-      <% if @diseases.any? %>
+      <% if @diseases.to_a.any? %>
         <% @diseases.each do |disease| %>
-          <%= link_to new_disease_path, class: "disease" do %>
+          <%= link_to disease, class: "disease" do %>
+            <!-- <div class="disease__ribbon" style="background: <%= disease.color %>;"></div> -->
             <div class="disease__content">
               <h3 class="disease__title">
                 <%= disease.predefined_disease.name %>
+                <% if disease.diagnosed_by_hp? %>
+                  <div class="disease__diagnosed" title="Zdiagnozowane przez lekarza">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-check-circle"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>
+                  </div>
+                <% end %>
               </h3>
+              <div class="disease__badges">
+                <div class="disease__badge disease__badge--severity-<%= disease.severity %>">
+                  <%= severity_to_string disease.severity %>
+                </div>
+              </div>
               <div class="disease__more">
                 Przejdź do choroby
               </div>

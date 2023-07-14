@@ -23,6 +23,18 @@
     border: 0.1rem solid $dash-base-border;
     border-radius: 0.3rem;
     box-shadow: 0 0.2rem 0.3rem rgba(22, 36, 65, 0.1);
+    overflow: hidden;
+
+    &__ribbon {
+      position: absolute;
+      top: 5%;
+      right: -15%;
+      background: $dash-base;
+      width: 15rem;
+      height: 0.8rem;
+      transform: rotate(45deg);
+      box-shadow: 0 0.1rem 0.1rem rgba(0, 0, 0, 0.1);
+    }
 
     &__content {
       display: flex;
@@ -30,11 +42,62 @@
       justify-content: space-between;
     }
 
+    &__badges {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+
+    &__badge {
+      font-size: 1.2rem;
+      font-weight: 600;
+      padding: 0.2rem 1rem;
+      border-radius: 1rem;
+      margin-bottom: 2rem;
+
+      &--severity-1 {
+        background: #ddffd9;
+        color: #175a0e;
+      }
+
+      &--severity-2 {
+        background: #d2edff;
+        color: #0d3752;
+      }
+
+      &--severity-3 {
+        background: #fff9c7;
+        color: #393307;
+      }
+
+      &--severity-4 {
+        background: #ffe2c8;
+        color: #412309;
+      }
+
+      &--severity-5 {
+        background: #ffd8d8;
+        color: #570c0c;
+      }
+    }
+
+    &__diagnosed {
+      display: inline-block;
+      color: $color-success;
+      margin-left: 0.5rem;
+
+      svg {
+        width: 1.4rem;
+        height: 1.4rem;
+      }
+    }
+
     &__title {
-      font-size: 1.8rem;
+      font-size: 2rem;
       color: $dash-text-dark;
-      font-weight: 700;
-      margin-bottom: 0.4rem;
+      font-weight: 600;
+      margin-bottom: 0.6rem;
+      display: inline-block;
 
       &::first-letter {
         text-transform: capitalize;
