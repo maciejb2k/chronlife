@@ -158,18 +158,23 @@
   font-size: var(--14px);
   color: #ffffff;
   margin: 20px 0;
-  max-width: 800px;
+  width: 100%;
+  background: #dcf3ff;
+  color: #0b4561;
 
   &--success {
-    background: $color-success;
+    background: #e0ffee;
+    color: #106134;
   }
 
   &--error {
-    background: #f14949;
+    background: #ffe5e5;
+    color: #8e1414;
   }
 
   &--info {
-    background: #49b9f1;
+    background: #dcf3ff;
+    color: #0b4561;
   }
 
   &__title {
@@ -178,8 +183,8 @@
   }
 
   &__icon {
-    width: 18px;
-    height: 18px;
+    font-size: var(--18px);
+    font-weight: 400;
   }
 }
 
