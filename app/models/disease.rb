@@ -40,9 +40,9 @@ class Disease < ApplicationRecord
                          less_than_or_equal_to: 5
                        }
   validates :color, format: { with: /\A#?(?:[A-F0-9]{3}){1,2}\z/i }, allow_blank: true
-  validates :account_id,
+  validates :predefined_disease_id,
             uniqueness: {
-              scope: :predefined_disease_id,
-              message: "Już przypisałeś tę chorobę do swojego konta."
+              scope: :account_id,
+              message: "już przypisałeś tę chorobę do swojego profilu"
             }
 end

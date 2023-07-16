@@ -1,77 +1,118 @@
 <%= form_with model: disease, html: { class: "dash-form" } do |f| %>
-  <% if disease.errors.any? %>
-    <div class="dash-form__container">
-      <%= render(DashAlertComponent.new(type: :error)) do %>
-        <ul>
-          <% disease.errors.each do |error| %>
-            <li><%= error.message %></li>
-          <% end %>
-        </ul>
+  <div class="dash-form__container">
+    <div class="dash-form__group">
+      <div class="dash-form__group__container">
+        <div class="dash-form__group__left">
+          <div class="dash-form__group__title">Nazwa choroby</div>
+          <p class="dash-form__group__description">Wybierz jedną z listy predefiniowanych.</p>
+        </div>
+        <div class="dash-form__group__right">
+          <%= f.select :predefined_disease_id, options_for_select(@predefined_diseases, @selected_disease_id),
+            { include_blank: false }, class: "dash-form__input", disabled: @selected_disease_id.present? %>
+        </div>
+      </div>
+      <% if disease.errors[:predefined_disease_id].present? %>
+        <% disease.errors[:predefined_disease_id].each do |error_message| %>
+          <p class="dash-form__group__error">
+            <i class="ri-close-line"></i>
+            <span><%= error_message %>.</span>
+          </p>
+        <% end %>
       <% end %>
     </div>
-  <% end %>
-
-  <div class="dash-form__container">
-    <div class="dash-form__group">
-      <div class="dash-form__group__left">
-        <div class="dash-form__group__title">Nazwa choroby</div>
-        <p class="dash-form__group__description">Wybierz jedną z listy predefiniowanych.</p>
-      </div>
-      <div class="dash-form__group__right">
-        <%= f.select :predefined_disease_id, options_for_select(@predefined_diseases, @selected_disease_id),
-            { include_blank: false }, class: "dash-form__input", disabled: @selected_disease_id.present? %>
-      </div>
-    </div>
   </div>
   <div class="dash-form__container">
     <div class="dash-form__group">
-      <div class="dash-form__group__left">
-        <div class="dash-form__group__title">Diagnoza</div>
-        <p class="dash-form__group__description">Skąd wiesz o swojej chorobie.</p>
-      </div>
-      <div class="dash-form__group__right">
-        <div class="dash-form__checkbox">
-          <%= f.check_box :diagnosed_by_hp, class: "dash-form__checkbox__input" %>
-          <%= f.label :diagnosed_by_hp, class: "dash-form__checkbox__label" do %>
-            Czy choroba została zdiagnozowana przez lekarza?
-          <% end %>
+      <div class="dash-form__group__container">
+        <div class="dash-form__group__left">
+          <div class="dash-form__group__title">Diagnoza</div>
+          <p class="dash-form__group__description">Skąd wiesz o swojej chorobie.</p>
+        </div>
+        <div class="dash-form__group__right">
+          <div class="dash-form__checkbox">
+            <%= f.check_box :diagnosed_by_hp, class: "dash-form__checkbox__input" %>
+            <%= f.label :diagnosed_by_hp, class: "dash-form__checkbox__label" do %>
+              Czy choroba została zdiagnozowana przez lekarza?
+            <% end %>
+          </div>
         </div>
       </div>
+      <% if disease.errors[:diagnosed_by_hp].present? %>
+        <% disease.errors[:diagnosed_by_hp].each do |error_message| %>
+          <p class="dash-form__group__error">
+            <i class="ri-close-line"></i>
+            <span><%= error_message %>.</span>
+          </p>
+        <% end %>
+      <% end %>
     </div>
   </div>
   <div class="dash-form__container">
     <div class="dash-form__group">
-      <div class="dash-form__group__left">
-        <div class="dash-form__group__title">Od kiedy to trwa?</div>
-        <p class="dash-form__group__description">Kiedy pierwszy raz zaobserwowałeś objawy choroby.</p>
-      </div>
-      <div class="dash-form__group__right">
-        <%= f.date_field :diagnosed_at, class: "dash-form__input dash-form__input-date" %>
-      </div>
-    </div>
-  </div>
-  <div class="dash-form__container">
-    <div class="dash-form__group">
-      <div class="dash-form__group__left">
-        <div class="dash-form__group__title">Dotkliwość</div>
-        <p class="dash-form__group__description">W skali od 1 do 5 jak bardzo poważna jest dla ciebie ta choroba.</p>
-      </div>
-      <div class="dash-form__group__right">
-        <%= f.range_field :severity, min: 1, max: 5, step: 1, class: "dash-form__input-range" %>
-      </div>
-    </div>
-  </div>
-  <div class="dash-form__container">
-    <div class="dash-form__group">
-      <div class="dash-form__group__left">
-        <div class="dash-form__group__title">Kolor</div>
-        <p class="dash-form__group__description">Jakim kolorem chcesz, aby ta choroba była oznaczona na twoim profilu.</p>
-      </div>
-      <div class="dash-form__group__right">
-        <div class="dash-form__checkbox">
-          <%= f.color_field :color, value: "#f18449" %>
+      <div class="dash-form__group__container">
+        <div class="dash-form__group__left">
+          <div class="dash-form__group__title">Od kiedy to trwa?</div>
+          <p class="dash-form__group__description">Kiedy pierwszy raz zaobserwowałeś objawy choroby.</p>
+        </div>
+        <div class="dash-form__group__right">
+          <%= f.date_field :diagnosed_at, class: "dash-form__input dash-form__input-date" %>
         </div>
       </div>
+      <% if disease.errors[:diagnosed_at].present? %>
+        <% disease.errors[:diagnosed_at].each do |error_message| %>
+          <p class="dash-form__group__error">
+            <i class="ri-close-line"></i>
+            <span><%= error_message %>.</span>
+          </p>
+        <% end %>
+      <% end %>
+    </div>
+  </div>
+  <div class="dash-form__container">
+    <div class="dash-form__group">
+      <div class="dash-form__group__container">
+        <div class="dash-form__group__left">
+          <div class="dash-form__group__title">Dotkliwość</div>
+          <p class="dash-form__group__description">W skali od 1 do 5 jak bardzo poważna jest dla ciebie ta choroba.</p>
+        </div>
+        <div class="dash-form__group__right">
+          <div class="dash-form__range" data-controller="range-slider">
+            <%= f.range_field :severity, min: 1, max: 5, step: 1, value: 1, class: "dash-form__range__input", data: { range_slider_target: "value", action: "input->range-slider#updateValue"} %>
+            <span class="dash-form__range__value" data-range-slider-target="output">1</span>
+          </div>
+        </div>
+      </div>
+      <% if disease.errors[:severity].present? %>
+        <% disease.errors[:severity].each do |error_message| %>
+          <p class="dash-form__group__error">
+            <i class="ri-close-line"></i>
+            <span><%= error_message %>.</span>
+          </p>
+        <% end %>
+      <% end %>
+    </div>
+  </div>
+  <div class="dash-form__container">
+    <div class="dash-form__group">
+      <div class="dash-form__group__container">
+        <div class="dash-form__group__left">
+          <div class="dash-form__group__title">Kolor</div>
+          <p class="dash-form__group__description">Jakim kolorem chcesz, aby ta choroba była oznaczona na twoim profilu.</p>
+        </div>
+        <div class="dash-form__group__right">
+          <div class="dash-form__checkbox">
+            <%= f.color_field :color, value: "#f18449" %>
+          </div>
+        </div>
+      </div>
+      <% if disease.errors[:color].present? %>
+        <% disease.errors.full_messages_for(:color).each do |error_message| %>
+          <p class="dash-form__group__error">
+            <i class="ri-close-line"></i>
+            <span><%= error_message %>.</span>
+          </p>
+        <% end %>
+      <% end %>
     </div>
   </div>
   <%= f.submit "Zapisz", class: "dash-form__submit dash-button dash-button--new" %>
