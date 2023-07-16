@@ -5,12 +5,13 @@
       <%= render "shared/breadcrumbs" %>
     </div>
   </header>
-  <div class="page-disease__content">
+  <div class="page-disease__content" data-controller="disease">
+    <button data-action="click->disease#confirmDelete">Cosik</button>
+
     <div>
       <%= link_to "Edit this disease", edit_disease_path(@disease) %> |
       <%= link_to "Back to diseases", diseases_path %>
-
-      <%= button_to "Destroy this disease", @disease, method: :delete %>
+      <%= button_to "Destroy this disease", @disease, method: :delete, data: { turbo_method: :delete, turbo_confirm: "Are you sure?"} %>
     </div>
   </div>
 </div>

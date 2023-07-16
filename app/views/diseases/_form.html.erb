@@ -19,7 +19,7 @@
       </div>
       <div class="dash-form__group__right">
         <%= f.select :predefined_disease_id, options_for_select(@predefined_diseases, @selected_disease_id),
-            { include_blank: true }, class: "dash-form__input", disabled: @selected_disease_id.present? %>
+            { include_blank: false }, class: "dash-form__input", disabled: @selected_disease_id.present? %>
       </div>
     </div>
   </div>
@@ -46,9 +46,7 @@
         <p class="dash-form__group__description">Kiedy pierwszy raz zaobserwowałeś objawy choroby.</p>
       </div>
       <div class="dash-form__group__right">
-        <div class="dash-form__checkbox">
-          <%= f.date_field :diagnosed_at, class: "dash-form__input" %>
-        </div>
+        <%= f.date_field :diagnosed_at, class: "dash-form__input dash-form__input-date" %>
       </div>
     </div>
   </div>
@@ -59,9 +57,7 @@
         <p class="dash-form__group__description">W skali od 1 do 5 jak bardzo poważna jest dla ciebie ta choroba.</p>
       </div>
       <div class="dash-form__group__right">
-        <div class="dash-form__checkbox">
-          <%= f.range_field :severity, min: 1, max: 5, step: 1, class: "dash-form__input-range" %>
-        </div>
+        <%= f.range_field :severity, min: 1, max: 5, step: 1, class: "dash-form__input-range" %>
       </div>
     </div>
   </div>

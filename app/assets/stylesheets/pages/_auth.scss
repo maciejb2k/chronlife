@@ -5,7 +5,7 @@
 
   &__content {
     flex-grow: 1;
-    padding: 5rem;
+    padding: 50px;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -15,7 +15,7 @@
 
     /* Chrome, Edge, and Safari */
     &::-webkit-scrollbar {
-      width: 0.8rem;
+      width: 8px;
     }
 
     &::-webkit-scrollbar-track {
@@ -23,7 +23,7 @@
     }
 
     &::-webkit-scrollbar-thumb {
-      border-radius: 1rem;
+      border-radius: 10px;
       background-color: #dfdfdf;
     }
   }
@@ -35,8 +35,8 @@
 
   &__credits {
     position: absolute;
-    bottom: 5rem;
-    right: 5rem;
+    bottom: 50px;
+    right: 50px;
     opacity: 0.1;
   }
 
@@ -47,7 +47,7 @@
     justify-content: space-between;
 
     &__logo {
-      width: 23rem;
+      width: 230px;
     }
 
     &__link {
@@ -65,37 +65,37 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    padding: 8rem 0;
-    width: 40rem;
+    padding: 80px 0;
+    width: 400px;
   }
 
   &__heading {
-    padding-bottom: 3rem;
+    padding-bottom: 30px;
     text-align: center;
   }
 
   &__title {
-    font-size: 3rem;
+    font-size: var(--30px);
   }
 
   &__desc {
   }
 
   &__social {
-    padding-bottom: 3rem;
+    padding-bottom: 30px;
   }
 
   &__social-link {
     display: flex;
-    gap: 1rem;
+    gap: 10px;
     background: #ffffff;
-    padding: 1.5rem 3rem;
+    padding: 15px 30px;
     align-items: center;
     justify-content: center;
     box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
-    border-radius: 0.5rem;
+    border-radius: 5px;
     font-weight: 600;
-    width: 40rem;
+    width: 400px;
     transition: background 0.1s ease-in-out;
 
     &:hover {
@@ -103,22 +103,22 @@
     }
 
     &:not(:last-child) {
-      margin-bottom: 1rem;
+      margin-bottom: 10px;
     }
   }
 
   &__social-icon {
-    width: 2rem;
-    height: 2rem;
+    width: 20px;
+    height: 20px;
   }
 
   &__separator {
     width: 100%;
     display: flex;
     align-items: center;
-    gap: 2rem;
+    gap: 20px;
     color: #000000;
-    margin-bottom: 3rem;
+    margin-bottom: 30px;
 
     &__line {
       display: block;
@@ -133,7 +133,7 @@
   }
 
   &__text {
-    padding-bottom: 0.5rem;
+    padding-bottom: 5px;
   }
 }
 
@@ -141,8 +141,8 @@
   width: 100%;
   display: flex;
   flex-direction: column;
-  gap: 1.6rem;
-  padding-bottom: 3rem;
+  gap: 16px;
+  padding-bottom: 30px;
 
   &__group {
   }
@@ -152,12 +152,12 @@
   }
 
   &__flash {
-    padding: 1rem;
+    padding: 10px;
     background: #9cffae;
-    border: 0.2rem solid black;
-    border-radius: 0.5rem;
+    border: 2px solid black;
+    border-radius: 5px;
     font-weight: 600;
-    margin-bottom: 2rem;
+    margin-bottom: 20px;
     text-align: center;
   }
 
@@ -170,32 +170,32 @@
   }
 
   &__error {
-    padding-bottom: 2rem;
+    padding-bottom: 20px;
 
     &__title {
-      font-size: 2rem;
-      padding-bottom: 1rem;
+      font-size: var(--20px);
+      padding-bottom: 10px;
     }
 
     &__list {
       list-style-type: circle;
       list-style-position: inside;
-      padding: 1rem 2rem;
+      padding: 10px 20px;
       background: #ff5556;
-      border: 0.2rem solid black;
-      border-radius: 1rem;
+      border: 2px solid black;
+      border-radius: 10px;
       font-weight: 600;
     }
   }
 
   &__input {
     width: 100%;
-    padding: 1.2rem 2rem;
+    padding: 12px 20px;
     box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
-    border-radius: 0.1rem;
+    border-radius: 1px;
     transition: border 0.1s ease-in-out;
-    border-radius: 0.3rem;
-    font-size: 1.6rem;
+    border-radius: 3px;
+    font-size: var(--16px);
     border: 0;
 
     &::placeholder {
@@ -204,14 +204,14 @@
   }
 
   &__input--error {
-    border: 0.1rem solid #ff5556;
+    border: 1px solid #ff5556;
   }
 
   &__error-message {
     color: #ff5556;
     font-weight: 600;
     display: block;
-    padding-top: 0.5rem;
+    padding-top: 5px;
 
     &::first-letter {
       text-transform: uppercase;
@@ -221,15 +221,15 @@
   &__label {
     display: block;
     font-weight: 600;
-    padding-bottom: 0.5rem;
+    padding-bottom: 5px;
   }
 
   &__submit {
-    padding: 1.2rem 2rem;
+    padding: 12px 20px;
     font-weight: 600;
     box-shadow: 0 2px 3px rgba(0, 0, 0, 0.1);
-    border-radius: 0.3rem;
-    margin-top: 2rem;
+    border-radius: 3px;
+    margin-top: 20px;
     transition: background 0.1s ease-in-out;
 
     &:hover {
@@ -238,7 +238,7 @@
   }
 
   &__checkbox-input {
-    margin-right: 0.5rem;
+    margin-right: 5px;
   }
 
   &__checkbox-label {
@@ -250,7 +250,7 @@
   background: #fff7f7;
 
   .auth__sidebar {
-    background: asset-url("auth-sidebar-signup.jpg") no-repeat center center;
+    background: url("auth-sidebar-signup.jpg") no-repeat center center;
     background-size: cover;
   }
 
@@ -284,8 +284,7 @@
   background: #fff4ec;
 
   .auth__sidebar {
-    background: asset-url("/assets/auth-sidebar-reset.jpg") no-repeat center
-      center;
+    background: url("/assets/auth-sidebar-reset.jpg") no-repeat center center;
     background-size: cover;
   }
 
@@ -302,8 +301,7 @@
   background: #fffbee;
 
   .auth__sidebar {
-    background: asset-url("/assets/auth-sidebar-change.jpg") no-repeat center
-      center;
+    background: url("/assets/auth-sidebar-change.jpg") no-repeat center center;
     background-size: cover;
   }
 

@@ -1,7 +1,7 @@
 .page-diseases {
   &__content {
-    padding: 3rem 0;
-    border-bottom: 0.1rem solid $dash-base-border;
+    padding: 30px 0;
+    border-bottom: 1px solid $dash-base-border;
   }
 
   .no-results {
@@ -12,17 +12,17 @@
   .diseases {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    gap: 2rem;
+    gap: 20px;
   }
 
   .disease {
     position: relative;
     background: #ffffff;
-    padding: 3rem;
+    padding: 30px;
     display: flex;
-    border: 0.1rem solid $dash-base-border;
-    border-radius: 0.3rem;
-    box-shadow: 0 0.2rem 0.3rem rgba(22, 36, 65, 0.1);
+    border: 1px solid $dash-base-border;
+    border-radius: 3px;
+    box-shadow: 0 2px 3px rgba(22, 36, 65, 0.1);
     overflow: hidden;
 
     &__ribbon {
@@ -30,10 +30,10 @@
       top: 5%;
       right: -15%;
       background: $dash-base;
-      width: 15rem;
-      height: 0.8rem;
+      width: 150px;
+      height: 80px;
       transform: rotate(45deg);
-      box-shadow: 0 0.1rem 0.1rem rgba(0, 0, 0, 0.1);
+      box-shadow: 0 1px 1px rgba(0, 0, 0, 0.1);
     }
 
     &__content {
@@ -45,15 +45,15 @@
     &__badges {
       display: flex;
       align-items: center;
-      gap: 1rem;
+      gap: 10px;
     }
 
     &__badge {
-      font-size: 1.2rem;
+      font-size: var(--12px);
       font-weight: 600;
-      padding: 0.2rem 1rem;
-      border-radius: 1rem;
-      margin-bottom: 2rem;
+      padding: 2px 10px;
+      border-radius: 10px;
+      margin-bottom: 20px;
 
       &--severity-1 {
         background: #ddffd9;
@@ -84,19 +84,19 @@
     &__diagnosed {
       display: inline-block;
       color: $color-success;
-      margin-left: 0.5rem;
+      margin-left: 5px;
 
       svg {
-        width: 1.4rem;
-        height: 1.4rem;
+        width: 14px;
+        height: 14px;
       }
     }
 
     &__title {
-      font-size: 2rem;
+      font-size: 20px;
       color: $dash-text-dark;
       font-weight: 600;
-      margin-bottom: 0.6rem;
+      margin-bottom: 6px;
       display: inline-block;
 
       &::first-letter {
@@ -105,7 +105,7 @@
     }
 
     &__more {
-      font-size: 1.4rem;
+      font-size: var(--14px);
       font-weight: 400;
       color: $dash-text-light;
       text-decoration: underline;

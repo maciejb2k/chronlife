@@ -13,61 +13,61 @@
   .header {
     width: 100%;
     background: $dash-header;
-    height: 9rem;
-    padding: 0 5rem;
+    height: 90px;
+    padding: 0 50px;
     display: flex;
     align-items: center;
     justify-content: space-between;
-    border-bottom: 0.1rem solid $dash-base-border;
+    border-bottom: 1px solid $dash-base-border;
 
     &__logo {
-      max-width: 18rem;
+      max-width: 180px;
     }
 
     &__title {
-      font-size: 2.6rem;
+      font-size: var(--26px);
       color: $dash-text-dark;
     }
 
     &__main-button {
-      height: 4rem;
+      height: 40px;
       display: flex;
       align-items: center;
       justify-content: center;
-      gap: 1rem;
-      padding: 0 2.6rem;
+      gap: 10px;
+      padding: 0 26px;
       font-weight: 600;
-      font-size: 1.4rem;
+      font-size: var(--14px);
       color: #ffffff;
       background: $dash-base;
-      border-radius: 0.3rem;
+      border-radius: 3px;
       box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
 
       &__icon {
-        width: 1.6rem;
-        height: 1.6rem;
+        width: 16px;
+        height: 16px;
         color: #ffd2ba;
       }
     }
 
     &__search {
       display: flex;
-      border-radius: 0.3rem;
+      border-radius: 3px;
       box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
-      border: 0.1rem solid #ebebeb;
+      border: 1px solid #ebebeb;
 
       &__input {
-        height: 4rem;
-        padding: 0 2rem 0 1rem;
-        border-radius: 0.3rem;
+        height: 40px;
+        padding: 0 20px 0 10px;
+        border-radius: 3px;
         background: #ffffff;
-        min-width: 26rem;
+        min-width: 260px;
       }
 
       &__icon-container {
-        height: 4rem;
-        border-radius: 0.3rem;
-        width: 4rem;
+        height: 40px;
+        border-radius: 3px;
+        width: 40px;
         background: #ffffff;
         display: flex;
         align-items: center;
@@ -75,8 +75,8 @@
       }
 
       &__icon {
-        width: 2rem;
-        height: 2rem;
+        width: 20px;
+        height: 20px;
         color: #9e9e9e;
       }
     }
@@ -86,36 +86,36 @@
       align-items: center;
       justify-content: space-between;
       text-align: center;
-      gap: 1rem;
+      gap: 10px;
     }
 
     &__right {
       display: flex;
       align-items: center;
-      gap: 5rem;
+      gap: 50px;
     }
 
     &__buttons {
       display: flex;
       align-items: center;
       justify-content: space-between;
-      gap: 1rem;
+      gap: 10px;
     }
 
     &__button {
-      width: 4rem;
-      height: 4rem;
+      width: 40px;
+      height: 40px;
       border-radius: 50%;
       background-color: #fff;
-      border: 0.1rem solid #ebebeb;
+      border: 1px solid #ebebeb;
       box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
       display: flex;
       align-items: center;
       justify-content: center;
 
       &__icon {
-        width: 1.8rem;
-        height: 1.8rem;
+        width: 18px;
+        height: 18px;
         color: $dash-text-dark;
       }
     }
@@ -123,46 +123,46 @@
     &__profile {
       display: flex;
       align-items: center;
-      gap: 0.5rem;
+      gap: 5px;
     }
 
     &__profile-image {
-      width: 4rem;
-      height: 4rem;
+      width: 40px;
+      height: 40px;
       border-radius: 50%;
       box-shadow: 0 2px 3px rgba(0, 0, 0, 0.2);
     }
   }
 
   .sidebar {
-    border-right: 0.1rem solid $dash-base-border;
-    width: 38rem;
+    border-right: 1px solid $dash-base-border;
+    width: 380px;
     background: $dash-sidebar;
     flex-shrink: 0;
     display: flex;
     flex-direction: column;
 
     &__profile {
-      padding: 4rem 3rem;
+      padding: 40px 30px;
       display: flex;
       align-items: center;
-      gap: 2rem;
+      gap: 20px;
 
       &__picture {
-        width: 6rem;
-        height: 6rem;
+        width: 60px;
+        height: 60px;
         border-radius: 50%;
         box-shadow: 0 2px 3px rgba(0, 0, 0, 0.2);
       }
 
       &__name {
-        font-size: 1.6rem;
+        font-size: var(--16px);
         font-weight: 600;
         color: $dash-text-dark;
       }
 
       &__email {
-        font-size: 1.4rem;
+        font-size: var(--14px);
         font-weight: 400;
         color: #686e79;
       }
@@ -170,22 +170,22 @@
 
     &__logo-wrapper {
       background: $dash-sidebar;
-      padding: 5.5rem;
+      padding: 55px;
       display: flex;
       align-items: center;
       justify-content: center;
     }
 
     &__logo {
-      max-width: 22rem;
+      max-width: 220px;
     }
 
     &__nav {
       flex-grow: 1;
-      padding: 0 3rem 4rem;
+      padding: 0 30px 40px;
       display: flex;
       flex-direction: column;
-      gap: 3rem;
+      gap: 30px;
       overflow-y: scroll;
 
       /* Firefox */
@@ -210,9 +210,9 @@
       }
 
       &__title {
-        font-size: 1.4rem;
+        font-size: var(--14px);
         font-weight: 600;
-        margin-bottom: 0.5rem;
+        margin-bottom: 5px;
         color: #6f7379;
       }
     }
@@ -220,50 +220,49 @@
     &__items {
       display: flex;
       flex-direction: column;
-      gap: 0rem;
     }
 
     &__link {
-      padding: 1rem 0;
+      padding: 10px 0;
       display: flex;
       align-items: center;
       justify-content: space-between;
       font-weight: 600;
-      font-size: 1.6rem;
+      font-size: var(--16px);
       cursor: pointer;
-      border-radius: 0.3rem;
+      border-radius: 3px;
       color: $dash-text-dark;
 
       &__group {
         display: flex;
         align-items: center;
-        gap: 2rem;
+        gap: 20px;
       }
 
       &__icon {
         display: block;
-        width: 2rem;
-        height: 2rem;
+        width: 20px;
+        height: 20px;
         color: $dash-base--dark;
       }
     }
 
     &__footer {
-      padding: 3rem;
+      padding: 30px;
       display: flex;
       align-items: center;
       justify-content: center;
-      gap: 1rem;
-      border-top: 0.1rem solid $dash-base-border;
+      gap: 10px;
+      border-top: 1px solid $dash-base-border;
 
       &__icon {
-        width: 2rem;
-        height: 2rem;
+        width: 20px;
+        height: 20px;
         color: #7f8694;
       }
 
       &__text {
-        font-size: 1.4rem;
+        font-size: var(--14px);
         font-weight: 400;
         color: $dash-text-dark;
       }
@@ -271,7 +270,7 @@
   }
 
   .main {
-    padding: 2rem 5rem;
+    padding: 20px 50px;
     flex-grow: 1;
     overflow-y: scroll;
   }
