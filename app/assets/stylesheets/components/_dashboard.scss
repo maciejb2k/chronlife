@@ -51,9 +51,14 @@
     &--active {
       color: $dash-text-light;
     }
+  }
 
-    &--link {
-      text-decoration: underline;
+  &__link {
+    text-decoration: underline;
+
+    &::first-letter {
+      display: flex;
+      text-transform: uppercase;
     }
   }
 }
@@ -86,10 +91,14 @@
   &__container {
     display: flex;
     border-bottom: 1px solid $dash-base-border;
+
+    &--hidden {
+      display: none;
+    }
   }
 
   &__input {
-    width: 100%;
+    min-width: 300px;
     height: 40px;
     padding: 0 10px;
     border: 1px solid $dash-base-border;
@@ -112,6 +121,11 @@
     }
   }
 
+  &__textarea {
+    height: 140px;
+    padding: 10px;
+  }
+
   &__checkbox {
     display: flex;
     align-items: center;
@@ -121,6 +135,13 @@
       font-size: var(--14px);
       font-weight: 600;
       color: $dash-text-dark;
+      user-select: none;
+    }
+  }
+
+  &__select {
+    &::first-letter {
+      text-transform: uppercase;
     }
   }
 
@@ -136,7 +157,7 @@
     }
 
     &__input {
-      width: 100%;
+      min-width: 100%;
       height: 40px;
       padding: 0 10px;
       border: 1px solid $dash-base-border;
@@ -192,6 +213,7 @@
       flex-direction: column;
       justify-content: center;
       flex-grow: 0;
+      gap: 10px;
     }
 
     &__error {

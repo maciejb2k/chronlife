@@ -1,0 +1,27 @@
+<div class="page-disease-symptoms">
+  <header class="dash-header page-disease-symptoms__header">
+    <div>
+      <h1 class="dash-header__title">Objawy</h1>
+      <%= render "shared/breadcrumbs" %>
+    </div>
+    <%= link_to new_disease_disease_symptom_path, class: "dash-button dash-button--new" do %>
+      <i class="ri-add-line dash-button__icon"></i>
+      Dodaj nowy objaw
+    <% end %>
+  </header>
+  <div class="page-disease-symptoms__content">
+    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolor culpa optio ratione beatae voluptate ad quae dolore consequuntur a consectetur!</p>
+    <% if @disease_symptoms.to_a.any? %>
+      <% @disease_symptoms.each do |disease_symptom| %>
+        <%= link_to [@disease, disease_symptom], class: "disease" do %>
+          <% disease_symptom.id %>
+        <% end %>
+        <br>
+      <% end %>
+    <% else %>
+      <p class="no-results">
+        Na razie nie dodałeś żadnych symptomów.
+      </p>
+    <% end %>
+  </div>
+</div>

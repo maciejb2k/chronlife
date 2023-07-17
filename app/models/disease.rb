@@ -31,6 +31,8 @@ class Disease < ApplicationRecord
   belongs_to :predefined_disease
   belongs_to :disease_category, optional: true
 
+  has_many :disease_symptoms, dependent: :destroy
+
   validates :diagnosed_at, timeliness: { on_or_before: -> { Time.zone.now }, type: :date },
                            allow_blank: true
   validates :severity, presence: true,

@@ -1,0 +1,96 @@
+<%= form_with model: [@disease, @disease_symptom], html: { class: "dash-form" } do |f| %>
+  <div data-controller="toggle-input">
+    <div class="dash-form__container">
+      <div class="dash-form__group">
+        <div class="dash-form__group__container">
+          <div class="dash-form__group__left">
+            <div class="dash-form__group__title">Objawy choroby</div>
+            <p class="dash-form__group__description">Wybierz jeden z listy objawów tej choroby.</p>
+          </div>
+          <div class="dash-form__group__right" >
+            <%= f.select :predefined_symptom_id, options_for_select(@predefined_symptoms, @disease_symptom.predefined_symptom_id),
+            { include_blank: true }, class: "dash-form__input dash-form__select", data: { toggle_input_target: "select" },
+            placeholder: "Wybierz objaw" %>
+            <div class="dash-form__checkbox" >
+              <%= check_box_tag :custom_symptom, 0, @disease_symptom.name.present?, class: "dash-form__checkbox__input",
+                  data: { toggle_input_target: "checkbox", action: "input->toggle-input#toggle" }%>
+              <%= label_tag :custom_symptom, "Nie ma twojego objawu na liście?", class: "dash-form__checkbox__label" %>
+            </div>
+          </div>
+        </div>
+        <% if @disease_symptom.errors[:predefined_symptom_id].present? %>
+          <% @disease_symptom.errors[:predefined_symptom_id].each do |error_message| %>
+            <p class="dash-form__group__error">
+              <i class="ri-close-line"></i>
+              <span><%= error_message %>.</span>
+            </p>
+          <% end %>
+        <% end %>
+      </div>
+    </div>
+    <div class="dash-form__container dash-form__container--hidden" data-toggle-input-target="container">
+      <div class="dash-form__group">
+        <div class="dash-form__group__container">
+          <div class="dash-form__group__left">
+            <div class="dash-form__group__title">Własny objaw</div>
+            <p class="dash-form__group__description">Nazwij krótko towarzyszący ci objaw.</p>
+          </div>
+          <div class="dash-form__group__right">
+            <%= f.text_field :name, class: "dash-form__input", data: { toggle_input_target: "input" } %>
+          </div>
+        </div>
+        <% if @disease_symptom.errors[:name].present? %>
+          <% @disease_symptom.errors[:name].each do |error_message| %>
+            <p class="dash-form__group__error">
+              <i class="ri-close-line"></i>
+              <span><%= error_message %>.</span>
+            </p>
+          <% end %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+  <div class="dash-form__container">
+    <div class="dash-form__group">
+      <div class="dash-form__group__container">
+        <div class="dash-form__group__left">
+          <div class="dash-form__group__title">Opis objawu</div>
+          <p class="dash-form__group__description">Opisz swoimi słowami, skąd wiesz o tym objawie i jak bardzo ci on przeszkadza.</p>
+        </div>
+        <div class="dash-form__group__right">
+          <%= f.text_area :description, class: "dash-form__input dash-form__textarea" %>
+        </div>
+      </div>
+      <% if @disease_symptom.errors[:description].present? %>
+        <% @disease_symptom.errors[:description].each do |error_message| %>
+          <p class="dash-form__group__error">
+            <i class="ri-close-line"></i>
+            <span><%= error_message %>.</span>
+          </p>
+        <% end %>
+      <% end %>
+    </div>
+  </div>
+  <div class="dash-form__container">
+    <div class="dash-form__group">
+      <div class="dash-form__group__container">
+        <div class="dash-form__group__left">
+          <div class="dash-form__group__title">Od kiedy to trwa?</div>
+          <p class="dash-form__group__description">Kiedy pierwszy raz zaobserwowałeś dany objaw.</p>
+        </div>
+        <div class="dash-form__group__right">
+          <%= f.date_field :first_noticed_at, class: "dash-form__input dash-form__input-date" %>
+        </div>
+      </div>
+      <% if @disease_symptom.errors[:first_noticed_at].present? %>
+        <% @disease_symptom.errors[:first_noticed_at].each do |error_message| %>
+          <p class="dash-form__group__error">
+            <i class="ri-close-line"></i>
+            <span><%= error_message %>.</span>
+          </p>
+        <% end %>
+      <% end %>
+    </div>
+  </div>
+  <%= f.submit "Zapisz", class: "dash-form__submit dash-button dash-button--new" %>
+<% end %>

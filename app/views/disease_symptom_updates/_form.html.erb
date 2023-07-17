@@ -1,0 +1,32 @@
+<%= form_with(model: disease_symptom_update) do |form| %>
+  <% if disease_symptom_update.errors.any? %>
+    <div style="color: red">
+      <h2><%= pluralize(disease_symptom_update.errors.count, "error") %> prohibited this disease_symptom_update from being saved:</h2>
+
+      <ul>
+        <% disease_symptom_update.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div>
+    <%= form.label :intensity, style: "display: block" %>
+    <%= form.number_field :intensity %>
+  </div>
+
+  <div>
+    <%= form.label :update_date, style: "display: block" %>
+    <%= form.date_field :update_date %>
+  </div>
+
+  <div>
+    <%= form.label :disease_symptom_id, style: "display: block" %>
+    <%= form.text_field :disease_symptom_id %>
+  </div>
+
+  <div>
+    <%= form.submit %>
+  </div>
+<% end %>

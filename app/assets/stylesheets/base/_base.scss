@@ -65,15 +65,15 @@ h6 {
 }
 
 h1 {
-  font-size: 3.6rem;
+  font-size: var(--36px);
 }
 
 h2 {
-  font-size: 3rem;
+  font-size: var(--30px);
 }
 
 h3 {
-  font-size: 2.4rem;
+  font-size: var(--24px);
 }
 
 [type="text"] {

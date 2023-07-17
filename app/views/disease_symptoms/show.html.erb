@@ -1,0 +1,10 @@
+<p style="color: green"><%= notice %></p>
+
+<%= render @disease_symptom %>
+
+<div>
+  <%= link_to "Edit this disease symptom", edit_disease_symptom_path(@disease_symptom) %> |
+  <%= link_to "Back to disease symptoms", disease_symptoms_path %>
+
+  <%= button_to "Destroy this disease symptom", @disease_symptom, method: :delete %>
+</div>

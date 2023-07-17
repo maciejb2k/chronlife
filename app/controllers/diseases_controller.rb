@@ -1,6 +1,11 @@
 class DiseasesController < BaseController
-  before_action :set_breadcrumbs
   before_action :set_disease, only: %i[show edit update destroy]
+  before_action :load_predefined_diseases, only: %i[new edit create]
+
+  before_action :set_breadcrumbs
+  before_action :set_breadcrumbs_new, only: %i[new]
+  before_action :set_breadcrumbs_show, only: %i[show]
+  before_action :set_breadcrumbs_edit, only: %i[edit]
 
   def index
     @pagy, @diseases = pagy(
@@ -14,20 +19,13 @@ class DiseasesController < BaseController
 
   def new
     @disease = Disease.new
-    @predefined_diseases = PredefinedDisease.all.map { |d| [d.name.capitalize, d.id] }
-
-    add_breadcrumb("Nowa choroba", new_disease_path)
   end
 
   def edit
-    @predefined_diseases = PredefinedDisease.all.map { |d| [d.name.capitalize, d.id] }
     @selected_disease_id = @disease.predefined_disease.id
-
-    add_breadcrumb("Edytuj chorobę", new_disease_path)
   end
 
   def create
-    @predefined_diseases = PredefinedDisease.all.map { |d| [d.name.capitalize, d.id] }
     @disease = current_user.account.diseases.new(disease_params)
 
     respond_to do |format|
@@ -70,12 +68,28 @@ class DiseasesController < BaseController
   end
 
   def disease_params
-    params.require(:disease).permit(:diagnosed_at, :diagnosed_by_hp, :severity, :color,
+    params.require(:disease).permit(:name, :diagnosed_at, :diagnosed_by_hp, :severity, :color,
                                     :predefined_disease_id)
   end
 
   def set_breadcrumbs
     add_breadcrumb("Home", authenticated_root_path)
     add_breadcrumb("Choroby", diseases_path)
+  end
+
+  def set_breadcrumbs_new
+    add_breadcrumb("nowa choroba", new_disease_path)
+  end
+
+  def set_breadcrumbs_show
+    add_breadcrumb("pokaż chorobę", @disease)
+  end
+
+  def set_breadcrumbs_edit
+    add_breadcrumb("edytuj chorobę", edit_disease_path(@disease))
+  end
+
+  def load_predefined_diseases
+    @predefined_diseases = PredefinedDisease.all.map { |d| [d.name.capitalize, d.id] }
   end
 end

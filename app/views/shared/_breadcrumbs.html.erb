@@ -2,7 +2,7 @@
   <% breadcrumbs.each do |crumb| %>
     <li class="dash-breadcrumbs__item">
       <% if crumb.link? %>
-        <%= link_to crumb.name, crumb.path, class: "dash-breadcrumbs__item dash-breadcrumbs__item--link" %>
+        <%= link_to crumb.name, crumb.path, class: "dash-breadcrumbs__link" %>
       <% else %>
         <%= crumb.name %>
       <% end %>

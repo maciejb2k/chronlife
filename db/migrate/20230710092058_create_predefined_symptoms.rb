@@ -4,6 +4,7 @@ class CreatePredefinedSymptoms < ActiveRecord::Migration[7.0]
       t.string :name, null: false, default: ""
       t.string :related_names, array: true, default: []
       t.text :description, null: false, default: ""
+      t.references :predefined_disease, null: false, foreign_key: true, type: :uuid
 
       t.timestamps
     end

@@ -13,7 +13,7 @@
           <i class="ri-hearts-line navigation__item__icon"></i>
           <p class="navigation__item__text">Stan zdrowia</p>
         <% end %>
-        <%= link_to authenticated_root_path, class: "navigation__item" do %>
+        <%= link_to disease_disease_symptoms_path(@disease), class: "navigation__item" do %>
           <i class="ri-thermometer-line navigation__item__icon"></i>
           <p class="navigation__item__text">Objawy</p>
         <% end %>

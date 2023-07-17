@@ -16,6 +16,7 @@
 #
 class PredefinedDisease < ApplicationRecord
   has_many :disease, dependent: :destroy
+  has_many :predefined_symptoms, dependent: :destroy
 
   validates :name, length: { maximum: 100 }, presence: true, uniqueness: true
   validates :description, length: { maximum: 500 }, presence: true
