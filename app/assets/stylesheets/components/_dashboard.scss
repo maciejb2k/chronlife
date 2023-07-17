@@ -97,6 +97,16 @@
     font-size: var(--14px);
     color: $dash-text-dark;
 
+    &[disabled] {
+      background: #f1f1f1;
+      color: #8e8e8e;
+      border: 1px solid #dddddd;
+
+      &:hover {
+        cursor: not-allowed;
+      }
+    }
+
     &--error {
       border-color: #ea3333;
     }

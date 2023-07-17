@@ -5,13 +5,38 @@
       <%= render "shared/breadcrumbs" %>
     </div>
   </header>
-  <div class="page-disease__content" data-controller="disease">
-    <button data-action="click->disease#confirmDelete">Cosik</button>
+  <div class="page-disease__content">
+    <div class="disease">
 
-    <div>
-      <%= link_to "Edit this disease", edit_disease_path(@disease) %> |
-      <%= link_to "Back to diseases", diseases_path %>
-      <%= button_to "Destroy this disease", @disease, method: :delete, data: { turbo_method: :delete, turbo_confirm: "Are you sure?"} %>
+      <nav class="navigation">
+        <%= link_to authenticated_root_path, class: "navigation__item" do %>
+          <i class="ri-hearts-line navigation__item__icon"></i>
+          <p class="navigation__item__text">Stan zdrowia</p>
+        <% end %>
+        <%= link_to authenticated_root_path, class: "navigation__item" do %>
+          <i class="ri-thermometer-line navigation__item__icon"></i>
+          <p class="navigation__item__text">Objawy</p>
+        <% end %>
+        <%= link_to authenticated_root_path, class: "navigation__item" do %>
+          <i class="ri-surgical-mask-line navigation__item__icon"></i>
+          <p class="navigation__item__text">Czynniki ryzyka</p>
+        <% end %>
+        <%= link_to authenticated_root_path, class: "navigation__item" do %>
+          <i class="ri-first-aid-kit-line navigation__item__icon"></i>
+          <p class="navigation__item__text">Terapie</p>
+        <% end %>
+        <%= link_to authenticated_root_path, class: "navigation__item" do %>
+          <i class="ri-camera-3-line navigation__item__icon"></i>
+          <p class="navigation__item__text">Zdjęcia</p>
+        <% end %>
+        <%= link_to authenticated_root_path, class: "navigation__item" do %>
+          <i class="ri-edit-box-line navigation__item__icon"></i>
+          <p class="navigation__item__text">Edytuj chorobę</p>
+        <% end %>
+      </nav>
+      <div class="feed">
+        .
+      </div>
     </div>
   </div>
 </div>
