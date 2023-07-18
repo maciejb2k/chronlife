@@ -1,10 +1,25 @@
-<p style="color: green"><%= notice %></p>
+<div class="page-symptom">
+  <header class="dash-header page-symptom__header">
+    <div class="dash-header__left">
+      <h1 class="dash-header__title"><%= @symptom_name %></h1>
+      <%= render "shared/breadcrumbs" %>
+    </div>
+    <div class="dash-header__right">
+      <%= link_to edit_disease_disease_symptom_path, class: "dash-button dash-button--info" do %>
+        <i class="ri-edit-2-line dash-button__icon"></i>
+        Edytuj
+      <% end %>
+      <%= button_to [@disease, @disease_symptom], class: "dash-button dash-button--delete",
+          method: :delete, form: { data: { turbo_confirm: 'Czy na pewno chcesz usunąć?' } } do %>
+        <i class="ri-close-line dash-button__icon"></i>
+        Usuń
+      <% end %>
+      <%= link_to disease_disease_symptoms_path, class: "dash-button dash-button--back" do %>
+        <i class="ri-arrow-left-line dash-button__icon"></i>
+      <% end %>
+    </div>
+  </header>
+  <div class="page-symptom__content">
 
-<%= render @disease_symptom %>
-
-<div>
-  <%= link_to "Edit this disease symptom", edit_disease_symptom_path(@disease_symptom) %> |
-  <%= link_to "Back to disease symptoms", disease_symptoms_path %>
-
-  <%= button_to "Destroy this disease symptom", @disease_symptom, method: :delete %>
+  </div>
 </div>

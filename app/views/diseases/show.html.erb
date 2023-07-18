@@ -1,13 +1,17 @@
 <div class="page-disease">
   <header class="dash-header page-disease__header">
-    <div>
+    <div class="dash-header__left">
       <h1 class="dash-header__title"><%= @disease_name %></h1>
       <%= render "shared/breadcrumbs" %>
+    </div>
+    <div class="dash-header__right">
+      <%= link_to diseases_path, class: "dash-button dash-button--back" do %>
+        <i class="ri-arrow-left-line dash-button__icon"></i>
+      <% end %>
     </div>
   </header>
   <div class="page-disease__content">
     <div class="disease">
-
       <nav class="navigation">
         <%= link_to authenticated_root_path, class: "navigation__item" do %>
           <i class="ri-hearts-line navigation__item__icon"></i>

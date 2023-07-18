@@ -60,7 +60,6 @@ class DiseasesController < BaseController
 
   def set_disease
     @disease = current_user.account.diseases.find(params[:id])
-    add_breadcrumb(disease_name, @disease)
   end
 
   def disease_name
@@ -82,7 +81,7 @@ class DiseasesController < BaseController
   end
 
   def set_breadcrumbs_show
-    add_breadcrumb("pokaż chorobę", @disease)
+    add_breadcrumb(disease_name, @disease)
   end
 
   def set_breadcrumbs_edit

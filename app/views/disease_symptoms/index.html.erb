@@ -1,27 +1,96 @@
 <div class="page-disease-symptoms">
   <header class="dash-header page-disease-symptoms__header">
-    <div>
-      <h1 class="dash-header__title">Objawy</h1>
+    <div class="dash-header__left">
+      <h1 class="dash-header__title">
+        <i class="ri-thermometer-line dash-header__title__icon"></i>
+        Objawy
+      </h1>
       <%= render "shared/breadcrumbs" %>
     </div>
-    <%= link_to new_disease_disease_symptom_path, class: "dash-button dash-button--new" do %>
-      <i class="ri-add-line dash-button__icon"></i>
-      Dodaj nowy objaw
-    <% end %>
+    <div class="dash-header__right">
+      <%= link_to new_disease_disease_symptom_path, class: "dash-button dash-button--new" do %>
+        <i class="ri-add-line dash-button__icon"></i>
+        Dodaj nowy objaw
+      <% end %>
+      <%= link_to @disease, class: "dash-button dash-button--back" do %>
+        <i class="ri-arrow-left-line dash-button__icon"></i>
+      <% end %>
+    </div>
   </header>
   <div class="page-disease-symptoms__content">
-    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolor culpa optio ratione beatae voluptate ad quae dolore consequuntur a consectetur!</p>
-    <% if @disease_symptoms.to_a.any? %>
-      <% @disease_symptoms.each do |disease_symptom| %>
-        <%= link_to [@disease, disease_symptom], class: "disease" do %>
-          <% disease_symptom.id %>
-        <% end %>
-        <br>
-      <% end %>
-    <% else %>
-      <p class="no-results">
-        Na razie nie dodałeś żadnych symptomów.
-      </p>
-    <% end %>
+    <div class="groups">
+      <div class="symptom-group">
+        <div class="symptom-group__header">
+          <h2 class="symptom-group__title">Występujące objawy</h2>
+          <p class="symptom-group__desc">
+            <% if @predefined_symptoms.to_a.any? %>
+              Wyświetlanie <%= @predefined_symptoms.length %> objawów
+            <% else %>
+              Tutaj pojawią się najczęściej występujące objawy.
+            <% end %>
+          </p>
+        </div>
+        <div class="symptom-group__list">
+          <% if @predefined_symptoms.to_a.any? %>
+            <% @predefined_symptoms.each do |disease_symptom| %>
+              <%= link_to [@disease, disease_symptom], class: "symptom symptom--predefined" do %>
+                <div class="symptom__group">
+                  <i class="ri-sparkling-fill symptom__icon"></i>
+                  <div>
+                    <span class="symptom__name">
+                      <%= disease_symptom.predefined_symptom.name %>
+                    </span>
+                    <span class="symptom__link">
+                      Szczegóły objawu
+                    </span>
+                  </div>
+                </div>
+                <i class="ri-arrow-right-s-line symptom__icon"></i>
+              <% end %>
+            <% end %>
+          <% else %>
+            <p class="no-results">
+              Na razie nie dodałeś żadnych ogólnych objawów.
+            </p>
+          <% end %>
+        </div>
+      </div>
+      <div class="symptom-group">
+        <div class="symptom-group__header">
+          <h2 class="symptom-group__title">Własne objawy</h2>
+          <p class="symptom-group__desc">
+            <% if @custom_symptoms.to_a.any? %>
+              Wyświetlanie <%= @custom_symptoms.length %> objawów
+            <% else %>
+              Tutaj pojawią się twoje własne objawy.
+            <% end %>
+          </p>
+        </div>
+        <div class="symptom-group__list">
+          <% if @custom_symptoms.to_a.any? %>
+            <% @custom_symptoms.each do |disease_symptom| %>
+              <%= link_to [@disease, disease_symptom], class: "symptom symptom--custom" do %>
+                <div class="symptom__group">
+                  <i class="ri-sparkling-line symptom__icon"></i>
+                  <div>
+                    <span class="symptom__name">
+                      <%= disease_symptom.name %>
+                    </span>
+                    <span class="symptom__link">
+                      Szczegóły objawu
+                    </span>
+                  </div>
+                </div>
+                <i class="ri-arrow-right-s-line symptom__icon"></i>
+              <% end %>
+            <% end %>
+          <% else %>
+            <p class="no-results">
+              Na razie nie dodałeś żadnych własnych objawów.
+            </p>
+          <% end %>
+        </div>
+      </div>
+    </div>
   </div>
 </div>

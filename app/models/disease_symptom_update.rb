@@ -18,5 +18,14 @@
 #  fk_rails_...  (disease_symptom_id => disease_symptoms.id)
 #
 class DiseaseSymptomUpdate < ApplicationRecord
-  belongs_to :disease_symptom
+  belongs_to :symptom, class_name: "DiseaseSymptom", inverse_of: :disease_symptom_updates
+
+  validates :intensity, presence: true,
+                        numericality: {
+                          only_integer: true,
+                          greater_than_or_equal_to: 0,
+                          less_than_or_equal_to: 5
+                        }
+  validates :update_date, presence: true,
+                          timeliness: { on_or_before: -> { Time.zone.now }, type: :date }
 end

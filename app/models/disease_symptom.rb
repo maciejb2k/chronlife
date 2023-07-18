@@ -26,7 +26,7 @@ class DiseaseSymptom < ApplicationRecord
   belongs_to :disease
   belongs_to :predefined_symptom, optional: true
 
-  has_many :disease_symptom_updates, dependent: :destroy
+  has_many :updates, class_name: "DiseaseSymptomUpdate", dependent: :destroy
 
   validates :description, length: { maximum: 500 }, presence: true
   validates :first_noticed_at, allow_blank: true,

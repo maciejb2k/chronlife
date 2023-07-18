@@ -1,13 +1,15 @@
 <div class="new-disease-symptom">
   <header class="dash-header">
-    <div>
+    <div class="dash-header__left">
       <h1 class="dash-header__title">Dodaj nowy objaw</h1>
       <%= render "shared/breadcrumbs" %>
     </div>
-    <%= link_to [:disease, @disease_symptom], class: "dash-button dash-button--back" do %>
-      <i class="ri-arrow-left-line dash-button__icon"></i>
-      Powrót
-    <% end %>
+    <div class="dash-header__right">
+      <%= link_to [:disease, @disease_symptom], class: "dash-button dash-button--back" do %>
+        <i class="ri-arrow-left-line dash-button__icon"></i>
+        Powrót
+      <% end %>
+    </div>
   </header>
   <div>
     <%= render "form" %>

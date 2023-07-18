@@ -1,13 +1,15 @@
 <div class="page-diseases">
   <header class="dash-header page-diseases__header">
-    <div>
+    <div class="dash-header__left">
       <h1 class="dash-header__title">Choroby</h1>
       <%= render "shared/breadcrumbs" %>
     </div>
-    <%= link_to new_disease_path, class: "dash-button dash-button--new" do %>
-      <i class="ri-add-line dash-button__icon"></i>
-      Dodaj nową chorobę
-    <% end %>
+    <div class="dash-header__right">
+      <%= link_to new_disease_path, class: "dash-button dash-button--new" do %>
+        <i class="ri-add-line dash-button__icon"></i>
+        Dodaj nową chorobę
+      <% end %>
+    </div>
   </header>
   <div class="page-diseases__content">
     <% if @diseases.to_a.any? %>

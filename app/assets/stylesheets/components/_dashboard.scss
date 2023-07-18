@@ -12,9 +12,9 @@
   border-radius: 3px;
 
   &__icon {
-    width: 18px;
-    height: 18px;
+    font-size: var(--16px);
     color: #ffd2ba;
+    font-weight: 400;
   }
 }
 
@@ -28,11 +28,40 @@
 }
 
 .dash-button--back {
-  background: #9e988c;
+  background: #ffffff;
+  border: 1px solid $dash-base-border;
+  border-radius: 3px;
+  color: $dash-text-dark;
+
+  .dash-button__icon {
+    color: #676767;
+  }
+}
+
+.dash-button--return {
+  background: #e2d6bd;
+  color: #000000;
+
+  .dash-button__icon {
+    color: #000000;
+  }
+}
+
+.dash-button--delete {
+  background: #dd4040;
   color: #ffffff;
 
   .dash-button__icon {
-    color: #eae2d5;
+    color: #ffe6e6;
+  }
+}
+
+.dash-button--info {
+  background: #ffe94a;
+  color: #000000;
+
+  .dash-button__icon {
+    color: #000000;
   }
 }
 
@@ -71,10 +100,31 @@
   padding-bottom: 20px;
   border-bottom: 1px solid $dash-base-border;
 
+  &__left {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  &__right {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
   &__title {
     font-size: var(--26px);
-    padding-bottom: 5px;
     color: $dash-text-dark;
+
+    &__icon {
+      font-weight: 400;
+      color: #f18449;
+      margin-right: 5px;
+    }
+
+    &::first-letter {
+      text-transform: uppercase;
+    }
   }
 
   &__desc {
