@@ -17,6 +17,13 @@
       <% end %>
     </div>
   </header>
+  <div class="dash-flash-messages">
+    <% if flash[:notice].present? %>
+      <%= render DashAlertComponent.new(type: :success) do %>
+        <%= flash[:notice] %>
+      <% end %>
+    <% end %>
+  </div>
   <div class="page-disease-symptoms__content">
     <div class="groups">
       <div class="symptom-group">

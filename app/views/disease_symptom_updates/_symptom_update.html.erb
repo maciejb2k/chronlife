@@ -1,0 +1,11 @@
+<div class="symptom-update">
+  <p class="symptom-update__text">Zmiana intensywności:
+    <span class="symptom-update__info"><%= model.intensity %>/5</span> -
+    <%= intensity_to_text(model.intensity) %> w dniu
+    <span class="symptom-update__info"><%= model.update_date.strftime('%d.%m.%Y') %>r.</span>
+  </p>
+  <%= button_to [@disease, @disease_symptom, model], class: "symptom-update__delete",
+      method: :delete, form: { data: { turbo_confirm: 'Czy na pewno chcesz usunąć?' } } do %>
+    <i class="ri-close-line"></i>
+  <% end %>
+</div>

@@ -1,5 +1,5 @@
-<div class="page-symptom">
-  <header class="dash-header page-symptom__header">
+<div class="page-disease-symptom">
+  <header class="dash-header">
     <div class="dash-header__left">
       <h1 class="dash-header__title"><%= @symptom_name %></h1>
       <%= render "shared/breadcrumbs" %>
@@ -19,7 +19,88 @@
       <% end %>
     </div>
   </header>
-  <div class="page-symptom__content">
-
+  <div class="dash-flash-messages">
+    <% if flash[:notice].present? %>
+      <%= render DashAlertComponent.new(type: :success) do %>
+        <%= flash[:notice] %>
+      <% end %>
+    <% end %>
   </div>
+  <div class="page-disease-symptom__content">
+    <div class="page-disease-symptom__content__left">
+      <div class="symptom-info">
+        <h2 class="symptom-info__title">Informacje</h2>
+        <div class="symptom-info__groups">
+          <div class="symptom-info__group">
+            <div class="symptom-info__group__left">
+              <div class="symptom-info__group__label">Opis</div>
+              <div class="symptom-info__group__desc">Opisz dokładnie swój objaw.</div>
+            </div>
+            <div class="symptom-info__group__right">
+              <div class="symptom-info__group__value"><%= @disease_symptom.description %></div>
+            </div>
+          </div>
+          <div class="symptom-info__group">
+            <div class="symptom-info__group__left">
+              <div class="symptom-info__group__label">Od kiedy?</div>
+              <div class="symptom-info__group__desc">Kiedy dany objaw zaczął występować.</div>
+            </div>
+            <div class="symptom-info__group__right">
+              <div class="symptom-info__group__value">
+                <% if @disease_symptom.first_noticed_at.present? %>
+                  <%= @disease_symptom.first_noticed_at %>
+                <% else %>
+                  Nie podano daty
+                <% end %>
+              </div>
+            </div>
+          </div>
+          <div class="symptom-info__group">
+            <div class="symptom-info__group__left">
+              <div class="symptom-info__group__label">Intensywność objawu</div>
+              <div class="symptom-info__group__desc">Jak oceniasz nasilenie tego objawu.</div>
+            </div>
+            <div class="symptom-info__group__right">
+              <div class="symptom-info__group__value">
+                <% if @disease_symptom_updates.to_a.any? %>
+                  <%= @disease_symptom_updates.first.intensity %>/5 - <%= intensity_to_text(@disease_symptom_updates.first.intensity) %>
+                <% else %>
+                  Brak danych
+                <% end %>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="symptom-updates">
+        <h2 class="symptom-updates__title">Zmiany objawu w czasie</h2>
+        <% if @disease_symptom_updates.to_a.any? %>
+          <div class="diseases" id="disease-symptom-updates">
+            <% @disease_symptom_updates.each do |disease| %>
+              <%= render "disease_symptom_updates/symptom_update", model: disease %>
+            <% end %>
+          </div>
+        <% else %>
+          <p class="no-results">
+            Na razie nie dodałeś żadnych aktualizacji objawu.
+          </p>
+        <% end %>
+        <div class="dash-pagination">
+          <div class="dash-pagination__controls">
+            <%== pagy_nav(@pagy) if @pagy.pages > 1 %>
+          </div>
+          <div class="dash-pagination__info">
+            <%== pagy_info(@pagy) %>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="page-disease-symptom__content__right">
+      <div class="symptom-update-form">
+        <h2 class="symptom-update-form__title">Zmień intensywność objawu</h2>
+        <%= render "disease_symptom_updates/form" %>
+      </div>
+    </div>
+  </div>
+</div>
 </div>

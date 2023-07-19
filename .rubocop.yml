@@ -51,3 +51,6 @@ Lint/MissingSuper:
 
 Rails/UniqueValidationWithoutIndex:
   Enabled: false
+
+Metrics/ClassLength:
+  Enabled: false

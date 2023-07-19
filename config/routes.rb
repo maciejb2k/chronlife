@@ -25,7 +25,8 @@ Rails.application.routes.draw do
 
   resources :my_health, only: [:index]
   resources :diseases do
-    resources :disease_symptom_updates
-    resources :disease_symptoms
+    resources :disease_symptoms do
+      resources :disease_symptom_updates, only: %i[create destroy]
+    end
   end
 end

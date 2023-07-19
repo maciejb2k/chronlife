@@ -18,7 +18,8 @@
 #  fk_rails_...  (disease_symptom_id => disease_symptoms.id)
 #
 class DiseaseSymptomUpdate < ApplicationRecord
-  belongs_to :symptom, class_name: "DiseaseSymptom", inverse_of: :disease_symptom_updates
+  belongs_to :symptom, class_name: "DiseaseSymptom", inverse_of: :updates,
+                       foreign_key: :disease_symptom_id
 
   validates :intensity, presence: true,
                         numericality: {

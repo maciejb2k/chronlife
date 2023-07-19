@@ -23,10 +23,10 @@
 #  fk_rails_...  (predefined_symptom_id => predefined_symptoms.id)
 #
 class DiseaseSymptom < ApplicationRecord
-  belongs_to :disease
+  belongs_to :disease, inverse_of: :symptoms
   belongs_to :predefined_symptom, optional: true
 
-  has_many :updates, class_name: "DiseaseSymptomUpdate", dependent: :destroy
+  has_many :updates, class_name: "DiseaseSymptomUpdate", dependent: :destroy, inverse_of: :symptom
 
   validates :description, length: { maximum: 500 }, presence: true
   validates :first_noticed_at, allow_blank: true,

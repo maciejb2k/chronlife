@@ -1,10 +1,10 @@
 import { Controller } from "@hotwired/stimulus";
 
-// Connects to data-controller="toggle-input"
 export default class extends Controller {
   static targets = ["container", "checkbox", "select", "input"];
 
   connect() {
+    this.savedValue = this.selectTarget.value;
     this.toggle();
   }
 
@@ -17,16 +17,19 @@ export default class extends Controller {
   }
 
   showContainer() {
-    this.selectTarget.value = "";
-    this.selectTarget.selectedIndex = 0;
+    // Store the current value in a variable before removing it
+    this.savedValue = this.selectTarget.value;
+    this.selectTarget.value = null;
     this.selectTarget.disabled = true;
     this.containerTarget.style.display = "block";
   }
 
   hideContainer() {
+    // Retrieve the saved value and set it back to the select element
+    this.selectTarget.value = this.savedValue;
+    this.savedValue = null;
     this.selectTarget.disabled = false;
     this.checkboxTarget.checked = false;
-    this.inputTarget.value = "";
     this.containerTarget.style.display = "none";
   }
 }

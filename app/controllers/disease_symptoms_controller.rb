@@ -2,7 +2,8 @@ class DiseaseSymptomsController < BaseController
   layout "dashboard"
 
   before_action :set_disease
-  before_action :set_disease_symptom, only: %i[show edit update destroy]
+  before_action :set_disease_symptom,
+                only: %i[show edit update destroy create_update destroy_update]
   before_action :set_symptom_name, only: %i[show edit update destroy]
   before_action :load_predefined_symptoms, only: %i[new edit update create]
 
@@ -13,13 +14,15 @@ class DiseaseSymptomsController < BaseController
 
   def index
     @disease_symptoms = @disease.symptoms.includes(:predefined_symptom)
-
     @predefined_symptoms = @disease_symptoms.to_a.select { |d| d.predefined_symptom_id.present? }
     @custom_symptoms = @disease_symptoms.to_a.select { |d| d.predefined_symptom_id.blank? }
   end
 
   def show
-    @disease_symptom_updates = @disease_symptom.updates.order(update_date: :desc)
+    @disease_symptom_update = DiseaseSymptomUpdate.new
+    @pagy, @disease_symptom_updates = pagy(
+      @disease_symptom.updates.order(update_date: :desc, intensity: :desc), items: 8
+    )
   end
 
   def new
@@ -35,12 +38,10 @@ class DiseaseSymptomsController < BaseController
       if @disease_symptom.save
         format.html do
           redirect_to disease_disease_symptoms_path,
-                      notice: "Disease symptom was successfully created."
+                      notice: "Nowy objaw został poprawnie dodany."
         end
-        format.json { render :show, status: :created, location: @disease_symptom }
       else
         format.html { render :new, status: :unprocessable_entity }
-        format.json { render json: @disease_symptom.errors, status: :unprocessable_entity }
       end
     end
   end
@@ -49,13 +50,11 @@ class DiseaseSymptomsController < BaseController
     respond_to do |format|
       if @disease_symptom.update(disease_symptom_params)
         format.html do
-          redirect_to @disease_symptom,
-                      notice: "Disease symptom was successfully updated."
+          redirect_to [@disease, @disease_symptom],
+                      notice: "Objaw został poprawnie zaktualizowany."
         end
-        format.json { render :show, status: :ok, location: @disease_symptom }
       else
         format.html { render :edit, status: :unprocessable_entity }
-        format.json { render json: @disease_symptom.errors, status: :unprocessable_entity }
       end
     end
   end
@@ -65,9 +64,9 @@ class DiseaseSymptomsController < BaseController
 
     respond_to do |format|
       format.html do
-        redirect_to disease_disease_symptoms_path, notice: "Disease symptom was successfully destroyed."
+        redirect_to disease_disease_symptoms_path,
+                    notice: "Objaw został poprawie usunięty."
       end
-      format.json { head :no_content }
     end
   end
 
@@ -93,6 +92,10 @@ class DiseaseSymptomsController < BaseController
   def disease_symptom_params
     params.require(:disease_symptom).permit(:name, :description, :first_noticed_at, :disease_id,
                                             :predefined_symptom_id)
+  end
+
+  def disease_symptom_update_params
+    params.require(:disease_symptom_update).permit(:intensity, :update_date)
   end
 
   def set_breadcrumbs

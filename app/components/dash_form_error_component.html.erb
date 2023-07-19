@@ -1,0 +1,10 @@
+<% if @model.errors[@field].present? %>
+  <div class="dash-form__group__error">
+    <i class="ri-close-line dash-form__group__error__icon"></i>
+    <div class="dash-form__group__error__inner">
+      <% @model.errors[@field].each do |error_message| %>
+        <p class="dash-form__group__error__text"><%= error_message %>.</p>
+      <% end %>
+    </div>
+  </div>
+<% end %>

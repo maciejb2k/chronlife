@@ -1,0 +1,120 @@
+.page-disease-symptom {
+  &__content {
+    padding: 30px 0;
+    display: flex;
+    gap: 40px;
+
+    &__left {
+      width: 60%;
+      flex-shrink: 0;
+      display: flex;
+      flex-direction: column;
+      gap: 40px;
+    }
+
+    &__right {
+      width: 40%;
+      flex-grow: 0;
+    }
+
+    .symptom-info {
+      padding-bottom: 20px;
+      border-bottom: 1px solid $dash-base-border;
+
+      &__title {
+        font-size: var(--20px);
+        color: $dash-text-dark;
+        font-weight: 600;
+        padding-bottom: 20px;
+        margin-bottom: 20px;
+        border-bottom: 1px solid $dash-base-border;
+      }
+
+      &__groups {
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+      }
+
+      &__group {
+        display: flex;
+        gap: 80px;
+
+        &__left {
+          max-width: 200px;
+          flex-basis: 200px;
+          flex-shrink: 0;
+        }
+
+        &__label {
+          color: $dash-text-dark;
+          font-size: var(--16px);
+          font-weight: 600;
+        }
+
+        &__desc {
+          font-size: var(--14px);
+          color: $dash-text-light;
+        }
+
+        &__value {
+          font-size: var(--16px);
+          color: $dash-text-dark;
+        }
+      }
+    }
+
+    .symptom-update-form {
+      padding-bottom: 20px;
+      border-bottom: 1px solid $dash-base-border;
+
+      &__title {
+        font-size: var(--20px);
+        color: $dash-text-dark;
+        font-weight: 600;
+        padding-bottom: 20px;
+        margin-bottom: 20px;
+        border-bottom: 1px solid $dash-base-border;
+      }
+    }
+
+    .symptom-updates {
+      &__title {
+        font-size: var(--20px);
+        color: $dash-text-dark;
+        font-weight: 600;
+        padding-bottom: 20px;
+        margin-bottom: 20px;
+        border-bottom: 1px solid $dash-base-border;
+      }
+    }
+
+    .symptom-update {
+      border-bottom: 1px solid $dash-base-border;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+
+      &__text {
+        font-size: var(--14px);
+        color: $dash-text-dark;
+        font-weight: 400;
+      }
+
+      &__info {
+        font-size: var(--14px);
+        color: $dash-text-dark;
+        font-weight: 600;
+      }
+
+      &__delete {
+        padding: 10px;
+        font-size: var(--16px);
+        color: $dash-text-dark;
+        font-weight: 400;
+        cursor: pointer;
+        color: #dd4040;
+      }
+    }
+  }
+}

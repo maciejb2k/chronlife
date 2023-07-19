@@ -30,7 +30,7 @@ class DiseasesController < BaseController
 
     respond_to do |format|
       if @disease.save
-        format.html { redirect_to diseases_path, notice: "Choroba została dodana." }
+        format.html { redirect_to diseases_path, notice: "Choroba została poprawnie dodana." }
       else
         format.html { render :new, status: :unprocessable_entity }
       end
@@ -40,7 +40,10 @@ class DiseasesController < BaseController
   def update
     respond_to do |format|
       if @disease.update(disease_params)
-        format.html { redirect_to disease_url(@disease), notice: "Dane choroby zostały zaktualizowane." }
+        format.html do
+          redirect_to disease_url(@disease),
+                      notice: "Dane choroby zostały poprawnie zaktualizowane."
+        end
       else
         format.html { render :edit, status: :unprocessable_entity }
       end
@@ -51,7 +54,7 @@ class DiseasesController < BaseController
     @disease.destroy
 
     respond_to do |format|
-      format.html { redirect_to diseases_url, notice: "Choroba została usunięta." }
+      format.html { redirect_to diseases_url, notice: "Choroba została poprawnie usunięta." }
       format.json { head :no_content }
     end
   end

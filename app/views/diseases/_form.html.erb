@@ -11,14 +11,7 @@
             { include_blank: false }, class: "dash-form__input", disabled: @selected_disease_id.present? %>
         </div>
       </div>
-      <% if disease.errors[:predefined_disease_id].present? %>
-        <% disease.errors[:predefined_disease_id].each do |error_message| %>
-          <p class="dash-form__group__error">
-            <i class="ri-close-line"></i>
-            <span><%= error_message %>.</span>
-          </p>
-        <% end %>
-      <% end %>
+      <%= render DashFormErrorComponent.new(model: disease, field: :predefined_disease_id) %>
     </div>
   </div>
   <div class="dash-form__container">
@@ -37,14 +30,7 @@
           </div>
         </div>
       </div>
-      <% if disease.errors[:diagnosed_by_hp].present? %>
-        <% disease.errors[:diagnosed_by_hp].each do |error_message| %>
-          <p class="dash-form__group__error">
-            <i class="ri-close-line"></i>
-            <span><%= error_message %>.</span>
-          </p>
-        <% end %>
-      <% end %>
+      <%= render DashFormErrorComponent.new(model: disease, field: :diagnosed_by_hp) %>
     </div>
   </div>
   <div class="dash-form__container">
@@ -58,14 +44,7 @@
           <%= f.date_field :diagnosed_at, class: "dash-form__input dash-form__input-date" %>
         </div>
       </div>
-      <% if disease.errors[:diagnosed_at].present? %>
-        <% disease.errors[:diagnosed_at].each do |error_message| %>
-          <p class="dash-form__group__error">
-            <i class="ri-close-line"></i>
-            <span><%= error_message %>.</span>
-          </p>
-        <% end %>
-      <% end %>
+      <%= render DashFormErrorComponent.new(model: disease, field: :diagnosed_at) %>
     </div>
   </div>
   <div class="dash-form__container">
@@ -82,14 +61,7 @@
           </div>
         </div>
       </div>
-      <% if disease.errors[:severity].present? %>
-        <% disease.errors[:severity].each do |error_message| %>
-          <p class="dash-form__group__error">
-            <i class="ri-close-line"></i>
-            <span><%= error_message %>.</span>
-          </p>
-        <% end %>
-      <% end %>
+      <%= render DashFormErrorComponent.new(model: disease, field: :severity) %>
     </div>
   </div>
   <div class="dash-form__container">
@@ -105,15 +77,10 @@
           </div>
         </div>
       </div>
-      <% if disease.errors[:color].present? %>
-        <% disease.errors.full_messages_for(:color).each do |error_message| %>
-          <p class="dash-form__group__error">
-            <i class="ri-close-line"></i>
-            <span><%= error_message %>.</span>
-          </p>
-        <% end %>
-      <% end %>
+      <%= render DashFormErrorComponent.new(model: disease, field: :color) %>
     </div>
   </div>
-  <%= f.submit "Zapisz", class: "dash-form__submit dash-button dash-button--new" %>
+  <div class="dash-form__group">
+    <%= f.submit "Zapisz", class: "dash-form__submit dash-button dash-button--new" %>
+  </div>
 <% end %>

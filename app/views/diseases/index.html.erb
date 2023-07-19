@@ -11,6 +11,13 @@
       <% end %>
     </div>
   </header>
+  <div class="dash-flash-messages">
+    <% if flash[:notice].present? %>
+      <%= render DashAlertComponent.new(type: :success) do %>
+        <%= flash[:notice] %>
+      <% end %>
+    <% end %>
+  </div>
   <div class="page-diseases__content">
     <% if @diseases.to_a.any? %>
       <div class="diseases">
