@@ -309,8 +309,9 @@
 .dash-alert {
   display: flex;
   align-items: center;
+  justify-content: space-between;
   gap: 20px;
-  padding: 14px 20px;
+  padding: 10px 20px;
   border-radius: 3px;
   font-size: var(--14px);
   color: #ffffff;
@@ -320,7 +321,7 @@
   color: #0b4561;
 
   &--success {
-    background: #e0ffee;
+    background: #d6ffe7;
     color: #106134;
   }
 
@@ -332,6 +333,26 @@
   &--info {
     background: #dcf3ff;
     color: #0b4561;
+  }
+
+  &__left {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+  }
+
+  &__right {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  &__close {
+    font-size: var(--16px);
+    font-weight: 400;
+    color: #0b4561;
+    cursor: pointer;
+    padding: 10px;
   }
 
   &__title {

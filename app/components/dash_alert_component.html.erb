@@ -1,27 +1,35 @@
-<div class="dash-alert dash-alert--<%= @type %>">
-  <div class="dash-alert__icon-container">
-    <% if @type == "error" %>
-      <i class="ri-close-line dash-alert__icon"></i>
-    <% elsif @type == "success" %>
-      <i class="ri-checkbox-circle-line dash-alert__icon"></i>
-    <% elsif @type == "info" %>
-      <i class="ri-information-line dash-alert__icon"></i>
-    <% else %>
-      <i class="ri-information-line dash-alert__icon"></i>
-    <% end %>
-  </div>
-  <div class="dash-alert__text">
-    <% if @type == "error" %>
-      <div class="dash-alert__title">Wystąpił błąd:</div>
-    <% elsif @type == "success" %>
-      <div class="dash-alert__title">Sukces!</div>
-    <% elsif @type == "info" %>
-      <div class="dash-alert__title">Informacja:</div>
-    <% else %>
-      <div class="dash-alert__title">Informacja:</div>
-    <% end %>
-    <div class="dash-alert__content">
-      <%= content %>
+<div class="dash-alert dash-alert--<%= @type %>"
+     data-controller="dismissible-alert" data-dismissible-alert-target="alert">
+  <div class="dash-alert__left">
+    <div class="dash-alert__icon-container">
+      <% if @type == "error" %>
+        <i class="ri-close-line dash-alert__icon"></i>
+      <% elsif @type == "success" %>
+        <i class="ri-checkbox-circle-line dash-alert__icon"></i>
+      <% elsif @type == "info" %>
+        <i class="ri-information-line dash-alert__icon"></i>
+      <% else %>
+        <i class="ri-information-line dash-alert__icon"></i>
+      <% end %>
     </div>
+    <div class="dash-alert__text">
+      <% if @type == "error" %>
+        <div class="dash-alert__title">Wystąpił błąd:</div>
+      <% elsif @type == "success" %>
+        <div class="dash-alert__title">Sukces!</div>
+      <% elsif @type == "info" %>
+        <div class="dash-alert__title">Informacja:</div>
+      <% else %>
+        <div class="dash-alert__title">Informacja:</div>
+      <% end %>
+      <div class="dash-alert__content">
+        <%= content %>
+      </div>
+    </div>
+  </div>
+  <div class="dash-alert__right">
+    <button class="dash-alert__close" data-action="click->dismissible-alert#close">
+      <i class="ri-close-line"></i>
+    </button>
   </div>
 </div>
