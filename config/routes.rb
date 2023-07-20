@@ -29,10 +29,11 @@ Rails.application.routes.draw do
       resources :disease_symptom_updates, only: %i[create destroy]
     end
     resources :disease_risk_factors
+    resources :disease_treatments, only: %i[index]
   end
 
   resources :treatments do
     resources :treatment_updates
-    resources :treatment_diseases, only: %i[new create destroy]
+    resources :treatment_diseases, only: %i[index new create destroy]
   end
 end
