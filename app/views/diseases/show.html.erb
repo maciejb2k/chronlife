@@ -28,8 +28,8 @@
           <i class="ri-thermometer-line navigation__item__icon"></i>
           <p class="navigation__item__text">Objawy</p>
         <% end %>
-        <%= link_to authenticated_root_path, class: "navigation__item" do %>
-          <i class="ri-surgical-mask-line navigation__item__icon"></i>
+        <%= link_to disease_disease_risk_factors_path(@disease), class: "navigation__item" do %>
+          <i class="ri-fire-line navigation__item__icon"></i>
           <p class="navigation__item__text">Czynniki ryzyka</p>
         <% end %>
         <%= link_to authenticated_root_path, class: "navigation__item" do %>

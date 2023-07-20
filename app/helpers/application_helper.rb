@@ -12,4 +12,38 @@ module ApplicationHelper
 
     "@#{current_user.account.username}"
   end
+
+  def severity_to_string(severity)
+    case severity
+    when 1
+      "Ładogne"
+    when 2
+      "Umiarkowane"
+    when 3
+      "Dotkliwe"
+    when 4
+      "Utrudniające życie"
+    when 5
+      "Rujnujące życie"
+    else
+      "Uciążliwe"
+    end
+  end
+
+  def intensity_to_emoji(intensity)
+    case intensity
+    when 1
+      "🙂"
+    when 2
+      "😐"
+    when 3
+      "🙁"
+    when 4
+      "😢"
+    when 5
+      "😫"
+    else
+      "😡"
+    end
+  end
 end

@@ -1,0 +1,55 @@
+.page-disease-risk-factors {
+  &__content {
+    padding: 30px 0;
+    display: flex;
+    gap: 40px;
+    border-bottom: 1px solid $dash-base-border;
+
+    .risk-factors {
+      width: 100%;
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 12px;
+
+      &__item {
+        width: 100%;
+        padding: 10px 20px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        font-weight: 600;
+        font-size: var(--16px);
+        cursor: pointer;
+        color: $dash-text-dark;
+        background: #ffffff;
+        border: 1px solid $dash-base-border;
+        border-radius: 3px;
+        box-shadow: 0 2px 3px rgba(22, 36, 65, 0.1);
+
+        &__group {
+          display: flex;
+          align-items: center;
+          gap: 15px;
+        }
+
+        &__title {
+          &::first-letter {
+            text-transform: uppercase;
+          }
+        }
+
+        &__severity {
+          font-weight: 400;
+          font-size: var(--14px);
+        }
+
+        &__icon {
+          display: block;
+          font-size: var(--18px);
+          font-weight: 600;
+          color: $color-danger;
+        }
+      }
+    }
+  }
+}

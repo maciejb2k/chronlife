@@ -56,7 +56,7 @@
         </div>
         <div class="dash-form__group__right">
           <div class="dash-form__range" data-controller="range-slider">
-            <%= f.range_field :severity, min: 1, max: 8, step: 1, value: 1, class: "dash-form__range__input", data: { range_slider_target: "value", action: "input->range-slider#updateValue"} %>
+            <%= f.range_field :severity, min: 1, max: 8, step: 1, class: "dash-form__range__input", data: { range_slider_target: "value", action: "input->range-slider#updateValue"} %>
             <span class="dash-form__range__value" data-range-slider-target="output">1</span>
           </div>
         </div>

@@ -19,6 +19,7 @@
     align-items: center;
     justify-content: space-between;
     border-bottom: 1px solid $dash-base-border;
+    flex-shrink: 0;
 
     &__logo {
       max-width: 180px;

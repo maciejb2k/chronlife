@@ -1,0 +1,67 @@
+<div class="page-disease-risk-factor">
+  <header class="dash-header page-disease-risk-factor__header">
+    <div class="dash-header__left">
+      <h1 class="dash-header__title"><%= @disease_risk_factor.name %></h1>
+      <%= render "shared/breadcrumbs" %>
+    </div>
+    <div class="dash-header__right">
+      <%= link_to edit_disease_disease_risk_factor_path, class: "dash-button dash-button--info" do %>
+        <i class="ri-edit-2-line dash-button__icon"></i>
+        Edytuj
+      <% end %>
+      <%= button_to [@disease, @disease_risk_factor], class: "dash-button dash-button--delete",
+          method: :delete, form: { data: { turbo_confirm: 'Czy na pewno chcesz usunąć?' } } do %>
+        <i class="ri-close-line dash-button__icon"></i>
+        Usuń
+      <% end %>
+      <%= link_to disease_disease_risk_factors_path, class: "dash-button dash-button--back" do %>
+        <i class="ri-arrow-left-line dash-button__icon"></i>
+      <% end %>
+    </div>
+  </header>
+  <div class="dash-flash-messages">
+    <% if flash[:notice].present? %>
+      <%= render DashAlertComponent.new(type: :success) do %>
+        <%= flash[:notice] %>
+      <% end %>
+    <% end %>
+  </div>
+  <div class="page-disease-risk-factor__content">
+    <div class="dash-info">
+      <h2 class="dash-info__title">Informacje</h2>
+      <div class="dash-info__groups">
+        <div class="dash-info__group">
+          <div class="dash-info__group__left">
+            <div class="dash-info__group__label">Nazwa</div>
+            <div class="dash-info__group__desc">Nazwa czynnika ryzyka.</div>
+          </div>
+          <div class="dash-info__group__right">
+            <div class="dash-info__group__value"><%= @disease_risk_factor.name %></div>
+          </div>
+        </div>
+        <div class="dash-info__group">
+          <div class="dash-info__group__left">
+            <div class="dash-info__group__label">Opis</div>
+            <div class="dash-info__group__desc">Jak ten czynnik wpływa na twoje objawy.</div>
+          </div>
+          <div class="dash-info__group__right">
+            <div class="dash-info__group__value">
+              <%= @disease_risk_factor.description %>
+            </div>
+          </div>
+        </div>
+        <div class="dash-info__group">
+          <div class="dash-info__group__left">
+            <div class="dash-info__group__label">Dotkliwość</div>
+            <div class="dash-info__group__desc">Jak silnie ten czynnik na ciebie oddziałuje.</div>
+          </div>
+          <div class="dash-info__group__right">
+            <div class="dash-info__group__value">
+              <%= @disease_risk_factor.severity %>/5 <%= intensity_to_emoji(@disease_risk_factor.severity) %>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

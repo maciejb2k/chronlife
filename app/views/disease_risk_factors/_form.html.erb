@@ -1,0 +1,52 @@
+<%= form_with(model: [@disease, @disease_risk_factor], html: { class: "dash-form" } ) do |form| %>
+  <div class="dash-form__container">
+    <div class="dash-form__group">
+      <div class="dash-form__group__container">
+        <div class="dash-form__group__left">
+          <div class="dash-form__group__title">Nazwa</div>
+          <p class="dash-form__group__description">Co powoduje zaostrzenie objawów.</p>
+        </div>
+        <div class="dash-form__group__right">
+          <%= form.text_field :name, class: "dash-form__input", placeholder: "Orzeszki ziemne" %>
+        </div>
+      </div>
+      <%= render DashFormErrorComponent.new(model: @disease_risk_factor, field: :name) %>
+    </div>
+  </div>
+  <div class="dash-form__container">
+    <div class="dash-form__group">
+      <div class="dash-form__group__container">
+        <div class="dash-form__group__left">
+          <div class="dash-form__group__title">Opis</div>
+          <p class="dash-form__group__description">Opisz dokładnie jak dany czynnik wpływa na zaostrzenie objawów.</p>
+        </div>
+        <div class="dash-form__group__right">
+          <%= form.text_area :description, class: "dash-form__input dash-form__textarea",
+              placeholder: "Na następny dzień następuje zaostrzenie wysypki." %>
+        </div>
+      </div>
+      <%= render DashFormErrorComponent.new(model: @disease_risk_factor, field: :description) %>
+    </div>
+  </div>
+  <div class="dash-form__container">
+    <div class="dash-form__group">
+      <div class="dash-form__group__container">
+        <div class="dash-form__group__left">
+          <div class="dash-form__group__title">Dotkliwość</div>
+          <p class="dash-form__group__description">W skali od 1 do 5 jak mocno wpływa na ciebie ten czynnik.</p>
+        </div>
+        <div class="dash-form__group__right">
+          <div class="dash-form__range" data-controller="range-slider">
+            <%= form.range_field :severity, min: 1, max: 5, class: "dash-form__range__input",
+            data: { range_slider_target: "value", action: "input->range-slider#updateValue"}  %>
+            <span class="dash-form__range__value" data-range-slider-target="output">1</span>
+          </div>
+        </div>
+      </div>
+      <%= render DashFormErrorComponent.new(model: @disease_risk_factor, field: :severity) %>
+    </div>
+  </div>
+  <div class="dash-form__group">
+    <%= form.submit "Zapisz", class: "dash-form__submit dash-button dash-button--new" %>
+  </div>
+<% end %>

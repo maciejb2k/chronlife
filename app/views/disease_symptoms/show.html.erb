@@ -28,25 +28,25 @@
   </div>
   <div class="page-disease-symptom__content">
     <div class="page-disease-symptom__content__left">
-      <div class="symptom-info">
-        <h2 class="symptom-info__title">Informacje</h2>
-        <div class="symptom-info__groups">
-          <div class="symptom-info__group">
-            <div class="symptom-info__group__left">
-              <div class="symptom-info__group__label">Opis</div>
-              <div class="symptom-info__group__desc">Opisz dokładnie swój objaw.</div>
+      <div class="dash-info">
+        <h2 class="dash-info__title">Informacje</h2>
+        <div class="dash-info__groups">
+          <div class="dash-info__group">
+            <div class="dash-info__group__left">
+              <div class="dash-info__group__label">Opis</div>
+              <div class="dash-info__group__desc">Opisz dokładnie swój objaw.</div>
             </div>
-            <div class="symptom-info__group__right">
-              <div class="symptom-info__group__value"><%= @disease_symptom.description %></div>
+            <div class="dash-info__group__right">
+              <div class="dash-info__group__value"><%= @disease_symptom.description %></div>
             </div>
           </div>
-          <div class="symptom-info__group">
-            <div class="symptom-info__group__left">
-              <div class="symptom-info__group__label">Od kiedy?</div>
-              <div class="symptom-info__group__desc">Kiedy dany objaw zaczął występować.</div>
+          <div class="dash-info__group">
+            <div class="dash-info__group__left">
+              <div class="dash-info__group__label">Od kiedy?</div>
+              <div class="dash-info__group__desc">Kiedy dany objaw zaczął występować.</div>
             </div>
-            <div class="symptom-info__group__right">
-              <div class="symptom-info__group__value">
+            <div class="dash-info__group__right">
+              <div class="dash-info__group__value">
                 <% if @disease_symptom.first_noticed_at.present? %>
                   <%= @disease_symptom.first_noticed_at %>
                 <% else %>
@@ -55,15 +55,15 @@
               </div>
             </div>
           </div>
-          <div class="symptom-info__group">
-            <div class="symptom-info__group__left">
-              <div class="symptom-info__group__label">Intensywność objawu</div>
-              <div class="symptom-info__group__desc">Jak oceniasz nasilenie tego objawu.</div>
+          <div class="dash-info__group">
+            <div class="dash-info__group__left">
+              <div class="dash-info__group__label">Intensywność objawu</div>
+              <div class="dash-info__group__desc">Jak oceniasz nasilenie tego objawu.</div>
             </div>
-            <div class="symptom-info__group__right">
-              <div class="symptom-info__group__value">
+            <div class="dash-info__group__right">
+              <div class="dash-info__group__value">
                 <% if @disease_symptom_updates.to_a.any? %>
-                  <%= @disease_symptom_updates.first.intensity %>/5 - <%= intensity_to_text(@disease_symptom_updates.first.intensity) %>
+                  <%= @disease_symptom_updates.first.intensity %>/5 - <%= intensity_to_emoji(@disease_symptom_updates.first.intensity) %>
                 <% else %>
                   Brak danych
                 <% end %>

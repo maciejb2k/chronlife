@@ -28,5 +28,6 @@ Rails.application.routes.draw do
     resources :disease_symptoms do
       resources :disease_symptom_updates, only: %i[create destroy]
     end
+    resources :disease_risk_factors
   end
 end

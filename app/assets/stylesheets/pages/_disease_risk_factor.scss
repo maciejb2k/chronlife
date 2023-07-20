@@ -1,0 +1,12 @@
+.page-disease-risk-factor {
+  &__content {
+    padding: 30px 0;
+    display: flex;
+    gap: 40px;
+
+    .dash-info {
+      border-bottom: none;
+      width: 800px;
+    }
+  }
+}

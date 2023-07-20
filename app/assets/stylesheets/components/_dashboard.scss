@@ -384,3 +384,50 @@
     font-size: var(--14px);
   }
 }
+
+.dash-info {
+  padding-bottom: 20px;
+  border-bottom: 1px solid $dash-base-border;
+
+  &__title {
+    font-size: var(--20px);
+    color: $dash-text-dark;
+    font-weight: 600;
+    padding-bottom: 20px;
+    margin-bottom: 20px;
+    border-bottom: 1px solid $dash-base-border;
+  }
+
+  &__groups {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+  }
+
+  &__group {
+    display: flex;
+    gap: 80px;
+
+    &__left {
+      max-width: 200px;
+      flex-basis: 200px;
+      flex-shrink: 0;
+    }
+
+    &__label {
+      color: $dash-text-dark;
+      font-size: var(--16px);
+      font-weight: 600;
+    }
+
+    &__desc {
+      font-size: var(--14px);
+      color: $dash-text-light;
+    }
+
+    &__value {
+      font-size: var(--16px);
+      color: $dash-text-dark;
+    }
+  }
+}

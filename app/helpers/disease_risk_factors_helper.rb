@@ -1,0 +1,2 @@
+module DiseaseRiskFactorsHelper
+end
