@@ -3,9 +3,9 @@ class DiseasesController < BaseController
   before_action :load_predefined_diseases, only: %i[new edit create]
 
   before_action :set_breadcrumbs
-  before_action :set_breadcrumbs_new, only: %i[new]
+  before_action :set_breadcrumbs_new, only: %i[new create]
   before_action :set_breadcrumbs_show, only: %i[show]
-  before_action :set_breadcrumbs_edit, only: %i[edit]
+  before_action :set_breadcrumbs_edit, only: %i[edit update]
 
   def index
     @pagy, @diseases = pagy(

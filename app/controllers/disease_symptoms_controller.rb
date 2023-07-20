@@ -8,9 +8,9 @@ class DiseaseSymptomsController < BaseController
   before_action :load_predefined_symptoms, only: %i[new edit update create]
 
   before_action :set_breadcrumbs
-  before_action :set_breadcrumbs_new, only: %i[new]
+  before_action :set_breadcrumbs_new, only: %i[new create]
   before_action :set_breadcrumbs_show, only: %i[show]
-  before_action :set_breadcrumbs_edit, only: %i[edit]
+  before_action :set_breadcrumbs_edit, only: %i[edit update]
 
   def index
     @disease_symptoms = @disease.symptoms.includes(:predefined_symptom)

@@ -34,6 +34,7 @@ class Account < ApplicationRecord
   belongs_to :user, dependent: :destroy
 
   has_many :diseases, dependent: :destroy
+  has_many :treatments, dependent: :destroy
 
   has_one_attached :avatar
   has_one_attached :cover_photo

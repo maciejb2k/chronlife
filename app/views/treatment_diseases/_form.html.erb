@@ -1,0 +1,20 @@
+<%= form_with model: [@treatment, @treatment_disease], html: { class: "dash-form" } do |f| %>
+  <div class="dash-form__container">
+    <div class="dash-form__group">
+      <div class="dash-form__group__container">
+        <div class="dash-form__group__left">
+          <div class="dash-form__group__title">Nazwa choroby</div>
+          <p class="dash-form__group__description">Wybierz jedną z listy predefiniowanych.</p>
+        </div>
+        <div class="dash-form__group__right">
+          <%= f.select :disease_id, options_for_select(@diseases), { include_blank: false },
+              class: "dash-form__input dash-form__select" %>
+        </div>
+      </div>
+      <%= render DashFormErrorComponent.new(model: @treatment_disease, field: :disease_id) %>
+    </div>
+  </div>
+  <div class="dash-form__group">
+    <%= f.submit "Zapisz", class: "dash-form__submit dash-button dash-button--new" %>
+  </div>
+<% end %>

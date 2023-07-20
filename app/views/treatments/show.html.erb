@@ -1,0 +1,170 @@
+<div class="page-treatment">
+  <header class="dash-header page-disease__header">
+    <div class="dash-header__left">
+      <h1 class="dash-header__title"><%= @treatment.title %></h1>
+      <%= render "shared/breadcrumbs" %>
+    </div>
+    <div class="dash-header__right">
+      <%= link_to edit_treatment_path, class: "dash-button dash-button--info" do %>
+        <i class="ri-edit-2-line dash-button__icon"></i>
+        Edytuj
+      <% end %>
+      <%= button_to @treatment, class: "dash-button dash-button--delete",
+          method: :delete, form: { data: { turbo_confirm: 'Czy na pewno chcesz usunąć?' } } do %>
+        <i class="ri-close-line dash-button__icon"></i>
+        Usuń
+      <% end %>
+      <%= link_to treatments_path, class: "dash-button dash-button--back" do %>
+        <i class="ri-arrow-left-line dash-button__icon"></i>
+      <% end %>
+    </div>
+  </header>
+  <div class="dash-flash-messages">
+    <% if flash[:notice].present? %>
+      <%= render DashAlertComponent.new(type: :success) do %>
+        <%= flash[:notice] %>
+      <% end %>
+    <% end %>
+  </div>
+  <div class="page-treatment__content">
+    <div class="page-treatment__content__left">
+      <div class="dash-group dash-group--border">
+        <header class="dash-group__header">
+          <h2 class="dash-group__title">Aktualizacje</h2>
+          <div class="dash-group__actions">
+            <%= link_to new_treatment_treatment_update_path(@treatment), class: "dash-button dash-button--new dash-button--small" do %>
+              <i class="ri-add-line dash-button__icon"></i>
+              Dodaj
+            <% end %>
+          </div>
+        </header>
+        <div class="dash-group__content">
+          <% if @updates.to_a.any? %>
+            cos jest
+          <% else %>
+            <p class="no-results">
+              Na razie nie dodałeś żadnych aktualizacji.
+            </p>
+          <% end %>
+        </div>
+      </div>
+      <div class="dash-pagination">
+        <div class="dash-pagination__controls">
+          <%== pagy_nav(@pagy_treatments) if @pagy_treatments.pages > 1 %>
+        </div>
+        <div class="dash-pagination__info">
+          <%== pagy_info(@pagy_treatments) %>
+        </div>
+      </div>
+    </div>
+    <div class="page-treatment__content__right">
+      <div class="dash-group dash-group--border">
+        <header class="dash-group__header">
+          <h2 class="dash-group__title">Informacje</h2>
+          <div class="dash-group__actions"></div>
+        </header>
+        <div class="dash-group__content">
+          <div class="dash-info">
+            <div class="dash-info__group">
+              <div class="dash-info__group__left">
+                <div class="dash-info__group__label">Nazwa</div>
+                <div class="dash-info__group__desc">Pełna nazwa terapii.</div>
+              </div>
+              <div class="dash-info__group__right">
+                <div class="dash-info__group__value"><%= @treatment.title %></div>
+              </div>
+            </div>
+            <div class="dash-info__group">
+              <div class="dash-info__group__left">
+                <div class="dash-info__group__label">Opis</div>
+                <div class="dash-info__group__desc">Dokładny opis terapii.</div>
+              </div>
+              <div class="dash-info__group__right">
+                <div class="dash-info__group__value">
+                  <%= @treatment.description %>
+                </div>
+              </div>
+            </div>
+            <div class="dash-info__group">
+              <div class="dash-info__group__left">
+                <div class="dash-info__group__label">Trwanie terapii</div>
+                <div class="dash-info__group__desc">Od kiedy trwa terapia.</div>
+              </div>
+              <div class="dash-info__group__right">
+                <div class="dash-info__group__value">
+                  <%= @treatment.start_date %> -
+                  <% if @treatment.end_date? %>
+                    <%= @treatment.end_date %>
+                  <% else %>
+                    W toku
+                  <% end %>
+                </div>
+              </div>
+            </div>
+            <div class="dash-info__group">
+              <div class="dash-info__group__left">
+                <div class="dash-info__group__label">Czy terapia trwa?</div>
+                <div class="dash-info__group__desc">Czy nadal leczysz się tą terapią.</div>
+              </div>
+              <div class="dash-info__group__right">
+                <div class="dash-info__group__value">
+                  <% if @treatment.is_finished? %>
+                    Tak
+                  <% else %>
+                    Nie
+                  <% end %>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="dash-group">
+        <header class="dash-group__header">
+          <h2 class="dash-group__title">Przypisane choroby</h2>
+          <div class="dash-group__actions">
+            <%= link_to new_treatment_treatment_disease_path(@treatment),
+                class: "dash-button dash-button--new dash-button--small" do %>
+              <i class="ri-add-line dash-button__icon"></i>
+              Dodaj
+            <% end %>
+          </div>
+        </header>
+        <div class="dash-group__content">
+          <div class="treatment-diseases-list">
+            <% if @treatment_diseases.to_a.any? %>
+              <% @treatment_diseases.each do |treatment_disease| %>
+                <div class="treatment-disease">
+                  <div class="treatment-disease__left">
+                    <i class="ri-stethoscope-line treatment-disease__icon"></i>
+                    <%= link_to treatment_disease.disease, class: "treatment-disease__name" do %>
+                      <%= treatment_disease.disease.predefined_disease.name %>
+                    <% end %>
+                  </div>
+                  <div class="treatment-disease__right">
+                    <%= button_to [@treatment, treatment_disease], class: " treatment-disease__delete",
+                      method: :delete, form: { data: { turbo_confirm: 'Czy na pewno chcesz usunąć?' } } do %>
+                      <i class="ri-close-line"></i>
+                    <% end %>
+                  </div>
+                </div>
+              <% end %>
+            <% else %>
+              <p class="no-results">
+                Na razie nie przypisałeś żadnych chorób.
+              </p>
+            <% end %>
+          </div>
+          <div class="dash-pagination">
+            <div class="dash-pagination__controls">
+              <%== pagy_nav(@pagy_treatment_diseases) if @pagy_treatment_diseases.pages > 1 %>
+            </div>
+            <div class="dash-pagination__info">
+              <%== pagy_info(@pagy_treatment_diseases) %>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

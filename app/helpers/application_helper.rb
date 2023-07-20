@@ -46,4 +46,21 @@ module ApplicationHelper
       "😡"
     end
   end
+
+  def effectiveness_to_emoji(intensity)
+    case intensity
+    when 1
+      "😫 Nie działa"
+    when 2
+      "🙁 Nie pomaga"
+    when 3
+      "😐 Średnio pomaga"
+    when 4
+      "🙂 Pomaga"
+    when 5
+      "😀 Bardzo pomaga"
+    else
+      "😡"
+    end
+  end
 end

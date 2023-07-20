@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_07_20_061855) do
+ActiveRecord::Schema[7.0].define(version: 2023_07_20_140643) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pgcrypto"
   enable_extension "plpgsql"
@@ -152,6 +152,40 @@ ActiveRecord::Schema[7.0].define(version: 2023_07_20_061855) do
     t.index ["name"], name: "index_roles_on_name", unique: true
   end
 
+  create_table "treatment_diseases", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
+    t.uuid "treatment_id", null: false
+    t.uuid "disease_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["disease_id"], name: "index_treatment_diseases_on_disease_id"
+    t.index ["treatment_id", "disease_id"], name: "index_treatment_diseases_on_treatment_id_and_disease_id", unique: true
+    t.index ["treatment_id"], name: "index_treatment_diseases_on_treatment_id"
+  end
+
+  create_table "treatment_updates", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
+    t.string "name", default: "", null: false
+    t.string "status", default: "", null: false
+    t.text "description", default: "", null: false
+    t.date "update_date", default: -> { "now()" }, null: false
+    t.uuid "treatment_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["treatment_id"], name: "index_treatment_updates_on_treatment_id"
+  end
+
+  create_table "treatments", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
+    t.string "title", default: "", null: false
+    t.text "description", default: "", null: false
+    t.date "start_date"
+    t.date "end_date"
+    t.boolean "is_finished", default: false, null: false
+    t.integer "effectiveness", default: 0, null: false
+    t.uuid "account_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["account_id"], name: "index_treatments_on_account_id"
+  end
+
   create_table "user_roles", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -205,6 +239,10 @@ ActiveRecord::Schema[7.0].define(version: 2023_07_20_061855) do
   add_foreign_key "diseases", "disease_categories"
   add_foreign_key "diseases", "predefined_diseases"
   add_foreign_key "predefined_symptoms", "predefined_diseases"
+  add_foreign_key "treatment_diseases", "diseases"
+  add_foreign_key "treatment_diseases", "treatments"
+  add_foreign_key "treatment_updates", "treatments"
+  add_foreign_key "treatments", "accounts"
   add_foreign_key "user_roles", "roles"
   add_foreign_key "user_roles", "users"
 end

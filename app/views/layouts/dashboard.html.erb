@@ -46,6 +46,15 @@
               <% end %>
             </li>
             <li class="sidebar__item">
+              <%= link_to treatments_path, class: "sidebar__link" do %>
+                <div class="sidebar__link__group">
+                  <i class="ri-hospital-line sidebar__link__icon"></i>
+                  <span class="sidebar__link__text">Terapie</span>
+                </div>
+                <i class="ri-arrow-right-s-line sidebar__link__icon"></i>
+              <% end %>
+            </li>
+            <li class="sidebar__item">
               <%= link_to authenticated_root_path, class: "sidebar__link" do %>
                 <div class="sidebar__link__group">
                   <i class="ri-heart-pulse-line sidebar__link__icon"></i>
@@ -111,15 +120,6 @@
         <div class="sidebar__nav__group sidebar__nav__group--account">
           <p class="sidebar__nav__title">Twoje konto:</p>
           <ul class="sidebar__items">
-            <li class="sidebar__item">
-              <%= link_to authenticated_root_path, class: "sidebar__link" do %>
-                <div class="sidebar__link__group">
-                  <i class="ri-user-line sidebar__link__icon"></i>
-                  <span class="sidebar__link__text">Profil</span>
-                </div>
-                <i class="ri-arrow-right-s-line sidebar__link__icon"></i>
-              <% end %>
-            </li>
             <li class="sidebar__item">
               <%= link_to authenticated_root_path, class: "sidebar__link" do %>
                 <div class="sidebar__link__group">

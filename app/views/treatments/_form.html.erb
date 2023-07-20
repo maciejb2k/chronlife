@@ -1,0 +1,105 @@
+<%= form_with(model: @treatment, html: { class: "dash-form" }) do |form| %>
+  <div class="dash-form__container">
+    <div class="dash-form__group">
+      <div class="dash-form__group__container">
+        <div class="dash-form__group__left">
+          <div class="dash-form__group__title">Nazwa terapii</div>
+          <p class="dash-form__group__description">Jak się nazywa twoja terapia.</p>
+        </div>
+        <div class="dash-form__group__right">
+          <%= form.text_field :title, class: "dash-form__input", placeholder: "Dieta ketogeniczna" %>
+        </div>
+      </div>
+      <%= render DashFormErrorComponent.new(model: @treatment, field: :title) %>
+    </div>
+  </div>
+
+  <div class="dash-form__container">
+    <div class="dash-form__group">
+      <div class="dash-form__group__container">
+        <div class="dash-form__group__left">
+          <div class="dash-form__group__title">Opis terapii</div>
+          <p class="dash-form__group__description">Co to jest za terapia.</p>
+        </div>
+        <div class="dash-form__group__right">
+          <%= form.text_area :description, class: "dash-form__input dash-form__textarea",
+              placeholder: "Jest to dieta polegająca na spożywaniu tylko tłuszczy i białek." %>
+        </div>
+      </div>
+      <%= render DashFormErrorComponent.new(model: @treatment, field: :description) %>
+    </div>
+  </div>
+
+  <div class="dash-form__container">
+    <div class="dash-form__group">
+      <div class="dash-form__group__container">
+        <div class="dash-form__group__left">
+          <div class="dash-form__group__title">Data rozpoczęcia</div>
+          <p class="dash-form__group__description">Kiedy rozpocząłeś swoją terapie.</p>
+        </div>
+        <div class="dash-form__group__right">
+          <%= form.date_field :start_date, class: "dash-form__input" %>
+        </div>
+      </div>
+      <%= render DashFormErrorComponent.new(model: @treatment, field: :start_date) %>
+    </div>
+  </div>
+
+  <div class="dash-form__container">
+    <div class="dash-form__group">
+      <div class="dash-form__group__container">
+        <div class="dash-form__group__left">
+          <div class="dash-form__group__title">Dat zakończenia</div>
+          <p class="dash-form__group__description">Kiedy zakończyła się terapia lub kiedy ją zakończysz.</p>
+        </div>
+        <div class="dash-form__group__right">
+          <%= form.date_field :end_date, class: "dash-form__input" %>
+        </div>
+      </div>
+      <%= render DashFormErrorComponent.new(model: @treatment, field: :end_date) %>
+    </div>
+  </div>
+
+  <div class="dash-form__container">
+    <div class="dash-form__group">
+      <div class="dash-form__group__container">
+        <div class="dash-form__group__left">
+          <div class="dash-form__group__title">Efektywność</div>
+          <p class="dash-form__group__description">W skali od 1 do 5 jak oceniasz efektywność tej terapii.</p>
+        </div>
+        <div class="dash-form__group__right">
+          <div class="dash-form__range" data-controller="range-slider">
+            <%= form.range_field :effectiveness, min: 1, max: 5, class: "dash-form__range__input",
+            data: { range_slider_target: "value", action: "input->range-slider#updateValue"}  %>
+            <span class="dash-form__range__value" data-range-slider-target="output">1</span>
+          </div>
+        </div>
+      </div>
+      <%= render DashFormErrorComponent.new(model: @treatment, field: :effectiveness) %>
+    </div>
+  </div>
+
+  <div class="dash-form__container">
+    <div class="dash-form__group">
+      <div class="dash-form__group__container">
+        <div class="dash-form__group__left">
+          <div class="dash-form__group__title">Zakończono</div>
+          <p class="dash-form__group__description">Niezależnie od rezultatu, czy terapia jeszcze trwa.</p>
+        </div>
+        <div class="dash-form__group__right">
+          <div class="dash-form__checkbox">
+            <%= form.check_box :is_finished, class: "dash-form__checkbox__input" %>
+            <%= form.label :is_finished, class: "dash-form__checkbox__label" do %>
+              Czy terapia dobiegła końca?
+            <% end %>
+          </div>
+        </div>
+      </div>
+      <%= render DashFormErrorComponent.new(model: @treatment, field: :is_finished) %>
+    </div>
+  </div>
+
+  <div class="dash-form__group">
+    <%= form.submit "Zapisz", class: "dash-form__submit dash-button dash-button--new" %>
+  </div>
+<% end %>

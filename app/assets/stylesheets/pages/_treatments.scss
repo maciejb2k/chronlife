@@ -1,0 +1,84 @@
+.page-treatments {
+  &__content {
+    padding: 30px 0;
+    border-bottom: 1px solid $dash-base-border;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+
+    .treatment-card {
+      display: flex;
+      flex-direction: column;
+      gap: 5px;
+      background: #ffffff;
+      padding: 20px 30px;
+      border: 1px solid $dash-base-border;
+      border-radius: 3px;
+      box-shadow: 0 2px 3px rgba(22, 36, 65, 0.1);
+
+      &__status {
+        color: $dash-text-light;
+        font-weight: 600;
+        font-size: var(--12px);
+        margin-bottom: 10px;
+      }
+
+      &__title {
+        color: $dash-text-dark;
+        font-size: var(--22px);
+        display: flex;
+        align-items: center;
+        gap: 10px;
+
+        &::first-letter {
+          text-transform: uppercase;
+        }
+      }
+
+      &__finished {
+        color: $color-success;
+        font-size: var(--18px);
+      }
+
+      &__diseases {
+        color: $dash-text-light;
+        font-size: var(--14px);
+        margin-bottom: 10px;
+      }
+
+      &__footer {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+      }
+
+      &__date {
+        color: $dash-text-light;
+        font-size: var(--14px);
+        display: flex;
+        align-items: center;
+        gap: 8px;
+      }
+
+      &__icon {
+        font-weight: 400;
+      }
+
+      &__button {
+        background: #ffc83d;
+        color: #000000;
+        border: none;
+        padding: 8px 30px;
+        border-radius: 3px;
+        font-size: var(--14px);
+        font-weight: 600;
+        cursor: pointer;
+        transition: all 0.3s ease-in-out;
+
+        &:hover {
+          background: #ffc32c;
+        }
+      }
+    }
+  }
+}

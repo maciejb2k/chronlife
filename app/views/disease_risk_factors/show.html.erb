@@ -27,41 +27,47 @@
     <% end %>
   </div>
   <div class="page-disease-risk-factor__content">
-    <div class="dash-info">
-      <h2 class="dash-info__title">Informacje</h2>
-      <div class="dash-info__groups">
-        <div class="dash-info__group">
-          <div class="dash-info__group__left">
-            <div class="dash-info__group__label">Nazwa</div>
-            <div class="dash-info__group__desc">Nazwa czynnika ryzyka.</div>
-          </div>
-          <div class="dash-info__group__right">
-            <div class="dash-info__group__value"><%= @disease_risk_factor.name %></div>
-          </div>
-        </div>
-        <div class="dash-info__group">
-          <div class="dash-info__group__left">
-            <div class="dash-info__group__label">Opis</div>
-            <div class="dash-info__group__desc">Jak ten czynnik wpływa na twoje objawy.</div>
-          </div>
-          <div class="dash-info__group__right">
-            <div class="dash-info__group__value">
-              <%= @disease_risk_factor.description %>
+    <div class="dash-group dash-group--border">
+      <header class="dash-group__header">
+        <h2 class="dash-group__title">Informacje</h2>
+        <div class="dash-group__actions"></div>
+      </header>
+      <div class="dash-group__content">
+        <div class="dash-info">
+          <div class="dash-info__group">
+            <div class="dash-info__group__left">
+              <div class="dash-info__group__label">Nazwa</div>
+              <div class="dash-info__group__desc">Nazwa czynnika ryzyka.</div>
+            </div>
+            <div class="dash-info__group__right">
+              <div class="dash-info__group__value"><%= @disease_risk_factor.name %></div>
             </div>
           </div>
-        </div>
-        <div class="dash-info__group">
-          <div class="dash-info__group__left">
-            <div class="dash-info__group__label">Dotkliwość</div>
-            <div class="dash-info__group__desc">Jak silnie ten czynnik na ciebie oddziałuje.</div>
+          <div class="dash-info__group">
+            <div class="dash-info__group__left">
+              <div class="dash-info__group__label">Opis</div>
+              <div class="dash-info__group__desc">Jak ten czynnik wpływa na twoje objawy.</div>
+            </div>
+            <div class="dash-info__group__right">
+              <div class="dash-info__group__value">
+                <%= @disease_risk_factor.description %>
+              </div>
+            </div>
           </div>
-          <div class="dash-info__group__right">
-            <div class="dash-info__group__value">
-              <%= @disease_risk_factor.severity %>/5 <%= intensity_to_emoji(@disease_risk_factor.severity) %>
+          <div class="dash-info__group">
+            <div class="dash-info__group__left">
+              <div class="dash-info__group__label">Dotkliwość</div>
+              <div class="dash-info__group__desc">Jak silnie ten czynnik na ciebie oddziałuje.</div>
+            </div>
+            <div class="dash-info__group__right">
+              <div class="dash-info__group__value">
+                <%= @disease_risk_factor.severity %>/5 <%= intensity_to_emoji(@disease_risk_factor.severity) %>
+              </div>
             </div>
           </div>
         </div>
       </div>
     </div>
+
   </div>
 </div>

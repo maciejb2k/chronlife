@@ -30,4 +30,9 @@ Rails.application.routes.draw do
     end
     resources :disease_risk_factors
   end
+
+  resources :treatments do
+    resources :treatment_updates
+    resources :treatment_diseases, only: %i[new create destroy]
+  end
 end

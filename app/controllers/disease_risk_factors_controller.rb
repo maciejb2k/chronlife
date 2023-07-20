@@ -5,9 +5,9 @@ class DiseaseRiskFactorsController < ApplicationController
   before_action :set_disease_risk_factor, only: %i[show edit update destroy]
 
   before_action :set_breadcrumbs
-  before_action :set_breadcrumbs_new, only: %i[new]
+  before_action :set_breadcrumbs_new, only: %i[new create]
   before_action :set_breadcrumbs_show, only: %i[show]
-  before_action :set_breadcrumbs_edit, only: %i[edit]
+  before_action :set_breadcrumbs_edit, only: %i[edit update]
 
   def index
     @pagy, @disease_risk_factors = pagy(@disease.risk_factors.order(severity: :desc))
@@ -96,7 +96,9 @@ class DiseaseRiskFactorsController < ApplicationController
 
   def set_breadcrumbs_edit
     add_breadcrumb(@disease_risk_factor.name, [@disease, @disease_risk_factor])
-    add_breadcrumb("edytuj objaw",
-      edit_disease_disease_risk_factor_path(@disease, @disease_risk_factor))
+    add_breadcrumb(
+      "edytuj objaw",
+      edit_disease_disease_risk_factor_path(@disease, @disease_risk_factor)
+    )
   end
 end

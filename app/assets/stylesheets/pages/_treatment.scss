@@ -1,0 +1,67 @@
+.page-treatment {
+  &__content {
+    padding: 30px 0;
+    display: flex;
+    gap: 40px;
+
+    &__left {
+      flex-grow: 1;
+    }
+
+    &__right {
+      max-width: 600px;
+      width: 600px;
+      display: flex;
+      flex-direction: column;
+      gap: 40px;
+    }
+
+    .treatment-diseases-list {
+      padding-bottom: 20px;
+      border-bottom: 1px solid $dash-base-border;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .treatment-disease {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background: #ffffff;
+      padding: 10px 10px 10px 20px;
+      border: 1px solid $dash-base-border;
+      border-radius: 3px;
+
+      &__left {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+      }
+
+      &__name {
+        color: $dash-text-dark;
+        font-weight: 600;
+
+        &::first-letter {
+          text-transform: uppercase;
+        }
+      }
+
+      &__icon {
+        font-weight: 400;
+        color: $dash-base;
+      }
+
+      &__delete {
+        color: $dash-text-light;
+        font-size: var(--16px);
+        background: $color-danger;
+        padding: 5px 10px;
+        border-radius: 3px;
+        color: #ffffff;
+        cursor: pointer;
+      }
+    }
+  }
+}
