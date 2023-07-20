@@ -5,9 +5,13 @@
       <%= render "shared/breadcrumbs" %>
     </div>
     <div class="dash-header__right">
+      <%= button_to @disease, class: "dash-button dash-button--delete",
+          method: :delete, form: { data: { turbo_confirm: 'Czy na pewno chcesz usunąć?' } } do %>
+        <i class="ri-close-line dash-button__icon"></i>
+        Usuń
+      <% end %>
       <%= link_to @disease, class: "dash-button dash-button--back" do %>
         <i class="ri-arrow-left-line dash-button__icon"></i>
-        Powrót
       <% end %>
     </div>
   </header>
