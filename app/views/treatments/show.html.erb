@@ -32,15 +32,81 @@
         <header class="dash-group__header">
           <h2 class="dash-group__title">Aktualizacje</h2>
           <div class="dash-group__actions">
-            <%= link_to new_treatment_treatment_update_path(@treatment), class: "dash-button dash-button--new dash-button--small" do %>
+            <%= link_to new_treatment_treatment_update_path(@treatment),
+                class: "dash-button dash-button--new dash-button--small" do %>
               <i class="ri-add-line dash-button__icon"></i>
               Dodaj
             <% end %>
           </div>
         </header>
         <div class="dash-group__content">
-          <% if @updates.to_a.any? %>
-            cos jest
+          <% if @treatment_updates.any? %>
+            <div class="treatment-update-container">
+              <% @treatment_updates.each do |treatment_update| %>
+                <div class="treatment-update">
+                  <div class="treatment-update__left">
+                    <% if treatment_update.improvement? %>
+                      <div class="treatment-update__status treatment-update__status--improvement">
+                        <i class="ri-emotion-happy-line"></i>
+                      </div>
+                    <% elsif treatment_update.no_change? %>
+                      <div class="treatment-update__status treatment-update__status--no-change">
+                        <i class="ri-emotion-normal-line"></i>
+                      </div>
+                    <% elsif treatment_update.worsening? %>
+                      <div class="treatment-update__status treatment-update__status--worsening">
+                        <i class="ri-emotion-sad-line"></i>
+                      </div>
+                    <% else %>
+                      <div class="treatment-update__status">
+                        <i class="ri-aliens-line"></i>
+                      </div>
+                    <% end %>
+                  </div>
+                  <div class="treatment-update__right">
+                    <header class="treatment-update__header">
+                      <div class="treatment-update__header__left">
+                        <h3 class="treatment-update__header__name">
+                          <%= treatment_update.name %>
+                        </h3>
+                        <div class="treatment-update__header__date">
+                          <%= treatment_update.update_date.strftime("%H:%M - %d.%m.%Yr.") %>
+                        </div>
+                      </div>
+                      <div class="treatment-update__header__right">
+                        <div data-controller="dropdown" class="dash-dropdown">
+                          <button class="dash-dropdown__button" type="button" data-action="dropdown#toggle click@window->dropdown#hide">
+                            <i class="ri-more-fill"></i>
+                          </button>
+                          <div
+                            data-dropdown-target="menu"
+                            class="hidden transition transform origin-top-right dash-dropdown__list "
+                            data-transition-enter-from="opacity-0 scale-95"
+                            data-transition-enter-to="opacity-100 scale-100"
+                            data-transition-leave-from="opacity-100 scale-100"
+                            data-transition-leave-to="opacity-0 scale-95"
+                          >
+                            <%= link_to edit_treatment_treatment_update_path(@treatment, treatment_update),
+                                data: { action: "dropdown#toggle" }, class: "dash-dropdown__item" do %>
+                              <i class="ri-edit-line dash-dropdown__item__icon"></i> Edytuj
+                            <% end %>
+                            <%= button_to [@treatment, treatment_update], method: :delete, class: "dash-dropdown__item",
+                                data: { action: "dropdown#toggle", confirm: "Are you sure?", turbo_confirm: "Are you sure?" } do %>
+                              <i class="ri-close-line dash-dropdown__item__icon dash-dropdown__item__icon--delete"></i> Usuń
+                            <% end %>
+                          </div>
+                        </div>
+                      </div>
+                    </header>
+                    <div class="treatment-update__content">
+                      <p class="treatment-update__text">
+                        <%= treatment_update.description %>
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              <% end %>
+            </div>
           <% else %>
             <p class="no-results">
               Na razie nie dodałeś żadnych aktualizacji.

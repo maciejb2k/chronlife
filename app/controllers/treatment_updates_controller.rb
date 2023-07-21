@@ -1,31 +1,29 @@
-class TreatmentUpdatesController < ApplicationController
-  before_action :set_treatment_update, only: %i[ show edit update destroy ]
+class TreatmentUpdatesController < BaseController
+  layout "dashboard"
 
-  # GET /treatment_updates or /treatment_updates.json
-  def index
-    @treatment_updates = TreatmentUpdate.all
-  end
+  before_action :set_treatment
+  before_action :set_treatment_update, only: %i[edit update destroy]
+  before_action :set_treatment_status_options, only: %i[new create edit update]
 
-  # GET /treatment_updates/1 or /treatment_updates/1.json
-  def show
-  end
+  before_action :set_breadcrumbs
+  before_action :set_breadcrumbs_new, only: %i[new create]
+  before_action :set_breadcrumbs_edit, only: %i[edit update]
 
-  # GET /treatment_updates/new
   def new
     @treatment_update = TreatmentUpdate.new
   end
 
-  # GET /treatment_updates/1/edit
-  def edit
-  end
+  def edit; end
 
-  # POST /treatment_updates or /treatment_updates.json
   def create
-    @treatment_update = TreatmentUpdate.new(treatment_update_params)
+    @treatment_update = @treatment.updates.build(treatment_update_params)
 
     respond_to do |format|
       if @treatment_update.save
-        format.html { redirect_to treatment_update_url(@treatment_update), notice: "Treatment update was successfully created." }
+        format.html do
+          redirect_to @treatment,
+                      notice: "Aktualizacja terapii została pomyślnie dodana."
+        end
         format.json { render :show, status: :created, location: @treatment_update }
       else
         format.html { render :new, status: :unprocessable_entity }
@@ -34,11 +32,13 @@ class TreatmentUpdatesController < ApplicationController
     end
   end
 
-  # PATCH/PUT /treatment_updates/1 or /treatment_updates/1.json
   def update
     respond_to do |format|
       if @treatment_update.update(treatment_update_params)
-        format.html { redirect_to treatment_update_url(@treatment_update), notice: "Treatment update was successfully updated." }
+        format.html do
+          redirect_to edit_treatment_treatment_update_path(@treatment, @treatment_update),
+                      notice: "Aktualizacja terapii została pomyślnie zapisana."
+        end
         format.json { render :show, status: :ok, location: @treatment_update }
       else
         format.html { render :edit, status: :unprocessable_entity }
@@ -47,24 +47,49 @@ class TreatmentUpdatesController < ApplicationController
     end
   end
 
-  # DELETE /treatment_updates/1 or /treatment_updates/1.json
   def destroy
     @treatment_update.destroy
 
     respond_to do |format|
-      format.html { redirect_to treatment_updates_url, notice: "Treatment update was successfully destroyed." }
+      format.html do
+        redirect_to @treatment, notice: "Aktualizacja terapii została pomyślnie usunięta."
+      end
       format.json { head :no_content }
     end
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_treatment_update
-      @treatment_update = TreatmentUpdate.find(params[:id])
-    end
 
-    # Only allow a list of trusted parameters through.
-    def treatment_update_params
-      params.require(:treatment_update).permit(:name, :status, :description, :update_date, :treatment_id)
+  def set_treatment
+    @treatment = current_user.account.treatments.find(params[:treatment_id])
+  end
+
+  def set_treatment_update
+    @treatment_update = @treatment.updates.find(params[:id])
+  end
+
+  def set_treatment_status_options
+    @treatment_status_options = TreatmentUpdate::STATUSES.map do |key|
+      [I18n.t("activerecord.attributes.treatment_update.statuses.#{key}"), key]
     end
+  end
+
+  def treatment_update_params
+    params.require(:treatment_update).permit(:name, :status, :description, :update_date,
+                                             :treatment_id)
+  end
+
+  def set_breadcrumbs
+    add_breadcrumb("home", authenticated_root_path)
+    add_breadcrumb("terapie", treatments_path)
+    add_breadcrumb(@treatment.title, treatment_path(@treatment))
+  end
+
+  def set_breadcrumbs_new
+    add_breadcrumb("dodaj aktualizację", new_treatment_path)
+  end
+
+  def set_breadcrumbs_edit
+    add_breadcrumb("edytuj aktualizację", edit_treatment_path(@treatment))
+  end
 end

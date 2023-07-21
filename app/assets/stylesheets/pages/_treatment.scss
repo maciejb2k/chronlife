@@ -14,6 +14,96 @@
       display: flex;
       flex-direction: column;
       gap: 40px;
+      flex-shrink: 0;
+    }
+
+    .treatment-update-container {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+      max-width: 650px;
+      margin: 0 auto;
+    }
+
+    .treatment-update {
+      width: 100%;
+      display: flex;
+      gap: 20px;
+      background: #ffffff;
+      padding: 20px;
+      border: 1px solid $dash-base-border;
+      box-shadow: 0px 2px 10px rgba(120, 120, 120, 0.1);
+      border-radius: 3px;
+
+      &__left {
+        flex-shrink: 0;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
+
+      &__status {
+        padding: 10px;
+        background: $dash-base;
+        width: 40px;
+        height: 40px;
+        border-radius: 3px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: var(--18px);
+
+        &--improvement {
+          background: #cbf4dd;
+          color: #106134;
+        }
+
+        &--no-change {
+          background: #dcf3ff;
+          color: #0b4561;
+        }
+
+        &--worsening {
+          background: #ffe5e5;
+          color: #8e1414;
+        }
+      }
+
+      &__right {
+        flex-grow: 1;
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+      }
+
+      &__header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        min-height: 50px;
+        padding-bottom: 20px;
+        border-bottom: 1px solid $dash-base-border;
+
+        &__left {
+          align-self: center;
+        }
+
+        &__name {
+          font-weight: 600;
+          color: $dash-text-dark;
+          font-size: var(--16px);
+          margin-bottom: 3px;
+        }
+
+        &__date {
+          font-weight: 400;
+          color: $dash-text-light;
+          font-size: var(--14px);
+          display: flex;
+          align-items: center;
+          gap: 5px;
+        }
+      }
     }
 
     .treatment-diseases-list {

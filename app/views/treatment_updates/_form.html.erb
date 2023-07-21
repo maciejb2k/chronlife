@@ -1,42 +1,68 @@
-<%= form_with(model: treatment_update) do |form| %>
-  <% if treatment_update.errors.any? %>
-    <div style="color: red">
-      <h2><%= pluralize(treatment_update.errors.count, "error") %> prohibited this treatment_update from being saved:</h2>
-
-      <ul>
-        <% treatment_update.errors.each do |error| %>
-          <li><%= error.full_message %></li>
-        <% end %>
-      </ul>
+<%= form_with(model: [@treatment, @treatment_update], html: { class: "dash-form" }) do |form| %>
+  <div class="dash-form__container">
+    <div class="dash-form__group">
+      <div class="dash-form__group__container">
+        <div class="dash-form__group__left">
+          <div class="dash-form__group__title">Tytuł</div>
+          <p class="dash-form__group__description">Ogólna nazwa zmiany w terapii.</p>
+        </div>
+        <div class="dash-form__group__right">
+          <%= form.text_field :name, class: "dash-form__input",
+              placeholder: "Wyjazd do sanatorium" %>
+        </div>
+      </div>
+      <%= render DashFormErrorComponent.new(model: @treatment_update, field: :name) %>
     </div>
-  <% end %>
-
-  <div>
-    <%= form.label :name, style: "display: block" %>
-    <%= form.text_field :name %>
   </div>
 
-  <div>
-    <%= form.label :status, style: "display: block" %>
-    <%= form.text_field :status %>
+  <div class="dash-form__container">
+    <div class="dash-form__group">
+      <div class="dash-form__group__container">
+        <div class="dash-form__group__left">
+          <div class="dash-form__group__title">Opis</div>
+          <p class="dash-form__group__description">Opisz co się zmieniło w terapii.</p>
+        </div>
+        <div class="dash-form__group__right">
+          <%= form.text_area :description, class: "dash-form__input dash-form__textarea",
+              placeholder: "Jest to dieta polegająca na spożywaniu tylko tłuszczy i białek." %>
+        </div>
+      </div>
+      <%= render DashFormErrorComponent.new(model: @treatment_update, field: :description) %>
+    </div>
   </div>
 
-  <div>
-    <%= form.label :description, style: "display: block" %>
-    <%= form.text_area :description %>
+  <div class="dash-form__container">
+    <div class="dash-form__group">
+      <div class="dash-form__group__container">
+        <div class="dash-form__group__left">
+          <div class="dash-form__group__title">Nazwa choroby</div>
+          <p class="dash-form__group__description">Wybierz jedną z listy predefiniowanych.</p>
+        </div>
+        <div class="dash-form__group__right">
+          <%= form.select :status, options_for_select(@treatment_status_options, @treatment_update.status),
+            { include_blank: false }, class: "dash-form__input dash-form__select" %>
+        </div>
+      </div>
+      <%= render DashFormErrorComponent.new(model: @treatment_update, field: :status) %>
+    </div>
   </div>
 
-  <div>
-    <%= form.label :update_date, style: "display: block" %>
-    <%= form.date_field :update_date %>
+  <div class="dash-form__container">
+    <div class="dash-form__group">
+      <div class="dash-form__group__container">
+        <div class="dash-form__group__left">
+          <div class="dash-form__group__title">Data rozpoczęcia</div>
+          <p class="dash-form__group__description">Kiedy rozpocząłeś swoją terapie.</p>
+        </div>
+        <div class="dash-form__group__right">
+          <%= form.datetime_field :update_date, class: "dash-form__input" %>
+        </div>
+      </div>
+      <%= render DashFormErrorComponent.new(model: @treatment_update, field: :update_date) %>
+    </div>
   </div>
 
-  <div>
-    <%= form.label :treatment_id, style: "display: block" %>
-    <%= form.text_field :treatment_id %>
-  </div>
-
-  <div>
-    <%= form.submit %>
+  <div class="dash-form__group">
+    <%= form.submit "Zapisz", class: "dash-form__submit dash-button dash-button--new" %>
   </div>
 <% end %>

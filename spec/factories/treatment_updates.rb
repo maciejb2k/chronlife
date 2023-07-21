@@ -6,7 +6,7 @@
 #  description  :text             default(""), not null
 #  name         :string           default(""), not null
 #  status       :string           default(""), not null
-#  update_date  :date             not null
+#  update_date  :datetime         not null
 #  created_at   :datetime         not null
 #  updated_at   :datetime         not null
 #  treatment_id :uuid             not null

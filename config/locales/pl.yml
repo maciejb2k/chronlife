@@ -16,3 +16,10 @@ pl:
       date: '%Y-%m-%d'
       time: '%H:%M:%S'
       datetime: '%Y-%m-%d %H:%M:%S'
+  activerecord:
+    attributes:
+      treatment_update:
+        statuses:
+          improvement: 🙂 Poprawa
+          no_change: 😐 Brak zmian
+          worsening: 🙁 Pogorszenie

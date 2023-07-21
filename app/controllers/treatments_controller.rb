@@ -12,7 +12,7 @@ class TreatmentsController < BaseController
   end
 
   def show
-    @pagy_treatments, @updates = pagy(@treatment.updates)
+    @pagy_treatments, @treatment_updates = pagy(@treatment.updates.order(update_date: :desc))
     @pagy_treatment_diseases, @treatment_diseases = pagy(@treatment.treatment_diseases, items: 5)
   end
 

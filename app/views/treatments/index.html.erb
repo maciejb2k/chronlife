@@ -39,12 +39,12 @@
             <% end %>
           </h2>
           <p class="treatment-card__diseases">
-            Leczone choroby: <%= @treatments.length %>
+            Przypisane choroby: <%= treatment.treatment_diseases.length %>
           </p>
           <div class="treatment-card__footer">
             <span class="treatment-card__date">
               <i class="ri-calendar-line treatment-card__icon"></i>
-              Terapia trwa <%= treatment.days_difference %> dni
+              Terapia trwa od <%= treatment.days_difference %> dni
             </span>
             <%= link_to "Zobacz", treatment, class: "treatment-card__button" %>
           </div>

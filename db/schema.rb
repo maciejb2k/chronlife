@@ -166,7 +166,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_07_20_140643) do
     t.string "name", default: "", null: false
     t.string "status", default: "", null: false
     t.text "description", default: "", null: false
-    t.date "update_date", default: -> { "now()" }, null: false
+    t.datetime "update_date", default: -> { "CURRENT_TIMESTAMP" }, null: false
     t.uuid "treatment_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
