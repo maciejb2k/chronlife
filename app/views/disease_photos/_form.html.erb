@@ -1,0 +1,37 @@
+<%= form_with(model: [@disease, @disease_photo], html: { class: "dash-form" }) do |form| %>
+  <div class="dash-form__container">
+    <div class="dash-form__group">
+      <div class="dash-form__group__container">
+        <div class="dash-form__group__left">
+          <div class="dash-form__group__title">Zdjęcie</div>
+          <p class="dash-form__group__description">Wybierz zdjęcie związane z chorobą.</p>
+        </div>
+        <div class="dash-form__group__right">
+          <%= form.hidden_field :image, value: @disease_photo.cached_image_data, id: nil %>
+          <%= form.file_field :image %>
+        </div>
+      </div>
+      <%= render DashFormErrorComponent.new(model: @disease_photo, field: :image) %>
+    </div>
+  </div>
+
+  <div class="dash-form__container">
+    <div class="dash-form__group">
+      <div class="dash-form__group__container">
+        <div class="dash-form__group__left">
+          <div class="dash-form__group__title">Podpis</div>
+          <p class="dash-form__group__description">Podpis do swojego zdjęcie.</p>
+        </div>
+        <div class="dash-form__group__right">
+          <%= form.text_field :caption, class: "dash-form__input",
+              placeholder: "np. Zdjęcie stanu zapalnego" %>
+        </div>
+      </div>
+      <%= render DashFormErrorComponent.new(model: @disease_photo, field: :caption) %>
+    </div>
+  </div>
+
+  <div class="dash-form__group">
+    <%= form.submit "Zapisz", class: "dash-form__submit dash-button dash-button--new" %>
+  </div>
+<% end %>

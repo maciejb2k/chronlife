@@ -93,6 +93,10 @@
           color: $dash-text-dark;
           font-size: var(--16px);
           margin-bottom: 3px;
+
+          &::first-letter {
+            text-transform: uppercase;
+          }
         }
 
         &__date {
@@ -102,6 +106,12 @@
           display: flex;
           align-items: center;
           gap: 5px;
+        }
+      }
+
+      &__text {
+        &::first-letter {
+          text-transform: uppercase;
         }
       }
     }

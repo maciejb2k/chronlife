@@ -40,3 +40,7 @@ doc/
 !/app/assets/builds/.keep
 
 /node_modules
+
+# Shrine gem
+/public/uploads
+

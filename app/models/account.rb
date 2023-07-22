@@ -36,9 +36,6 @@ class Account < ApplicationRecord
   has_many :diseases, dependent: :destroy
   has_many :treatments, dependent: :destroy
 
-  has_one_attached :avatar
-  has_one_attached :cover_photo
-
   validates :first_name, presence: true, length: { maximum: 50 }
   validates :last_name, presence: true, length: { maximum: 50 }
   validates :username, presence: true, uniqueness: true, format: { with: /\A[a-z0-9_]+\z/i },
@@ -52,10 +49,6 @@ class Account < ApplicationRecord
                          type: :date
                        },
                        allow_blank: true
-  validates :avatar, content_type: %i[png jpg jpeg],
-                     size: { between: (1.kilobyte)..(2.megabytes) }
-  validates :cover_photo, content_type: %i[png jpg jpeg],
-                          size: { between: (1.kilobyte)..(2.megabytes) }
   validates :country, length: { maximum: 50 }, allow_blank: true
   validates :city, length: { maximum: 50 }, allow_blank: true
   validates :phone_number, phone: { allow_blank: true }

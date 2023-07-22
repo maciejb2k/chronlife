@@ -5,10 +5,6 @@
       <%= render "shared/breadcrumbs" %>
     </div>
     <div class="dash-header__right">
-      <%= link_to treatments_path, class: "dash-button dash-button--new" do %>
-        <i class="ri-add-line dash-button__icon"></i>
-        Przypisz terapię
-      <% end %>
       <%= link_to @disease, class: "dash-button dash-button--back" do %>
         <i class="ri-arrow-left-line dash-button__icon"></i>
       <% end %>

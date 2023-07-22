@@ -1,0 +1,65 @@
+<% content_for :body_attributes do %> data-gallery="true" <% end %>
+
+<div class="page-disease-photos">
+  <header class="dash-header">
+    <div class="dash-header__left">
+      <h1 class="dash-header__title">
+        <i class="ri-camera-3-line dash-header__title__icon"></i>
+        Zdjęcia
+      </h1>
+      <%= render "shared/breadcrumbs" %>
+    </div>
+    <div class="dash-header__right">
+      <%= link_to new_disease_disease_photo_path, class: "dash-button dash-button--new" do %>
+        <i class="ri-add-line dash-button__icon"></i>
+        Dodaj nowe zdjęcie
+      <% end %>
+      <%= link_to @disease, class: "dash-button dash-button--back" do %>
+        <i class="ri-arrow-left-line dash-button__icon"></i>
+      <% end %>
+    </div>
+  </header>
+  <div class="dash-flash-messages">
+    <% if flash[:notice].present? %>
+      <%= render DashAlertComponent.new(type: :success) do %>
+        <%= flash[:notice] %>
+      <% end %>
+    <% end %>
+  </div>
+  <div class="page-disease-photos__content">
+    <% if @disease_photos.to_a.any? %>
+      <div class="photos-gallery">
+        <% @disease_photos.each do |disease_photo| %>
+          <div class="disease-photo">
+            <%= link_to disease_photo.image_url, class: "disease-photo", data: { fslightbox: true, turbo: false } do %>
+              <%= image_tag disease_photo.image_url, class: "disease-photo__image" %>
+            <% end %>
+            <div class="disease-photo__bottom">
+              <p class="disease-photo__date">
+                <i class="ri-calendar-line"></i>
+                <%= disease_photo.created_at.strftime("%d.%m.%Y") %>r.
+              </p>
+              <%= button_to [@disease, disease_photo], method: :delete,
+                  data: { confirm: "Czy na pewno chcesz usunąć?", turbo_confirm: "Czy na pewno chcesz usunąć?" } do %>
+                <i class="ri-close-line disease-photo__delete-icon"></i>
+              <% end %>
+            </div>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  <% else %>
+    <p class="no-results">
+      Na razie nie dodałeś żadnych zdjęć.
+    </p>
+  <% end %>
+</div>
+<div class="dash-pagination">
+  <div class="dash-pagination__controls">
+    <%== pagy_nav(@pagy) if @pagy.pages > 1 %>
+  </div>
+  <div class="dash-pagination__info">
+    <%== pagy_info(@pagy) %>
+  </div>
+</div>
+</div>

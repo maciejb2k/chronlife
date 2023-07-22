@@ -10,3 +10,4 @@ pin "hotkeys-js", to: "https://ga.jspm.io/npm:hotkeys-js@3.11.2/dist/hotkeys.esm
 pin "stimulus-use", to: "https://ga.jspm.io/npm:stimulus-use@0.51.3/dist/index.js"
 pin "sweetalert2", to: "https://ga.jspm.io/npm:sweetalert2@11.7.16/dist/sweetalert2.all.js"
 pin "stimulus-dropdown", to: "https://ga.jspm.io/npm:stimulus-dropdown@2.1.0/dist/stimulus-dropdown.mjs"
+pin "fslightbox", to: "https://ga.jspm.io/npm:fslightbox@3.4.1/index.js"

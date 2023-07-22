@@ -24,12 +24,14 @@ Rails.application.routes.draw do
   post "/setup_account" => "setup_account#create"
 
   resources :my_health, only: [:index]
+
   resources :diseases do
     resources :disease_symptoms do
       resources :disease_symptom_updates, only: %i[create destroy]
     end
     resources :disease_risk_factors
     resources :disease_treatments, only: %i[index]
+    resources :disease_photos, only: %i[index new create destroy]
   end
 
   resources :treatments do

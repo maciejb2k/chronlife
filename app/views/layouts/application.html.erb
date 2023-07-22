@@ -20,9 +20,9 @@
 
     <%= yield :head %>
   </head>
-  <body>
+  <body <%= yield(:body_attributes) %>>
     <%= content_for?(:body) ? yield(:body) : yield %>
 
     <%= yield :javascript %>
   </body>
-</html>
+  </html>

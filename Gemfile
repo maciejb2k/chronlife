@@ -52,9 +52,11 @@ gem 'rqrcode', "~> 2.2.0"
 gem "annotate", "~> 3.2.0"
 
 # Validations
-gem 'active_storage_validations', '~> 1.0.3'
 gem 'phonelib', '~> 0.8.1'
 gem 'validates_timeliness', '~> 7.0.0.beta1'
+
+# File uploads
+gem "shrine", "~> 3.5.0"
 
 # ERB Formatter
 gem "htmlbeautifier"
