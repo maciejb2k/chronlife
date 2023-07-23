@@ -86,6 +86,7 @@ GEM
       rack-test (>= 0.6.3)
       regexp_parser (>= 1.5, < 3.0)
       xpath (~> 3.2)
+    chartkick (5.0.2)
     choice (0.2.0)
     chunky_png (1.4.0)
     concurrent-ruby (1.2.2)
@@ -132,6 +133,8 @@ GEM
     ffi (1.15.5)
     globalid (1.1.0)
       activesupport (>= 5.0)
+    groupdate (6.3.0)
+      activesupport (>= 6.1)
     hashie (5.0.0)
     htmlbeautifier (1.4.2)
     i18n (1.14.1)
@@ -415,6 +418,7 @@ DEPENDENCIES
   bcrypt (~> 3.1.19)
   bootsnap (~> 1.16.0)
   capybara
+  chartkick (~> 5.0.2)
   cssbundling-rails
   debug (~> 1.8.0)
   devise (~> 4.9.2)
@@ -422,6 +426,7 @@ DEPENDENCIES
   dotenv-rails (~> 2.8.1)
   factory_bot_rails (~> 6.2.0)
   faker (~> 3.2.0)
+  groupdate (~> 6.3.0)
   htmlbeautifier
   importmap-rails (~> 1.2.1)
   jbuilder (~> 2.11.5)

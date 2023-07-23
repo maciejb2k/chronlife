@@ -21,7 +21,7 @@ class DiseaseSymptomsController < BaseController
   def show
     @disease_symptom_update = DiseaseSymptomUpdate.new
     @pagy, @disease_symptom_updates = pagy(
-      @disease_symptom.updates.order(update_date: :desc, intensity: :desc), items: 8
+      @disease_symptom.updates.all, items: 8
     )
   end
 
