@@ -38,6 +38,7 @@ class Disease < ApplicationRecord
   has_many :risk_factors, class_name: "DiseaseRiskFactor", dependent: :destroy,
                           inverse_of: :disease
   has_many :photos, class_name: "DiseasePhoto", dependent: :destroy, inverse_of: :disease
+  has_many :statuses, class_name: "DiseaseStatus", dependent: :destroy, inverse_of: :disease
 
   validates :diagnosed_at, timeliness: { on_or_before: -> { Time.zone.now }, type: :date },
                            allow_blank: true

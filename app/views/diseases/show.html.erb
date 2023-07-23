@@ -20,7 +20,7 @@
   <div class="page-disease__content">
     <div class="disease">
       <nav class="navigation">
-        <%= link_to authenticated_root_path, class: "navigation__item" do %>
+        <%= link_to disease_disease_statuses_path(@disease), class: "navigation__item" do %>
           <i class="ri-hearts-line navigation__item__icon"></i>
           <p class="navigation__item__text">Stan zdrowia</p>
         <% end %>

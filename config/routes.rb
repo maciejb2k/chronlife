@@ -32,6 +32,7 @@ Rails.application.routes.draw do
     resources :disease_risk_factors
     resources :disease_treatments, only: %i[index]
     resources :disease_photos, only: %i[index new create destroy]
+    resources :disease_statuses
   end
 
   resources :treatments do

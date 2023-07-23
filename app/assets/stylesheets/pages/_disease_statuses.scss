@@ -1,0 +1,121 @@
+.page-disease-statuses {
+  &__content {
+    padding: 30px 0;
+    display: flex;
+    border-bottom: 1px solid $dash-base-border;
+    gap: 40px;
+    justify-content: center;
+
+    .disease-statuses-container {
+      max-width: 800px;
+      width: 600px;
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    .disease-status {
+      background: #ffffff;
+      border-radius: 3px;
+      border: 1px solid $dash-base-border;
+      padding: 20px;
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+
+      &__header {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        width: 100%;
+
+        &__left {
+          display: flex;
+          align-items: center;
+          gap: 20px;
+        }
+
+        &__right {
+          display: flex;
+          align-items: center;
+          gap: 20px;
+        }
+
+        &__date {
+          font-size: var(--14px);
+          font-weight: 400;
+          color: $dash-text-light;
+        }
+
+        &__user {
+        }
+
+        &__title {
+          font-size: var(--16px);
+          font-weight: 600;
+        }
+
+        &__username {
+          font-size: var(--14px);
+          font-weight: 400;
+          color: $dash-text-light;
+          display: flex;
+          align-items: center;
+          gap: 10px;
+        }
+      }
+
+      &__mood {
+        font-size: var(--14px);
+        font-weight: 400;
+        color: $dash-text-light;
+        display: flex;
+        align-items: center;
+        gap: 5px;
+        font-weight: 600;
+
+        &__icon {
+          font-size: var(--18px);
+          font-weight: 400;
+        }
+
+        &--sad {
+          color: $color-danger;
+        }
+
+        &--normal {
+          color: #208ed2;
+        }
+
+        &--happy {
+          color: $color-success;
+        }
+      }
+
+      &__photo {
+        width: 40px;
+        height: 40px;
+        border-radius: 50px;
+      }
+
+      &__content {
+        margin-top: 20px;
+        padding-top: 20px;
+        margin-left: 60px;
+        border-top: 1px solid $dash-base-border;
+      }
+
+      &__title {
+        font-size: var(--16px);
+        font-weight: 600;
+        color: $dash-text-dark;
+      }
+
+      &__text {
+        &::first-letter {
+          text-transform: uppercase;
+        }
+      }
+    }
+  }
+}

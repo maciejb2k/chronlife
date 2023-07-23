@@ -23,3 +23,16 @@ pl:
           improvement: 🙂 Poprawa
           no_change: 😐 Brak zmian
           worsening: 🙁 Pogorszenie
+          unknown: ❓ Nieznany
+      disease_status:
+        statuses:
+          diagnosed: Zdiagnozowana
+          suspicion: Podejrzenie
+          deterioration: Pogorszenie
+          significant_deterioration: Znaczne pogorszenie
+          improvement: Poprawa
+          significant_improvement: Znaczna poprawa
+          cured: Wyleczona
+          relapsed: Nawrót
+          unknown: Nieznany
+

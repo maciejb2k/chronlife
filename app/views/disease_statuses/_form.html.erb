@@ -1,0 +1,52 @@
+<%= form_with(model: [@disease, @disease_status]) do |form| %>
+  <div class="dash-form__container">
+    <div class="dash-form__group">
+      <div class="dash-form__group__container">
+        <div class="dash-form__group__left">
+          <div class="dash-form__group__title">Status</div>
+          <p class="dash-form__group__description">Jak oceniasz stan swojej choroby.</p>
+        </div>
+        <div class="dash-form__group__right">
+          <%= form.select :status, options_for_select(@disease_status_options, @disease_status.status),
+            { include_blank: false }, class: "dash-form__input dash-form__select" %>
+        </div>
+      </div>
+      <%= render DashFormErrorComponent.new(model: @disease_status, field: :status) %>
+    </div>
+  </div>
+  <div class="dash-form__container">
+    <div class="dash-form__group">
+      <div class="dash-form__group__container">
+        <div class="dash-form__group__left">
+          <div class="dash-form__group__title">Opis</div>
+          <p class="dash-form__group__description">Opisz jak się czujesz.</p>
+        </div>
+        <div class="dash-form__group__right">
+          <%= form.text_area :content, class: "dash-form__input dash-form__textarea" %>
+        </div>
+      </div>
+      <%= render DashFormErrorComponent.new(model: @disease_status, field: :content) %>
+    </div>
+  </div>
+  <div class="dash-form__container">
+    <div class="dash-form__group">
+      <div class="dash-form__group__container">
+        <div class="dash-form__group__left">
+          <div class="dash-form__group__title">Samopoczucie</div>
+          <p class="dash-form__group__description">Jak się dzisiaj czujesz?</p>
+        </div>
+        <div class="dash-form__group__right">
+          <div class="dash-form__smiley">
+            <%= form.radio_button :mood, 1, class: "dash-form__smiley__input dash-form__smiley__input--sad", checked: @disease_status.mood == 1 ? true : false %>
+            <%= form.radio_button :mood, 2, class: "dash-form__smiley__input dash-form__smiley__input--neutral", checked: @disease_status.mood == 2 ? true : false %>
+            <%= form.radio_button :mood, 3, class: "dash-form__smiley__input dash-form__smiley__input--happy", checked: @disease_status.mood == 3 ? true : false %>
+          </div>
+        </div>
+      </div>
+      <%= render DashFormErrorComponent.new(model: @disease_status, field: :mood) %>
+    </div>
+  </div>
+  <div class="dash-form__group">
+    <%= form.submit "Zapisz", class: "dash-form__submit dash-button dash-button--new" %>
+  </div>
+<% end %>

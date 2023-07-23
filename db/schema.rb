@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_07_21_113714) do
+ActiveRecord::Schema[7.0].define(version: 2023_07_22_173911) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pgcrypto"
   enable_extension "plpgsql"
@@ -93,6 +93,16 @@ ActiveRecord::Schema[7.0].define(version: 2023_07_21_113714) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["disease_id"], name: "index_disease_risk_factors_on_disease_id"
+  end
+
+  create_table "disease_statuses", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
+    t.text "content", default: "", null: false
+    t.string "status", default: "", null: false
+    t.integer "mood", default: 3, null: false
+    t.uuid "disease_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["disease_id"], name: "index_disease_statuses_on_disease_id"
   end
 
   create_table "disease_symptom_updates", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
@@ -242,6 +252,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_07_21_113714) do
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
   add_foreign_key "disease_photos", "diseases"
   add_foreign_key "disease_risk_factors", "diseases"
+  add_foreign_key "disease_statuses", "diseases"
   add_foreign_key "disease_symptom_updates", "disease_symptoms"
   add_foreign_key "disease_symptoms", "diseases"
   add_foreign_key "disease_symptoms", "predefined_symptoms"

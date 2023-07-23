@@ -1,0 +1,109 @@
+<div class="page-disease-statuses">
+  <header class="dash-header">
+    <div class="dash-header__left">
+      <h1 class="dash-header__title">
+        <i class="ri-hearts-line dash-header__title__icon"></i>
+        Stan zdrowia
+      </h1>
+      <%= render "shared/breadcrumbs" %>
+    </div>
+    <div class="dash-header__right">
+      <%= link_to new_disease_disease_status_path, class: "dash-button dash-button--new" do %>
+        <i class="ri-add-line dash-button__icon"></i>
+        Dodaj aktualizację
+      <% end %>
+      <%= link_to @disease, class: "dash-button dash-button--back" do %>
+        <i class="ri-arrow-left-line dash-button__icon"></i>
+      <% end %>
+    </div>
+  </header>
+  <div class="dash-flash-messages">
+    <% if flash[:notice].present? %>
+      <%= render DashAlertComponent.new(type: :success) do %>
+        <%= flash[:notice] %>
+      <% end %>
+    <% end %>
+  </div>
+  <div class="page-disease-statuses__content">
+    <% if @disease_statuses.to_a.any? %>
+      <div class="disease-statuses-container">
+        <% @disease_statuses.each do |disease_status| %>
+          <div class="disease-status">
+            <header class="disease-status__header">
+              <div class="disease-status__header__left">
+                <%= image_tag "avatar.jpg", alt: "Logo", class: "disease-status__photo" %>
+                <div class="disease-status__header__user">
+                  <h3 class="disease-status__header__title"><%= user_full_name %></h3>
+                  <p class="disease-status__header__date">
+                    <%= l disease_status.created_at, format: :long %>
+                  </p>
+                </div>
+              </div>
+              <div class="disease-status__header__right">
+                <% if disease_status.mood == 1 %>
+                  <p class="disease-status__mood disease-status__mood--sad">
+                    <i class="ri-emotion-unhappy-line disease-status__mood__icon"></i>Pogorszenie
+                  </p>
+                <% elsif disease_status.mood == 2 %>
+                  <p class="disease-status__mood disease-status__mood--normal">
+                    <i class="ri-emotion-normal-line disease-status__mood__icon"></i>Bez zmian
+                  </p>
+                <% elsif disease_status.mood == 3 %>
+                  <p class="disease-status__mood disease-status__mood--happy">
+                    <i class="ri-emotion-happy-line disease-status__mood__icon"></i>Polepszenie
+                  </p>
+                <% else %>
+                  <p class="disease-status__mood disease-status__mood--sad">
+                    <i class="ri-sad-line disease-status__mood__icon"></i>Nieznane
+                  </p>
+                <% end %>
+                <div data-controller="dropdown" class="dash-dropdown">
+                  <button class="dash-dropdown__button" type="button" data-action="dropdown#toggle click@window->dropdown#hide">
+                    <i class="ri-more-fill"></i>
+                  </button>
+                  <div
+                    data-dropdown-target="menu"
+                    class="hidden transition transform origin-top-right dash-dropdown__list "
+                    data-transition-enter-from="opacity-0 scale-95"
+                    data-transition-enter-to="opacity-100 scale-100"
+                    data-transition-leave-from="opacity-100 scale-100"
+                    data-transition-leave-to="opacity-0 scale-95"
+                  >
+                    <%= link_to edit_disease_disease_status_path(@disease, disease_status),
+                                data: { action: "dropdown#toggle" }, class: "dash-dropdown__item" do %>
+                      <i class="ri-edit-line dash-dropdown__item__icon"></i> Edytuj
+                    <% end %>
+                    <%= button_to [@disease, disease_status], method: :delete, class: "dash-dropdown__item",
+                                data: { action: "dropdown#toggle", confirm: "Are you sure?", turbo_confirm: "Are you sure?" } do %>
+                      <i class="ri-close-line dash-dropdown__item__icon dash-dropdown__item__icon--delete"></i> Usuń
+                    <% end %>
+                  </div>
+                </div>
+              </div>
+            </header>
+            <div class="disease-status__content">
+              <!--<p class="disease-status__title">
+                <%= I18n.t("activerecord.attributes.disease_status.statuses.#{disease_status.status}") %>
+              </p> -->
+              <p class="disease-status__text">
+                <%= disease_status.content %>
+              </p>
+            </div>
+          </div>
+        <% end %>
+      </div>
+    <% else %>
+      <p class="no-results">
+        Na razie nie dodałeś żadnych aktualizacji.
+      </p>
+    <% end %>
+  </div>
+  <div class="dash-pagination">
+    <div class="dash-pagination__controls">
+      <%== pagy_nav(@pagy) if @pagy.pages > 1 %>
+    </div>
+    <div class="dash-pagination__info">
+      <%== pagy_info(@pagy) %>
+    </div>
+  </div>
+</div>
