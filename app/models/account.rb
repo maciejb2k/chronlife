@@ -33,6 +33,8 @@
 #  fk_rails_...  (user_id => users.id)
 #
 class Account < ApplicationRecord
+  EDUCATION_OPTIONS = %w[none primary secondary bachelor master doctorate].freeze
+
   belongs_to :user, dependent: :destroy
 
   has_many :diseases, dependent: :destroy
@@ -55,7 +57,7 @@ class Account < ApplicationRecord
   validates :city, length: { maximum: 50 }, allow_blank: true
   validates :phone_number, phone: { allow_blank: true }
   validates :education, inclusion: {
-                          in: %w[none primary secondary bachelor master doctorate]
+                          in: EDUCATION_OPTIONS
                         },
                         allow_blank: true
 

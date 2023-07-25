@@ -1,0 +1,101 @@
+<div class="page-settings">
+  <header class="dash-header">
+    <div class="dash-header__left">
+      <h1 class="dash-header__title">Ustawienia konta</h1>
+      <%= render "shared/breadcrumbs" %>
+    </div>
+    <div class="dash-header__right">
+      <%= link_to authenticated_root_path, class: "dash-button dash-button--back" do %>
+        <i class="ri-arrow-left-line dash-button__icon"></i>
+        Powrót
+      <% end %>
+    </div>
+  </header>
+  <div class="dash-flash-messages">
+    <% if flash[:notice].present? %>
+      <%= render DashAlertComponent.new(type: :success) do %>
+        <%= flash[:notice] %>
+      <% end %>
+    <% end %>
+  </div>
+  <div class="page-settings__content">
+    <div class="page-settings__nav">
+      <%= render "shared/settings_nav" %>
+    </div>
+    <div class="page-settings__frame">
+      <div class="settings-group">
+        <header class="settings-group__header">
+          <h3 class="settings-group__header__title">Twoje dane</h3>
+        </header>
+        <div class="settings-group__content">
+          <%= form_with(model: [:settings, @account], html: { class: "settings-form" } ) do |f| %>
+            <div class="settings-form__group">
+              <%= f.label :first_name, "Imię", class: "settings-form__label" %>
+              <%= f.text_field :first_name, class: "settings-form__input" %>
+              <%= render DashFormErrorComponent.new(model: @account, field: :first_name) %>
+            </div>
+            <div class="settings-form__group">
+              <%= f.label :last_name, "Nazwisko", class: "settings-form__label" %>
+              <%= f.text_field :last_name, class: "settings-form__input" %>
+              <%= render DashFormErrorComponent.new(model: @account, field: :last_name) %>
+            </div>
+            <div class="settings-form__group">
+              <%= f.label :username, "Nazwa użytkownika", class: "settings-form__label" %>
+              <%= f.text_field :username, class: "settings-form__input", disabled: true %>
+              <p class="settings-form__desc">Nie możesz zmienić swojej nazwy użytkownika.</p>
+              <%= render DashFormErrorComponent.new(model: @account, field: :username) %>
+            </div>
+            <div class="settings-form__group">
+              <%= f.label :birthday, "Urodziny", class: "settings-form__label" %>
+              <%= f.date_field :birthday, class: "settings-form__input" %>
+              <%= render DashFormErrorComponent.new(model: @account, field: :birthday) %>
+            </div>
+            <div class="settings-form__group">
+              <%= f.submit "Zapisz", class: "dash-button dash-button--new settings-form__submit" %>
+            </div>
+          <% end %>
+        </div>
+      </div>
+      <div class="settings-group">
+        <header class="settings-group__header">
+          <h3 class="settings-group__header__title">Dane adresowe</h3>
+        </header>
+        <div class="settings-group__content">
+          <%= form_with(model: [:settings, @account], html: { class: "settings-form" } ) do |f| %>
+            <div class="settings-form__group">
+              <%= f.label :city, "Miasto", class: "settings-form__label" %>
+              <%= f.text_field :city, class: "settings-form__input", placeholder: "Rzeszów" %>
+              <%= render DashFormErrorComponent.new(model: @account, field: :city) %>
+            </div>
+            <div class="settings-form__group">
+              <%= f.label :country, "Kraj", class: "settings-form__label" %>
+              <%= f.text_field :country, class: "settings-form__input", placeholder: "Polska" %>
+              <%= render DashFormErrorComponent.new(model: @account, field: :country) %>
+            </div>
+            <div class="settings-form__group">
+              <%= f.submit "Zapisz", class: "dash-button dash-button--new settings-form__submit" %>
+            </div>
+          <% end %>
+        </div>
+      </div>
+      <div class="settings-group">
+        <header class="settings-group__header">
+          <h3 class="settings-group__header__title">Edukacja</h3>
+        </header>
+        <div class="settings-group__content">
+          <%= form_with(model: [:settings, @account], html: { class: "settings-form" } ) do |f| %>
+            <div class="settings-form__group">
+              <%= f.label :education, "Wykształcenie", class: "settings-form__label" %>
+              <%= f.select :education, options_for_select(@education_options, @account.education),
+                  { include_blank: true }, class: "settings-form__input" %>
+              <%= render DashFormErrorComponent.new(model: @account, field: :education) %>
+            </div>
+            <div class="settings-form__group">
+              <%= f.submit "Zapisz", class: "dash-button dash-button--new settings-form__submit" %>
+            </div>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

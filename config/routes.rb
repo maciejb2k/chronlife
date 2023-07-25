@@ -41,9 +41,11 @@ Rails.application.routes.draw do
     resources :treatment_diseases, only: %i[index new create destroy]
   end
 
-  get "/settings", to: redirect("/settings/account")
-  get "/settings/account", to: "settings#account"
-  patch "/settings/account", to: "settings#update_account"
-  get "/settings/privacy", to: "settings#privacy"
-  get "/settings/notifications", to: "settings#notifications"
+  namespace :settings do
+    get "/settings", to: redirect("/settings/account")
+
+    resource :account, only: %i[show update], controller: :account
+    resource :security, only: %i[show], controller: :security
+    resource :two_factor_authentication, only: %i[create]
+  end
 end

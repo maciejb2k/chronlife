@@ -7,15 +7,9 @@
       <% end %>
     </li>
     <li class="settings-nav__list__item">
-      <%= link_to settings_privacy_path, class: "settings-nav__list__link #{'settings-nav__list__link--active' if current_page?(settings_privacy_path)}" do %>
+      <%= link_to settings_security_path, class: "settings-nav__list__link #{'settings-nav__list__link--active' if current_page?(settings_security_path)}" do %>
         <i class="ri-lock-line settings-nav__list__icon"></i>
         Prywatność
-      <% end %>
-    </li>
-    <li class="settings-nav__list__item">
-      <%= link_to settings_notifications_path, class: "settings-nav__list__link #{'settings-nav__list__link--active' if current_page?(settings_notifications_path)}" do %>
-        <i class="ri-notification-line settings-nav__list__icon"></i>
-        Powiadomienia
       <% end %>
     </li>
   </ul>

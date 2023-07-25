@@ -10,7 +10,7 @@
       </div>
       <nav class="sidebar__nav">
         <div class="sidebar__nav__group">
-          <p class="sidebar__nav__title">Szybka nawigacja:</p>
+          <p class="sidebar__nav__title">Szybki dostęp:</p>
           <ul class="sidebar__items">
             <li class="sidebar__item">
               <%= link_to authenticated_root_path, class: "sidebar__link" do %>
@@ -121,12 +121,23 @@
           <p class="sidebar__nav__title">Twoje konto:</p>
           <ul class="sidebar__items">
             <li class="sidebar__item">
-              <%= link_to settings_path, class: "sidebar__link" do %>
+              <%= link_to settings_settings_path, class: "sidebar__link" do %>
                 <div class="sidebar__link__group">
                   <i class="ri-settings-3-line sidebar__link__icon"></i>
                   <span class="sidebar__link__text">Ustawienia</span>
                 </div>
                 <i class="ri-arrow-right-s-line sidebar__link__icon"></i>
+              <% end %>
+            </li>
+            <li class="sidebar__item">
+              <%= button_to destroy_user_session_path, method: :delete, class: "sidebar__form-item" do %>
+                <div class="sidebar__link">
+                  <div class="sidebar__link__group">
+                    <i class="ri-logout-box-line sidebar__link__icon"></i>
+                    <span class="sidebar__link__text">Wyloguj</span>
+                  </div>
+                  <i class="ri-arrow-right-s-line sidebar__link__icon"></i>
+                </div>
               <% end %>
             </li>
           </ul>

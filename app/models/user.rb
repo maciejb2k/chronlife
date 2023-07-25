@@ -84,6 +84,11 @@ class User < ApplicationRecord
     otp_provisioning_uri(label, issuer:)
   end
 
+  def otp_qrcode
+    provision_uri = otp_provisioning_uri(email, issuer: "Przewlekli.pl")
+    RQRCode::QRCode.new(provision_uri)
+  end
+
   def generate_two_factor_secret_if_missing!
     return unless otp_secret.nil?
 
@@ -115,5 +120,9 @@ class User < ApplicationRecord
       user.password = Devise.friendly_token[0, 20]
       user.skip_confirmation!
     end
+  end
+
+  def oauth_account?
+    provider.present? && uid.present?
   end
 end
