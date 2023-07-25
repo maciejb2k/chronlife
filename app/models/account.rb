@@ -13,6 +13,7 @@
 #  is_verified                :boolean          default(FALSE), not null
 #  last_name                  :string           default(""), not null
 #  phone_number               :string           default(""), not null
+#  settings                   :jsonb            not null
 #  sex                        :string           default(""), not null
 #  specialization             :string           default(""), not null
 #  specialization_description :string           default(""), not null
@@ -23,6 +24,7 @@
 #
 # Indexes
 #
+#  index_accounts_on_settings  (settings) USING gin
 #  index_accounts_on_user_id   (user_id)
 #  index_accounts_on_username  (username) UNIQUE
 #
@@ -36,8 +38,8 @@ class Account < ApplicationRecord
   has_many :diseases, dependent: :destroy
   has_many :treatments, dependent: :destroy
 
-  validates :first_name, presence: true, length: { maximum: 50 }
-  validates :last_name, presence: true, length: { maximum: 50 }
+  validates :first_name, presence: true, length: { maximum: 32 }
+  validates :last_name, presence: true, length: { maximum: 32 }
   validates :username, presence: true, uniqueness: true, format: { with: /\A[a-z0-9_]+\z/i },
                        length: { maximum: 50 }
 
@@ -45,7 +47,7 @@ class Account < ApplicationRecord
   validates :sex, inclusion: { in: %w[male female other] }, allow_blank: true
   validates :birthday, timeliness: {
                          on_or_after: -> { 100.years.ago },
-                         on_or_before: -> { Date.current },
+                         on_or_before: -> { 3.years.ago.to_date },
                          type: :date
                        },
                        allow_blank: true

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_07_22_173911) do
+ActiveRecord::Schema[7.0].define(version: 2023_07_24_145115) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pgcrypto"
   enable_extension "plpgsql"
@@ -22,7 +22,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_07_22_173911) do
     t.string "username"
     t.text "bio", default: "", null: false
     t.string "sex", default: "", null: false
-    t.date "birthday", default: "1970-01-01", null: false
+    t.date "birthday"
     t.string "country", default: "", null: false
     t.string "city", default: "", null: false
     t.string "phone_number", default: "", null: false
@@ -34,6 +34,8 @@ ActiveRecord::Schema[7.0].define(version: 2023_07_22_173911) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.uuid "user_id", null: false
+    t.jsonb "settings", default: {}, null: false
+    t.index ["settings"], name: "index_accounts_on_settings", using: :gin
     t.index ["user_id"], name: "index_accounts_on_user_id"
     t.index ["username"], name: "index_accounts_on_username", unique: true
   end

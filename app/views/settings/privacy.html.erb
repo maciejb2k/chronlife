@@ -1,0 +1,35 @@
+<div class="page-settings">
+  <header class="dash-header">
+    <div class="dash-header__left">
+      <h1 class="dash-header__title">Ustawienia prywatności</h1>
+      <%= render "shared/breadcrumbs" %>
+    </div>
+    <div class="dash-header__right">
+      <%= link_to authenticated_root_path, class: "dash-button dash-button--back" do %>
+        <i class="ri-arrow-left-line dash-button__icon"></i>
+        Powrót
+      <% end %>
+    </div>
+  </header>
+  <div class="dash-flash-messages">
+    <% if flash[:notice].present? %>
+      <%= render DashAlertComponent.new(type: :success) do %>
+        <%= flash[:notice] %>
+      <% end %>
+    <% end %>
+  </div>
+  <div class="page-settings__content">
+    <div class="page-settings__nav">
+      <%= render "shared/settings_nav" %>
+    </div>
+    <div class="page-settings__frame">
+      <div class="settings-group">
+        <header class="settings-group__header">
+          <h3 class="settings-group__header__title">Prywatność</h3>
+        </header>
+        <div class="settings-group__content">
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

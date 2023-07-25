@@ -13,6 +13,7 @@
 #  is_verified                :boolean          default(FALSE), not null
 #  last_name                  :string           default(""), not null
 #  phone_number               :string           default(""), not null
+#  settings                   :jsonb            not null
 #  sex                        :string           default(""), not null
 #  specialization             :string           default(""), not null
 #  specialization_description :string           default(""), not null
@@ -23,6 +24,7 @@
 #
 # Indexes
 #
+#  index_accounts_on_settings  (settings) USING gin
 #  index_accounts_on_user_id   (user_id)
 #  index_accounts_on_username  (username) UNIQUE
 #

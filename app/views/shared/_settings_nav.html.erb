@@ -1,0 +1,23 @@
+<nav class="settings-nav">
+  <ul class="settings-nav__list">
+    <li class="settings-nav__list__item">
+      <%= link_to settings_account_path, class: "settings-nav__list__link #{'settings-nav__list__link--active' if current_page?(settings_account_path)}" do %>
+        <i class="ri-user-3-line settings-nav__list__icon"></i>
+        Konto
+      <% end %>
+    </li>
+    <li class="settings-nav__list__item">
+      <%= link_to settings_privacy_path, class: "settings-nav__list__link #{'settings-nav__list__link--active' if current_page?(settings_privacy_path)}" do %>
+        <i class="ri-lock-line settings-nav__list__icon"></i>
+        Prywatność
+      <% end %>
+    </li>
+    <li class="settings-nav__list__item">
+      <%= link_to settings_notifications_path, class: "settings-nav__list__link #{'settings-nav__list__link--active' if current_page?(settings_notifications_path)}" do %>
+        <i class="ri-notification-line settings-nav__list__icon"></i>
+        Powiadomienia
+      <% end %>
+    </li>
+  </ul>
+  <div class="settings-nav__separator"></div>
+</nav>

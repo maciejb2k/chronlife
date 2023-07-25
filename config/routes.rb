@@ -29,6 +29,7 @@ Rails.application.routes.draw do
     resources :disease_symptoms do
       resources :disease_symptom_updates, only: %i[create destroy]
     end
+
     resources :disease_risk_factors
     resources :disease_treatments, only: %i[index]
     resources :disease_photos, only: %i[index new create destroy]
@@ -39,4 +40,10 @@ Rails.application.routes.draw do
     resources :treatment_updates
     resources :treatment_diseases, only: %i[index new create destroy]
   end
+
+  get "/settings", to: redirect("/settings/account")
+  get "/settings/account", to: "settings#account"
+  patch "/settings/account", to: "settings#update_account"
+  get "/settings/privacy", to: "settings#privacy"
+  get "/settings/notifications", to: "settings#notifications"
 end

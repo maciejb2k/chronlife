@@ -6,7 +6,7 @@ class CreateAccounts < ActiveRecord::Migration[7.0]
       t.string :username
       t.text :bio, null: false, default: ""
       t.string :sex, null: false, default: ""
-      t.date :birthday, null: false, default: "1970-01-01"
+      t.date :birthday
       t.string :country, null: false, default: ""
       t.string :city, null: false, default: ""
       t.string :phone_number, null: false, default: ""

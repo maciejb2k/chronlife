@@ -35,4 +35,12 @@ pl:
           cured: Wyleczona
           relapsed: Nawrót
           unknown: Nieznany
+      account:
+        education:
+          none: Brak
+          primary: Podstawowe
+          secondary: Średnie
+          bachelor: Licencjat
+          master: Magister
+          doctorate: Doktorat
 
