@@ -46,6 +46,10 @@ Rails.application.routes.draw do
 
     resource :account, only: %i[show update], controller: :account
     resource :security, only: %i[show], controller: :security
-    resource :two_factor_authentication, only: %i[create]
+    namespace :two_factor_authentication do
+      resource :confirmations, only: %i[new create]
+      resource :otp, only: %i[create destroy], controller: :otp
+      resource :recovery_codes, only: %i[show], controller: :recovery_codes
+    end
   end
 end

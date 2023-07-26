@@ -87,6 +87,12 @@
     align-items: center;
     gap: 10px;
 
+    &__text {
+      &::first-letter {
+        text-transform: uppercase;
+      }
+    }
+
     &--active {
       color: $dash-text-light;
     }

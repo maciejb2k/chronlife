@@ -59,7 +59,8 @@
           <h3 class="settings-group__header__title">Dwuskładnikowe uwierzytelnianie</h3>
         </header>
         <div class="settings-group__content">
-          <%= button_to 'Włącz', settings_two_factor_authentication_path, method: :post, class: "dash-button dash-button--new" %>
+          <p class="settings-group__text">2FA nie jest włączone na twoim koncie.</p>
+          <%= button_to 'Włącz', settings_two_factor_authentication_otp_path, method: :post, class: "dash-button dash-button--new" %>
         </div>
       </div>
     </div>

@@ -89,6 +89,10 @@ class User < ApplicationRecord
     RQRCode::QRCode.new(provision_uri)
   end
 
+  def otp_enabled?
+    otp_required_for_login
+  end
+
   def generate_two_factor_secret_if_missing!
     return unless otp_secret.nil?
 

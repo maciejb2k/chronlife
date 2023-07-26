@@ -4,7 +4,7 @@
       <% if crumb.link? %>
         <%= link_to crumb.name, crumb.path, class: "dash-breadcrumbs__link" %>
       <% else %>
-        <%= crumb.name %>
+        <span class="dash-breadcrumbs__item__text"><%= crumb.name %></span>
       <% end %>
       <% unless crumb == breadcrumbs.last %>
         <span class="dash-breadcrumbs__separator">/</span>
