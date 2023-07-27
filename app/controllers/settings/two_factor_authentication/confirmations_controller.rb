@@ -9,7 +9,7 @@ class Settings::TwoFactorAuthentication::ConfirmationsController < BaseControlle
   end
 
   def create
-    if current_user.validate_and_consume_otp!(confirmation_params[:otp_code],
+    if current_user.validate_and_consume_otp!(confirmation_params[:otp_attempt],
                                               otp_secret: session[:new_otp_secret])
       flash[:notice] = "Poprawnie włączono dwuskładnikowe uwierzytelnianie."
 
@@ -31,7 +31,7 @@ class Settings::TwoFactorAuthentication::ConfirmationsController < BaseControlle
   private
 
   def confirmation_params
-    params.require(:two_factor_setup).permit(:otp_code)
+    params.require(:two_factor_setup).permit(:otp_attempt)
   end
 
   def ensure_otp_secret

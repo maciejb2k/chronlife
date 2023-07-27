@@ -41,8 +41,8 @@
         <%= form_with scope: :two_factor_setup, url: settings_two_factor_authentication_confirmations_path,
             method: :post, html: { class: "setup-2fa__form" } do |f| %>
           <div class="setup-2fa__form__group">
-            <%= f.label :otp_code, "Podaj kod z aplikacji", class: "dash-form__label" %>
-            <%= f.text_field :otp_code, class: "dash-form__input setup-2fa__form__submit",
+            <%= f.label :otp_attempt, "Podaj kod z aplikacji", class: "dash-form__label" %>
+            <%= f.text_field :otp_attempt, class: "dash-form__input setup-2fa__form__submit",
                 placeholder: "123456", autocomplete: false, required: true, autofocus: true %>
           </div>
           <div class="setup-2fa__form__group">
