@@ -2,14 +2,16 @@ class Settings::TwoFactorAuthentication::ConfirmationsController < BaseControlle
   layout "dashboard"
 
   before_action :set_breadcrumbs
-  # before_action :ensure_otp_secret
+  before_action :ensure_otp_secret
 
-  def new; end
+  def new
+    prepare_two_factor_form
+  end
 
   def create
-    if current_user.validate_and_consume_otp!(confirmation_params[:otp_attempt],
+    if current_user.validate_and_consume_otp!(confirmation_params[:otp_code],
                                               otp_secret: session[:new_otp_secret])
-      flash.now[:notice] = "Poprawnie włączono dwuskładnikowe uwierzytelnianie."
+      flash[:notice] = "Poprawnie włączono dwuskładnikowe uwierzytelnianie."
 
       current_user.otp_required_for_login = true
       current_user.otp_secret = session[:new_otp_secret]
@@ -18,9 +20,10 @@ class Settings::TwoFactorAuthentication::ConfirmationsController < BaseControlle
 
       session.delete(:new_otp_secret)
 
-      render "settings/two_factor_authentication/recovery_codes/index"
+      redirect_to settings_security_path
     else
-      flash.now[:alert] = "Nieprawidłowy kod weryfikacyjny. Spróbuj ponownie."
+      flash[:error] = "Nieprawidłowy kod weryfikacyjny. Spróbuj ponownie."
+      prepare_two_factor_form
       render :new, status: :unprocessable_entity
     end
   end
@@ -28,7 +31,7 @@ class Settings::TwoFactorAuthentication::ConfirmationsController < BaseControlle
   private
 
   def confirmation_params
-    params.require(:form_two_factor_confirmation).permit(:otp_attempt)
+    params.require(:two_factor_setup).permit(:otp_code)
   end
 
   def ensure_otp_secret
@@ -40,7 +43,7 @@ class Settings::TwoFactorAuthentication::ConfirmationsController < BaseControlle
     @provision_url = current_user.otp_provisioning_uri(
       current_user.email,
       otp_secret: @new_otp_secret,
-      issuer: Rails.configuration.x.local_domain
+      issuer: "Przewlekli.pl"
     )
 
     @qrcode = RQRCode::QRCode.new(@provision_url)

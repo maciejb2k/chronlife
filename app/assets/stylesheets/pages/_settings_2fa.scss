@@ -1,0 +1,59 @@
+.page-setup-2fa {
+  &__content {
+    padding: 30px 0;
+  }
+
+  .setup-2fa {
+    display: flex;
+    gap: 50px;
+
+    &__left {
+    }
+
+    &__qr-code {
+      width: 250px;
+      height: 250px;
+    }
+
+    &__totp {
+      font-size: var(--14px);
+      padding-bottom: 20px;
+
+      &__label {
+        padding-bottom: 10px;
+        max-width: 400px;
+      }
+
+      &__link {
+        padding: 10px 15px;
+        border: 1px solid #eaeaea;
+        border-radius: 5px;
+        text-decoration: none;
+        color: #909090;
+        font-size: var(--12px);
+        background: #fafafa;
+      }
+    }
+
+    &__input {
+    }
+
+    &__submit {
+    }
+
+    &__form {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+
+      &__group {
+      }
+
+      &__input {
+      }
+
+      &__submit {
+      }
+    }
+  }
+}
