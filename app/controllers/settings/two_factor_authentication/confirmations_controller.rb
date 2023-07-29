@@ -2,6 +2,7 @@ class Settings::TwoFactorAuthentication::ConfirmationsController < BaseControlle
   layout "dashboard"
 
   before_action :set_breadcrumbs
+  before_action :set_breadcrumbs_new, only: [:new]
   before_action :ensure_otp_secret
 
   def new
@@ -20,11 +21,23 @@ class Settings::TwoFactorAuthentication::ConfirmationsController < BaseControlle
 
       session.delete(:new_otp_secret)
 
-      redirect_to settings_security_path
+      respond_to do |format|
+        format.turbo_stream
+        format.html { redirect_to settings_security_path }
+      end
     else
-      flash[:error] = "Nieprawidłowy kod weryfikacyjny. Spróbuj ponownie."
       prepare_two_factor_form
-      render :new, status: :unprocessable_entity
+      flash.now[:error] = "Nieprawidłowy kod weryfikacyjny. Spróbuj ponownie."
+
+      respond_to do |format|
+        format.turbo_stream do
+          render turbo_stream: turbo_stream.update(
+            "flash",
+            partial: "shared/dash_flash"
+          )
+        end
+        format.html { render :new }
+      end
     end
   end
 
@@ -53,6 +66,9 @@ class Settings::TwoFactorAuthentication::ConfirmationsController < BaseControlle
     add_breadcrumb("home", authenticated_root_path)
     add_breadcrumb("ustawienia", settings_settings_path)
     add_breadcrumb("zabezpieczenia", settings_security_path)
+  end
+
+  def set_breadcrumbs_new
     add_breadcrumb("skonfiguruj 2FA")
   end
 end

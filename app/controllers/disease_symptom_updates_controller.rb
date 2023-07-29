@@ -13,10 +13,12 @@ class DiseaseSymptomUpdatesController < BaseController
         end
       else
         format.turbo_stream do
-          render turbo_stream: turbo_stream.replace(
-            @disease_symptom_update,
-            partial: "disease_symptom_updates/form"
-          )
+          render turbo_stream: [
+            turbo_stream.update(
+              @disease_symptom_update,
+              partial: "disease_symptom_updates/form"
+            )
+          ]
         end
         format.html do
           redirect_to [@disease, @disease_symptom],

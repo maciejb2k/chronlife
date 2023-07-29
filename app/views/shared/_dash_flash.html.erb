@@ -1,0 +1,7 @@
+<% flash.keys.each do |type| %>
+  <% if flash[type].present? %>
+    <%= render DashAlertComponent.new(type: type.to_sym) do %>
+      <%= flash[type] %>
+    <% end %>
+  <% end %>
+<% end %>
