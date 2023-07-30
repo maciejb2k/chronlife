@@ -60,11 +60,20 @@
         </header>
         <div class="settings-group__content">
           <% if current_user.otp_enabled? %>
-            <p class="settings-group__text">Dwuskładnikowe uwierzytelnianie jest włączone na twoim koncie.</p>
-            <%= button_to 'Wyłącz', settings_two_factor_authentication_otp_path, method: :delete, class: "dash-button dash-button--delete" %>
+            <div class="settings-group__text-button">
+              <p class="settings-group__text">Dwuskładnikowe uwierzytelnianie jest włączone na twoim koncie.</p>
+              <div class="settings-group__buttons">
+                <%= link_to 'Wygeneruj nowe kody zapasowe', settings_two_factor_authentication_recovery_codes_path, class: "dash-button dash-button--new", data: { turbo: false } %>
+                <%= button_to 'Wyłącz 2FA', settings_two_factor_authentication_otp_path, method: :delete,
+                class: "dash-button dash-button--delete", data: { action: "dropdown#toggle",
+                confirm: "Are you sure?", turbo_confirm: "Are you sure?" } %>
+              </div>
+            </div>
           <% else %>
-            <p class="settings-group__text">2FA nie jest włączone na twoim koncie.</p>
-            <%= button_to 'Włącz', settings_two_factor_authentication_otp_path, method: :post, class: "dash-button dash-button--new" %>
+            <div class="settings-group__text-button">
+              <p class="settings-group__text">2FA nie jest włączone na twoim koncie.</p>
+              <%= button_to 'Włącz', settings_two_factor_authentication_otp_path, method: :post, class: "dash-button dash-button--new" %>
+            </div>
           <% end %>
         </div>
       </div>

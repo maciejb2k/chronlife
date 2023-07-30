@@ -50,7 +50,7 @@ Rails.application.routes.draw do
     namespace :two_factor_authentication do
       resource :otp, only: %i[create destroy], controller: :otp
       resource :confirmations, only: %i[new create]
-      resource :recovery_codes, only: %i[show], controller: :recovery_codes
+      resource :recovery_codes, only: %i[show create], controller: :recovery_codes
     end
   end
 end

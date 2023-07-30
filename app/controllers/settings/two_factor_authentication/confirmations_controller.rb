@@ -31,10 +31,7 @@ class Settings::TwoFactorAuthentication::ConfirmationsController < BaseControlle
 
       respond_to do |format|
         format.turbo_stream do
-          render turbo_stream: turbo_stream.update(
-            "flash",
-            partial: "shared/dash_flash"
-          )
+          render turbo_stream: turbo_stream.update(:flash, partial: "shared/dash_flash")
         end
         format.html { render :new }
       end

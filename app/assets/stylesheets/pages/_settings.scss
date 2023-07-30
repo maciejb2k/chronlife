@@ -82,6 +82,18 @@
       color: $dash-text-light;
       padding-bottom: 10px;
     }
+
+    &__content {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+      align-items: flex-start;
+    }
+
+    &__buttons {
+      display: flex;
+      gap: 10px;
+    }
   }
 
   .settings-form {

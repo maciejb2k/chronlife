@@ -57,3 +57,43 @@
     }
   }
 }
+
+.recovery-codes {
+  max-width: 500px;
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+  align-items: flex-start;
+
+  &__header {
+  }
+
+  &__title {
+    padding-bottom: 10px;
+    font-size: var(--24px);
+  }
+
+  &__desc {
+    font-size: var(--14px);
+    color: $dash-text-light;
+  }
+
+  &__list {
+    padding: 30px 40px;
+    border: 1px solid #eaeaea;
+    border-radius: 5px;
+    text-decoration: none;
+    color: #858585;
+    font-size: var(--16px);
+    background: #ffffff;
+    display: inline-flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+    font-family: monospace;
+    letter-spacing: 0.5px;
+  }
+
+  &__button {
+  }
+}
