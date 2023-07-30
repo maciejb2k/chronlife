@@ -6,13 +6,13 @@
 
         <div class="nav__right">
           <ul class="nav__list">
-            <li class="nav">
+            <li class="nav__item">
               <%= link_to "Chorzy", root_path, class: "nav__link" %>
             </li>
-            <li class="nav">
+            <li class="nav__item">
               <%= link_to "Lekarze", root_path, class: "nav__link" %>
             </li>
-            <li class="nav">
+            <li class="nav__item">
               <%= link_to "Społeczność", root_path, class: "nav__link" %>
             </li>
           </ul>
@@ -27,9 +27,12 @@
   <div class="hero">
     <div class="container">
       <div class="hero__content">
-        <p class="hero__overtitle">#1 platforma w Polsce</p>
-        <h1 class="hero__title">Poczuj się jak w domu 😃</h1>
-        <p class="hero__desc">Dołącz do społeczności osób wspólnie zmagającymi się ze swoimi problemami zdrowotnymi.</p>
+        <div class="hero__text-group">
+          <p class="hero__overtitle">#1 platforma w Polsce <i class="ri-trophy-line"></i></p>
+          <h1 class="hero__title">Poczuj się jak <span class="hero__title__color">w domu</span> <span class="hero__title__emoji"><i class="ri-emotion-happy-line"></i></span></h1>
+          <p class="hero__desc">Dołącz do społeczności osób wspólnie zmagającymi się ze swoimi problemami zdrowotnymi.</p>
+          <%= link_to "Poznaj naszą platformę", root_path, class: "hero__link" %>
+        </div>
         <%= image_tag "happy-people.png", class: "hero__photo", alt: "" %>
       </div>
     </div>
@@ -49,7 +52,7 @@
         </div>
         <div class="showcase__group">
           <div class="showcase__group__left">
-            <%= image_tag "ss2.png", alt: "", class: "showcase__group__photo" %>
+            <%= image_tag "ss3.png", alt: "", class: "showcase__group__photo" %>
           </div>
           <div class="showcase__group__right">
             <h2 class="showcase__group__title">Bezpieczeństwo</h2>

@@ -1,6 +1,6 @@
 # ChronLife
 
-This repository contains my final year computer science project, which is a social platform for people with chronic diseases.
+This repository contains my full-stack side project, which is a social platform for people with chronic diseases.
 
 <p>
   <img src="https://img.shields.io/badge/ruby-%23CC342D.svg?style=for-the-badge&logo=ruby&logoColor=white" alt="Ruby">
@@ -11,3 +11,5 @@ This repository contains my final year computer science project, which is a soci
   <img src="https://img.shields.io/badge/docker-%230db7ed.svg?style=for-the-badge&logo=docker&logoColor=white" alt="Docker">
   <img src="https://img.shields.io/badge/kubernetes-%23326ce5.svg?style=for-the-badge&logo=kubernetes&logoColor=white" alt="Kubernetes">
 </p>
+
+![XD](homepage.png)

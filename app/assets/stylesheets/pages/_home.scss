@@ -2,6 +2,7 @@
   .nav {
     padding: 25px 0;
     background-color: #fffaee;
+    border-bottom: 1px solid #efe9db;
 
     &__content {
       display: flex;
@@ -12,7 +13,7 @@
     &__right {
       display: flex;
       align-items: center;
-      gap: 40px;
+      gap: 50px;
     }
 
     &__logo {
@@ -22,7 +23,7 @@
     &__list {
       display: flex;
       align-items: center;
-      gap: 20px;
+      gap: 30px;
     }
 
     &__buttons {
@@ -41,9 +42,9 @@
       border: 1px solid transparent;
 
       &--login {
-        background: 0;
-        color: #000000;
-        border: 1px solid #000000;
+        background: #99968e;
+        color: #fff;
+        border: 1px solid #ccc8be;
       }
 
       &--register {
@@ -54,7 +55,7 @@
   }
 
   .hero {
-    padding: 30px 0 50px;
+    padding: 50px 0 50px;
     background-color: #fffaee;
 
     &__content {
@@ -64,10 +65,27 @@
       align-items: center;
     }
 
+    &__text-group {
+      padding-bottom: 50px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
     &__title {
       padding-bottom: 10px;
-      font-size: var(--40px);
+      font-size: var(--46px);
       font-weight: 700;
+
+      &__color {
+        color: #ec8117;
+      }
+
+      &__emoji {
+        font-size: var(--50px);
+        font-weight: 400;
+        color: #ec8117;
+      }
     }
 
     &__overtitle {
@@ -79,13 +97,20 @@
 
     &__desc {
       max-width: 500px;
-      padding-bottom: 50px;
       font-size: var(--16px);
       color: #7a6f60;
+      padding-bottom: 20px;
     }
 
     &__photo {
       max-width: 970px;
+    }
+
+    &__link {
+      font-size: var(--16px);
+      font-weight: 600;
+      color: #ec8117;
+      text-decoration: underline;
     }
   }
 
@@ -141,9 +166,8 @@
 
   .footer {
     padding: 20px 0;
-    background-color: #1b4b5e;
+    background-color: #1c1c1c;
     text-align: center;
     color: #ffffff;
-    font-weight: 600;
   }
 }
