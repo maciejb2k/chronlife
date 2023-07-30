@@ -8,8 +8,8 @@ Rails.application.routes.draw do
   }
 
   devise_scope :user do
-    get "/users/sign_in/otp" => "auth/otps#new"
-    post "/users/sign_in/otp" => "auth/otps#create"
+    get "/users/sign_in/otp" => "auth/otp#new"
+    post "/users/sign_in/otp" => "auth/otp#create"
     get "/users/sign_in/recovery_code" => "auth/recovery_codes#new"
     post "/users/sign_in/recovery_code" => "auth/recovery_codes#create"
   end

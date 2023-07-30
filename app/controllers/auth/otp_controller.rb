@@ -1,4 +1,4 @@
-class Auth::OtpsController < DeviseController
+class Auth::OtpController < DeviseController
   include OtpSessionExpirable
 
   prepend_before_action :require_no_authentication, only: %i[new create]

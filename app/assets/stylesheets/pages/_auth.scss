@@ -152,10 +152,10 @@
   }
 
   &__flash {
-    padding: 10px;
+    padding: 10px 15px;
     background: #9cffae;
-    border: 2px solid black;
-    border-radius: 5px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+    border-radius: 3px;
     font-weight: 600;
     margin-bottom: 20px;
     text-align: center;
@@ -166,7 +166,7 @@
   }
 
   &__alert {
-    background: #ffe94a;
+    background: #ff9494;
   }
 
   &__error {
@@ -327,6 +327,24 @@
 
     &:hover {
       background: #56a36b;
+    }
+  }
+}
+
+.auth--2fa-code {
+  background: #f5f9ff;
+
+  .auth__sidebar {
+    background: url("/assets/auth-sidebar-2fa.jpg") no-repeat center center;
+    background-size: cover;
+  }
+
+  .auth-form__submit {
+    background: #5864c7;
+    color: #ffffff;
+
+    &:hover {
+      background: #5864c7;
     }
   }
 }

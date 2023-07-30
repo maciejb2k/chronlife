@@ -9,7 +9,7 @@ module Devise
           session[:otp_user_id_expires_at] = nil
           success!(resource)
         else
-          fail!("Failed to authenticate your code")
+          fail!("Nie udało się zweryfikować kodu.")
         end
       end
 

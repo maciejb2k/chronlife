@@ -1,0 +1,47 @@
+<div class="auth auth--2fa-code">
+  <div class="auth__content">
+    <header class="auth__header">
+      <%= link_to root_path do %>
+        <%= image_tag "logo_pl.png", class: "auth__header__logo", alt: "" %>
+      <% end %>
+    </header>
+
+    <div class="auth__main">
+      <div class=auth__heading>
+        <h1 class="auth__title">Uwierzytelnianie dwuskładnikowe</h1>
+        <p class="auth__desc">Podaj 6-cyfrowy kod z aplikacji.</p>
+      </div>
+
+      <%= form_with(
+            url: users_sign_in_otp_path,
+            scope: :user,
+            method: :post,
+            local: true,
+            html: { class: "auth-form" }
+          ) do |f| %>
+
+        <% if alert %>
+          <div class="auth-form__flash auth-form__alert">
+            <%= alert %>
+          </div>
+        <% end %>
+
+        <% if notice %>
+          <div class="auth-form__flash auth-form__success">
+            <%= notice %>
+          </div>
+        <% end %>
+
+        <div class="auth-form__group">
+          <%= f.label :otp_attempt, "Kod", class: "auth-form__label" %>
+          <%= f.text_field :otp_attempt, autofocus: true, class: "auth-form__input", placeholder: "123456" %>
+        </div>
+
+        <%= f.submit "Wyślij", class: "auth-form__submit" %>
+      <% end %>
+    </div>
+  </div>
+  <div class="auth__sidebar">
+    <%= link_to "Ilustracja pikisuperstar z Freepik", "https://www.freepik.com/free-vector/hand-drawn-flat-design-ssl-illustration_21689578.htm#page=3&query=authentication%20illustration&position=5&from_view=search&track=ais'", class: "auth__credits" %>
+  </div>
+</div>
