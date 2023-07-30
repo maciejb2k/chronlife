@@ -43,10 +43,10 @@ pl:
     sessions:
       user:
         signed_in: "Zostałeś zalogowany."
-        signed_out: "Zostałeś wylogowany."
+        signed_out: ""
       admin:
         signed_in: "Zostałeś zalogowany."
-        signed_out: "Zostałeś wylogowany."
+        signed_out: ""
     unlocks:
       send_instructions: "Za chwilę otrzymasz wiadomość email z instrukcją jak odblokować konto."
       send_paranoid_instructions: "Jeżeli Twoje konto istnieje, otrzymasz wiadomość emial z instrukcją jak odblokować konto."

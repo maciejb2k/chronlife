@@ -13,17 +13,17 @@ class Auth::OmniauthCallbacksController < Devise::OmniauthCallbacksController
     # You need to implement the method below in your model (e.g. app/models/user.rb)
     @user = User.from_omniauth!(request.env["omniauth.auth"])
 
-    if @user.persisted?
-      if @user.otp_required_for_login?
-        sign_out(@user)
-        session[:otp_user_id] = @user.id
-        redirect_to users_sign_in_otp_path
-      else
-        sign_in_and_redirect @user, event: :authentication
-      end
-    else
+    unless @user.persisted?
       session["devise.#{provider}_data"] = request.env["omniauth.auth"].except(:extra)
-      redirect_to new_user_registration_url
+      redirect_to new_user_registration_url and return
+    end
+
+    if @user.otp_required_for_login?
+      sign_out(@user)
+      session[:otp_user_id] = @user.id
+      redirect_to users_sign_in_otp_path
+    else
+      sign_in_and_redirect @user, event: :authentication
     end
   end
 end
