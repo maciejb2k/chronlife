@@ -1,2 +1,66 @@
-<h1>Kutas</h1>
-<p>Morda tam kurwa KJHDSAHKASDHKSDAKHJ</p>
+<div class="home">
+  <header class="nav">
+    <div class="container">
+      <div class="nav__content">
+        <%= image_tag "logo_pl.png", class: "nav__logo", alt: "" %>
+
+        <div class="nav__right">
+          <ul class="nav__list">
+            <li class="nav">
+              <%= link_to "Chorzy", root_path, class: "nav__link" %>
+            </li>
+            <li class="nav">
+              <%= link_to "Lekarze", root_path, class: "nav__link" %>
+            </li>
+            <li class="nav">
+              <%= link_to "Społeczność", root_path, class: "nav__link" %>
+            </li>
+          </ul>
+          <div class="nav__buttons">
+            <%= link_to "Zaloguj się", new_user_session_path, class: "nav__button nav__button--login" %>
+            <%= link_to "Dołącz do nas", new_user_registration_path, class: "nav__button nav__button--register" %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+  <div class="hero">
+    <div class="container">
+      <div class="hero__content">
+        <p class="hero__overtitle">#1 platforma w Polsce</p>
+        <h1 class="hero__title">Poczuj się jak w domu 😃</h1>
+        <p class="hero__desc">Dołącz do społeczności osób wspólnie zmagającymi się ze swoimi problemami zdrowotnymi.</p>
+        <%= image_tag "happy-people.png", class: "hero__photo", alt: "" %>
+      </div>
+    </div>
+  </div>
+  <div class="showcase">
+    <div class="container">
+      <div class="showcase__inner">
+        <div class="showcase__group">
+          <div class="showcase__group__left">
+            <%= image_tag "ss1.png", alt: "", class: "showcase__group__photo" %>
+          </div>
+          <div class="showcase__group__right">
+            <h2 class="showcase__group__title">Śledzenie zdrowia</h2>
+            <p class="showcase__group__desc">Lorem ipsum dolor sit amet consectetur adipisicing elit. Eius error rerum dolorem vitae quia ex suscipit tempora animi fugit aut! Lorem ipsum dolor sit amet consectetur adipisicing elit. Eius error rerum dolorem vitae quia ex suscipit tempora animi fugit aut!</p>
+            <%= link_to "Dowiedz się więcej", root_path, class: "showcase__group__link" %>
+          </div>
+        </div>
+        <div class="showcase__group">
+          <div class="showcase__group__left">
+            <%= image_tag "ss2.png", alt: "", class: "showcase__group__photo" %>
+          </div>
+          <div class="showcase__group__right">
+            <h2 class="showcase__group__title">Bezpieczeństwo</h2>
+            <p class="showcase__group__desc">Lorem ipsum dolor sit amet consectetur adipisicing elit. Eius error rerum dolorem vitae quia ex suscipit tempora animi fugit aut! Lorem ipsum dolor sit amet consectetur adipisicing elit. Eius error rerum dolorem vitae quia ex suscipit tempora animi fugit aut!</p>
+            <%= link_to "Dowiedz się więcej", root_path, class: "showcase__group__link" %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="footer">
+    Copyrigth © 2023 by Maciej Biel. Wszelkie prawa zastrzeżone.
+  </div>
+</div>
