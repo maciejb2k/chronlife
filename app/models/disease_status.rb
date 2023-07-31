@@ -21,6 +21,9 @@
 class DiseaseStatus < ApplicationRecord
   belongs_to :disease, inverse_of: :statuses
 
+  has_many :comments, as: :commentable, dependent: :destroy
+  has_many :reactions, as: :reactable, dependent: :destroy
+
   STATUSES = %w[diagnosed suspicion deterioration significant_deterioration
                 improvement significant_improvement cured relapsed].freeze
 

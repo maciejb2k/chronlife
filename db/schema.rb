@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_07_31_052934) do
+ActiveRecord::Schema[7.0].define(version: 2023_07_31_110157) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pgcrypto"
   enable_extension "plpgsql"
@@ -67,6 +67,17 @@ ActiveRecord::Schema[7.0].define(version: 2023_07_31_052934) do
     t.uuid "blob_id", null: false
     t.string "variation_digest", null: false
     t.index ["blob_id", "variation_digest"], name: "index_active_storage_variant_records_uniqueness", unique: true
+  end
+
+  create_table "comments", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
+    t.text "body", default: "", null: false
+    t.uuid "account_id", null: false
+    t.string "commentable_type", null: false
+    t.uuid "commentable_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["account_id"], name: "index_comments_on_account_id"
+    t.index ["commentable_type", "commentable_id"], name: "index_comments_on_commentable"
   end
 
   create_table "disease_categories", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
@@ -167,6 +178,18 @@ ActiveRecord::Schema[7.0].define(version: 2023_07_31_052934) do
     t.index ["predefined_disease_id"], name: "index_predefined_symptoms_on_predefined_disease_id"
   end
 
+  create_table "reactions", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
+    t.string "type", default: "", null: false
+    t.uuid "account_id", null: false
+    t.string "reactable_type", null: false
+    t.uuid "reactable_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["account_id", "reactable_id", "reactable_type"], name: "index_unique_user_reactable", unique: true
+    t.index ["account_id"], name: "index_reactions_on_account_id"
+    t.index ["reactable_type", "reactable_id"], name: "index_reactions_on_reactable"
+  end
+
   create_table "roles", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
     t.string "name", default: "", null: false
     t.datetime "created_at", null: false
@@ -253,6 +276,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_07_31_052934) do
   add_foreign_key "accounts", "users"
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "comments", "accounts"
   add_foreign_key "disease_photos", "diseases"
   add_foreign_key "disease_risk_factors", "diseases"
   add_foreign_key "disease_statuses", "diseases"
@@ -263,6 +287,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_07_31_052934) do
   add_foreign_key "diseases", "disease_categories"
   add_foreign_key "diseases", "predefined_diseases"
   add_foreign_key "predefined_symptoms", "predefined_diseases"
+  add_foreign_key "reactions", "accounts"
   add_foreign_key "treatment_diseases", "diseases"
   add_foreign_key "treatment_diseases", "treatments"
   add_foreign_key "treatment_updates", "treatments"
