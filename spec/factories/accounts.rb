@@ -10,6 +10,7 @@
 #  education                  :string           default(""), not null
 #  field_of_expertise         :string           default(""), not null
 #  first_name                 :string           default(""), not null
+#  image_data                 :text
 #  is_verified                :boolean          default(FALSE), not null
 #  last_name                  :string           default(""), not null
 #  phone_number               :string           default(""), not null

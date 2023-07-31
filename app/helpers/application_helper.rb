@@ -1,6 +1,16 @@
 module ApplicationHelper
   include Pagy::Frontend
 
+  def user_image
+    return unless current_user
+
+    if current_user.account.image
+      current_user.account.image.url
+    else
+      "avatar-placeholder.png"
+    end
+  end
+
   def user_full_name
     return unless current_user
 

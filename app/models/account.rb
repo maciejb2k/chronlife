@@ -10,6 +10,7 @@
 #  education                  :string           default(""), not null
 #  field_of_expertise         :string           default(""), not null
 #  first_name                 :string           default(""), not null
+#  image_data                 :text
 #  is_verified                :boolean          default(FALSE), not null
 #  last_name                  :string           default(""), not null
 #  phone_number               :string           default(""), not null
@@ -33,6 +34,8 @@
 #  fk_rails_...  (user_id => users.id)
 #
 class Account < ApplicationRecord
+  include ImageUploader::Attachment(:image)
+
   EDUCATION_OPTIONS = %w[none primary secondary bachelor master doctorate].freeze
 
   belongs_to :user, dependent: :destroy

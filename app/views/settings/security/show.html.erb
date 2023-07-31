@@ -28,24 +28,24 @@
           <h3 class="settings-group__header__title">Zmień Hasło</h3>
         </header>
         <div class="settings-group__content">
-          <% if @user.oauth_account? %>
+          <% if @resource.oauth_account? %>
             <p class="settings-group__text">Ta opcja jest dla ciebie wyłączona, ponieważ zarejestrowałeś się poprzez zewnętrznego dostawcę.</p>
           <% else %>
-            <%= form_with(model: @user, url: settings_privacy_path, html: { class: "settings-form" } ) do |f| %>
+            <%= form_for(@resource, url: registration_path(@resource), html: { method: :put, class: "auth-form" }) do |f| %>
               <div class="settings-form__group">
                 <%= f.label :current_password, "Obecne hasło", class: "settings-form__label" %>
                 <%= f.password_field :current_password, class: "settings-form__input"  %>
-                <%= render DashFormErrorComponent.new(model: @user, field: :current_password) %>
+                <%= render DashFormErrorComponent.new(model: @resource, field: :current_password) %>
               </div>
               <div class="settings-form__group">
                 <%= f.label :password, "Hasło", class: "settings-form__label" %>
                 <%= f.password_field :password, class: "settings-form__input"  %>
-                <%= render DashFormErrorComponent.new(model: @user, field: :password) %>
+                <%= render DashFormErrorComponent.new(model: @resource, field: :password) %>
               </div>
               <div class="settings-form__group">
                 <%= f.label :password_confirmation, "Powtórz hasło", class: "settings-form__label" %>
                 <%= f.password_field :password_confirmation, class: "settings-form__input" %>
-                <%= render DashFormErrorComponent.new(model: @user, field: :password_confirmation) %>
+                <%= render DashFormErrorComponent.new(model: @resource, field: :password_confirmation) %>
               </div>
               <div class="settings-form__group">
                 <%= f.submit "Zapisz", class: "dash-button dash-button--new settings-form__submit" %>

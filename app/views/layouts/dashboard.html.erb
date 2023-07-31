@@ -2,7 +2,7 @@
   <div class="dashboard">
     <div class="sidebar">
       <div class="sidebar__profile">
-        <%= image_tag "avatar.jpg", alt: "Logo", class: "sidebar__profile__picture" %>
+        <%= image_tag user_image, alt: "profile picture", class: "sidebar__profile__picture" %>
         <%= link_to authenticated_root_path, class: "sidebar__profile__info" do %>
           <p class="sidebar__profile__name"><%= user_full_name %></p>
           <p class="sidebar__profile__email"><%= user_username %></p>

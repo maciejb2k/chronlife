@@ -4,7 +4,7 @@ class Settings::SecurityController < BaseController
   before_action :set_breadcrumbs
 
   def show
-    @user = current_user
+    @resource = current_user
   end
 
   private

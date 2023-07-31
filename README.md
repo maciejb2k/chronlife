@@ -12,4 +12,4 @@ This repository contains my full-stack side project, which is a social platform 
   <img src="https://img.shields.io/badge/kubernetes-%23326ce5.svg?style=for-the-badge&logo=kubernetes&logoColor=white" alt="Kubernetes">
 </p>
 
-![XD](homepage.png)
+![homepage showing hero section of the platform](homepage.png)

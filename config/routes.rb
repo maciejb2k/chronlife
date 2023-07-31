@@ -44,9 +44,10 @@ Rails.application.routes.draw do
   namespace :settings do
     get "/settings", to: redirect("/settings/account")
 
-    resource :account, only: %i[show update], controller: :account
+    resource :account, only: %i[show update], controller: :account do
+      delete :delete_profile_picture
+    end
     resource :security, only: %i[show], controller: :security
-
     namespace :two_factor_authentication do
       resource :otp, only: %i[create destroy], controller: :otp
       resource :confirmations, only: %i[new create]

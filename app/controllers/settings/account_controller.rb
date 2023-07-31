@@ -16,11 +16,18 @@ class Settings::AccountController < BaseController
     end
   end
 
+  def delete_profile_picture
+    @account.image = nil
+    @account.save!
+
+    redirect_to settings_account_path, notice: "Zaktualizowano zdjęcie profilowe"
+  end
+
   private
 
   def account_params
     params.require(:account).permit(:first_name, :last_name, :email, :birthday, :phone_number,
-                                    :country, :city, :education)
+                                    :country, :city, :education, :image)
   end
 
   def set_account
