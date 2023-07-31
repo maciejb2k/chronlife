@@ -24,6 +24,7 @@ Rails.application.routes.draw do
   post "/setup_account" => "setup_account#create"
 
   resources :my_health, only: [:index]
+  resources :notes
 
   resources :diseases do
     resources :disease_symptoms do

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_07_31_110157) do
+ActiveRecord::Schema[7.0].define(version: 2023_07_31_113030) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pgcrypto"
   enable_extension "plpgsql"
@@ -157,6 +157,65 @@ ActiveRecord::Schema[7.0].define(version: 2023_07_31_110157) do
     t.index ["predefined_disease_id"], name: "index_diseases_on_predefined_disease_id"
   end
 
+  create_table "note_disease_associations", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
+    t.uuid "note_id", null: false
+    t.uuid "disease_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["disease_id"], name: "index_note_disease_associations_on_disease_id"
+    t.index ["note_id", "disease_id"], name: "index_note_disease_associations_on_note_id_and_disease_id", unique: true
+    t.index ["note_id"], name: "index_note_disease_associations_on_note_id"
+  end
+
+  create_table "note_group_associations", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
+    t.uuid "note_id", null: false
+    t.uuid "note_group_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["note_group_id"], name: "index_note_group_associations_on_note_group_id"
+    t.index ["note_id", "note_group_id"], name: "index_note_group_associations_on_note_id_and_note_group_id", unique: true
+    t.index ["note_id"], name: "index_note_group_associations_on_note_id"
+  end
+
+  create_table "note_groups", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
+    t.string "name", default: "", null: false
+    t.uuid "account_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["account_id"], name: "index_note_groups_on_account_id"
+    t.index ["name", "account_id"], name: "index_note_groups_on_name_and_account_id", unique: true
+  end
+
+  create_table "note_tag_associations", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
+    t.uuid "note_id", null: false
+    t.uuid "note_tag_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["note_id", "note_tag_id"], name: "index_note_tag_associations_on_note_id_and_note_tag_id", unique: true
+    t.index ["note_id"], name: "index_note_tag_associations_on_note_id"
+    t.index ["note_tag_id"], name: "index_note_tag_associations_on_note_tag_id"
+  end
+
+  create_table "note_tags", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
+    t.string "name", default: "", null: false
+    t.uuid "account_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["account_id"], name: "index_note_tags_on_account_id"
+    t.index ["name", "account_id"], name: "index_note_tags_on_name_and_account_id", unique: true
+  end
+
+  create_table "notes", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
+    t.string "title", default: "", null: false
+    t.text "content", default: "", null: false
+    t.string "background_color", default: "", null: false
+    t.boolean "is_pinned", default: false, null: false
+    t.uuid "account_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["account_id"], name: "index_notes_on_account_id"
+  end
+
   create_table "predefined_diseases", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
     t.string "name", default: "", null: false
     t.string "related_names", default: [], array: true
@@ -286,6 +345,15 @@ ActiveRecord::Schema[7.0].define(version: 2023_07_31_110157) do
   add_foreign_key "diseases", "accounts"
   add_foreign_key "diseases", "disease_categories"
   add_foreign_key "diseases", "predefined_diseases"
+  add_foreign_key "note_disease_associations", "diseases"
+  add_foreign_key "note_disease_associations", "notes"
+  add_foreign_key "note_group_associations", "note_groups"
+  add_foreign_key "note_group_associations", "notes"
+  add_foreign_key "note_groups", "accounts"
+  add_foreign_key "note_tag_associations", "note_tags"
+  add_foreign_key "note_tag_associations", "notes"
+  add_foreign_key "note_tags", "accounts"
+  add_foreign_key "notes", "accounts"
   add_foreign_key "predefined_symptoms", "predefined_diseases"
   add_foreign_key "reactions", "accounts"
   add_foreign_key "treatment_diseases", "diseases"
