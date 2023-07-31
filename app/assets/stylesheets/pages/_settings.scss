@@ -111,6 +111,14 @@
       padding-top: 5px;
     }
 
+    &__delete-link {
+      font-weight: 600;
+
+      &__icon {
+        color: $color-danger;
+      }
+    }
+
     &__label {
       display: block;
       font-size: var(--16px);

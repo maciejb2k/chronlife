@@ -63,7 +63,11 @@
         <div class="settings-group__content">
           <%= form_with(model: [:settings, @account], html: { class: "settings-form" } ) do |f| %>
             <div class="settings-form__group">
-              <%= f.label :image, "Zdjęcie profilowe", class: "settings-form__label" %>
+              <% if @account.image %>
+                <%= f.label :image, "Zmień zdjęcie profilowe", class: "settings-form__label" %>
+              <% else %>
+                <%= f.label :image, "Nowe zdjęcie profilowe", class: "settings-form__label" %>
+              <% end %>
               <%= f.hidden_field :image, value: @account.cached_image_data, id: nil %>
               <%= f.file_field :image %>
               <%= render DashFormErrorComponent.new(model: @account, field: :image) %>
@@ -73,8 +77,10 @@
             </div>
           <% end %>
           <% if @account.image %>
-            <%= button_to "Usuń zdjęcie profilowe", delete_profile_picture_settings_account_path, method: :delete,
-                class: "dash-button dash-button--delete settings-form__delete-image"%>
+            <%= button_to delete_profile_picture_settings_account_path, method: :delete,
+                class: "settings-form__delete-link" do %>
+              <i class="ri-close-line settings-form__delete-link__icon"></i> Usuń zdjęcie profilowe
+            <% end %>
           <% end %>
         </div>
       </div>
