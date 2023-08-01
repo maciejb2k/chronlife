@@ -28,6 +28,8 @@ Rails.application.routes.draw do
     member do
       patch :pin
       patch :unpin
+      post :add_tag
+      delete :remove_tag
     end
 
     resources :note_tag_associations, only: %i[create destroy]

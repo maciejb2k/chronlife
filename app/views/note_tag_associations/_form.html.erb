@@ -1,11 +1,19 @@
-<%= form_with(model: [@note, @note_tag_association],
-    html: { class: "dash-form dash-form--simple" }) do |form| %>
+<%= form_with(model: @note, url: add_tag_note_path(@note), method: :post, html: { class: "dash-form dash-form--simple" }) do |form| %>
   <div class="flex gap-5 items-end">
     <div class="dash-form__simple-group">
-      <%= form.label :update_date, "Tag", class: "dash-form__label" %>
+      <%= form.label :note_tag_id, "Tag", class: "dash-form__label" %>
       <%= form.select :note_tag_id, options_for_select(@tags_options),
                     { include_blank: false }, class: "dash-form__input dash-form__select" %>
-      <%= render DashFormErrorComponent.new(model: @note_tag_association, field: :note_tag_id) %>
+      <% if @note.errors.any? %>
+        <div class="error-messages">
+          <h2>Validation errors:</h2>
+          <ul>
+            <% @note.errors.full_messages.each do |message| %>
+              <li><%= message %></li>
+            <% end %>
+          </ul>
+        </div>
+      <% end %>
     </div>
     <%= form.submit "Dodaj", class: "dash-button dash-button--new" %>
   </div>

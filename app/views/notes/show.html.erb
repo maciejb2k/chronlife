@@ -55,10 +55,10 @@
                 <% @note_tags.to_a.each do |tag| %>
                   <li class="tags-list__tag <%= "tags-list__tag--active" if params[:tag_id] == tag.id.to_s %>">
                     <div class="tags-list__tag__left">
-                      <p class="tags-list__tag__name"><%= tag.name %></p>
+                      <p class="tags-list__tag__name"><%= tag.note_tag.name %></p>
                     </div>
                     <div class="tags-list__tag__right">
-                      <%= button_to @note, class: "tags-list__tag__button tags-list__tag__button--delete",
+                      <%= button_to remove_tag_note_path(@note, note_tag_id: tag.note_tag.id), class: "tags-list__tag__button tags-list__tag__button--delete",
                           method: :delete, form: { data: { turbo_confirm: 'Czy na pewno chcesz usunąć?' } } do %>
                         <i class="ri-close-line"></i>
                       <% end %>

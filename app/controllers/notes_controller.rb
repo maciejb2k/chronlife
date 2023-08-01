@@ -1,7 +1,7 @@
 class NotesController < ApplicationController
   layout "dashboard"
 
-  before_action :set_note, only: %i[show edit update destroy pin unpin]
+  before_action :set_note, only: %i[show edit update destroy pin unpin add_tag remove_tag]
   before_action :set_tags, only: %i[show edit add_tag]
   before_action :set_tags_options, only: %i[show edit add_tag]
 
@@ -28,7 +28,7 @@ class NotesController < ApplicationController
   end
 
   def show
-    @note_tag_association = NoteTagAssociation.new
+    @note_tag = @note.tags.build
     @pagy, @note_tags = pagy(@note.note_tag_associations)
   end
 
@@ -80,23 +80,23 @@ class NotesController < ApplicationController
   end
 
   def add_tag
-    @note_tag = current_user.account.note_tags.find(params[:note_tag_id])
-
-    @note.note_tags << @note_tag
+    @tag = current_user.account.note_tags.find(add_tag_params[:note_tag_id])
 
     respond_to do |format|
-      format.html { redirect_to notes_url, notice: "Note was successfully destroyed." }
-      format.json { head :no_content }
+      if @note.tags << @tag
+        format.html { redirect_to note_path(@note), notice: "Tag została poprawnie przypisany do notatki." }
+      else
+        format.html { render :new, status: :unprocessable_entity }
+      end
     end
   end
 
   def remove_tag
-    @note_tag = current_user.account.note_tags.find(params[:note_tag_id])
-
-    @note.note_tags.delete(@note_tag)
+    @tag = current_user.account.note_tags.find(remove_tag_params[:note_tag_id])
+    @note.tags.delete(@tag)
 
     respond_to do |format|
-      format.html { redirect_to notes_url, notice: "Note was successfully destroyed." }
+      format.html { redirect_to note_path(@note), notice: "Note was successfully destroyed." }
       format.json { head :no_content }
     end
   end
@@ -117,6 +117,14 @@ class NotesController < ApplicationController
 
   def note_params
     params.require(:note).permit(:title, :content, :background_color, :is_pinned)
+  end
+
+  def add_tag_params
+    params.require(:note).permit(:note_tag_id)
+  end
+
+  def remove_tag_params
+    params.permit(:note_tag_id)
   end
 
   def set_breadcrumbs
