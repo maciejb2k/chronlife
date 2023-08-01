@@ -1,0 +1,57 @@
+.page-note {
+  &__content {
+    padding: 30px 0;
+    display: flex;
+    gap: 50px;
+  }
+
+  &__left {
+    flex-grow: 1;
+  }
+
+  &__right {
+    width: 30%;
+  }
+
+  .note {
+    max-width: 800px;
+    margin-bottom: 20px;
+    min-height: 200px;
+    border: 2px solid transparent;
+    border-radius: 5px;
+    background: #f7df63;
+    padding: 30px;
+    font-weight: 400;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.05);
+    display: flex;
+    flex-direction: column;
+
+    &__label {
+      font-size: var(--14px);
+      color: #5d521e;
+      margin-bottom: 20px;
+    }
+
+    &__body {
+      font-weight: 600;
+      color: #2a2404;
+      display: flex;
+      flex-direction: column;
+      flex-grow: 1;
+      gap: 20px;
+
+      &:first-letter {
+        text-transform: capitalize;
+      }
+    }
+  }
+
+  .assign-tag-form {
+    padding-bottom: 20px;
+    margin-bottom: 20px;
+    border-bottom: 1px solid $dash-base-border;
+  }
+
+  .assigned-tags {
+  }
+}

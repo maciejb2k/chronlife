@@ -1,14 +1,168 @@
-<p style="color: green"><%= notice %></p>
+<div class="page-notes">
+  <header class="dash-header">
+    <div class="dash-header__left">
+      <h1 class="dash-header__title">
+        Notatki
+      </h1>
+      <%= render "shared/breadcrumbs" %>
+    </div>
+    <div class="dash-header__right">
+      <%= link_to authenticated_root_path, class: "dash-button dash-button--back" do %>
+        <i class="ri-arrow-left-line dash-button__icon"></i>
+      <% end %>
+    </div>
+  </header>
+  <div class="dash-flash-messages">
+    <% if flash[:notice].present? %>
+      <%= render DashAlertComponent.new(type: :success) do %>
+        <%= flash[:notice] %>
+      <% end %>
+    <% end %>
+  </div>
+  <div class="page-notes__content">
+    <div class="page-notes__left">
+      <div class="dash-group">
+        <header class="dash-group__header">
+          <h2 class="dash-group__title">
+            <i class="ri-pushpin-line dash-group__title__icon"></i>
+            Przypięte Notatki
+          </h2>
+          <div class="dash-group__actions">
+            <div class="dash-pagination__info">
+              <%== pagy_info(@pagy_pinned) %>
+            </div>
+          </div>
+        </header>
+        <div class="dash-group__content">
+          <% if @notes_pinned.to_a.any? %>
+            <div class="notes-grid">
+              <%  @notes_pinned.each do |note| %>
+                <div class="note note--fill">
+                  <div class="note__body">
+                    <%= link_to note_path(note) do %>
+                      <%= note.title %>
+                    <% end %>
+                  </div>
+                  <div class="note__footer">
+                    <div class="note__date">
+                      <%= time_ago_in_words(note.updated_at) %> temu
+                    </div>
+                    <div class="note__buttons">
+                      <%= link_to unpin_note_path(note), class: "note__button note__button--unpin",
+                    data: { turbo_method: :patch }, method: :patch do %>
+                        <i class="ri-unpin-line note__button__icon"></i>
+                      <% end %>
+                    </div>
+                  </div>
+                </div>
+              <% end %>
+            </div>
+          <% else %>
+            <p class="dash-group__text">Na razie nie przypiąłeś żadnych notatek</p>
+          <% end %>
+          <div class="dash-pagination">
+            <div class="dash-pagination__controls">
+              <%== pagy_nav(@pagy_pinned) if @pagy_pinned.pages > 1 %>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="dash-group">
+        <header class="dash-group__header">
+          <h2 class="dash-group__title">
+            <i class="ri-sticky-note-2-line dash-group__title__icon"></i>
+            Wszystkie Notatki
+          </h2>
+          <div class="dash-group__actions">
+            <div class="dash-pagination__info">
+              <%== pagy_info(@pagy_all) %>
+            </div>
+          </div>
+        </header>
+        <div class="dash-group__content">
+          <div class="notes-grid">
+            <%= link_to new_note_path, class: "note note--add" do %>
+              <i class="ri-add-line note__add-icon"></i>
+            <% end %>
 
-<h1>Notes</h1>
-
-<div id="notes">
-  <% @notes.each do |note| %>
-    <%= render note %>
-    <p>
-      <%= link_to "Show this note", note %>
-    </p>
-  <% end %>
+            <% @notes.each do |note| %>
+              <div class="note note--fill">
+                <div class="note__body">
+                  <%= link_to note_path(note) do %>
+                    <%= note.title %>
+                  <% end %>
+                </div>
+                <div class="note__footer">
+                  <div class="note__date">
+                    <%= time_ago_in_words(note.updated_at) %> temu
+                  </div>
+                  <div class="note__buttons">
+                    <%= link_to pin_note_path(note), class: "note__button note__button--pin",
+                    data: { turbo_method: :patch }, method: :patch do %>
+                      <i class="ri-pushpin-line note__button__icon"></i>
+                    <% end %>
+                  </div>
+                </div>
+              </div>
+            <% end %>
+          </div>
+          <div class="dash-pagination">
+            <div class="dash-pagination__controls">
+              <%== pagy_nav(@pagy_all) if @pagy_all.pages > 1 %>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="page-notes__right">
+      <div class="dash-group">
+        <header class="dash-group__header">
+          <h2 class="dash-group__title">
+            <i class="ri-hashtag dash-group__title__icon"></i>
+            Tagi
+          </h2>
+          <div class="dash-group__actions">
+            <% if params[:tag_id].present? %>
+              <%= link_to notes_path, class: "dash-button dash-button--delete dash-button--small" do %>
+                <i class="ri-close-line dash-button__icon"></i>
+                Wyczyść
+              <% end %>
+            <% end %>
+            <%= link_to new_note_tag_path, class: "dash-button dash-button--new dash-button--small" do %>
+              <i class="ri-add-line dash-button__icon"></i>
+              Dodaj
+            <% end %>
+          </div>
+        </header>
+        <div class="dash-group__content">
+          <% if @tags.to_a.any? %>
+            <ul class="tags-list">
+              <% @tags.to_a.each do |tag| %>
+                <li class="tags-list__tag <%= "tags-list__tag--active" if params[:tag_id] == tag.id.to_s %>">
+                  <div class="tags-list__tag__left">
+                    <i class="ri-hashtag tags-list__tag__icon"></i>
+                    <%= link_to notes_path(tag_id: tag), class: "tags-list__tag__name" do %>
+                      <%= tag.name %>
+                    <% end %>
+                  </div>
+                  <div class="tags-list__tag__right">
+                    <%= link_to edit_note_tag_path(tag), class: "tags-list__tag__button tags-list__tag__button--edit" do %>
+                      <i class="ri-pencil-line"></i>
+                    <% end %>
+                  </div>
+                </li>
+              <% end %>
+            </ul>
+          <% else %>
+            <p class="dash-group__text">Na razie nie dodałeś żadnych tagów</p>
+          <% end %>
+          <div class="dash-pagination">
+            <div class="dash-pagination__controls">
+              <%== pagy_nav(@pagy_all) if @pagy_all.pages > 1 %>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
-
-<%= link_to "New note", new_note_path %>

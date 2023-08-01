@@ -1,17 +1,56 @@
-<%= form_with(model: note) do |form| %>
-  <% if note.errors.any? %>
-    <div style="color: red">
-      <h2><%= pluralize(note.errors.count, "error") %> prohibited this note from being saved:</h2>
-
-      <ul>
-        <% note.errors.each do |error| %>
-          <li><%= error.full_message %></li>
-        <% end %>
-      </ul>
+<%= form_with(model: @note, html: { class: "dash-form" }) do |f| %>
+  <div class="dash-form__container">
+    <div class="dash-form__group">
+      <div class="dash-form__group__container">
+        <div class="dash-form__group__left">
+          <div class="dash-form__group__title">Tytuł</div>
+          <p class="dash-form__group__description">Nadaj tytuł swojej notatce.</p>
+        </div>
+        <div class="dash-form__group__right">
+          <%= f.text_field :title, class: "dash-form__input", placeholder: "Tytuł notatki" %>
+        </div>
+      </div>
+      <%= render DashFormErrorComponent.new(model: @note, field: :title) %>
     </div>
-  <% end %>
+  </div>
 
-  <div>
-    <%= form.submit %>
+  <div class="dash-form__container">
+    <div class="dash-form__group dash-form__group--large">
+      <div class="dash-form__group__container">
+        <div class="dash-form__group__left">
+          <div class="dash-form__group__title">Notatka</div>
+          <p class="dash-form__group__description">Co chcesz napisać w notatce.</p>
+        </div>
+        <div class="dash-form__group__right dash-form__group__right--full">
+          <%= f.text_area :content, class: "dash-form__input dash-form__textarea",
+              placeholder: "Wpisz tutaj cokolwiek.", data: { controller: "textarea-autogrow" } %>
+        </div>
+      </div>
+      <%= render DashFormErrorComponent.new(model: @note, field: :content) %>
+    </div>
+  </div>
+
+  <div class="dash-form__container">
+    <div class="dash-form__group">
+      <div class="dash-form__group__container">
+        <div class="dash-form__group__left">
+          <div class="dash-form__group__title">Przypięcie</div>
+          <p class="dash-form__group__description">Możesz przypiąć swoją notatkę.</p>
+        </div>
+        <div class="dash-form__group__right">
+          <div class="dash-form__checkbox">
+            <%= f.check_box :is_pinned, class: "dash-form__checkbox__input" %>
+            <%= f.label :is_pinned, class: "dash-form__checkbox__label" do %>
+              Czy notatka ma być przypięta?
+            <% end %>
+          </div>
+        </div>
+      </div>
+      <%= render DashFormErrorComponent.new(model: @note, field: :is_pinned) %>
+    </div>
+  </div>
+
+  <div class="dash-form__group">
+    <%= f.submit "Zapisz", class: "dash-form__submit dash-button dash-button--new" %>
   </div>
 <% end %>

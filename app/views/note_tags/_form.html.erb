@@ -1,0 +1,20 @@
+<%= form_with(model: @note_tag, html: { class: "dash-form" }) do |f| %>
+  <div class="dash-form__container">
+    <div class="dash-form__group">
+      <div class="dash-form__group__container">
+        <div class="dash-form__group__left">
+          <div class="dash-form__group__title">Tag</div>
+          <p class="dash-form__group__description">Podaj nazwę tagu, musi być unikalna.</p>
+        </div>
+        <div class="dash-form__group__right">
+          <%= f.text_field :name, class: "dash-form__input", placeholder: "Nazwa tagu" %>
+        </div>
+      </div>
+      <%= render DashFormErrorComponent.new(model: @note_tag, field: :name) %>
+    </div>
+  </div>
+
+  <div class="dash-form__group">
+    <%= f.submit "Zapisz", class: "dash-form__submit dash-button dash-button--new" %>
+  </div>
+<% end %>

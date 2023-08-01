@@ -20,5 +20,8 @@
 class NoteTag < ApplicationRecord
   belongs_to :account
 
+  has_many :note_tag_associations, dependent: :destroy
+  has_many :notes, through: :note_tag_associations, inverse_of: :tags
+
   validates :name, uniqueness: true, presence: true, length: { maximum: 50 }
 end

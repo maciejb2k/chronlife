@@ -21,7 +21,7 @@ class NoteGroup < ApplicationRecord
   belongs_to :account
 
   has_many :note_group_associations, dependent: :destroy
-  has_many :notes, through: :note_group_associations
+  has_many :notes, through: :note_group_associations, inverse_of: :groups
 
   validates :name, uniqueness: true, presence: true, length: { maximum: 50 }
   validates :color, format: { with: /\A#?(?:[A-F0-9]{3}){1,2}\z/i }, allow_blank: true

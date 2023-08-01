@@ -23,5 +23,5 @@ class NoteTagAssociation < ApplicationRecord
   belongs_to :note
   belongs_to :note_tag
 
-  validates :note_id, uniqueness: { scope: :note_tag_id }
+  validates :note_tag_id, uniqueness: { scope: :note_id }
 end

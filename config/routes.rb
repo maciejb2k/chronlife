@@ -24,7 +24,15 @@ Rails.application.routes.draw do
   post "/setup_account" => "setup_account#create"
 
   resources :my_health, only: [:index]
-  resources :notes
+  resources :notes do
+    member do
+      patch :pin
+      patch :unpin
+    end
+
+    resources :note_tag_associations, only: %i[create destroy]
+  end
+  resources :note_tags, except: %i[index show]
 
   resources :diseases do
     resources :disease_symptoms do
@@ -48,7 +56,9 @@ Rails.application.routes.draw do
     resource :account, only: %i[show update], controller: :account do
       delete :delete_profile_picture
     end
+
     resource :security, only: %i[show], controller: :security
+
     namespace :two_factor_authentication do
       resource :otp, only: %i[create destroy], controller: :otp
       resource :confirmations, only: %i[new create]

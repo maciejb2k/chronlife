@@ -1,11 +1,16 @@
-<div class="new-note">
+<div class="new-note-tag">
   <header class="dash-header">
     <div class="dash-header__left">
-      <h1 class="dash-header__title">Edytuj notatkę</h1>
+      <h1 class="dash-header__title">Edytuj tag</h1>
       <%= render "shared/breadcrumbs" %>
     </div>
     <div class="dash-header__right">
-      <%= link_to note_path(@note), class: "dash-button dash-button--back" do %>
+      <%= button_to @note_tag, class: "dash-button dash-button--delete",
+          method: :delete, form: { data: { turbo_confirm: 'Czy na pewno chcesz usunąć?' } } do %>
+        <i class="ri-close-line"></i>
+        Usuń
+      <% end %>
+      <%= link_to notes_path, class: "dash-button dash-button--back" do %>
         <i class="ri-arrow-left-line dash-button__icon"></i>
         Powrót
       <% end %>

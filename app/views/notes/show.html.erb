@@ -1,10 +1,85 @@
-<p style="color: green"><%= notice %></p>
-
-<%= render @note %>
-
-<div>
-  <%= link_to "Edit this note", edit_note_path(@note) %> |
-  <%= link_to "Back to notes", notes_path %>
-
-  <%= button_to "Destroy this note", @note, method: :delete %>
+<div class="page-note">
+  <header class="dash-header">
+    <div class="dash-header__left">
+      <h1 class="dash-header__title"><%= @note.title %></h1>
+      <%= render "shared/breadcrumbs" %>
+    </div>
+    <div class="dash-header__right">
+      <%= link_to edit_note_path, class: "dash-button dash-button--info" do %>
+        <i class="ri-edit-2-line dash-button__icon"></i>
+        Edytuj
+      <% end %>
+      <%= button_to @note, class: "dash-button dash-button--delete",
+          method: :delete, form: { data: { turbo_confirm: 'Czy na pewno chcesz usunąć?' } } do %>
+        <i class="ri-close-line"></i>
+        Usuń
+      <% end %>
+      <%= link_to notes_path, class: "dash-button dash-button--back" do %>
+        <i class="ri-arrow-left-line dash-button__icon"></i>
+        Powrót
+      <% end %>
+    </div>
+  </header>
+  <div class="dash-flash-messages">
+    <% if flash[:notice].present? %>
+      <%= render DashAlertComponent.new(type: :success) do %>
+        <%= flash[:notice] %>
+      <% end %>
+    <% end %>
+  </div>
+  <div class="page-note__content">
+    <div class="page-note__left">
+      <div class="note">
+        <p class="note__label">Utworzono <%= @note.created_at.strftime("%d.%m.%Y") %> - Edytowano <%= time_ago_in_words(@note.updated_at) %> temu</p>
+        <div class="note__body">
+          <%= simple_format(@note.content) %>
+        </div>
+      </div>
+    </div>
+    <div class="page-note__right">
+      <div class="dash-group">
+        <header class="dash-group__header">
+          <h2 class="dash-group__title">
+            <i class="ri-hashtag dash-group__title__icon"></i>
+            Przypisz tagi
+          </h2>
+          <div class="dash-group__actions"></div>
+        </header>
+        <div class="dash-group__content">
+          <div class="assign-tag-form">
+            <%= render "note_tag_associations/form" %>
+          </div>
+          <div class="assigned-tags">
+            <% if @note_tags.to_a.any? %>
+              <ul class="tags-list">
+                <% @note_tags.to_a.each do |tag| %>
+                  <li class="tags-list__tag <%= "tags-list__tag--active" if params[:tag_id] == tag.id.to_s %>">
+                    <div class="tags-list__tag__left">
+                      <p class="tags-list__tag__name"><%= tag.name %></p>
+                    </div>
+                    <div class="tags-list__tag__right">
+                      <%= button_to @note, class: "tags-list__tag__button tags-list__tag__button--delete",
+                          method: :delete, form: { data: { turbo_confirm: 'Czy na pewno chcesz usunąć?' } } do %>
+                        <i class="ri-close-line"></i>
+                      <% end %>
+                    </div>
+                  </li>
+                <% end %>
+              </ul>
+            <% else %>
+              <p class="dash-group__text">Na przypisałeś na razie żadnych tagów.</p>
+            <% end %>
+          </div>
+          <div class="dash-pagination">
+            <div class="dash-pagination__controls">
+              <%== pagy_nav(@pagy) if @pagy.pages > 1 %>
+            </div>
+            <div class="dash-pagination__info">
+              <%== pagy_info(@pagy) %>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>

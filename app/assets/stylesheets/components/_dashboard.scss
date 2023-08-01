@@ -311,6 +311,10 @@
     width: 800px;
     padding: 20px 0;
 
+    &--large {
+      width: 1000px;
+    }
+
     &__container {
       display: flex;
       gap: 60px;
@@ -356,6 +360,10 @@
       justify-content: center;
       flex-grow: 0;
       gap: 10px;
+
+      &--full {
+        flex-grow: 1;
+      }
     }
 
     &__error {
@@ -531,6 +539,11 @@
     font-size: var(--20px);
     color: $dash-text-dark;
     font-weight: 600;
+
+    &__icon {
+      color: $dash-base;
+      margin-right: 5px;
+    }
   }
 
   &__content {
@@ -542,6 +555,10 @@
 
   &--border {
     border-bottom: 1px solid $dash-base-border;
+  }
+
+  &__text {
+    color: $dash-text-light;
   }
 }
 

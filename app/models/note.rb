@@ -23,9 +23,9 @@ class Note < ApplicationRecord
   belongs_to :account
 
   has_many :note_group_associations, dependent: :destroy
-  has_many :note_groups, through: :note_group_associations
+  has_many :groups, through: :note_group_associations, class_name: "NoteGroup", inverse_of: :notes
   has_many :note_tag_associations, dependent: :destroy
-  has_many :note_tags, through: :note_tag_associations
+  has_many :tags, through: :note_tag_associations, class_name: "NoteTag", inverse_of: :notes
 
   validates :title, presence: true, length: { maximum: 50 }
   validates :content, presence: true, length: { maximum: 10_000 }
