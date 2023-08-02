@@ -14,11 +14,11 @@
       padding: 20px 30px;
       border: 1px solid $dash-base-border;
       border-radius: 3px;
-      box-shadow: 0 2px 3px rgba(22, 36, 65, 0.1);
+      // box-shadow: 0 2px 3px rgba(22, 36, 65, 0.1);
 
       &__status {
         color: $dash-text-light;
-        font-weight: 600;
+        font-weight: 500;
         font-size: var(--12px);
         margin-bottom: 10px;
       }
@@ -71,7 +71,7 @@
         padding: 8px 30px;
         border-radius: 3px;
         font-size: var(--14px);
-        font-weight: 600;
+        font-weight: 500;
         cursor: pointer;
         transition: all 0.3s ease-in-out;
 

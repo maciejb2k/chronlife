@@ -5,7 +5,7 @@
   justify-content: center;
   gap: 10px;
   padding: 0 26px;
-  font-weight: 600;
+  font-weight: 500;
   font-size: var(--14px);
   color: #ffffff;
   background: $dash-base;
@@ -203,7 +203,7 @@
 
   &__label {
     display: block;
-    font-weight: 600;
+    font-weight: 500;
     color: $dash-text-dark;
     font-size: var(--14px);
     padding-bottom: 5px;
@@ -221,7 +221,7 @@
 
     &__label {
       font-size: var(--14px);
-      font-weight: 600;
+      font-weight: 500;
       color: $dash-text-dark;
       user-select: none;
     }
@@ -240,7 +240,7 @@
 
     &__value {
       font-size: var(--14px);
-      font-weight: 600;
+      font-weight: 500;
       color: $dash-text-dark;
     }
 
@@ -338,7 +338,7 @@
     }
 
     &__title {
-      font-weight: 600;
+      font-weight: 500;
       color: $dash-text-dark;
       padding-bottom: 3px;
     }
@@ -429,7 +429,7 @@
   }
 
   &__title {
-    font-weight: 600;
+    font-weight: 500;
     padding-bottom: 3px;
   }
 
@@ -452,7 +452,7 @@
     font-size: var(--14px);
 
     .page {
-      font-weight: 600;
+      font-weight: 500;
     }
 
     .prev,
@@ -475,7 +475,7 @@
 
     .active {
       color: $dash-base;
-      font-weight: 600;
+      font-weight: 500;
     }
   }
 
@@ -503,7 +503,7 @@
     &__label {
       color: $dash-text-dark;
       font-size: var(--16px);
-      font-weight: 600;
+      font-weight: 500;
     }
 
     &__desc {
@@ -539,7 +539,7 @@
   &__title {
     font-size: var(--20px);
     color: $dash-text-dark;
-    font-weight: 600;
+    font-weight: 500;
 
     &__icon {
       color: $dash-base;
@@ -616,7 +616,7 @@
     font-size: var(--14px);
     color: $dash-text-dark;
     background: #ffffff;
-    font-weight: 600;
+    font-weight: 500;
     cursor: pointer;
     width: 100%;
 

@@ -42,7 +42,7 @@
         display: flex;
         border: 1px solid $dash-base-border;
         border-radius: 3px;
-        box-shadow: 0 2px 3px rgba(22, 36, 65, 0.1);
+        // box-shadow: 0 2px 3px rgba(22, 36, 65, 0.1);
 
         &--predefined {
           .symptom__icon {
@@ -64,7 +64,7 @@
 
         &__name {
           display: block;
-          font-weight: 600;
+          font-weight: 500;
           color: $dash-text-dark;
           margin-bottom: 3px;
 
@@ -82,7 +82,7 @@
 
         &__icon {
           font-size: var(--16px);
-          font-weight: 600;
+          font-weight: 500;
           color: $dash-text-dark;
         }
       }

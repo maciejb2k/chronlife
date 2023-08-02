@@ -37,7 +37,7 @@
       border-radius: 3px;
       background-color: #fff;
       font-size: var(--14px);
-      font-weight: 600;
+      font-weight: 500;
       cursor: pointer;
       border: 1px solid transparent;
 
@@ -75,7 +75,7 @@
     &__title {
       padding-bottom: 10px;
       font-size: var(--46px);
-      font-weight: 700;
+      font-weight: 500;
 
       &__color {
         color: #ec8117;
@@ -89,8 +89,8 @@
     }
 
     &__overtitle {
-      font-weight: 600;
-      color: #d29700;
+      font-weight: 500;
+      color: #ec8117;
       font-size: var(--14px);
       padding-bottom: 5px;
     }
@@ -108,7 +108,7 @@
 
     &__link {
       font-size: var(--16px);
-      font-weight: 600;
+      font-weight: 500;
       color: #ec8117;
       text-decoration: underline;
     }
@@ -142,7 +142,8 @@
 
       &__photo {
         border-radius: 5px;
-        box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+        // box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+        border: 1px solid $dash-base-border;
       }
 
       &__title {
@@ -157,7 +158,7 @@
 
       &__link {
         font-size: var(--16px);
-        font-weight: 600;
+        font-weight: 500;
         color: #ec8117;
         text-decoration: underline;
       }
@@ -169,5 +170,6 @@
     background-color: #1c1c1c;
     text-align: center;
     color: #ffffff;
+    font-size: var(--14px);
   }
 }

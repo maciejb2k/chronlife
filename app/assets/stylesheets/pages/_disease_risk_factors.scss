@@ -17,14 +17,13 @@
         display: flex;
         align-items: center;
         justify-content: space-between;
-        font-weight: 600;
+        font-weight: 500;
         font-size: var(--16px);
         cursor: pointer;
         color: $dash-text-dark;
         background: #ffffff;
         border: 1px solid $dash-base-border;
         border-radius: 3px;
-        box-shadow: 0 2px 3px rgba(22, 36, 65, 0.1);
 
         &__group {
           display: flex;
@@ -46,7 +45,7 @@
         &__icon {
           display: block;
           font-size: var(--18px);
-          font-weight: 600;
+          font-weight: 500;
           color: $color-danger;
         }
       }

@@ -92,9 +92,10 @@
     padding: 15px 30px;
     align-items: center;
     justify-content: center;
-    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+    // box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+    border: 1px solid $dash-base-border;
     border-radius: 5px;
-    font-weight: 600;
+    font-weight: 500;
     width: 400px;
     transition: background 0.1s ease-in-out;
 
@@ -154,9 +155,10 @@
   &__flash {
     padding: 10px 15px;
     background: #9cffae;
-    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+    // box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+    border: 1px solid $dash-base-border;
     border-radius: 3px;
-    font-weight: 600;
+    font-weight: 500;
     margin-bottom: 20px;
     text-align: center;
   }
@@ -184,19 +186,19 @@
       background: #ff5556;
       border: 2px solid black;
       border-radius: 10px;
-      font-weight: 600;
+      font-weight: 500;
     }
   }
 
   &__input {
     width: 100%;
     padding: 12px 20px;
-    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+    // box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
     border-radius: 1px;
     transition: border 0.1s ease-in-out;
     border-radius: 3px;
     font-size: var(--16px);
-    border: 0;
+    border: 1px solid $dash-base-border;
 
     &::placeholder {
       color: #9b9b9b;
@@ -209,7 +211,7 @@
 
   &__error-message {
     color: #ff5556;
-    font-weight: 600;
+    font-weight: 500;
     display: block;
     padding-top: 5px;
 
@@ -220,14 +222,14 @@
 
   &__label {
     display: block;
-    font-weight: 600;
+    font-weight: 500;
     padding-bottom: 5px;
   }
 
   &__submit {
     padding: 12px 20px;
-    font-weight: 600;
-    box-shadow: 0 2px 3px rgba(0, 0, 0, 0.1);
+    font-weight: 500;
+    // box-shadow: 0 2px 3px rgba(0, 0, 0, 0.1);
     border-radius: 3px;
     margin-top: 20px;
     transition: background 0.1s ease-in-out;

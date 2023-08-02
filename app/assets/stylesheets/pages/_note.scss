@@ -21,14 +21,14 @@
     background: #f7df63;
     padding: 30px;
     font-weight: 400;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.05);
+    // box-shadow: 0 0 10px rgba(0, 0, 0, 0.05);
     display: flex;
     flex-direction: column;
 
     &__label {
       font-size: var(--14px);
       color: #5d521e;
-      font-weight: 600;
+      font-weight: 500;
       margin-bottom: 20px;
     }
 

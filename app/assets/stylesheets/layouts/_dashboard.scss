@@ -37,12 +37,12 @@
       justify-content: center;
       gap: 10px;
       padding: 0 26px;
-      font-weight: 600;
+      font-weight: 500;
       font-size: var(--14px);
       color: #ffffff;
       background: $dash-base;
       border-radius: 3px;
-      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+      // box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
 
       &__icon {
         font-size: var(--18px);
@@ -54,8 +54,8 @@
     &__search {
       display: flex;
       border-radius: 3px;
-      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
-      border: 1px solid #ebebeb;
+      // box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+      border: 1px solid $dash-base-border;
 
       &__input {
         height: 40px;
@@ -107,8 +107,8 @@
       height: 40px;
       border-radius: 50%;
       background-color: #fff;
-      border: 1px solid #ebebeb;
-      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+      border: 1px solid $dash-base-border;
+      // box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
       display: flex;
       align-items: center;
       justify-content: center;
@@ -130,7 +130,7 @@
       width: 40px;
       height: 40px;
       border-radius: 50%;
-      box-shadow: 0 2px 3px rgba(0, 0, 0, 0.2);
+      // box-shadow: 0 2px 3px rgba(0, 0, 0, 0.2);
     }
   }
 
@@ -156,12 +156,12 @@
         width: 60px;
         height: 60px;
         border-radius: 50%;
-        box-shadow: 0 2px 3px rgba(0, 0, 0, 0.2);
+        // box-shadow: 0 2px 3px rgba(0, 0, 0, 0.2);
       }
 
       &__name {
         font-size: var(--16px);
-        font-weight: 600;
+        font-weight: 500;
         color: $dash-text-dark;
       }
 
@@ -215,7 +215,7 @@
 
       &__title {
         font-size: var(--14px);
-        font-weight: 600;
+        font-weight: 500;
         margin-bottom: 5px;
         color: #6f7379;
       }
@@ -231,7 +231,7 @@
       display: flex;
       align-items: center;
       justify-content: space-between;
-      font-weight: 600;
+      font-weight: 500;
       font-size: var(--16px);
       cursor: pointer;
       border-radius: 3px;
