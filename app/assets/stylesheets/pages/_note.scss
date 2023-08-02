@@ -28,11 +28,12 @@
     &__label {
       font-size: var(--14px);
       color: #5d521e;
+      font-weight: 600;
       margin-bottom: 20px;
     }
 
     &__body {
-      font-weight: 600;
+      font-weight: 400;
       color: #2a2404;
       display: flex;
       flex-direction: column;

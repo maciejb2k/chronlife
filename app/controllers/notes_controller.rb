@@ -70,12 +70,16 @@ class NotesController < ApplicationController
   end
 
   def pin
-    @note.update(is_pinned: true)
+    @note.is_pinned = true
+    @note.save(touch: false)
+
     redirect_to notes_path
   end
 
   def unpin
-    @note.update(is_pinned: false)
+    @note.is_pinned = false
+    @note.save(touch: false)
+
     redirect_to notes_path
   end
 
@@ -84,7 +88,9 @@ class NotesController < ApplicationController
 
     respond_to do |format|
       if @note.tags << @tag
-        format.html { redirect_to note_path(@note), notice: "Tag została poprawnie przypisany do notatki." }
+        format.html do
+          redirect_to note_path(@note), notice: "Tag została poprawnie przypisany do notatki."
+        end
       else
         format.html { render :new, status: :unprocessable_entity }
       end
