@@ -14,7 +14,7 @@ class DiseaseSymptomUpdatesController < BaseController
       else
         format.turbo_stream do
           render turbo_stream: [
-            turbo_stream.update(
+            turbo_stream.replace(
               @disease_symptom_update,
               partial: "disease_symptom_updates/form"
             )

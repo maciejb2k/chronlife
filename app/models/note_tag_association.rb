@@ -23,5 +23,5 @@ class NoteTagAssociation < ApplicationRecord
   belongs_to :note
   belongs_to :note_tag
 
-  validates :note_tag_id, uniqueness: { scope: :note_id }
+  validates :note_tag_id, uniqueness: { scope: :note_id, message: "Tag został już przypisany do notatki." }
 end

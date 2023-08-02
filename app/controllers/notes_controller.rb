@@ -87,13 +87,18 @@ class NotesController < ApplicationController
     @tag = current_user.account.note_tags.find(add_tag_params[:note_tag_id])
 
     respond_to do |format|
-      if @note.tags << @tag
-        format.html do
-          redirect_to note_path(@note), notice: "Tag została poprawnie przypisany do notatki."
-        end
-      else
-        format.html { render :new, status: :unprocessable_entity }
+      @note.tags << @tag
+
+      format.html do
+        redirect_to note_path(@note)
       end
+    rescue ActiveRecord::RecordInvalid => e
+      @error_message = e.record.errors.messages_for(:note_tag_id).first
+
+      format.turbo_stream do
+        render turbo_stream: turbo_stream.replace(@note, partial: "note_tag_associations/form")
+      end
+      format.html { redirect_to note_path(@note) }
     end
   end
 
@@ -102,7 +107,7 @@ class NotesController < ApplicationController
     @note.tags.delete(@tag)
 
     respond_to do |format|
-      format.html { redirect_to note_path(@note), notice: "Note was successfully destroyed." }
+      format.html { redirect_to note_path(@note) }
       format.json { head :no_content }
     end
   end

@@ -46,19 +46,17 @@
           <div class="dash-group__actions"></div>
         </header>
         <div class="dash-group__content">
-          <div class="assign-tag-form">
-            <%= render "note_tag_associations/form" %>
-          </div>
+          <%= render "note_tag_associations/form" %>
           <div class="assigned-tags">
             <% if @note_tags.to_a.any? %>
-              <ul class="tags-list">
+              <ul class="assigned-tags__list">
                 <% @note_tags.to_a.each do |tag| %>
-                  <li class="tags-list__tag <%= "tags-list__tag--active" if params[:tag_id] == tag.id.to_s %>">
-                    <div class="tags-list__tag__left">
-                      <p class="tags-list__tag__name"><%= tag.note_tag.name %></p>
+                  <li class="assigned-tags__tag">
+                    <div class="assigned-tags__tag__left">
+                      <p class="assigned-tags__tag__name"><%= tag.note_tag.name %></p>
                     </div>
-                    <div class="tags-list__tag__right">
-                      <%= button_to remove_tag_note_path(@note, note_tag_id: tag.note_tag.id), class: "tags-list__tag__button tags-list__tag__button--delete",
+                    <div class="assigned-tags__tag__right">
+                      <%= button_to remove_tag_note_path(@note, note_tag_id: tag.note_tag.id), class: "assigned-tags__tag__button",
                           method: :delete, form: { data: { turbo_confirm: 'Czy na pewno chcesz usunąć?' } } do %>
                         <i class="ri-close-line"></i>
                       <% end %>

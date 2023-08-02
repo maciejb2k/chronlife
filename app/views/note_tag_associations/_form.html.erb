@@ -1,20 +1,20 @@
-<%= form_with(model: @note, url: add_tag_note_path(@note), method: :post, html: { class: "dash-form dash-form--simple" }) do |form| %>
-  <div class="flex gap-5 items-end">
-    <div class="dash-form__simple-group">
+<%= form_with(model: @note, url: add_tag_note_path(@note),
+    method: :post, html: { class: "assign-tag-form" },
+    id: dom_id(@note)) do |form| %>
+  <div class="dash-form__inline-group dash-form__simple-group ">
+    <div>
       <%= form.label :note_tag_id, "Tag", class: "dash-form__label" %>
       <%= form.select :note_tag_id, options_for_select(@tags_options),
                     { include_blank: false }, class: "dash-form__input dash-form__select" %>
-      <% if @note.errors.any? %>
-        <div class="error-messages">
-          <h2>Validation errors:</h2>
-          <ul>
-            <% @note.errors.full_messages.each do |message| %>
-              <li><%= message %></li>
-            <% end %>
-          </ul>
-        </div>
-      <% end %>
     </div>
     <%= form.submit "Dodaj", class: "dash-button dash-button--new" %>
   </div>
+  <% if @error_message.present? %>
+    <div class="dash-form__group__error">
+      <i class="ri-close-line dash-form__group__error__icon"></i>
+      <div class="dash-form__group__error__inner">
+        <p class="dash-form__group__error__text"><%= @error_message %>.</p>
+      </div>
+    </div>
+  <% end %>
 <% end %>

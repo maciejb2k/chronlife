@@ -28,7 +28,7 @@
     &__label {
       font-size: var(--14px);
       color: #5d521e;
-      font-weight: 500;
+      font-weight: 400;
       margin-bottom: 20px;
     }
 
@@ -53,5 +53,44 @@
   }
 
   .assigned-tags {
+    &__list {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 5px;
+    }
+
+    &__tag {
+      display: flex;
+      gap: 10px;
+      font-size: var(--12px);
+      color: #5d521e;
+      font-weight: 500;
+      padding: 5px 20px;
+      background: #ffffff;
+      border: 1px solid $dash-base-border;
+      border-radius: 50px;
+
+      &__left {
+        display: flex;
+        align-items: center;
+      }
+
+      &__right {
+        display: flex;
+        align-items: center;
+      }
+
+      &__name {
+        &::first-letter {
+          text-transform: capitalize;
+        }
+      }
+
+      &__button {
+        font-size: var(--14px);
+        color: $color-danger;
+      }
+    }
   }
 }

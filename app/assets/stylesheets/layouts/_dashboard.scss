@@ -279,3 +279,8 @@
     overflow-y: scroll;
   }
 }
+
+.no-results {
+  color: $dash-text-light;
+  font-size: var(--14px);
+}

@@ -307,6 +307,12 @@
     }
   }
 
+  &__inline-group {
+    display: flex;
+    align-items: flex-end;
+    gap: 20px;
+  }
+
   &__group {
     width: 800px;
     padding: 20px 0;
