@@ -1,11 +1,15 @@
 module ApplicationHelper
   include Pagy::Frontend
 
+  def current_account
+    @current_account ||= current_user.account
+  end
+
   def user_image
     return unless current_user
 
-    if current_user.account.image
-      current_user.account.image.url
+    if current_account.image
+      current_account.image.url
     else
       "avatar-placeholder.png"
     end
@@ -14,13 +18,13 @@ module ApplicationHelper
   def user_full_name
     return unless current_user
 
-    "#{current_user.account.first_name} #{current_user.account.last_name}"
+    "#{current_account.first_name} #{current_account.last_name}"
   end
 
   def user_username
     return unless current_user
 
-    "@#{current_user.account.username}"
+    "@#{current_account.username}"
   end
 
   def severity_to_string(severity)

@@ -11,16 +11,16 @@ class NotesController < ApplicationController
   before_action :set_breadcrumbs_edit, only: %i[edit update]
 
   def index
-    notes = current_user.account.notes.order(created_at: :desc)
+    notes = current_account.notes.order(created_at: :desc)
 
     if params[:tag_id].present?
-      tag = current_user.account.note_tags.find_by(id: params[:tag_id])
+      tag = current_account.note_tags.find_by(id: params[:tag_id])
       notes = tag ? notes.joins(:note_tag_associations).where(note_tag_associations: { note_tag_id: tag.id }) : []
     end
 
     pinned_notes = notes.where(is_pinned: true)
     unpinned_notes = notes.where(is_pinned: false)
-    tags = current_user.account.note_tags.order(:name)
+    tags = current_account.note_tags.order(:name)
 
     @pagy_pinned, @notes_pinned = pagy(pinned_notes)
     @pagy_all, @notes = pagy(unpinned_notes)
@@ -39,7 +39,7 @@ class NotesController < ApplicationController
   def edit; end
 
   def create
-    @note = current_user.account.notes.build(note_params)
+    @note = current_account.notes.build(note_params)
 
     respond_to do |format|
       if @note.save
@@ -84,7 +84,7 @@ class NotesController < ApplicationController
   end
 
   def add_tag
-    @tag = current_user.account.note_tags.find(add_tag_params[:note_tag_id])
+    @tag = current_account.note_tags.find(add_tag_params[:note_tag_id])
 
     respond_to do |format|
       @note.tags << @tag
@@ -103,7 +103,7 @@ class NotesController < ApplicationController
   end
 
   def remove_tag
-    @tag = current_user.account.note_tags.find(remove_tag_params[:note_tag_id])
+    @tag = current_account.note_tags.find(remove_tag_params[:note_tag_id])
     @note.tags.delete(@tag)
 
     respond_to do |format|
@@ -115,11 +115,11 @@ class NotesController < ApplicationController
   private
 
   def set_note
-    @note = current_user.account.notes.find(params[:id])
+    @note = current_account.notes.find(params[:id])
   end
 
   def set_tags
-    @tags = current_user.account.note_tags
+    @tags = current_account.note_tags
   end
 
   def set_tags_options

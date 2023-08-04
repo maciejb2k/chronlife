@@ -61,7 +61,7 @@ class TreatmentUpdatesController < BaseController
   private
 
   def set_treatment
-    @treatment = current_user.account.treatments.find(params[:treatment_id])
+    @treatment = current_account.treatments.find(params[:treatment_id])
   end
 
   def set_treatment_update

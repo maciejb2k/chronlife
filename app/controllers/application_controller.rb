@@ -3,6 +3,10 @@ class ApplicationController < ActionController::Base
 
   helper_method :breadcrumbs
 
+  def current_account
+    @current_account ||= current_user.account
+  end
+
   def breadcrumbs
     @breadcrumbs ||= []
   end

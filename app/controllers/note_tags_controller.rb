@@ -12,7 +12,7 @@ class NoteTagsController < ApplicationController
   end
 
   def create
-    @note_tag = current_user.account.note_tags.build(note_tag_params)
+    @note_tag = current_account.note_tags.build(note_tag_params)
 
     respond_to do |format|
       if @note_tag.save
@@ -49,7 +49,7 @@ class NoteTagsController < ApplicationController
   end
 
   def set_note_tag
-    @note_tag = current_user.account.note_tags.find(params[:id])
+    @note_tag = current_account.note_tags.find(params[:id])
   end
 
   def set_breadcrumbs

@@ -9,7 +9,7 @@ class DiseasesController < BaseController
 
   def index
     @pagy, @diseases = pagy(
-      current_user.account.diseases.includes(:predefined_disease).all.order(severity: :desc)
+      current_account.diseases.includes(:predefined_disease).all.order(severity: :desc)
     )
   end
 
@@ -26,7 +26,7 @@ class DiseasesController < BaseController
   end
 
   def create
-    @disease = current_user.account.diseases.new(disease_params)
+    @disease = current_account.diseases.new(disease_params)
 
     respond_to do |format|
       if @disease.save
@@ -62,7 +62,7 @@ class DiseasesController < BaseController
   private
 
   def set_disease
-    @disease = current_user.account.diseases.find(params[:id])
+    @disease = current_account.diseases.find(params[:id])
   end
 
   def disease_name

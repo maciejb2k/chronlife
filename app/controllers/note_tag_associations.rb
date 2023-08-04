@@ -3,7 +3,7 @@ class NoteTagAssociations < BaseController
   before_action :set_note_tag_association, only: %i[destroy]
 
   def create
-    @note_tag_association = current_user.account.note_tag_associations.build(note_tag_association_params)
+    @note_tag_association = current_account.note_tag_associations.build(note_tag_association_params)
 
     respond_to do |format|
       if @note_tag_association.save
@@ -28,7 +28,7 @@ class NoteTagAssociations < BaseController
   private
 
   def set_note
-    @note = current_user.account.notes.find(params[:note_id])
+    @note = current_account.notes.find(params[:note_id])
   end
 
   def set_note_tag_association

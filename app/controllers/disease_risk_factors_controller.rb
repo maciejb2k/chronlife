@@ -68,7 +68,7 @@ class DiseaseRiskFactorsController < ApplicationController
   private
 
   def set_disease
-    @disease = current_user.account.diseases.find(params[:disease_id])
+    @disease = current_account.diseases.find(params[:disease_id])
   end
 
   def set_disease_risk_factor

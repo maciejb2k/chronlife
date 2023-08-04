@@ -8,7 +8,7 @@ class TreatmentsController < BaseController
   before_action :set_breadcrumbs_edit, only: %i[edit update]
 
   def index
-    @pagy, @treatments = pagy(current_user.account.treatments.all)
+    @pagy, @treatments = pagy(current_account.treatments.all)
   end
 
   def show
@@ -23,7 +23,7 @@ class TreatmentsController < BaseController
   def edit; end
 
   def create
-    @treatment = current_user.account.treatments.build(treatment_params)
+    @treatment = current_account.treatments.build(treatment_params)
 
     respond_to do |format|
       if @treatment.save
@@ -64,7 +64,7 @@ class TreatmentsController < BaseController
   private
 
   def set_treatment
-    @treatment = current_user.account.treatments.find(params[:id])
+    @treatment = current_account.treatments.find(params[:id])
   end
 
   def treatment_params

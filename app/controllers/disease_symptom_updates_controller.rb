@@ -42,7 +42,7 @@ class DiseaseSymptomUpdatesController < BaseController
   private
 
   def set_disease_symptom
-    @disease = current_user.account.diseases.find(params[:disease_id])
+    @disease = current_account.diseases.find(params[:disease_id])
     @disease_symptom = @disease.symptoms.find(params[:disease_symptom_id])
   end
 

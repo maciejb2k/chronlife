@@ -7,13 +7,13 @@ class BaseController < ApplicationController
   private
 
   def user_account_setup
-    return if current_user.account.present?
+    return if current_account.present?
 
     redirect_to setup_account_path
   end
 
   def user_account_already_setup
-    return if current_user.account.blank?
+    return if current_account.blank?
 
     redirect_to authenticated_root_path
   end

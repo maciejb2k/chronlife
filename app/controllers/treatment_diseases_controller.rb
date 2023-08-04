@@ -45,7 +45,7 @@ class TreatmentDiseasesController < BaseController
   end
 
   def set_treatment
-    @treatment = current_user.account.treatments.find(params[:treatment_id])
+    @treatment = current_account.treatments.find(params[:treatment_id])
   end
 
   def set_treatment_disease
@@ -53,7 +53,7 @@ class TreatmentDiseasesController < BaseController
   end
 
   def set_diseases
-    @diseases = current_user.account.diseases.all.map { |d| [d.predefined_disease.name, d.id] }
+    @diseases = current_account.diseases.all.map { |d| [d.predefined_disease.name, d.id] }
   end
 
   def set_breadcrumbs

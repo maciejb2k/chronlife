@@ -10,8 +10,7 @@ class MeasurementsController < BaseController
 
   def index
     @latest_measurements =
-      current_user
-      .account
+      current_account
       .measurements
       .includes(measurement_type: :unit)
       .joins(measurement_type: :unit)
@@ -27,7 +26,7 @@ class MeasurementsController < BaseController
       @latest[type.to_sym] = latest_measurement
     end
 
-    @measurements = current_user.account.measurements.group_by_day(:measurement_date).count
+    @measurements = current_account.measurements.group_by_day(:measurement_date).count
   end
 
   def show; end
@@ -35,7 +34,7 @@ class MeasurementsController < BaseController
   def show_by_day
     @selected_datetime = Date.parse(params[:day])
     @pagy, @measurements = pagy(
-      current_user.account.measurements.includes(measurement_type: :unit).where(
+      current_account.measurements.includes(measurement_type: :unit).where(
         measurement_date: @selected_datetime.all_day
       )
     )
@@ -56,7 +55,7 @@ class MeasurementsController < BaseController
     # find_by! or find_by and handling the error by myself - which is better?
     measurement_type = MeasurementType.find_by!(name: params[:measurement_type])
 
-    @measurement = current_user.account.measurements.build(measurement_params)
+    @measurement = current_account.measurements.build(measurement_params)
     @measurement.measurement_type = measurement_type
 
     validation_key = generate_validation_key(@measurement.measurement_type.name)
@@ -105,7 +104,7 @@ class MeasurementsController < BaseController
   private
 
   def set_measurement
-    @measurement = current_user.account.measurements.find(params[:id])
+    @measurement = current_account.measurements.find(params[:id])
   end
 
   def measurement_params
