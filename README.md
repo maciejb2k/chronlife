@@ -1,15 +1,72 @@
 # ChronLife
 
-This repository contains my full-stack side project, which is a social platform for people with chronic diseases.
+This repository contains my full-stack side project, which is a social platform for people with chronic diseases. I think this is the biggest project I've ever made by myself.
+
+The purpose of this project is to learn how to build a full-stack applications using Ruby on Rails and it's my final year project for my bachelor's degree in the Computer Science.
+
+**NOTICE**: This project is currently available only in the Polish language due to university requirements (the code is in English, no worries), but I18n is already configured, only the translation files are missing. I will add the translations in the future.
+
+Technologies used in this project:
 
 <p>
   <img src="https://img.shields.io/badge/ruby-%23CC342D.svg?style=for-the-badge&logo=ruby&logoColor=white" alt="Ruby">
-  <img src="https://img.shields.io/badge/rails-%23CC0000.svg?style=for-the-badge&logo=ruby-on-rails&logoColor=white" alt="Rails">
-  <img src="https://img.shields.io/badge/postgres-%23316192.svg?style=for-the-badge&logo=postgresql&logoColor=white" alt="Postgres">
+  <img src="https://img.shields.io/badge/rails_7-%23CC0000.svg?style=for-the-badge&logo=ruby-on-rails&logoColor=white" alt="Rails">
+  <img src="https://img.shields.io/badge/hotwire-%232c2c2c.svg?style=for-the-badge&logo=hotwire&logoColor=white" alt="Hotwire">
+  <img src="https://img.shields.io/badge/postgresql_15-%23316192.svg?style=for-the-badge&logo=postgresql&logoColor=white" alt="Postgres">
   <img src="https://img.shields.io/badge/redis-%23DD0031.svg?style=for-the-badge&logo=redis&logoColor=white" alt="Redis">
-  <img src="https://img.shields.io/badge/-ElasticSearch-005571?style=for-the-badge&logo=elasticsearch" alt="ElasticSearch">
   <img src="https://img.shields.io/badge/docker-%230db7ed.svg?style=for-the-badge&logo=docker&logoColor=white" alt="Docker">
-  <img src="https://img.shields.io/badge/kubernetes-%23326ce5.svg?style=for-the-badge&logo=kubernetes&logoColor=white" alt="Kubernetes">
 </p>
 
-![homepage showing hero section of the platform](homepage.png)
+![homepage showing hero section of the platform](screenshots/home.png)
+
+## Getting started
+
+1. Install the following dependencies:
+- **Ruby** `3.2.0` (I'm using [chruby](https://github.com/postmodern/chruby))
+- **NodeJS** `18.16.1` (I recommend using [nvm](https://github.com/nvm-sh/nvm))
+- **Yarn** (`npm i --global yarn`)
+- **Docker** ([Ubuntu setup](https://docs.docker.com/engine/install/ubuntu/))
+
+2. Create `.env` file in the root directory and fill it with the necessary data. You can use `.env.example` as a template. To setup ActiveRecord encryption, you can use the following command:
+
+```bash
+bin/rails db:encryption:init
+```
+
+3. Setup docker containers for local development:
+
+```bash
+docker-compose up -d
+```
+
+4. Finally, execute the following commands:
+
+```bash
+# Install dependencies
+bundle install
+
+# Setup the Rails application:
+./bin/setup
+
+# Run the application:
+./bin/dev
+```
+
+## Features
+
+Below is a list of features that I've already implemented or I'm planning to implement in the future.
+
+### Auth
+- [x] Users authentication using Devise
+- [x] Confirming account, resetting password
+- [x] Omniauth authentication with Google
+- [x] 2FA authentication
+- [ ] Sing in using backup codes
+
+![sign up screen](screenshots/register.png)
+
+![sign in screen](screenshots/login.png)
+
+![sign in screen](screenshots/password.png)
+
+![two factor authentication screen](screenshots/2fa.png)
