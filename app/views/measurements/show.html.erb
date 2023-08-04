@@ -1,11 +1,20 @@
-<div class="new-note">
+<div class="page-measurement">
   <header class="dash-header">
     <div class="dash-header__left">
-      <h1 class="dash-header__title">Dodaj nowy pomiar</h1>
+      <h1 class="dash-header__title">Pomiar z <%= l(@measurement.measurement_date, format: '%H:%M z dnia %d %B %Yr.') %></h1>
       <%= render "shared/breadcrumbs" %>
     </div>
     <div class="dash-header__right">
-      <%= link_to notes_path, class: "dash-button dash-button--back" do %>
+      <%= link_to edit_measurement_path(@measurement), class: "dash-button dash-button--info" do %>
+        <i class="ri-edit-2-line dash-button__icon"></i>
+        Edytuj
+      <% end %>
+      <%= button_to @measurement, class: "dash-button dash-button--delete",
+          method: :delete, form: { data: { turbo_confirm: 'Czy na pewno chcesz usunąć?' } } do %>
+        <i class="ri-close-line dash-button__icon"></i>
+        Usuń
+      <% end %>
+      <%= link_to show_by_day_measurements_path(@measurement.measurement_date), class: "dash-button dash-button--back" do %>
         <i class="ri-arrow-left-line dash-button__icon"></i>
         Powrót
       <% end %>
@@ -18,7 +27,49 @@
       <% end %>
     <% end %>
   </div>
-  <div>
-    <%= render "form" %>
+  <div class="page-measurement__content">
+    <div class="dash-group dash-group--border">
+      <header class="dash-group__header">
+        <h2 class="dash-group__title">Informacje</h2>
+        <div class="dash-group__actions"></div>
+      </header>
+      <div class="dash-group__content">
+        <div class="dash-info">
+          <div class="dash-info__group">
+            <div class="dash-info__group__left">
+              <div class="dash-info__group__label">Rodzaj pomiaru</div>
+              <div class="dash-info__group__desc">Co zostało zmierzone.</div>
+            </div>
+            <div class="dash-info__group__right">
+              <div class="dash-info__group__value">
+                <%= I18n.t("activerecord.attributes.measurement_types.#{@measurement.measurement_type.name}") %>
+              </div>
+            </div>
+          </div>
+          <div class="dash-info__group">
+            <div class="dash-info__group__left">
+              <div class="dash-info__group__label">Wartość</div>
+              <div class="dash-info__group__desc">Zmierzona wartość podczas pomiaru.</div>
+            </div>
+            <div class="dash-info__group__right">
+              <div class="dash-info__group__value">
+                <%= @measurement.value %> <span class="dash-info__group__symbol"><%= @measurement.measurement_type.unit.symbol %></span>
+              </div>
+            </div>
+          </div>
+          <div class="dash-info__group">
+            <div class="dash-info__group__left">
+              <div class="dash-info__group__label">Data pomiaru</div>
+              <div class="dash-info__group__desc">Kiedy dokonano pomiaru</div>
+            </div>
+            <div class="dash-info__group__right">
+              <div class="dash-info__group__value">
+                <%= l(@measurement.measurement_date, format: '%H:%M - %d %B %Yr.') %>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
 </div>

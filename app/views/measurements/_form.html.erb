@@ -1,4 +1,5 @@
-<%= form_with(model: @measurement, url: create_measurements_path(params[:measurement_type]), method: :post, html: { class: "dash-form" }) do |f| %>
+<%= form_with(model: @measurement, url: @measurement.new_record? ? create_measurements_path(params[:measurement_type]) : nil,
+    method: @measurement.new_record? ? :post : nil, html: { class: "dash-form" }) do |f| %>
   <div class="dash-form__container">
     <div class="dash-form__group">
       <div class="dash-form__group__container">

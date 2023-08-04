@@ -1,1 +1,65 @@
-XD
+<div class="page-measurements-by-day">
+  <header class="dash-header">
+    <div class="dash-header__left">
+      <h1 class="dash-header__title">Pomiary z <%= l(@selected_datetime, format: ' %d %B %Yr.') %></h1>
+      <%= render "shared/breadcrumbs" %>
+    </div>
+    <div class="dash-header__right">
+      <%= link_to measurements_path, class: "dash-button dash-button--back" do %>
+        <i class="ri-arrow-left-line dash-button__icon"></i>
+        Powrót
+      <% end %>
+    </div>
+  </header>
+  <div class="dash-flash-messages">
+    <% if flash[:notice].present? %>
+      <%= render DashAlertComponent.new(type: :success) do %>
+        <%= flash[:notice] %>
+      <% end %>
+    <% end %>
+  </div>
+  <div class="page-measurements-by-day__content">
+    <div class="dash-group dash-group--border">
+      <header class="dash-group__header">
+        <h2 class="dash-group__title">Lista pomiarów</h2>
+        <div class="dash-group__actions"></div>
+      </header>
+      <div class="dash-group__content">
+        <% if @measurements.present? %>
+          <ul class="measurements-list">
+            <% @measurements.each do |measurement| %>
+              <% measurement_name = measurement.measurement_type.name %>
+              <%= link_to measurement_path(measurement), class: "measurement-item measurement-item--#{measurement_name}" do %>
+                <div class="measurement-item__left">
+                  <div class="measurement-item__label">
+                    <%= I18n.t("activerecord.attributes.measurement_types.#{measurement_name}") %>
+                  </div>
+                  <div class="measurement-item__value">
+                    <%= measurement.value %>
+                    <span class="measurement-item__symbol">
+                      <%= measurement.measurement_type.unit.symbol %>
+                    </span>
+                  </div>
+                </div>
+                <div class="measurement-item__time">
+                  Godzina: <%= l(measurement.created_at, format: "%H:%M") %>
+                </div>
+              <% end %>
+            <% end %>
+          </ul>
+        <% else %>
+          <p>No measurements for this day.</p>
+        <% end %>
+      </div>
+    </div>
+
+    <div class="dash-pagination">
+      <div class="dash-pagination__controls">
+        <%== pagy_nav(@pagy) if @pagy.pages > 1 %>
+      </div>
+      <div class="dash-pagination__info">
+        <%== pagy_info(@pagy) %>
+      </div>
+    </div>
+  </div>
+</div>

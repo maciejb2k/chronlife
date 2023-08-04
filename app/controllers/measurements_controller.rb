@@ -5,16 +5,44 @@ class MeasurementsController < BaseController
 
   before_action :set_breadcrumbs
   before_action :set_breadcrumbs_new, only: %i[new create]
+  before_action :set_breadcrumbs_show, only: %i[show edit update]
+  after_action :set_breadcrumbs_show_by_day, only: %i[show_by_day]
 
   def index
-    @measurements = Measurement.all
+    @latest_measurements =
+      current_user
+      .account
+      .measurements
+      .includes(measurement_type: :unit)
+      .joins(measurement_type: :unit)
+      .order("measurement_types.name, measurement_date DESC")
+      .select("DISTINCT ON (measurement_types.name) measurements.*")
+
+    @latest = {}
+
+    Measurement::TYPES.each do |type|
+      latest_measurement = @latest_measurements.find do |m|
+        m.measurement_type.name == type.to_s
+      end
+      @latest[type.to_sym] = latest_measurement
+    end
+
+    @measurements = current_user.account.measurements.group_by_day(:measurement_date).count
   end
 
   def show; end
 
   def show_by_day
-    @selected_day = Date.parse(params[:day])
-    @measurements = current_user.account.measurements.where(measured_at: @selected_day.all_day)
+    @selected_datetime = Date.parse(params[:day])
+    @pagy, @measurements = pagy(
+      current_user.account.measurements.includes(measurement_type: :unit).where(
+        measurement_date: @selected_datetime.all_day
+      )
+    )
+    set_breadcrumbs_show_by_day
+  rescue ArgumentError, TypeError
+    flash[:error] = "Nieprawidłowa data pomiaru."
+    redirect_to measurements_path
   end
 
   def new
@@ -25,27 +53,21 @@ class MeasurementsController < BaseController
   def edit; end
 
   def create
+    # find_by! or find_by and handling the error by myself - which is better?
     measurement_type = MeasurementType.find_by!(name: params[:measurement_type])
+
     @measurement = current_user.account.measurements.build(measurement_params)
     @measurement.measurement_type = measurement_type
 
-    case params[:measurement_type].to_sym
-    when :weight
-      @measurement.valid?(:measurement_weight)
-    when :heart_beat
-      @measurement.valid?(:measurement_heart_beat)
-    when :blood_pressure
-      @measurement.valid?(:measurement_blood_pressure)
-    when :sugar
-      @measurement.valid?(:measurement_sugar)
-    when :spo2
-      @measurement.valid?(:measurement_spo2)
-    end
+    validation_key = generate_validation_key(@measurement.measurement_type.name)
 
     respond_to do |format|
-      if @measurement.errors.empty?
+      if @measurement.valid?(validation_key)
+        @measurement.save
+
         format.html do
-          redirect_to measurements_path, notice: "Measurement was successfully created."
+          flash[:success] = "Pomiar został poprawnie dodany."
+          redirect_to measurements_path
         end
       else
         format.html { render :new, status: :unprocessable_entity }
@@ -54,15 +76,17 @@ class MeasurementsController < BaseController
   end
 
   def update
+    validation_key = generate_validation_key(@measurement.measurement_type.name)
+
     respond_to do |format|
-      if @measurement.update(measurement_params)
+      if @measurement.update_with_context(measurement_params, validation_key)
+
         format.html do
-          redirect_to measurement_url(@measurement), notice: "Measurement was successfully updated."
+          redirect_to measurement_url(@measurement),
+                      notice: "Pomiar został poprawnie zaktualizowany."
         end
-        format.json { render :show, status: :ok, location: @measurement }
       else
         format.html { render :edit, status: :unprocessable_entity }
-        format.json { render json: @measurement.errors, status: :unprocessable_entity }
       end
     end
   end
@@ -72,7 +96,7 @@ class MeasurementsController < BaseController
 
     respond_to do |format|
       format.html do
-        redirect_to measurements_url, notice: "Measurement was successfully destroyed."
+        redirect_to measurements_url, notice: "Pomiar został poprawnie usunięty."
       end
       format.json { head :no_content }
     end
@@ -90,7 +114,7 @@ class MeasurementsController < BaseController
 
   def set_breadcrumbs
     add_breadcrumb("home", authenticated_root_path)
-    add_breadcrumb("monitorowanie zdrowia", diseases_path)
+    add_breadcrumb("monitorowanie zdrowia", measurements_path)
   end
 
   def set_breadcrumbs_new
@@ -121,5 +145,23 @@ class MeasurementsController < BaseController
         new_measurements_path(measurement_type: :spo2)
       )
     end
+  end
+
+  def set_breadcrumbs_show
+    add_breadcrumb(
+      "pomiar z #{l(@measurement.measurement_date, format: '%d %B %Yr.')}",
+      measurement_path(params[:id])
+    )
+  end
+
+  def set_breadcrumbs_show_by_day
+    add_breadcrumb(
+      "pomiary z dnia #{@selected_datetime}",
+      show_by_day_measurements_path(day: params[:day])
+    )
+  end
+
+  def generate_validation_key(measurement_type)
+    "measurement_#{measurement_type}".to_sym
   end
 end

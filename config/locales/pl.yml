@@ -47,4 +47,15 @@ pl:
           bachelor: Licencjat
           master: Magister
           doctorate: Doktorat
+      measurement_types:
+        height: Wzrost
+        weight: Waga
+        temperature: Temperatura
+        blood_pressure: Ciśnienie krwi
+        heart_beat: Tętno
+        respiratory_rate: Częstość oddechów
+        spo2: Saturacja krwi
+        pain: Ból
+        sugar: Cukier
+        other: Inne
 

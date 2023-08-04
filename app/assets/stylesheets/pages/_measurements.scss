@@ -38,13 +38,13 @@
       background: #e5ffdd;
     }
 
-    &--heart-beat {
+    &--heart_beat {
       border: 1px solid #dca1a1;
       color: #831d1d;
       background: #ffe9e9;
     }
 
-    &--blood-pressure {
+    &--blood_pressure {
       border: 1px solid #c19cdf;
       color: #531d83;
       background: #f4e7ff;
@@ -77,14 +77,14 @@
       color: #f15a5a;
     }
 
-    &--blood-pressure {
+    &--blood_pressure {
       .measurement__title {
         color: #531d83;
         background: #f4e7ff;
       }
     }
 
-    &--heart-beat {
+    &--heart_beat {
       .measurement__title {
         color: #831d1d;
         background: #ffe9e9;

@@ -1,10 +1,36 @@
-<h1>Editing measurement</h1>
-
-<%= render "form", measurement: @measurement %>
-
-<br>
-
-<div>
-  <%= link_to "Show this measurement", @measurement %> |
-  <%= link_to "Back to measurements", measurements_path %>
+<div class="edit-note">
+  <header class="dash-header">
+    <div class="dash-header__left">
+      <% if @measurement.measurement_type.name == 'weight' %>
+        <h1 class="dash-header__title">Edytuj pomiar wagi</h1>
+      <% elsif @measurement.measurement_type.name == 'heart_beat' %>
+        <h1 class="dash-header__title">Edytuj pomiar tętna</h1>
+      <% elsif @measurement.measurement_type.name == 'blood_pressure' %>
+        <h1 class="dash-header__title">Edytuj pomiar ciśnienia krwi</h1>
+      <% elsif @measurement.measurement_type.name == 'sugar' %>
+        <h1 class="dash-header__title">Edytuj pomiar cukru</h1>
+      <% elsif @measurement.measurement_type.name == 'spo2' %>
+        <h1 class="dash-header__title">Edytuj pomiar saturacji krwi</h1>
+      <% else%>
+        <h1 class="dash-header__title">Edytuj pomiar</h1>
+      <% end %>
+      <%= render "shared/breadcrumbs" %>
+    </div>
+    <div class="dash-header__right">
+      <%= link_to measurement_path(@measurement), class: "dash-button dash-button--back" do %>
+        <i class="ri-arrow-left-line dash-button__icon"></i>
+        Powrót
+      <% end %>
+    </div>
+  </header>
+  <div class="dash-flash-messages">
+    <% if flash[:notice].present? %>
+      <%= render DashAlertComponent.new(type: :success) do %>
+        <%= flash[:notice] %>
+      <% end %>
+    <% end %>
+  </div>
+  <div>
+    <%= render "form" %>
+  </div>
 </div>

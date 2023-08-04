@@ -33,11 +33,11 @@ Rails.application.routes.draw do
     end
   end
   resources :note_tags, except: %i[index show]
-  resources :measurements, except: %i[new create] do
+  resources :measurements, only: %i[index show edit update destroy] do
     collection do
       get "new/:measurement_type", to: "measurements#new", as: :new
       post "create/:measurement_type", to: "measurements#create", as: :create
-      get :show_by_day
+      get "show_by_day/:day", to: "measurements#show_by_day", as: :show_by_day
     end
   end
 
