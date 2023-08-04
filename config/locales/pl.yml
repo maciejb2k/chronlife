@@ -16,6 +16,10 @@ pl:
       date: '%Y-%m-%d'
       time: '%H:%M:%S'
       datetime: '%Y-%m-%d %H:%M:%S'
+  simple_calendar:
+    previous: "<<"
+    next: ">>"
+    week: Woche
   activerecord:
     attributes:
       treatment_update:

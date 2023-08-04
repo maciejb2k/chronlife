@@ -1,0 +1,36 @@
+<div class="new-note">
+  <header class="dash-header">
+    <div class="dash-header__left">
+      <% if @measurement.measurement_type.name == 'weight' %>
+        <h1 class="dash-header__title">Dodaj nowy pomiar wagi</h1>
+      <% elsif @measurement.measurement_type.name == 'heart_beat' %>
+        <h1 class="dash-header__title">Dodaj nowy pomiar tętna</h1>
+      <% elsif @measurement.measurement_type.name == 'blood_pressure' %>
+        <h1 class="dash-header__title">Dodaj nowy pomiar ciśnienia krwi</h1>
+      <% elsif @measurement.measurement_type.name == 'sugar' %>
+        <h1 class="dash-header__title">Dodaj nowy pomiar cukru</h1>
+      <% elsif @measurement.measurement_type.name == 'spo2' %>
+        <h1 class="dash-header__title">Dodaj nowy pomiar saturacji krwi</h1>
+      <% else%>
+        <h1 class="dash-header__title">Dodaj nowy pomiar</h1>
+      <% end %>
+      <%= render "shared/breadcrumbs" %>
+    </div>
+    <div class="dash-header__right">
+      <%= link_to measurements_path, class: "dash-button dash-button--back" do %>
+        <i class="ri-arrow-left-line dash-button__icon"></i>
+        Powrót
+      <% end %>
+    </div>
+  </header>
+  <div class="dash-flash-messages">
+    <% if flash[:notice].present? %>
+      <%= render DashAlertComponent.new(type: :success) do %>
+        <%= flash[:notice] %>
+      <% end %>
+    <% end %>
+  </div>
+  <div>
+    <%= render "form" %>
+  </div>
+</div>

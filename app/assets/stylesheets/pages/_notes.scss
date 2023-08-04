@@ -112,14 +112,14 @@
   border-bottom: 1px solid $dash-base-border;
   display: flex;
   flex-direction: column;
-  gap: 10px;
+  gap: 5px;
 
   &__tag {
     display: flex;
     align-items: center;
     justify-content: space-between;
     background: #ffffff;
-    padding: 10px 20px;
+    padding: 8px 10px;
     border: 1px solid $dash-base-border;
     border-radius: 3px;
 

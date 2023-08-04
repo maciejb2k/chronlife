@@ -45,6 +45,7 @@ class Account < ApplicationRecord
   has_many :notes, dependent: :destroy
   has_many :note_groups, dependent: :destroy
   has_many :note_tags, dependent: :destroy
+  has_many :measurements, dependent: :destroy
 
   validates :first_name, presence: true, length: { maximum: 32 }
   validates :last_name, presence: true, length: { maximum: 32 }

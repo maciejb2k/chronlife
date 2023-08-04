@@ -77,6 +77,9 @@ gem "pagy", "~> 6.0.4"
 gem "groupdate", "~> 6.3.0"
 gem "chartkick", "~> 5.0.2"
 
+# Calendar
+gem "simple_calendar", "~> 2.4"
+
 group :development, :test do
   gem "debug", "~> 1.8.0", platforms: %i[ mri mingw x64_mingw ]
   gem "faker", "~> 3.2.0"

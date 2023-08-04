@@ -347,6 +347,8 @@ GEM
     shrine (3.5.0)
       content_disposition (~> 1.0)
       down (~> 5.1)
+    simple_calendar (2.4.3)
+      rails (>= 3.0)
     simplecov (0.22.0)
       docile (~> 1.1)
       simplecov-html (~> 0.11)
@@ -452,6 +454,7 @@ DEPENDENCIES
   sassc-rails (~> 2.1.2)
   selenium-webdriver
   shrine (~> 3.5.0)
+  simple_calendar (~> 2.4)
   simplecov (~> 0.22.0)
   sprockets-rails (~> 3.4.2)
   stackprof

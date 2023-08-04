@@ -83,7 +83,7 @@
           <div class="dash-group__actions"></div>
         </header>
         <div class="dash-group__content">
-          <%= line_chart @disease_symptom_updates.group_by_day(:update_date).average(:intensity), min: 1, max: 5 %>
+          <%= column_chart @disease_symptom_updates.group_by_day(:update_date).average(:intensity), min: 1, max: 5 %>
         </div>
       </div>
     </div>

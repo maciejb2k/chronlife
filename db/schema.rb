@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_07_31_113030) do
+ActiveRecord::Schema[7.0].define(version: 2023_08_03_070706) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pgcrypto"
   enable_extension "plpgsql"
@@ -157,6 +157,27 @@ ActiveRecord::Schema[7.0].define(version: 2023_07_31_113030) do
     t.index ["predefined_disease_id"], name: "index_diseases_on_predefined_disease_id"
   end
 
+  create_table "measurement_types", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
+    t.string "name", default: "", null: false
+    t.uuid "unit_id", null: false
+    t.decimal "upper_limit"
+    t.decimal "lower_limit"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["unit_id"], name: "index_measurement_types_on_unit_id"
+  end
+
+  create_table "measurements", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
+    t.string "value", default: "0.0", null: false
+    t.datetime "measurement_date", null: false
+    t.uuid "measurement_type_id", null: false
+    t.uuid "account_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["account_id"], name: "index_measurements_on_account_id"
+    t.index ["measurement_type_id"], name: "index_measurements_on_measurement_type_id"
+  end
+
   create_table "note_disease_associations", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
     t.uuid "note_id", null: false
     t.uuid "disease_id", null: false
@@ -290,6 +311,15 @@ ActiveRecord::Schema[7.0].define(version: 2023_07_31_113030) do
     t.index ["account_id"], name: "index_treatments_on_account_id"
   end
 
+  create_table "units", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
+    t.string "name", default: "", null: false
+    t.string "symbol", default: "", null: false
+    t.string "description", default: "", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["symbol"], name: "index_units_on_symbol", unique: true
+  end
+
   create_table "user_roles", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -345,6 +375,9 @@ ActiveRecord::Schema[7.0].define(version: 2023_07_31_113030) do
   add_foreign_key "diseases", "accounts"
   add_foreign_key "diseases", "disease_categories"
   add_foreign_key "diseases", "predefined_diseases"
+  add_foreign_key "measurement_types", "units"
+  add_foreign_key "measurements", "accounts"
+  add_foreign_key "measurements", "measurement_types"
   add_foreign_key "note_disease_associations", "diseases"
   add_foreign_key "note_disease_associations", "notes"
   add_foreign_key "note_group_associations", "note_groups"

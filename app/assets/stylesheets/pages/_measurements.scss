@@ -1,0 +1,331 @@
+.page-measurements {
+  &__content {
+    padding: 30px 0;
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+  }
+
+  .measurements-latest {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 20px;
+  }
+
+  .measurement-container {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .add-measurement {
+    font-size: var(--12px);
+    text-align: center;
+    color: $dash-text-light;
+    padding: 10px 20px;
+    font-weight: 500;
+    color: #1d5583;
+    background: #e9f5ff;
+    border-radius: 3px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+
+    &--weight {
+      color: #36831d;
+      border: 1px solid #9dd289;
+      background: #e5ffdd;
+    }
+
+    &--heart-beat {
+      border: 1px solid #dca1a1;
+      color: #831d1d;
+      background: #ffe9e9;
+    }
+
+    &--blood-pressure {
+      border: 1px solid #c19cdf;
+      color: #531d83;
+      background: #f4e7ff;
+    }
+
+    &--sugar {
+      border: 1px solid #c9c07c;
+      color: #685e11;
+      background: #fffad3;
+    }
+
+    &--spo2 {
+      border: 1px solid #9dbcd5;
+      color: #1d5583;
+      background: #e9f5ff;
+    }
+  }
+
+  .measurement {
+    background: #ffffff;
+    border: 1px solid $dash-base-border;
+    border-radius: 3px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 30px;
+    padding: 10px;
+
+    &--dangerous {
+      color: #f15a5a;
+    }
+
+    &--blood-pressure {
+      .measurement__title {
+        color: #531d83;
+        background: #f4e7ff;
+      }
+    }
+
+    &--heart-beat {
+      .measurement__title {
+        color: #831d1d;
+        background: #ffe9e9;
+      }
+    }
+
+    &--sugar {
+      .measurement__title {
+        color: #685e11;
+        background: #fffad3;
+      }
+    }
+
+    &--weight {
+      .measurement__title {
+        color: #36831d;
+        background: #e5ffdd;
+      }
+    }
+
+    &--spo2 {
+      .measurement__title {
+        color: #1d5583;
+        background: #e9f5ff;
+      }
+    }
+
+    &__header {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    &__title {
+      font-size: var(--12px);
+      text-align: center;
+      color: $dash-text-light;
+      padding: 3px 20px;
+      font-weight: 500;
+      color: #1d5583;
+      background: #e9f5ff;
+      border-radius: 3px;
+    }
+
+    &__warning {
+      font-size: var(--12px);
+      text-align: center;
+      color: $dash-text-light;
+      padding: 3px 10px;
+      font-weight: 500;
+      color: #ffffff;
+      background: #f15a5a;
+      border-radius: 3px;
+    }
+
+    &__body {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    &__footer {
+      align-self: stretch;
+    }
+
+    &__date {
+      font-size: var(--12px);
+      background: $dash-text-dark;
+      color: #ffffff;
+      padding: 5px 20px;
+      border-radius: 3px;
+      width: 100%;
+      text-align: center;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 5px;
+    }
+
+    &__value {
+      font-weight: 500;
+      font-size: var(--26px);
+    }
+
+    &__symbol {
+      font-size: var(--14px);
+    }
+  }
+
+  .measurements-calendar {
+    .simple-calendar {
+      table {
+        margin-top: 40px;
+        -webkit-border-horizontal-spacing: 0px;
+        -webkit-border-vertical-spacing: 0px;
+        border-collapse: collapse;
+        box-sizing: border-box;
+        max-width: 100%;
+        width: 100%;
+        border-radius: 3px;
+      }
+
+      tr {
+        border-collapse: collapse;
+      }
+
+      th {
+        padding: 6px;
+        border-collapse: collapse;
+        box-sizing: border-box;
+        text-align: center;
+
+        &::first-letter {
+          text-transform: uppercase;
+        }
+      }
+
+      td {
+        padding: 15px 10px;
+        position: relative;
+
+        border: 1px solid #ddd;
+        border-top-color: rgb(221, 221, 221);
+        border-top-style: solid;
+        border-top-width: 1px;
+        border-right-color: rgb(221, 221, 221);
+        border-right-style: solid;
+        border-right-width: 1px;
+        border-bottom-color: rgb(221, 221, 221);
+        border-bottom-style: solid;
+        border-bottom-width: 1px;
+        border-left-color: rgb(221, 221, 221);
+        border-left-style: solid;
+        border-left-width: 1px;
+      }
+
+      .calendar-heading {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 30px;
+      }
+
+      .calendar-title {
+        font-weight: 500;
+
+        &:first-letter {
+          text-transform: uppercase;
+        }
+      }
+
+      .calendar-heading nav {
+        display: inline-block;
+      }
+
+      .day {
+        background: #ffffff;
+        height: 80px;
+      }
+
+      .wday-0 {
+      }
+      .wday-1 {
+      }
+      .wday-2 {
+      }
+      .wday-3 {
+      }
+      .wday-4 {
+      }
+      .wday-5 {
+      }
+      .wday-6 {
+      }
+
+      .today {
+        background: #ffe7d1;
+      }
+
+      .past {
+      }
+
+      .future {
+      }
+
+      .start-date {
+      }
+
+      .prev-month {
+        background: #eaeaea;
+      }
+
+      .next-month {
+        background: #eaeaea;
+      }
+
+      .current-month {
+      }
+
+      .has-events {
+      }
+
+      .date-day {
+        position: absolute;
+        bottom: 5px;
+        right: 5px;
+        font-size: var(--16px);
+        font-weight: 500;
+        color: $dash-text-dark;
+      }
+
+      .measurements-num {
+        font-size: var(--12px);
+        text-align: center;
+        color: $dash-text-light;
+        padding: 3px 20px;
+        font-weight: 400;
+        color: #3c250f;
+        background: #ffd3a6;
+        border: 1px solid #e1ab75;
+        border-radius: 3px;
+      }
+
+      .today {
+        .date-day {
+          font-weight: 700;
+        }
+      }
+
+      .prev-month,
+      .next-month {
+        .measurements-num {
+          color: #353535;
+          background: #cfcfcf;
+          border: 1px solid #9b9b9b;
+        }
+
+        .date-day {
+          color: #919191;
+        }
+      }
+    }
+  }
+}

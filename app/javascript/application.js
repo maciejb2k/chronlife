@@ -4,6 +4,7 @@ import "controllers";
 import "fslightbox";
 import "chartkick";
 import "Chart.bundle";
+import "tom-select";
 
 addEventListener("turbo:load", () => {
   if (document.body.dataset.gallery === "true") {

@@ -1,0 +1,115 @@
+.simple-calendar {
+  padding-top: 20px;
+
+  table {
+    margin-top: 40px;
+    -webkit-border-horizontal-spacing: 0px;
+    -webkit-border-vertical-spacing: 0px;
+    border-collapse: collapse;
+    box-sizing: border-box;
+    max-width: 100%;
+    width: 100%;
+    border-radius: 3px;
+  }
+
+  tr {
+    border-collapse: collapse;
+  }
+
+  th {
+    padding: 6px;
+    border-collapse: collapse;
+    box-sizing: border-box;
+    text-align: center;
+
+    &::first-letter {
+      text-transform: uppercase;
+    }
+  }
+
+  td {
+    padding: 6px;
+    vertical-align: top;
+    width: 14%;
+    position: relative;
+
+    border: 1px solid #ddd;
+    border-top-color: rgb(221, 221, 221);
+    border-top-style: solid;
+    border-top-width: 1px;
+    border-right-color: rgb(221, 221, 221);
+    border-right-style: solid;
+    border-right-width: 1px;
+    border-bottom-color: rgb(221, 221, 221);
+    border-bottom-style: solid;
+    border-bottom-width: 1px;
+    border-left-color: rgb(221, 221, 221);
+    border-left-style: solid;
+    border-left-width: 1px;
+  }
+
+  .calendar-heading {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 30px;
+  }
+
+  .calendar-title {
+    font-weight: 500;
+
+    &:first-letter {
+      text-transform: uppercase;
+    }
+  }
+
+  .calendar-heading nav {
+    display: inline-block;
+  }
+
+  .day {
+    background: #ffffff;
+    height: 80px;
+  }
+
+  .wday-0 {
+  }
+  .wday-1 {
+  }
+  .wday-2 {
+  }
+  .wday-3 {
+  }
+  .wday-4 {
+  }
+  .wday-5 {
+  }
+  .wday-6 {
+  }
+
+  .today {
+    background: #ffe7d1;
+  }
+
+  .past {
+  }
+
+  .future {
+  }
+
+  .start-date {
+  }
+
+  .prev-month {
+    background: #eaeaea;
+  }
+  .next-month {
+    background: #eaeaea;
+  }
+
+  .current-month {
+  }
+
+  .has-events {
+  }
+}

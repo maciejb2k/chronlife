@@ -31,10 +31,15 @@ Rails.application.routes.draw do
       post :add_tag
       delete :remove_tag
     end
-
-    resources :note_tag_associations, only: %i[create destroy]
   end
   resources :note_tags, except: %i[index show]
+  resources :measurements, except: %i[new create] do
+    collection do
+      get "new/:measurement_type", to: "measurements#new", as: :new
+      post "create/:measurement_type", to: "measurements#create", as: :create
+      get :show_by_day
+    end
+  end
 
   resources :diseases do
     resources :disease_symptoms do

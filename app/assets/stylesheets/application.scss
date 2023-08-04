@@ -7,6 +7,10 @@
 @import "base/typography";
 @import "base/base";
 
+// External
+@import "external/tom-select";
+@import "external/simple-calendar";
+
 // Layouts
 @import "layouts/dashboard";
 
@@ -30,4 +34,4 @@
 @import "pages/settings";
 @import "pages/settings_2fa";
 @import "pages/notes";
-@import "pages/note";
+@import "pages/measurements";

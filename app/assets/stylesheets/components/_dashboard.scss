@@ -177,6 +177,25 @@
     }
   }
 
+  &__input-container {
+    display: flex;
+    align-items: center;
+  }
+
+  &__input-icon {
+    height: 40px;
+    padding: 0 20px;
+    border: 1px solid $dash-base-border;
+    border-radius: 3px;
+    background: #fafafa;
+    color: $dash-text-light;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: var(--14px);
+    user-select: none;
+  }
+
   &__input {
     min-width: 300px;
     height: 40px;

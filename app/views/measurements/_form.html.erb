@@ -1,0 +1,40 @@
+<%= form_with(model: @measurement, url: create_measurements_path(params[:measurement_type]), method: :post, html: { class: "dash-form" }) do |f| %>
+  <div class="dash-form__container">
+    <div class="dash-form__group">
+      <div class="dash-form__group__container">
+        <div class="dash-form__group__left">
+          <div class="dash-form__group__title">Wartość</div>
+          <p class="dash-form__group__description">Podaj wartość obecnego pomiaru.</p>
+        </div>
+        <div class="dash-form__group__right">
+          <div class="dash-form__input-container">
+            <%= f.text_field :value, class: "dash-form__input" %>
+            <div class="dash-form__input-icon">
+              <%= @measurement.measurement_type.unit.symbol %>
+            </div>
+          </div>
+        </div>
+      </div>
+      <%= render DashFormErrorComponent.new(model: @measurement, field: :value) %>
+    </div>
+  </div>
+
+  <div class="dash-form__container">
+    <div class="dash-form__group">
+      <div class="dash-form__group__container">
+        <div class="dash-form__group__left">
+          <div class="dash-form__group__title">Data pomiaru</div>
+          <p class="dash-form__group__description">Kiedy dokonałeś pomiaru.</p>
+        </div>
+        <div class="dash-form__group__right">
+          <%= f.datetime_field :measurement_date, class: "dash-form__input" %>
+        </div>
+      </div>
+      <%= render DashFormErrorComponent.new(model: @measurement, field: :measurement_date) %>
+    </div>
+  </div>
+
+  <div class="dash-form__group">
+    <%= f.submit "Zapisz", class: "dash-form__submit dash-button dash-button--new" %>
+  </div>
+<% end %>

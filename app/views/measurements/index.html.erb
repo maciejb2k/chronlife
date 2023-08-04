@@ -1,0 +1,165 @@
+<div class="page-measurements">
+  <header class="dash-header">
+    <div class="dash-header__left">
+      <h1 class="dash-header__title">
+        Monitorowanie zdrowia
+      </h1>
+      <%= render "shared/breadcrumbs" %>
+    </div>
+    <div class="dash-header__right">
+      <%= link_to authenticated_root_path, class: "dash-button dash-button--back" do %>
+        <i class="ri-arrow-left-line dash-button__icon"></i>
+      <% end %>
+    </div>
+  </header>
+  <div class="dash-flash-messages">
+    <% if flash[:notice].present? %>
+      <%= render DashAlertComponent.new(type: :success) do %>
+        <%= flash[:notice] %>
+      <% end %>
+    <% end %>
+  </div>
+  <div class="page-measurements__content">
+    <div class="dash-group">
+      <header class="dash-group__header">
+        <h2 class="dash-group__title">
+          <i class="ri-health-book-line dash-group__title__icon"></i>
+          Ostatnie pomiary
+        </h2>
+        <div class="dash-group__actions"></div>
+      </header>
+      <div class="dash-group__content">
+        <div class="measurements-latest">
+          <div class="measurement-container">
+            <div class="measurement measurement--weight">
+              <div class="measurement__header">
+                <p class="measurement__title">Waga</p>
+              </div>
+              <div class="measurement__body">
+                <p class="measurement__value">82</p>
+                <p class="measurement__symbol">kg</p>
+              </div>
+              <div class="measurement__footer">
+                <p class="measurement__date">
+                  <i class="ri-calendar-line"></i>
+                  2021-05-01 12:00
+                </p>
+              </div>
+            </div>
+            <%= link_to new_measurements_path(measurement_type: :weight), class: "add-measurement add-measurement--weight" do %>
+              <i class="ri-add-line"></i>
+              Dodaj nowy pomiar wagi
+            <% end %>
+          </div>
+          <div class="measurement-container">
+            <div class="measurement measurement--heart-beat">
+              <div class="measurement__header">
+                <p class="measurement__title">Tętno</p>
+              </div>
+              <div class="measurement__body">
+                <p class="measurement__value">78</p>
+                <p class="measurement__symbol">bpm</p>
+              </div>
+              <div class="measurement__footer">
+                <p class="measurement__date">
+                  <i class="ri-calendar-line"></i>
+                  2021-05-01 12:00
+                </p>
+              </div>
+            </div>
+            <%= link_to new_measurements_path(measurement_type: :heart_beat), class: "add-measurement add-measurement--heart-beat" do %>
+              <i class="ri-add-line"></i>
+              Dodaj nowy pomiar tętna
+            <% end %>
+          </div>
+          <div class="measurement-container">
+            <div class="measurement measurement--blood-pressure">
+              <div class="measurement__header">
+                <p class="measurement__title">Ciśnienie</p>
+              </div>
+              <div class="measurement__body">
+                <p class="measurement__value">139/60</p>
+                <p class="measurement__symbol">mmHg</p>
+              </div>
+              <div class="measurement__footer">
+                <p class="measurement__date">
+                  <i class="ri-calendar-line"></i>
+                  2021-05-01 12:00
+                </p>
+              </div>
+            </div>
+            <%= link_to new_measurements_path(measurement_type: :blood_pressure), class: "add-measurement add-measurement--blood-pressure" do %>
+              <i class="ri-add-line"></i>
+              Dodaj nowy pomiar ciśnienia
+            <% end %>
+          </div>
+          <div class="measurement-container">
+            <div class="measurement measurement--sugar measurement--dangerous">
+              <div class="measurement__header">
+                <p class="measurement__title">Cukier</p>
+                <p class="measurement__warning">!</p>
+              </div>
+              <div class="measurement__body">
+                <p class="measurement__value">159</p>
+                <p class="measurement__symbol">mg/dl</p>
+              </div>
+              <div class="measurement__footer">
+                <p class="measurement__date">
+                  <i class="ri-calendar-line"></i>
+                  2021-05-01 12:00
+                </p>
+              </div>
+            </div>
+            <%= link_to new_measurements_path(measurement_type: :sugar), class: "add-measurement add-measurement--sugar" do %>
+              <i class="ri-add-line"></i>
+              Dodaj nowy pomiar cukru
+            <% end %>
+          </div>
+          <div class="measurement-container">
+            <div class="measurement measurement--spo2">
+              <div class="measurement__header">
+                <p class="measurement__title">SpO2</p>
+              </div>
+              <div class="measurement__body">
+                <p class="measurement__value">95</p>
+                <p class="measurement__symbol">%</p>
+              </div>
+              <div class="measurement__footer">
+                <p class="measurement__date">
+                  <i class="ri-calendar-line"></i>
+                  2021-05-01 12:00
+                </p>
+              </div>
+            </div>
+            <%= link_to new_measurements_path(measurement_type: :spo2), class: "add-measurement add-measurement--spo2" do %>
+              <i class="ri-add-line"></i>
+              Dodaj nowy pomiar tlenu
+            <% end %>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="dash-group">
+      <header class="dash-group__header">
+        <h2 class="dash-group__title">
+          <i class="ri-calendar-line dash-group__title__icon"></i>
+          Kalendarz
+        </h2>
+        <div class="dash-group__actions"></div>
+      </header>
+      <div class="dash-group__content">
+        <div class="measurements-calendar">
+          <%= month_calendar do |date| %>
+            <span class="date-day"><%= date.strftime("%d") %></span>
+            <% if rand(1..6) == 1 %>
+              <%= link_to authenticated_root_path, class: "measurements-num" do %>
+                <%= rand(1..12) %> pomiarów
+              <% end %>
+            <% end %>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
