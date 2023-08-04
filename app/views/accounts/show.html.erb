@@ -1,0 +1,48 @@
+<div class="page-account">
+  <div class="page-account__container">
+    <div class="profile">
+      <div class="profile__card">
+        <div class="profile__card__background">
+          <%# <div class="profile__card__background__image"></div> %>
+        </div>
+        <div class="profile__card__content">
+          <div class="profile__card__top">
+            <%= image_tag "avatar-placeholder.png", alt: "", class: "profile__card__avatar" %>
+            <div class="profile__card__buttons">
+              <button class="dash-button dash-button--new">
+                <i class="ri-user-add-line dash-button__icon"></i>
+                Dodaj znajomego
+              </button>
+              <button class="dash-button dash-button--line">
+                <i class="ri-chat-3-line dash-button__icon"></i>
+                Wyślij wiadomość
+              </button>
+              <div data-controller="dropdown" class="dash-dropdown">
+                <button class="dash-dropdown__button" type="button" data-action="dropdown#toggle click@window->dropdown#hide">
+                  <i class="ri-more-fill"></i>
+                </button>
+                <div
+                    data-dropdown-target="menu"
+                    class="hidden transition transform origin-top-right dash-dropdown__list "
+                    data-transition-enter-from="opacity-0 scale-95"
+                    data-transition-enter-to="opacity-100 scale-100"
+                    data-transition-leave-from="opacity-100 scale-100"
+                    data-transition-leave-to="opacity-0 scale-95"
+                  >
+                  <%= link_to settings_settings_path, class: "dash-dropdown__item" do %>
+                    <i class="ri-settings-line dash-dropdown__item__icon"></i>
+                    Ustawienia
+                  <% end %>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="profile__card__middle">
+            <h1 class="profile__card__name"><%= @account.full_name %></h1>
+            <p class="profile__card__description">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quisquam, voluptatum.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

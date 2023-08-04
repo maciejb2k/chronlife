@@ -1,0 +1,78 @@
+.page-accounts {
+  &__content {
+    padding: 30px 0;
+    border-bottom: 1px solid $dash-base-border;
+  }
+
+  .accounts-list {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 10px;
+  }
+
+  .account {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    border: 1px solid $dash-base-border;
+    border-radius: 3px;
+    background: #ffffff;
+
+    &__avatar {
+      width: 80px;
+      height: 80px;
+      border-radius: 50%;
+      overflow: hidden;
+      margin-bottom: 10px;
+    }
+
+    &__info {
+      text-align: center;
+      margin-bottom: 20px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    &__name {
+      font-size: var(--16px);
+      color: $dash-text-dark;
+      font-weight: 500;
+    }
+
+    &__username {
+      font-size: var(--14px);
+      color: $dash-text-light;
+    }
+
+    &__actions {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      width: 100%;
+    }
+
+    &__button {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 100%;
+      height: 40px;
+      font-weight: 500;
+      font-size: var(--12px);
+      text-align: center;
+      background: $dash-base;
+      border-radius: 3px;
+      gap: 5px;
+      color: #ffffff;
+    }
+
+    &__button--line {
+      background: $dash-text-dark;
+      border: 1px solid $dash-text-dark;
+      color: #ffffff;
+    }
+  }
+}

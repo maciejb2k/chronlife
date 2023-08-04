@@ -1,0 +1,59 @@
+.page-account {
+  padding: 20px 0;
+
+  &__container {
+    margin: 0 auto;
+    width: 960px;
+  }
+
+  .profile {
+    &__card {
+      border-radius: 3px;
+      position: relative;
+      border: 1px solid $dash-base-border;
+
+      &__background {
+        height: 180px;
+        border-radius: 3px;
+        background: $dash-text-dark;
+
+        &__image {
+        }
+      }
+
+      &__content {
+        padding: 10px 30px 30px;
+        background: #ffffff;
+        display: flex;
+        flex-direction: column;
+        gap: 30px;
+      }
+
+      &__avatar {
+        margin-top: -90px;
+        width: 150px;
+        height: 150px;
+        border-radius: 50%;
+        border: 5px solid #ffffff;
+      }
+
+      &__top {
+        display: flex;
+        justify-content: space-between;
+        padding-bottom: 10px;
+        border-bottom: 1px solid $dash-base-border;
+      }
+
+      &__buttons {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+      }
+
+      &__name {
+        font-size: var(--24px);
+        font-weight: 500;
+      }
+    }
+  }
+}

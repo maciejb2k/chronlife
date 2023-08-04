@@ -69,9 +69,23 @@
   }
 }
 
+.dash-button--line {
+  background: 0;
+  border: 1px solid $dash-base-border;
+  color: #000000;
+
+  .dash-button__icon {
+    color: #000000;
+  }
+}
+
 .dash-button--small {
   height: 30px;
   padding: 0 20px 0 10px;
+  font-size: var(--12px);
+}
+
+.dash-button--font-sm {
   font-size: var(--12px);
 }
 

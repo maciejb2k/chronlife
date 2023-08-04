@@ -57,6 +57,8 @@ Rails.application.routes.draw do
     resources :treatment_diseases, only: %i[index new create destroy]
   end
 
+  resources :accounts, only: %i[index show]
+
   namespace :settings do
     get "/settings", to: redirect("/settings/account")
 

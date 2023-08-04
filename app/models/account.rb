@@ -71,4 +71,8 @@ class Account < ApplicationRecord
   def account_incomplete?
     first_name.blank? || last_name.blank? || username.blank? || birthday.blank?
   end
+
+  def full_name
+    "#{first_name} #{last_name}"
+  end
 end
