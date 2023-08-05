@@ -1,0 +1,68 @@
+<div class="profile">
+  <div class="profile__card">
+    <div class="profile__card__background">
+    </div>
+    <div class="profile__card__content">
+      <div class="profile__card__top">
+        <%= image_tag "avatar-placeholder.png", alt: "", class: "profile__card__avatar" %>
+        <div class="profile__card__buttons">
+          <% unless current_account == @account %>
+            <%= button_to friend_requests_path(account_id: @account), method: :post,
+              class: "dash-button dash-button--new" do %>
+              <i class="ri-user-add-line dash-button__icon"></i>
+              Dodaj znajomego
+            <% end %>
+          <% end %>
+          <% unless current_account == @account %>
+            <button class="dash-button dash-button--line">
+              <i class="ri-chat-3-line dash-button__icon"></i>
+              Wyślij wiadomość
+            </button>
+          <% end %>
+          <div data-controller="dropdown" class="dash-dropdown">
+            <button class="dash-dropdown__button" type="button" data-action="dropdown#toggle click@window->dropdown#hide">
+              <i class="ri-more-fill"></i>
+            </button>
+            <div
+              data-dropdown-target="menu"
+              class="hidden transition transform origin-top-right dash-dropdown__list "
+              data-transition-enter-from="opacity-0 scale-95"
+              data-transition-enter-to="opacity-100 scale-100"
+              data-transition-leave-from="opacity-100 scale-100"
+              data-transition-leave-to="opacity-0 scale-95"
+            >
+              <%= link_to settings_settings_path, class: "dash-dropdown__item" do %>
+                <i class="ri-settings-line dash-dropdown__item__icon"></i>
+                Ustawienia
+              <% end %>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="profile__card__middle">
+        <h1 class="profile__card__name"><%= @account.full_name %></h1>
+        <p class="profile__card__description">@<%= @account.username %></p>
+      </div>
+      <nav class="profile__card__nav">
+        <ul class="profile__card__nav__list">
+          <li class="profile__card__nav__item">
+            <%= link_to authenticated_root_path, class: "profile__card__nav__link" do %>
+              Informacje
+            <% end %>
+          </li>
+          <li class="profile__card__nav__item">
+            <%= link_to authenticated_root_path, class: "profile__card__nav__link" do %>
+              Posty
+            <% end %>
+          </li>
+          <li class="profile__card__nav__item">
+            <%= link_to account_friends_path(@account),
+                class: "profile__card__nav__link #{'profile__card__nav__link--active' if current_page?(account_friends_path(@account))}" do %>
+              Znajomi
+            <% end %>
+          </li>
+        </ul>
+      </nav>
+    </div>
+  </div>
+</div>

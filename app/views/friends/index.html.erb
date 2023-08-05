@@ -1,0 +1,43 @@
+<div class="page-account">
+  <div class="page-account__container">
+    <div class="dash-flash-messages">
+      <%= turbo_frame_tag "flash" %>
+    </div>
+    <%= render "accounts/card" %>
+    <div class="card-group">
+      <header class="card-group__header">
+        <div class="card-group__header__left">
+          <h2 class="card-group__header__title">Znajomi</h2>
+        </div>
+        <div class="card-group__header__right">
+          <%= link_to friend_requests_path, class: "dash-button dash-button--new dash-button--small" do %>
+            <i class="ri-user-add-line dash-button__icon"></i>
+            Przeglądaj zaproszenia
+          <% end %>
+        </div>
+      </header>
+      <div class="card-group__content">
+        <% if @friends.to_a.any? %>
+          <ul class="requests-list">
+            <% @friends.each do |friend| %>
+              <li class="request-item">
+                <%= friend %>
+                <%= friend.full_name %>
+              </li>
+            <% end %>
+          </ul>
+        <% else %>
+          <p class="dash-group__text">Nie dodano żadnych znajomych.</p>
+        <% end %>
+        <div class="dash-pagination friends-pagination">
+          <div class="dash-pagination__controls">
+            <%== pagy_nav(@pagy) if @pagy.pages > 1 %>
+          </div>
+          <div class="dash-pagination__info">
+            <%== pagy_info(@pagy) %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

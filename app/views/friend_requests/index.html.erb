@@ -1,0 +1,108 @@
+<div class="page-friend-requests">
+  <header class="dash-header">
+    <div class="dash-header__left">
+      <h1 class="dash-header__title">Zaproszenia do znajomych</h1>
+      <%= render "shared/breadcrumbs" %>
+    </div>
+    <div class="dash-header__right">
+      <%= link_to notes_path, class: "dash-button dash-button--back" do %>
+        <i class="ri-arrow-left-line dash-button__icon"></i>
+        Powrót
+      <% end %>
+    </div>
+  </header>
+  <div class="dash-flash-messages">
+    <%= turbo_frame_tag "flash" %>
+  </div>
+  <div class="page-friend-requests__content">
+    <div class="requests-group">
+      <div class="dash-group">
+        <header class="dash-group__header">
+          <h2 class="dash-group__title">Oczekujące zaproszenia</h2>
+          <div class="dash-group__actions"></div>
+        </header>
+        <div class="dash-group__content">
+          <% if @incoming.to_a.any? %>
+            <ul class="requests-list">
+              <% @incoming.each do |request| %>
+                <li class="request-item">
+                  <div class="request-item__left">
+                    <div class="request-item__avatar">
+                      <%= image_tag "avatar-placeholder.png", alt: request.friend.full_name, class: "request-item__image" %>
+                    </div>
+                    <%= link_to account_path(request.friend), class: "request-item__info" do %>
+                      <p class="request-item__name"><%= request.friend.full_name %></p>
+                      <p class="request-item__username">@<%= request.friend.username %></p>
+                    <% end %>
+                  </div>
+                  <div class="request-item__right">
+                    <%= button_to friend_request_path(request), method: :patch,
+                        class: "request-item__button" do %>
+                      <i class="ri-check-line request-item__icon request-item__icon--accept"></i>
+                    <% end %>
+                    <%= button_to friend_request_path(request), method: :delete,
+                        class: "request-item__button" do %>
+                      <i class="ri-close-line request-item__icon request-item__icon--reject"></i>
+                    <% end %>
+                  </div>
+                </li>
+              <% end %>
+            </ul>
+          <% else %>
+            <p class="dash-group__text">Brak oczekujących zaproszeń.</p>
+          <% end %>
+        </div>
+      </div>
+      <div class="dash-pagination">
+        <div class="dash-pagination__controls">
+          <%== pagy_nav(@pagy_incoming) if @pagy_incoming.pages > 1 %>
+        </div>
+        <div class="dash-pagination__info">
+          <%== pagy_info(@pagy_incoming) %>
+        </div>
+      </div>
+    </div>
+    <div class="requests-group">
+      <div class="dash-group">
+        <header class="dash-group__header">
+          <h2 class="dash-group__title">Wysłane zaproszenia</h2>
+          <div class="dash-group__actions"></div>
+        </header>
+        <div class="dash-group__content">
+          <% if @outgoing.to_a.any? %>
+            <ul class="requests-list">
+              <% @outgoing.each do |request| %>
+                <li class="request-item">
+                  <div class="request-item__left">
+                    <div class="request-item__avatar">
+                      <%= image_tag "avatar-placeholder.png", alt: request.friend.full_name, class: "request-item__image" %>
+                    </div>
+                    <%= link_to account_path(request.friend), class: "request-item__info" do %>
+                      <p class="request-item__name"><%= request.friend.full_name %></p>
+                      <p class="request-item__username">@<%= request.friend.username %></p>
+                    <% end %>
+                  </div>
+                  <div class="request-item__right">
+                    <%= button_to friend_request_path(request), method: :delete, class: "request-item__button" do %>
+                      <i class="ri-close-line request-item__icon"></i>
+                    <% end %>
+                  </div>
+                </li>
+              <% end %>
+            </ul>
+          <% else %>
+            <p class="dash-group__text">Brak wysłanych zaproszeń.</p>
+          <% end %>
+        </div>
+      </div>
+      <div class="dash-pagination">
+        <div class="dash-pagination__controls">
+          <%== pagy_nav(@pagy_outgoing) if @pagy_outgoing.pages > 1 %>
+        </div>
+        <div class="dash-pagination__info">
+          <%== pagy_info(@pagy_outgoing) %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

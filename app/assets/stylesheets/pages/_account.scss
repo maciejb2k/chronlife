@@ -11,6 +11,7 @@
       border-radius: 3px;
       position: relative;
       border: 1px solid $dash-base-border;
+      margin-bottom: 10px;
 
       &__background {
         height: 180px;
@@ -26,7 +27,6 @@
         background: #ffffff;
         display: flex;
         flex-direction: column;
-        gap: 30px;
       }
 
       &__avatar {
@@ -40,8 +40,13 @@
       &__top {
         display: flex;
         justify-content: space-between;
-        padding-bottom: 10px;
+        padding-bottom: 20px;
+      }
+
+      &__middle {
+        padding-bottom: 20px;
         border-bottom: 1px solid $dash-base-border;
+        margin-bottom: 30px;
       }
 
       &__buttons {
@@ -52,6 +57,54 @@
 
       &__name {
         font-size: var(--24px);
+        font-weight: 500;
+      }
+
+      &__description {
+        font-size: var(--14px);
+        color: $dash-text-light;
+      }
+
+      &__nav {
+        &__list {
+          display: flex;
+          align-items: center;
+          gap: 20px;
+        }
+
+        &__link {
+          color: $dash-text-light;
+
+          &--active {
+            font-weight: 500;
+            color: $dash-text-dark;
+          }
+        }
+      }
+    }
+  }
+
+  .card-group {
+    border-radius: 3px;
+    position: relative;
+    border: 1px solid $dash-base-border;
+    background: #ffffff;
+    padding: 30px;
+
+    &__header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding-bottom: 30px;
+
+      &__left {
+      }
+
+      &__right {
+      }
+
+      &__title {
+        font-size: var(--20px);
         font-weight: 500;
       }
     }

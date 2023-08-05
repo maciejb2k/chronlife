@@ -1,7 +1,7 @@
 class AccountsController < BaseController
   layout "dashboard"
 
-  before_action :set_account
+  before_action :set_account, only: [:show, :edit, :update, :destroy]
   before_action :set_breadcrumbs
 
   def index
@@ -11,7 +11,7 @@ class AccountsController < BaseController
   private
 
   def set_account
-    @account = current_account
+    @account = Account.find(params[:id])
   end
 
   def set_breadcrumbs

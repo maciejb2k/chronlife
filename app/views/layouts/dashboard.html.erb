@@ -88,10 +88,28 @@
           <p class="sidebar__nav__title">Społeczność:</p>
           <ul class="sidebar__items">
             <li class="sidebar__item">
-              <%= link_to accounts_path, class: "sidebar__link" do %>
+              <%= link_to account_friends_path(current_account), class: "sidebar__link" do %>
                 <div class="sidebar__link__group">
                   <i class="ri-contacts-line sidebar__link__icon"></i>
-                  <span class="sidebar__link__text">Osoby</span>
+                  <span class="sidebar__link__text">Twoi znajomi</span>
+                </div>
+                <i class="ri-arrow-right-s-line sidebar__link__icon"></i>
+              <% end %>
+            </li>
+            <li class="sidebar__item">
+              <%= link_to friend_requests_path, class: "sidebar__link" do %>
+                <div class="sidebar__link__group">
+                  <i class="ri-inbox-2-line  sidebar__link__icon"></i>
+                  <span class="sidebar__link__text">Zaproszenia</span>
+                </div>
+                <i class="ri-arrow-right-s-line sidebar__link__icon"></i>
+              <% end %>
+            </li>
+            <li class="sidebar__item">
+              <%= link_to accounts_path, class: "sidebar__link" do %>
+                <div class="sidebar__link__group">
+                  <i class="ri-group-2-line sidebar__link__icon"></i>
+                  <span class="sidebar__link__text">Wszystkie osoby</span>
                 </div>
                 <i class="ri-arrow-right-s-line sidebar__link__icon"></i>
               <% end %>

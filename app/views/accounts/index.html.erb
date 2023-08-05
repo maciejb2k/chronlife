@@ -12,7 +12,7 @@
     </div>
   </header>
   <div class="dash-flash-messages">
-    <%= render "shared/dash_flash" %>
+    <%= turbo_frame_tag "flash" %>
   </div>
   <div class="page-accounts__content">
     <div class="accounts-list">
@@ -30,7 +30,8 @@
                 Twój profil
               <% end %>
             <% else %>
-              <%= link_to account_path(account), class: "account__button account__button--line" do %>
+              <%= button_to friend_requests_path(account_id: @account), method: :post,
+                  class: "account__button account__button--line", form_class: "w-full" do %>
                 <i class="ri-user-add-line"></i>
                 Dodaj znajomego
               <% end %>
