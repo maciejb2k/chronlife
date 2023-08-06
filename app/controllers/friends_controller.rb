@@ -9,14 +9,14 @@ class FriendsController < BaseController
   end
 
   def destroy
-    current_account.friends.destroy(@friend)
+    @account.friends.destroy(@friend)
     head :no_content
   end
 
   private
 
   def set_account
-    @account = Account.find(params[:account_id])
+    @account = current_account
   end
 
   def set_friend

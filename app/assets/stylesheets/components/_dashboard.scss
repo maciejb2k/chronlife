@@ -87,6 +87,15 @@
   }
 }
 
+.dash-button--light-blue {
+  background: #cae6ff;
+  color: #0e3a5f;
+
+  .dash-button__icon {
+    color: #0e3a5f;
+  }
+}
+
 .dash-button--line {
   background: 0;
   border: 1px solid $dash-base-border;

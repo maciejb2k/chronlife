@@ -38,8 +38,18 @@
                 <i class="ri-chat-4-line"></i>
                 Wiadomość
               <% end %>
+            <% elsif current_account.friend_request_received?(account) %>
+              <%= link_to account_path(account), class: "account__button account__button--accept" do %>
+                <i class="ri-mail-send-line"></i>
+                Zaakceptuj zaproszenie
+              <% end %>
+            <% elsif current_account.friend_request_sent?(account) %>
+              <%= link_to account_path(account), class: "account__button account__button account__button--send" do %>
+                <i class="ri-mail-send-line"></i>
+                Wysłano zaproszenie
+              <% end %>
             <% else %>
-              <%= button_to friend_requests_path(account_id: @account), method: :post,
+              <%= button_to friend_requests_path(account_id: account), method: :post,
                     class: "account__button account__button--add", form_class: "w-full" do %>
                 <i class="ri-user-add-line"></i>
                 Dodaj znajomego

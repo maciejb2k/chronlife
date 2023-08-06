@@ -14,17 +14,23 @@
           <% end %>
           <% unless current_account == @account %>
             <% if current_account.friend?(@account) %>
-              <div class="dash-button dash-button--line">
+              <%= button_to account_friend_path(@account), method: :delete,
+                  class: "dash-button dash-button--line" do %>
                 <i class="ri-user-follow-line dash-button__icon"></i>
-              </div>
+              <% end %>
             <% elsif current_account.friend_request_sent?(@account) %>
-              <div class="dash-button dash-button--blue">
+              <div class="dash-button dash-button--light-blue">
                 <i class="ri-mail-send-line dash-button__icon"></i>
                 Wysłano zaproszenie
               </div>
+            <% elsif current_account.friend_request_received?(@account) %>
+              <div class="dash-button dash-button--blue">
+                <i class="ri-mail-send-line dash-button__icon"></i>
+                Zaakceptuj zaproszenie
+              </div>
             <% else %>
               <%= button_to friend_requests_path(account_id: @account), method: :post,
-              class: "dash-button dash-button--new" do %>
+                  class: "dash-button dash-button--new" do %>
                 <i class="ri-user-add-line dash-button__icon"></i>
                 Dodaj znajomego
               <% end %>

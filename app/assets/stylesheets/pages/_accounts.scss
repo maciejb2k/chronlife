@@ -89,10 +89,16 @@
         color: $dash-text-dark;
       }
 
-      &--msg {
+      &--send {
         border: 1px solid transparent;
         background: #cae6ff;
         color: #0e3a5f;
+      }
+
+      &--accept {
+        border: 1px solid transparent;
+        background: #2e9fdc;
+        color: #ffffff;
       }
     }
   }

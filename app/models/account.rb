@@ -81,6 +81,10 @@ class Account < ApplicationRecord
     pending_friends.exists?(account.id)
   end
 
+  def friend_request_received?(account)
+    FriendRequest.exists?(friend_id: id, account_id: account.id)
+  end
+
   def account_incomplete?
     first_name.blank? || last_name.blank? || username.blank? || birthday.blank?
   end

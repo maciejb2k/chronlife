@@ -1,10 +1,9 @@
 class FriendRequestsController < BaseController
-  before_action :set_friend_request, except: %i[index new create]
+  before_action :set_friend_request, only: %i[update destroy]
   before_action :set_breadcrumbs
 
   def index
-    @pagy_incoming, @incoming = pagy(FriendRequest.where(friend: current_account))
-    @pagy_outgoing, @outgoing = pagy(current_account.friend_requests)
+    prepare_request_lists
   end
 
   def create
@@ -13,14 +12,16 @@ class FriendRequestsController < BaseController
 
     respond_to do |format|
       if @friend_request.save
-        format.html { redirect_to accounts_path, notice: "Zaproszenie zostało wysłane." }
+        message = "Wysłano zaproszenie do grona znajomych"
+        format.turbo_stream do
+          flash.now[:success] = message
+          render turbo_stream: turbo_stream.update(:flash, partial: "shared/dash_flash")
+        end
+        format.html { redirect_to accounts_path, notice: message }
       else
-        flash.now[:error] = "Nieprawidłowy kod weryfikacyjny. Spróbuj ponownie."
-
         format.turbo_stream do
           render turbo_stream: turbo_stream.update(:flash, partial: "shared/dash_flash")
         end
-        format.html { render plain: "Nie udało się wysłać zaproszenia" }
       end
     end
   end
@@ -41,20 +42,36 @@ class FriendRequestsController < BaseController
     @friend_request.destroy
 
     respond_to do |format|
+      message = "Zaproszenie zostało poprawnie usunięte."
+
+      format.turbo_stream do
+        flash.now[:notice] = message
+        prepare_request_lists
+
+        render turbo_stream: [
+          turbo_stream.remove("request-#{@friend_request.id}"),
+          turbo_stream.update(:flash, partial: "shared/dash_flash"),
+          turbo_stream.update(:outgoing_requests, partial: "friend_requests/outgoing_requests",
+                                                  locals: { outgoing: @outgoing }),
+          turbo_stream.update(:dash_pagination, partial: "shared/dash_pagination",
+                                                locals: { pagy: @pagy_outgoing })
+        ]
+      end
       format.html do
-        redirect_to friend_requests_path, notice: "Zaproszenie zostało poprawnie usunięte."
+        redirect_to friend_requests_path, notice: message
       end
     end
   end
 
   private
 
-  def friend_request_params
-    params.require(:friend_request).permit(:friend_id)
+  def prepare_request_lists
+    @pagy_incoming, @incoming = pagy(FriendRequest.includes(:account).where(friend: current_account))
+    @pagy_outgoing, @outgoing = pagy(current_account.friend_requests.includes(:account))
   end
 
   def set_friend_request
-    @friend_request = FriendRequest.find(params[:id])
+    @friend_request = current_account.friend_requests.find(params[:id])
   end
 
   def set_breadcrumbs

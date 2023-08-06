@@ -421,7 +421,7 @@ DEPENDENCIES
   bootsnap (~> 1.16.0)
   capybara
   chartkick (~> 5.0.2)
-  cssbundling-rails
+  cssbundling-rails (~> 1.2.0)
   debug (~> 1.8.0)
   devise (~> 4.9.2)
   devise-two-factor (~> 5.0.0)
