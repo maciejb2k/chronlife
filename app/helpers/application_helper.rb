@@ -5,6 +5,8 @@ module ApplicationHelper
     @current_account ||= current_user.account
   end
 
+  # delegate :friend?, to: :current_account
+
   def user_image
     return unless current_user
 

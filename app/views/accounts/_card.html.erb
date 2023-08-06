@@ -7,17 +7,28 @@
         <%= image_tag "avatar-placeholder.png", alt: "", class: "profile__card__avatar" %>
         <div class="profile__card__buttons">
           <% unless current_account == @account %>
-            <%= button_to friend_requests_path(account_id: @account), method: :post,
-              class: "dash-button dash-button--new" do %>
-              <i class="ri-user-add-line dash-button__icon"></i>
-              Dodaj znajomego
-            <% end %>
-          <% end %>
-          <% unless current_account == @account %>
             <button class="dash-button dash-button--line">
               <i class="ri-chat-3-line dash-button__icon"></i>
               Wyślij wiadomość
             </button>
+          <% end %>
+          <% unless current_account == @account %>
+            <% if current_account.friend?(@account) %>
+              <div class="dash-button dash-button--line">
+                <i class="ri-user-follow-line dash-button__icon"></i>
+              </div>
+            <% elsif current_account.friend_request_sent?(@account) %>
+              <div class="dash-button dash-button--blue">
+                <i class="ri-mail-send-line dash-button__icon"></i>
+                Wysłano zaproszenie
+              </div>
+            <% else %>
+              <%= button_to friend_requests_path(account_id: @account), method: :post,
+              class: "dash-button dash-button--new" do %>
+                <i class="ri-user-add-line dash-button__icon"></i>
+                Dodaj znajomego
+              <% end %>
+            <% end %>
           <% end %>
           <div data-controller="dropdown" class="dash-dropdown">
             <button class="dash-dropdown__button" type="button" data-action="dropdown#toggle click@window->dropdown#hide">

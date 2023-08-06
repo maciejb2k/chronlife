@@ -69,6 +69,24 @@
   }
 }
 
+.dash-button--show {
+  background: #cae6ff;
+  color: #0e3a5f;
+
+  .dash-button__icon {
+    color: #0e3a5f;
+  }
+}
+
+.dash-button--blue {
+  background: #2e9fdc;
+  color: #ffffff;
+
+  .dash-button__icon {
+    color: #ffffff;
+  }
+}
+
 .dash-button--line {
   background: 0;
   border: 1px solid $dash-base-border;
@@ -81,7 +99,7 @@
 
 .dash-button--small {
   height: 30px;
-  padding: 0 20px 0 10px;
+  padding: 0 20px;
   font-size: var(--12px);
 }
 

@@ -25,13 +25,22 @@
           <% end %>
           <div class="account__actions">
             <% if current_account == account %>
-              <%= link_to account_path(account), class: "account__button" do %>
-                <i class="ri-user-shared-line"></i>
+              <%= link_to account_path(account), class: "account__button account__button--you" do %>
+                <i class="ri-user-line"></i>
                 Twój profil
+              <% end %>
+            <% elsif current_account.friend?(account) %>
+              <%= link_to account_path(account), class: "account__button account__button--friend" do %>
+                <i class="ri-user-shared-line"></i>
+                Znajomy
+              <% end %>
+              <%= link_to account_path(account), class: "account__button account__button--msg" do %>
+                <i class="ri-chat-4-line"></i>
+                Wiadomość
               <% end %>
             <% else %>
               <%= button_to friend_requests_path(account_id: @account), method: :post,
-                  class: "account__button account__button--line", form_class: "w-full" do %>
+                    class: "account__button account__button--add", form_class: "w-full" do %>
                 <i class="ri-user-add-line"></i>
                 Dodaj znajomego
               <% end %>

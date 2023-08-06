@@ -3,7 +3,7 @@
 
   &__container {
     margin: 0 auto;
-    width: 960px;
+    width: 900px;
   }
 
   .profile {
@@ -11,7 +11,7 @@
       border-radius: 3px;
       position: relative;
       border: 1px solid $dash-base-border;
-      margin-bottom: 10px;
+      margin-bottom: 30px;
 
       &__background {
         height: 180px;
@@ -53,6 +53,10 @@
         display: flex;
         align-items: center;
         gap: 10px;
+
+        .dash-button {
+          font-size: var(--14px);
+        }
       }
 
       &__name {
@@ -85,11 +89,11 @@
   }
 
   .card-group {
-    border-radius: 3px;
     position: relative;
-    border: 1px solid $dash-base-border;
-    background: #ffffff;
-    padding: 30px;
+    // border-radius: 3px;
+    // border: 1px solid $dash-base-border;
+    // background: #ffffff;
+    padding: 0 30px;
 
     &__header {
       display: flex;
@@ -106,6 +110,70 @@
       &__title {
         font-size: var(--20px);
         font-weight: 500;
+      }
+    }
+  }
+
+  .friends-list {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 30px;
+  }
+
+  .friends-pagination {
+    padding-bottom: 0;
+  }
+
+  .friend {
+    width: 100%;
+    display: flex;
+    gap: 20px;
+    background: #ffffff;
+    padding: 15px 20px;
+    border: 1px solid $dash-base-border;
+    // box-shadow: 0px 2px 5px rgba(120, 120, 120, 0.1);
+    border-radius: 3px;
+    justify-content: space-between;
+
+    &__left {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+    }
+
+    &__right {
+      display: flex;
+      align-items: center;
+    }
+
+    &__avatar {
+    }
+
+    &__image {
+      width: 40px;
+      height: 40px;
+      border-radius: 50px;
+    }
+
+    &__info {
+    }
+
+    &__name {
+      font-weight: 500;
+      color: $dash-text-dark;
+    }
+    &__username {
+      font-size: var(--14px);
+      color: $dash-text-light;
+    }
+
+    &__button {
+      padding: 10px;
+    }
+
+    &__icon {
+      &--show {
+        color: #5a92c1;
       }
     }
   }

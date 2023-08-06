@@ -28,11 +28,11 @@
                 <li class="request-item">
                   <div class="request-item__left">
                     <div class="request-item__avatar">
-                      <%= image_tag "avatar-placeholder.png", alt: request.friend.full_name, class: "request-item__image" %>
+                      <%= image_tag "avatar-placeholder.png", alt: request.account.full_name, class: "request-item__image" %>
                     </div>
-                    <%= link_to account_path(request.friend), class: "request-item__info" do %>
-                      <p class="request-item__name"><%= request.friend.full_name %></p>
-                      <p class="request-item__username">@<%= request.friend.username %></p>
+                    <%= link_to account_path(request.account), class: "request-item__info" do %>
+                      <p class="request-item__name"><%= request.account.full_name %></p>
+                      <p class="request-item__username">@<%= request.account.username %></p>
                     <% end %>
                   </div>
                   <div class="request-item__right">

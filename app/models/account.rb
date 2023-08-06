@@ -73,6 +73,14 @@ class Account < ApplicationRecord
                         },
                         allow_blank: true
 
+  def friend?(account)
+    friends.exists?(account.id)
+  end
+
+  def friend_request_sent?(account)
+    pending_friends.exists?(account.id)
+  end
+
   def account_incomplete?
     first_name.blank? || last_name.blank? || username.blank? || birthday.blank?
   end
