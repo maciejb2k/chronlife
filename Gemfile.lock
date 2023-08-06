@@ -429,10 +429,10 @@ DEPENDENCIES
   factory_bot_rails (~> 6.2.0)
   faker (~> 3.2.0)
   groupdate (~> 6.3.0)
-  htmlbeautifier
+  htmlbeautifier (~> 1.4.2)
   importmap-rails (~> 1.2.1)
   jbuilder (~> 2.11.5)
-  memory_profiler
+  memory_profiler (~> 1.0.1)
   omniauth-facebook (~> 9.0.0)
   omniauth-google-oauth2 (~> 1.1.1)
   omniauth-rails_csrf_protection (~> 1.0.1)
@@ -440,7 +440,7 @@ DEPENDENCIES
   pg (~> 1.1)
   phonelib (~> 0.8.1)
   puma (~> 5.0)
-  rack-mini-profiler
+  rack-mini-profiler (~> 3.1.0)
   rails (~> 7.0.6)
   rails-erd (~> 1.7.2)
   redis (~> 5.0.6)
@@ -457,7 +457,7 @@ DEPENDENCIES
   simple_calendar (~> 2.4)
   simplecov (~> 0.22.0)
   sprockets-rails (~> 3.4.2)
-  stackprof
+  stackprof (~> 0.2.25)
   stimulus-rails (~> 1.2.1)
   turbo-rails (~> 1.4.0)
   tzinfo-data (~> 2.0.6)

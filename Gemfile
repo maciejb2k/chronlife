@@ -34,7 +34,7 @@ gem "jbuilder", "~> 2.11.5"
 gem "sassc-rails", "~> 2.1.2"
 
 # Tailwind CSS support
-gem "cssbundling-rails"
+gem "cssbundling-rails", "~> 1.2.0"
 
 # Load environment variables
 gem "dotenv-rails", "~> 2.8.1"
@@ -59,16 +59,16 @@ gem 'validates_timeliness', '~> 7.0.0.beta1'
 gem "shrine", "~> 3.5.0"
 
 # ERB Formatter
-gem "htmlbeautifier"
+gem "htmlbeautifier", "~> 1.4.2"
 
 # For profiling
-gem 'rack-mini-profiler'
+gem 'rack-mini-profiler', "~> 3.1.0"
 
 # For memory profiling
-gem 'memory_profiler'
+gem 'memory_profiler', "~> 1.0.1"
 
 # For call-stack profiling flamegraphs
-gem 'stackprof'
+gem 'stackprof', "~> 0.2.25"
 
 # Pagination
 gem "pagy", "~> 6.0.4"
