@@ -41,7 +41,11 @@ class Account < ApplicationRecord
   belongs_to :user, dependent: :destroy
 
   has_many :friend_requests, dependent: :destroy
-  has_many :pending_friends, through: :friend_requests, source: :friend
+  has_many :sent_friend_requests, class_name: "FriendRequest",
+                                  dependent: :destroy
+  has_many :received_friend_requests, class_name: "FriendRequest", foreign_key: :friend_id,
+                                      dependent: :destroy, inverse_of: :friend
+
   has_many :friendships, dependent: :destroy
   has_many :friends, through: :friendships
 
@@ -73,16 +77,22 @@ class Account < ApplicationRecord
                         },
                         allow_blank: true
 
+  def all_friend_requests
+    FriendRequest.where(
+      "account_id = :account_id OR friend_id = :account_id", account_id: id
+    )
+  end
+
   def friend?(account)
     friends.exists?(account.id)
   end
 
   def friend_request_sent?(account)
-    pending_friends.exists?(account.id)
+    sent_friend_requests.exists?(friend_id: account.id)
   end
 
   def friend_request_received?(account)
-    FriendRequest.exists?(friend_id: id, account_id: account.id)
+    received_friend_requests.exists?(account_id: account.id)
   end
 
   def account_incomplete?

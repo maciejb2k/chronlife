@@ -9,7 +9,7 @@ class FriendRequestsController < BaseController
   # TODO: Refactor responses
   def create
     friend = Account.find(params[:account_id])
-    @friend_request = current_account.friend_requests.build(friend:)
+    @friend_request = current_account.sent_friend_requests.build(friend:)
 
     respond_to do |format|
       if @friend_request.save
@@ -52,12 +52,16 @@ class FriendRequestsController < BaseController
   private
 
   def prepare_request_lists
-    @pagy_incoming, @incoming = pagy(FriendRequest.includes(:account).where(friend: current_account))
-    @pagy_outgoing, @outgoing = pagy(current_account.friend_requests.includes(:account))
+    @pagy_incoming, @incoming = pagy(
+      current_account.received_friend_requests.includes(:account)
+    )
+    @pagy_outgoing, @outgoing = pagy(
+      current_account.sent_friend_requests.includes(:account)
+    )
   end
 
   def set_friend_request
-    @friend_request = current_account.friend_requests.find(params[:id])
+    @friend_request = current_account.all_friend_requests.find(params[:id])
   end
 
   def set_breadcrumbs
