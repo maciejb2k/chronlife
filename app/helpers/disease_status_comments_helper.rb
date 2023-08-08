@@ -1,0 +1,2 @@
+module DiseaseStatusCommentsHelper
+end

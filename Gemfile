@@ -80,6 +80,9 @@ gem "chartkick", "~> 5.0.2"
 # Calendar
 gem "simple_calendar", "~> 2.4"
 
+# Extended rake stats command
+gem 'rails_stats', "~> 1.0.2"
+
 group :development, :test do
   gem "debug", "~> 1.8.0", platforms: %i[ mri mingw x64_mingw ]
   gem "faker", "~> 3.2.0"

@@ -82,12 +82,45 @@
               </div>
             </header>
             <div class="disease-status__content">
-              <!--<p class="disease-status__title">
-                <%= I18n.t("activerecord.attributes.disease_status.statuses.#{disease_status.status}") %>
-              </p> -->
               <p class="disease-status__text">
                 <%= disease_status.content %>
               </p>
+            </div>
+            <div class="disease-status__interactions">
+              <div class="disease-status__interaction disease-status__interaction--comment">
+                <i class="ri-chat-3-line disease-status__interaction__icon"></i>
+                <span class="disease-status__interaction__count">1</span>
+              </div>
+              <div class="disease-status__interaction disease-status__interaction--reaction">
+                <i class="ri-thumb-up-line disease-status__interaction__icon"></i>
+                <span class="disease-status__interaction__count">1</span>
+              </div>
+            </div>
+            <div class="disease-status__comments">
+              <p class="disease-status__comments__empty">Brak komentarzy</p>
+            </div>
+            <div class="disease-status__add-comment">
+              <form action="" class="add-comment-form">
+                <div class="add-comment-form__group">
+                  <textarea data-controller="textarea-autogrow" class="add-comment-form__body" placeholder="Dodaj komentarz"></textarea>
+                  <footer class="add-comment-form__footer">
+                    <div class="add-comment-form__actions">
+                      <button class="add-comment-form__action">
+                        <i class="ri-emoji-sticker-line"></i>
+                      </button>
+                      <button class="add-comment-form__action">
+                        <i class="ri-file-gif-line"></i>
+                      </button>
+                      <button class="add-comment-form__action">
+                        <i class="ri-image-add-line"></i>
+                      </button>
+                    </div>
+                    <button class="add-comment-form__submit">
+                      <i class="ri-send-plane-2-fill"></i>
+                    </button>
+                  </footer>
+                </div>
+              </form>
             </div>
           </div>
         <% end %>
