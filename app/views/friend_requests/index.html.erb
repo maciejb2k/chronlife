@@ -72,9 +72,9 @@
           <%= render partial: "outgoing_requests", locals: { outgoing: @outgoing } %>
         </div>
       </div>
-      <div id="dash_pagination">
+      <turbo-frame id="dash_pagination">
         <%= render partial: "shared/dash_pagination", locals: { pagy: @pagy_outgoing } %>
-      </div>
+      </turbo-frame>
     </div>
   </div>
 </div>

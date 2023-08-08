@@ -16,10 +16,10 @@ class FriendsController < BaseController
   private
 
   def set_account
-    @account = current_account
+    @account = Account.find(params[:account_id])
   end
 
   def set_friend
-    @friend = current_account.friends.find(params[:id])
+    @friend = @account.friends.find(params[:id])
   end
 end

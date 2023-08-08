@@ -6,26 +6,21 @@ class FriendRequestsController < BaseController
     prepare_request_lists
   end
 
+  # TODO: Refactor responses
   def create
     friend = Account.find(params[:account_id])
     @friend_request = current_account.friend_requests.build(friend:)
 
     respond_to do |format|
       if @friend_request.save
-        message = "Wysłano zaproszenie do grona znajomych"
-        format.turbo_stream do
-          flash.now[:success] = message
-          render turbo_stream: turbo_stream.update(:flash, partial: "shared/dash_flash")
-        end
-        format.html { redirect_to accounts_path, notice: message }
+        format.html { redirect_to accounts_path, notice: "Wysłano zaproszenie do grona znajomych" }
       else
-        format.turbo_stream do
-          render turbo_stream: turbo_stream.update(:flash, partial: "shared/dash_flash")
-        end
+        format.html { redirect_to accounts_path, notice: "Nie udało się wysłać zaproszenia." }
       end
     end
   end
 
+  # TODO: Refactor responses
   def update
     respond_to do |format|
       if @friend_request.accept
@@ -47,15 +42,6 @@ class FriendRequestsController < BaseController
       format.turbo_stream do
         flash.now[:notice] = message
         prepare_request_lists
-
-        render turbo_stream: [
-          turbo_stream.remove("request-#{@friend_request.id}"),
-          turbo_stream.update(:flash, partial: "shared/dash_flash"),
-          turbo_stream.update(:outgoing_requests, partial: "friend_requests/outgoing_requests",
-                                                  locals: { outgoing: @outgoing }),
-          turbo_stream.update(:dash_pagination, partial: "shared/dash_pagination",
-                                                locals: { pagy: @pagy_outgoing })
-        ]
       end
       format.html do
         redirect_to friend_requests_path, notice: message
