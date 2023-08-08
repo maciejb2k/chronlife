@@ -14,10 +14,9 @@
           <% end %>
           <% unless current_account == @account %>
             <% if current_account.friend?(@account) %>
-              <%= button_to account_friend_path(@account), method: :delete,
-                  class: "dash-button dash-button--line" do %>
+              <div class="dash-button dash-button--line">
                 <i class="ri-user-follow-line dash-button__icon"></i>
-              <% end %>
+              </div>
             <% elsif current_account.friend_request_sent?(@account) %>
               <div class="dash-button dash-button--light-blue">
                 <i class="ri-mail-send-line dash-button__icon"></i>
