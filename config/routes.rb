@@ -50,7 +50,11 @@ Rails.application.routes.draw do
     resources :disease_treatments, only: %i[index]
     resources :disease_photos, only: %i[index new create destroy]
     resources :disease_statuses do
-      resources :disease_status_comments, as: :comments, only: %i[create destroy]
+      member do
+        get :show_comments
+        post :show_comments
+      end
+      resources :disease_status_comments, as: :comments, only: %i[create]
     end
   end
 
@@ -61,6 +65,7 @@ Rails.application.routes.draw do
 
   resources :accounts, only: %i[index show] do
     resources :friends, only: %i[index destroy]
+    resources :posts
   end
 
   resources :friend_requests

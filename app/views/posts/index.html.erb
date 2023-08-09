@@ -1,0 +1,37 @@
+<div class="page-account">
+  <div class="page-account__container">
+    <div class="dash-flash-messages">
+      <%= turbo_frame_tag "flash" %>
+    </div>
+    <%= render "accounts/card" %>
+    <div class="card-group">
+      <header class="card-group__header">
+        <div class="card-group__header__left">
+          <h2 class="card-group__header__title">Wszystkie posty</h2>
+        </div>
+        <div class="card-group__header__right">
+        </div>
+      </header>
+      <div class="card-group__content">
+        <div class="posts-list">
+          <%= turbo_frame_tag "posts_#{@pagy.page}" do %>
+            <% unless @posts.to_a.any? %>
+              <p>Nie dodano na razie żadnych postów.</p>
+            <% end %>
+            <div class="disease-statuses-container">
+              <% @posts.each do |post| %>
+                <%= render partial: post, locals: { disease: post.disease, disease_status: post } %>
+              <% end %>
+            </div>
+            <% unless @pagy.page == @pagy.pages %>
+              <%= turbo_frame_tag "posts_#{@pagy.next}", src: account_posts_path(page: @pagy.next),
+                loading: "lazy" do %>
+                <div>Pobieranie postów ...</div>
+              <% end %>
+            <% end %>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

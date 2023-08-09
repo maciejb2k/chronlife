@@ -1,0 +1,75 @@
+<div class="disease-status">
+  <header class="disease-status__header">
+    <div class="disease-status__header__left">
+      <%= image_tag "avatar-placeholder.png", alt: "Logo", class: "disease-status__photo" %>
+      <div class="disease-status__header__user">
+        <h3 class="disease-status__header__title"><%= disease_status.disease.account.full_name %></h3>
+        <p class="disease-status__header__diseae-name">
+          <%= disease.predefined_disease.name %>
+        </p>
+      </div>
+    </div>
+    <div class="disease-status__header__right">
+      <% if disease_status.mood == 1 %>
+        <p class="disease-status__mood disease-status__mood--sad">
+          <i class="ri-emotion-unhappy-line disease-status__mood__icon"></i>Pogorszenie
+        </p>
+      <% elsif disease_status.mood == 2 %>
+        <p class="disease-status__mood disease-status__mood--normal">
+          <i class="ri-emotion-normal-line disease-status__mood__icon"></i>Bez zmian
+        </p>
+      <% elsif disease_status.mood == 3 %>
+        <p class="disease-status__mood disease-status__mood--happy">
+          <i class="ri-emotion-happy-line disease-status__mood__icon"></i>Polepszenie
+        </p>
+      <% else %>
+        <p class="disease-status__mood disease-status__mood--sad">
+          <i class="ri-sad-line disease-status__mood__icon"></i>Nieznane
+        </p>
+      <% end %>
+      <div data-controller="dropdown" class="dash-dropdown">
+        <button class="dash-dropdown__button" type="button" data-action="dropdown#toggle click@window->dropdown#hide">
+          <i class="ri-more-fill"></i>
+        </button>
+        <div
+          data-dropdown-target="menu"
+          class="hidden transition transform origin-top-right dash-dropdown__list "
+          data-transition-enter-from="opacity-0 scale-95"
+          data-transition-enter-to="opacity-100 scale-100"
+          data-transition-leave-from="opacity-100 scale-100"
+          data-transition-leave-to="opacity-0 scale-95"
+        >
+          <%= link_to edit_disease_disease_status_path(disease, disease_status),
+              data: { action: "dropdown#toggle" }, class: "dash-dropdown__item" do %>
+            <i class="ri-edit-line dash-dropdown__item__icon"></i> Edytuj
+          <% end %>
+          <%= button_to [disease, disease_status], method: :delete, class: "dash-dropdown__item",
+              data: { action: "dropdown#toggle", confirm: "Are you sure?", turbo_confirm: "Are you sure?" } do %>
+            <i class="ri-close-line dash-dropdown__item__icon dash-dropdown__item__icon--delete"></i> Usuń
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </header>
+  <div class="disease-status__content">
+    <p class="disease-status__text">
+      <%= disease_status.content %>
+    </p>
+  </div>
+  <div class="disease-status__interactions">
+    <%= link_to show_comments_disease_disease_status_path(disease, disease_status),
+         data: { turbo_frame: "comments_section_#{disease_status.id}" },
+         class: "disease-status__interaction disease-status__interaction--comment" do %>
+      <i class="ri-chat-3-line disease-status__interaction__icon"></i>
+      <span class="disease-status__interaction__count"><%= disease_status.comments.count %></span>
+    <% end %>
+    <div class="disease-status__interaction disease-status__interaction--reaction">
+      <i class="ri-thumb-up-line disease-status__interaction__icon"></i>
+      <span class="disease-status__interaction__count"><%= disease_status.reactions.count %></span>
+    </div>
+    <p class="disease-status__date">
+      <%= l disease_status.created_at, format: :long %>
+    </p>
+  </div>
+  <%= turbo_frame_tag "comments_section_#{disease_status.id}" %>
+</div>

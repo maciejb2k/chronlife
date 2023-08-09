@@ -61,6 +61,16 @@ class DiseaseStatusesController < ApplicationController
     end
   end
 
+  def show_comments
+    @disease_status = DiseaseStatus.find(params[:id])
+    @pagy, @comments = pagy_countless(@disease_status.comments, items: 1)
+
+    respond_to do |format|
+      format.turbo_stream # POST
+      format.html # GET
+    end
+  end
+
   private
 
   def set_disease

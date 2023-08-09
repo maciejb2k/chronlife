@@ -62,12 +62,14 @@
       <nav class="profile__card__nav">
         <ul class="profile__card__nav__list">
           <li class="profile__card__nav__item">
-            <%= link_to authenticated_root_path, class: "profile__card__nav__link" do %>
+            <%= link_to account_path(@account),
+                class: "profile__card__nav__link #{'profile__card__nav__link--active' if current_page?(account_path(@account))}" do %>
               Informacje
             <% end %>
           </li>
           <li class="profile__card__nav__item">
-            <%= link_to authenticated_root_path, class: "profile__card__nav__link" do %>
+            <%= link_to account_posts_path(@account),
+                class: "profile__card__nav__link #{'profile__card__nav__link--active' if current_page?(account_posts_path(@account))}" do %>
               Posty
             <% end %>
           </li>

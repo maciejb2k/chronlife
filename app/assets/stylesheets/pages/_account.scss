@@ -178,3 +178,13 @@
     }
   }
 }
+
+.posts-list {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+
+  .disease-statuses-container {
+    margin-bottom: 20px;
+  }
+}

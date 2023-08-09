@@ -26,161 +26,23 @@
   </div>
   <div class="page-disease-statuses__content">
     <% if @disease_statuses.to_a.any? %>
-      <div class="disease-statuses-container">
-        <% @disease_statuses.each do |disease_status| %>
-          <div class="disease-status">
-            <header class="disease-status__header">
-              <div class="disease-status__header__left">
-                <%= image_tag user_image, alt: "Logo", class: "disease-status__photo" %>
-                <div class="disease-status__header__user">
-                  <h3 class="disease-status__header__title"><%= user_full_name %></h3>
-                  <p class="disease-status__header__date">
-                    <%= l disease_status.created_at, format: :long %>
-                  </p>
-                </div>
-              </div>
-              <div class="disease-status__header__right">
-                <% if disease_status.mood == 1 %>
-                  <p class="disease-status__mood disease-status__mood--sad">
-                    <i class="ri-emotion-unhappy-line disease-status__mood__icon"></i>Pogorszenie
-                  </p>
-                <% elsif disease_status.mood == 2 %>
-                  <p class="disease-status__mood disease-status__mood--normal">
-                    <i class="ri-emotion-normal-line disease-status__mood__icon"></i>Bez zmian
-                  </p>
-                <% elsif disease_status.mood == 3 %>
-                  <p class="disease-status__mood disease-status__mood--happy">
-                    <i class="ri-emotion-happy-line disease-status__mood__icon"></i>Polepszenie
-                  </p>
-                <% else %>
-                  <p class="disease-status__mood disease-status__mood--sad">
-                    <i class="ri-sad-line disease-status__mood__icon"></i>Nieznane
-                  </p>
-                <% end %>
-                <div data-controller="dropdown" class="dash-dropdown">
-                  <button class="dash-dropdown__button" type="button" data-action="dropdown#toggle click@window->dropdown#hide">
-                    <i class="ri-more-fill"></i>
-                  </button>
-                  <div
-                    data-dropdown-target="menu"
-                    class="hidden transition transform origin-top-right dash-dropdown__list "
-                    data-transition-enter-from="opacity-0 scale-95"
-                    data-transition-enter-to="opacity-100 scale-100"
-                    data-transition-leave-from="opacity-100 scale-100"
-                    data-transition-leave-to="opacity-0 scale-95"
-                  >
-                    <%= link_to edit_disease_disease_status_path(@disease, disease_status),
-                                data: { action: "dropdown#toggle" }, class: "dash-dropdown__item" do %>
-                      <i class="ri-edit-line dash-dropdown__item__icon"></i> Edytuj
-                    <% end %>
-                    <%= button_to [@disease, disease_status], method: :delete, class: "dash-dropdown__item",
-                                data: { action: "dropdown#toggle", confirm: "Are you sure?", turbo_confirm: "Are you sure?" } do %>
-                      <i class="ri-close-line dash-dropdown__item__icon dash-dropdown__item__icon--delete"></i> Usuń
-                    <% end %>
-                  </div>
-                </div>
-              </div>
-            </header>
-            <div class="disease-status__content">
-              <p class="disease-status__text">
-                <%= disease_status.content %>
-              </p>
-            </div>
-            <div class="disease-status__interactions">
-              <div class="disease-status__interaction disease-status__interaction--comment">
-                <i class="ri-chat-3-line disease-status__interaction__icon"></i>
-                <span class="disease-status__interaction__count"><%= disease_status.comments.count %></span>
-              </div>
-              <div class="disease-status__interaction disease-status__interaction--reaction">
-                <i class="ri-thumb-up-line disease-status__interaction__icon"></i>
-                <span class="disease-status__interaction__count"><%= disease_status.reactions.count %></span>
-              </div>
-            </div>
-            <div class="disease-status__comments">
-              <% unless disease_status.comments.any? %>
-                <p class="disease-status__comments__empty">Brak komentarzy</p>
-              <% end %>
-              <div class="comments-list">
-                <% disease_status.comments.each do |comment| %>
-                  <div class="comment">
-                    <header class="comment__header">
-                      <%= image_tag user_image, alt: "Picture", class: "comment__header__photo" %>
-                      <div class="comment__header__text">
-                        <h3 class="comment__header__user"><%= comment.account.full_name %></h3>
-                        <p class="comment__header__date">
-                          <%= time_ago_in_words(comment.updated_at) %> temu
-                        </p>
-                      </div>
-                      <div data-controller="dropdown" class="comment__header__options dash-dropdown dash-dropdown--small">
-                        <button class="dash-dropdown__button" type="button" data-action="dropdown#toggle click@window->dropdown#hide">
-                          <i class="ri-more-fill"></i>
-                        </button>
-                        <div
-                          data-dropdown-target="menu"
-                          class="hidden transition transform origin-top-right dash-dropdown__list "
-                          data-transition-enter-from="opacity-0 scale-95"
-                          data-transition-enter-to="opacity-100 scale-100"
-                          data-transition-leave-from="opacity-100 scale-100"
-                          data-transition-leave-to="opacity-0 scale-95"
-                        >
-                          <%= link_to edit_disease_disease_status_path(@disease, disease_status),
-                                data: { action: "dropdown#toggle" }, class: "dash-dropdown__item" do %>
-                            <i class="ri-edit-line dash-dropdown__item__icon"></i> Edytuj
-                          <% end %>
-                          <%= button_to [@disease, disease_status], method: :delete, class: "dash-dropdown__item",
-                                data: { action: "dropdown#toggle", confirm: "Are you sure?", turbo_confirm: "Are you sure?" } do %>
-                            <i class="ri-close-line dash-dropdown__item__icon dash-dropdown__item__icon--delete"></i> Usuń
-                          <% end %>
-                        </div>
-                      </div>
-                    </header>
-                    <div class="comment__content">
-                      <p class="comment__content__body"><%= comment.body %></p>
-                    </div>
-                  </div>
-                <% end %>
-              </div>
-            </div>
-            <div class="disease-status__add-comment">
-              <%= form_with model: [@disease, disease_status, Comment.new], html: { class: "add-comment-form" } do |f| %>
-                <div class="add-comment-form__group">
-                  <%= f.text_area :body, data: { controller: "textarea-autogrow" },
-                      class: "add-comment-form__body", placeholder: "Dodaj komentarz" %>
-                  <footer class="add-comment-form__footer">
-                    <div class="add-comment-form__actions">
-                      <span class="add-comment-form__action">
-                        <i class="ri-emoji-sticker-line"></i>
-                      </span>
-                      <span class="add-comment-form__action">
-                        <i class="ri-file-gif-line"></i>
-                      </span>
-                      <span class="add-comment-form__action">
-                        <i class="ri-image-add-line"></i>
-                      </span>
-                    </div>
-                    <%= button_tag type: :submit, class: "add-comment-form__submit" do %>
-                      <i class="ri-send-plane-2-fill"></i>
-                    <% end %>
-                  </button>
-                </footer>
-              </div>
-            <% end %>
-          </div>
+      <% @disease_statuses.each do |disease_status| %>
+        <div class="disease-statuses-container">
+          <%= render partial: disease_status, locals: { disease: @disease, disease_status: } %>
         </div>
       <% end %>
+    <% else %>
+      <p class="no-results">
+        Na razie nie dodałeś żadnych aktualizacji.
+      </p>
+    <% end %>
+  </div>
+  <div class="dash-pagination">
+    <div class="dash-pagination__controls">
+      <%== pagy_nav(@pagy) if @pagy.pages > 1 %>
     </div>
-  <% else %>
-    <p class="no-results">
-      Na razie nie dodałeś żadnych aktualizacji.
-    </p>
-  <% end %>
-</div>
-<div class="dash-pagination">
-  <div class="dash-pagination__controls">
-    <%== pagy_nav(@pagy) if @pagy.pages > 1 %>
+    <div class="dash-pagination__info">
+      <%== pagy_info(@pagy) %>
+    </div>
   </div>
-  <div class="dash-pagination__info">
-    <%== pagy_info(@pagy) %>
-  </div>
-</div>
 </div>

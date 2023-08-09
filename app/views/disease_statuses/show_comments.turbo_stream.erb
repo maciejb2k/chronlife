@@ -1,0 +1,9 @@
+<%= turbo_stream.append "comments_#{@disease_status.id}" do %>
+  <%= render partial: "comment", collection: @comments %>
+<% end %>
+
+<%= turbo_stream.update "next_link_#{@disease_status.id}" do %>
+  <% if @pagy.next.present? %>
+    <%= render partial: "show_more_comments", locals: { pagy: @pagy } %>
+  <% end %>
+<% end %>
