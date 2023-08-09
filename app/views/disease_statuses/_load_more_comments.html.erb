@@ -1,3 +1,6 @@
 <% if @pagy.next.present? %>
-  <%= button_to "Załaduj więcej komentarzy", pagy_url_for(@pagy, @pagy.next), class: "disease-status__show-more" %>
+  <%= link_to pagy_url_for(@pagy, @pagy.next),
+      data: { turbo_stream: "" }, class: "disease-status__show-more" do %>
+    Załaduj więcej komentarzy
+  <% end %>
 <% end %>

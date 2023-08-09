@@ -1,7 +1,7 @@
 <%= turbo_stream.append "comments_#{@disease_status.id}" do %>
-  <%= render partial: "comment", collection: @comments %>
+  <%= render partial: "disease_statuses/comment", collection: @comments %>
 <% end %>
 
 <%= turbo_stream.update "next_link_#{@disease_status.id}" do %>
-  <%= render "load_more_comments" %>
+  <%= render "disease_statuses/load_more_comments" %>
 <% end %>

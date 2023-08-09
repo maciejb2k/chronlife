@@ -33,10 +33,11 @@
   }
 
   &__show-more {
-    padding-top: 20px;
-    text-decoration: underline;
+    display: inline-flex;
+    margin-top: 20px;
     color: $dash-text-light;
     font-size: var(--14px);
+    text-decoration: underline;
   }
 
   &__header {

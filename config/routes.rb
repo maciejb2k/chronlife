@@ -24,6 +24,7 @@ Rails.application.routes.draw do
   post "/setup_account" => "setup_account#create"
 
   resources :my_health, only: [:index]
+
   resources :notes do
     member do
       patch :pin
@@ -33,6 +34,7 @@ Rails.application.routes.draw do
     end
   end
   resources :note_tags, except: %i[index show]
+
   resources :measurements, only: %i[index show edit update destroy] do
     collection do
       get "new/:measurement_type", to: "measurements#new", as: :new
@@ -50,11 +52,7 @@ Rails.application.routes.draw do
     resources :disease_treatments, only: %i[index]
     resources :disease_photos, only: %i[index new create destroy]
     resources :disease_statuses do
-      member do
-        get :show_comments
-        post :show_comments
-      end
-      resources :disease_status_comments, as: :comments, only: %i[create]
+      resources :disease_status_comments, as: :comments, only: %i[index create]
     end
   end
 

@@ -1,7 +1,7 @@
 class AccountsController < BaseController
   layout "dashboard"
 
-  before_action :set_account, only: [:show, :edit, :update, :destroy]
+  before_action :set_account, only: %i[show edit update destroy]
   before_action :set_breadcrumbs
 
   def index

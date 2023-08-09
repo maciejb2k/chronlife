@@ -57,7 +57,7 @@
     </p>
   </div>
   <div class="disease-status__interactions">
-    <%= link_to show_comments_disease_disease_status_path(disease, disease_status),
+    <%= link_to disease_disease_status_comments_path(disease, disease_status),
          data: { turbo_frame: "comments_section_#{disease_status.id}" },
          class: "disease-status__interaction disease-status__interaction--comment" do %>
       <i class="ri-chat-3-line disease-status__interaction__icon"></i>

@@ -1,4 +1,4 @@
-<%= turbo_stream.prepend "comments_#{@commentable.id}" do %>
+<%= turbo_stream.prepend "comments_#{@disease_status.id}" do %>
   <%= render partial: "disease_statuses/comment", locals: { comment: @comment } %>
 <% end %>
 
