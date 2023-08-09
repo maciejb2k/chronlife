@@ -61,23 +61,6 @@ class DiseaseStatusesController < ApplicationController
     end
   end
 
-  def show_comments
-    @disease = Disease.find(params[:disease_id])
-    @disease_status = DiseaseStatus.find(params[:id])
-
-    @pagy, @comments = pagy_countless(
-      @disease_status
-      .comments
-      .order(created_at: :desc),
-      items: 3
-    )
-
-    respond_to do |format|
-      format.turbo_stream
-      format.html
-    end
-  end
-
   private
 
   def set_disease

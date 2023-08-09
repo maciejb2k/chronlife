@@ -9,7 +9,7 @@ class PostsController < BaseController
       .joins(:disease)
       .where(disease: { account_id: @account.id })
       .order(created_at: :desc),
-      items: 1
+      items: 10
     )
   end
 

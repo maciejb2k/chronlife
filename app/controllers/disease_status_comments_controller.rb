@@ -5,6 +5,8 @@ class DiseaseStatusCommentsController < CommentsController
     @pagy, @comments = pagy_countless(
       @disease_status
       .comments
+      .joins(:account)
+      .includes(:account)
       .order(created_at: :desc),
       items: 3
     )
@@ -22,14 +24,10 @@ class DiseaseStatusCommentsController < CommentsController
     if @comment.save!
       respond_to do |format|
         format.turbo_stream
-        format.html { redirect_to @disease_status, notice: "Comment created" }
+        format.html { redirect_to @disease_status, notice: "Poprawnie dodano nowy komentarz." }
       end
     else
-      respond_to do |format|
-        format.turbo_stream {
-          render :new, status: :unprocessable_entity
-        }
-      end
+      render :new, status: :unprocessable_entity
     end
   end
 
