@@ -1,6 +1,6 @@
 <% if @pagy.next.present? %>
-  <%= link_to pagy_url_for(@pagy, @pagy.next),
-      data: { turbo_stream: "" }, class: "disease-status__show-more" do %>
+  <%= link_to pagy_url_for(@pagy, @pagy.next), data: { turbo_stream: "" },
+      class: "disease-status__show-more" do %>
     Załaduj więcej komentarzy
   <% end %>
 <% end %>
