@@ -1,11 +1,11 @@
 class DiseaseStatusesController < ApplicationController
   layout "dashboard"
 
-  before_action :set_disease
+  before_action :set_disease, except: %i[show_comments]
   before_action :set_disease_status, only: %i[show edit update destroy]
   before_action :set_disease_status_options, only: %i[new create edit update]
 
-  before_action :set_breadcrumbs
+  before_action :set_breadcrumbs, except: %i[show_comments]
   before_action :set_breadcrumbs_new, only: %i[new create]
   before_action :set_breadcrumbs_show, only: %i[show]
   before_action :set_breadcrumbs_edit, only: %i[edit update]
@@ -62,12 +62,19 @@ class DiseaseStatusesController < ApplicationController
   end
 
   def show_comments
+    @disease = Disease.find(params[:disease_id])
     @disease_status = DiseaseStatus.find(params[:id])
-    @pagy, @comments = pagy_countless(@disease_status.comments, items: 1)
+
+    @pagy, @comments = pagy_countless(
+      @disease_status
+      .comments
+      .order(created_at: :desc),
+      items: 3
+    )
 
     respond_to do |format|
-      format.turbo_stream # POST
-      format.html # GET
+      format.turbo_stream
+      format.html
     end
   end
 

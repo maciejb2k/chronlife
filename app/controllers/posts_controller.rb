@@ -8,7 +8,6 @@ class PostsController < BaseController
       DiseaseStatus
       .joins(:disease)
       .where(disease: { account_id: @account.id })
-      .includes(:reactions, comments: :account, disease: :account)
       .order(created_at: :desc),
       items: 1
     )

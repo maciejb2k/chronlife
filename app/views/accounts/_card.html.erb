@@ -68,15 +68,15 @@
             <% end %>
           </li>
           <li class="profile__card__nav__item">
-            <%= link_to account_posts_path(@account),
-                class: "profile__card__nav__link #{'profile__card__nav__link--active' if current_page?(account_posts_path(@account))}" do %>
-              Posty
-            <% end %>
-          </li>
-          <li class="profile__card__nav__item">
             <%= link_to account_friends_path(@account),
                 class: "profile__card__nav__link #{'profile__card__nav__link--active' if current_page?(account_friends_path(@account))}" do %>
               Znajomi
+            <% end %>
+          </li>
+          <li class="profile__card__nav__item">
+            <%= link_to account_posts_path(@account),
+                class: "profile__card__nav__link #{'profile__card__nav__link--active' if current_page?(account_posts_path(@account))}" do %>
+              Aktualizacje zdrowia
             <% end %>
           </li>
         </ul>

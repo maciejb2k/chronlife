@@ -7,7 +7,7 @@
     <div class="card-group">
       <header class="card-group__header">
         <div class="card-group__header__left">
-          <h2 class="card-group__header__title">Wszystkie posty</h2>
+          <h2 class="card-group__header__title">Wszystkie aktualizacje zdrowia</h2>
         </div>
         <div class="card-group__header__right">
         </div>
@@ -25,7 +25,7 @@
             </div>
             <% unless @pagy.page == @pagy.pages %>
               <%= turbo_frame_tag "posts_#{@pagy.next}", src: account_posts_path(page: @pagy.next),
-                loading: "lazy" do %>
+                  loading: "lazy" do %>
                 <div>Pobieranie postów ...</div>
               <% end %>
             <% end %>

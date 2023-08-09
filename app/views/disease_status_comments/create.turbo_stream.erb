@@ -1,0 +1,7 @@
+<%= turbo_stream.prepend "comments_#{@commentable.id}" do %>
+  <%= render partial: "disease_statuses/comment", locals: { comment: @comment } %>
+<% end %>
+
+<%= turbo_stream.update "comments_count_#{@disease_status.id}" do %>
+  <%= @disease_status.comments.count %>
+<% end %>

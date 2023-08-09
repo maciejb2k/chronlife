@@ -229,6 +229,7 @@
         align-items: center;
         justify-content: space-between;
         padding: 10px 10px 10px 20px;
+        background: #ffffff;
       }
 
       &__body {
@@ -256,61 +257,61 @@
       }
     }
   }
+}
 
-  .comments-list {
+.comments-list {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+
+.comment {
+  &__header {
     display: flex;
-    flex-direction: column;
-    gap: 30px;
-  }
+    gap: 15px;
+    margin-bottom: 10px;
 
-  .comment {
-    &__header {
-      display: flex;
-      gap: 15px;
-      margin-bottom: 10px;
-
-      &__photo {
-        width: 30px;
-        height: 30px;
-        border-radius: 50px;
-      }
-
-      &__text {
-        display: flex;
-        flex-direction: column;
-      }
-
-      &__user {
-        font-size: var(--15px);
-        font-weight: 500;
-        color: $dash-text-dark;
-      }
-
-      &__username {
-        font-size: var(--14px);
-        font-weight: 400;
-        color: $dash-text-light;
-      }
-
-      &__date {
-        font-size: var(--13px);
-        font-weight: 400;
-        color: $dash-text-light;
-      }
-
-      &__options {
-        margin-left: auto;
-      }
+    &__photo {
+      width: 30px;
+      height: 30px;
+      border-radius: 50px;
     }
 
-    &__content {
-      margin-left: 45px;
+    &__text {
+      display: flex;
+      flex-direction: column;
+    }
 
-      &__body {
-        font-size: var(--14px);
-        font-weight: 400;
-        color: $dash-text-dark;
-      }
+    &__user {
+      font-size: var(--15px);
+      font-weight: 500;
+      color: $dash-text-dark;
+    }
+
+    &__username {
+      font-size: var(--14px);
+      font-weight: 400;
+      color: $dash-text-light;
+    }
+
+    &__date {
+      font-size: var(--13px);
+      font-weight: 400;
+      color: $dash-text-light;
+    }
+
+    &__options {
+      margin-left: auto;
+    }
+  }
+
+  &__content {
+    margin-left: 45px;
+
+    &__body {
+      font-size: var(--14px);
+      font-weight: 400;
+      color: $dash-text-dark;
     }
   }
 }

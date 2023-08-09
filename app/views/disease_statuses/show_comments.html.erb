@@ -2,13 +2,14 @@
   <div class="disease-status__comments">
     <% unless @comments.any? %>
       <p class="disease-status__comments__empty">Brak komentarzy</p>
+    <% else %>
+      <div class="comments-list" id="comments_<%= @disease_status.id %>">
+        <%= render partial: "comment", collection: @comments %>
+      </div>
+      <div id="next_link_<%= @disease_status.id %>">
+        <%= render "load_more_comments" %>
+      </div>
     <% end %>
-    <div class="comments-list" id="comments_<%= @disease_status.id %>">
-      <%= render partial: "comment", collection: @comments %>
-    </div>
-    <div id="next_link_<%= @disease_status.id %>">
-      <%= render partial: "show_more_comments", locals: { pagy: @pagy } %>
-    </div>
   </div>
   <div class="disease-status__add-comment">
     <%= form_with model: [@disease, @disease_status, Comment.new], html: { class: "add-comment-form" } do |f| %>

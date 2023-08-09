@@ -61,7 +61,9 @@
          data: { turbo_frame: "comments_section_#{disease_status.id}" },
          class: "disease-status__interaction disease-status__interaction--comment" do %>
       <i class="ri-chat-3-line disease-status__interaction__icon"></i>
-      <span class="disease-status__interaction__count"><%= disease_status.comments.count %></span>
+      <span class="disease-status__interaction__count" id="comments_count_<%= disease_status.id %>">
+        <%= disease_status.comments.count %>
+      </span>
     <% end %>
     <div class="disease-status__interaction disease-status__interaction--reaction">
       <i class="ri-thumb-up-line disease-status__interaction__icon"></i>
