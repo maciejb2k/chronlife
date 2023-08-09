@@ -1,8 +1,8 @@
 class CommentsController < BaseController
   def create
-    @comment = @commentable.comments.new comment_params
+    @comment = @commentable.comments.build comment_params
     @comment.account = current_account
-    @comment.save
+    @comment.save!
 
     redirect_to @commentable, notice: "Comment created"
   end

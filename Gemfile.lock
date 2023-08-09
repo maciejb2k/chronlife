@@ -445,7 +445,7 @@ DEPENDENCIES
   rack-mini-profiler (~> 3.1.0)
   rails (~> 7.0.6)
   rails-erd (~> 1.7.2)
-  rails_stats (~> 1.0, >= 1.0.2)
+  rails_stats (~> 1.0.2)
   redis (~> 5.0.6)
   rqrcode (~> 2.2.0)
   rspec-rails (~> 6.0.3)

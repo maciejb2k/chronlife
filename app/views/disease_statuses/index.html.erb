@@ -89,54 +89,98 @@
             <div class="disease-status__interactions">
               <div class="disease-status__interaction disease-status__interaction--comment">
                 <i class="ri-chat-3-line disease-status__interaction__icon"></i>
-                <span class="disease-status__interaction__count">1</span>
+                <span class="disease-status__interaction__count"><%= disease_status.comments.count %></span>
               </div>
               <div class="disease-status__interaction disease-status__interaction--reaction">
                 <i class="ri-thumb-up-line disease-status__interaction__icon"></i>
-                <span class="disease-status__interaction__count">1</span>
+                <span class="disease-status__interaction__count"><%= disease_status.reactions.count %></span>
               </div>
             </div>
             <div class="disease-status__comments">
-              <p class="disease-status__comments__empty">Brak komentarzy</p>
+              <% unless disease_status.comments.any? %>
+                <p class="disease-status__comments__empty">Brak komentarzy</p>
+              <% end %>
+              <div class="comments-list">
+                <% disease_status.comments.each do |comment| %>
+                  <div class="comment">
+                    <header class="comment__header">
+                      <%= image_tag user_image, alt: "Picture", class: "comment__header__photo" %>
+                      <div class="comment__header__text">
+                        <h3 class="comment__header__user"><%= comment.account.full_name %></h3>
+                        <p class="comment__header__date">
+                          <%= time_ago_in_words(comment.updated_at) %> temu
+                        </p>
+                      </div>
+                      <div data-controller="dropdown" class="comment__header__options dash-dropdown dash-dropdown--small">
+                        <button class="dash-dropdown__button" type="button" data-action="dropdown#toggle click@window->dropdown#hide">
+                          <i class="ri-more-fill"></i>
+                        </button>
+                        <div
+                          data-dropdown-target="menu"
+                          class="hidden transition transform origin-top-right dash-dropdown__list "
+                          data-transition-enter-from="opacity-0 scale-95"
+                          data-transition-enter-to="opacity-100 scale-100"
+                          data-transition-leave-from="opacity-100 scale-100"
+                          data-transition-leave-to="opacity-0 scale-95"
+                        >
+                          <%= link_to edit_disease_disease_status_path(@disease, disease_status),
+                                data: { action: "dropdown#toggle" }, class: "dash-dropdown__item" do %>
+                            <i class="ri-edit-line dash-dropdown__item__icon"></i> Edytuj
+                          <% end %>
+                          <%= button_to [@disease, disease_status], method: :delete, class: "dash-dropdown__item",
+                                data: { action: "dropdown#toggle", confirm: "Are you sure?", turbo_confirm: "Are you sure?" } do %>
+                            <i class="ri-close-line dash-dropdown__item__icon dash-dropdown__item__icon--delete"></i> Usuń
+                          <% end %>
+                        </div>
+                      </div>
+                    </header>
+                    <div class="comment__content">
+                      <p class="comment__content__body"><%= comment.body %></p>
+                    </div>
+                  </div>
+                <% end %>
+              </div>
             </div>
             <div class="disease-status__add-comment">
-              <form action="" class="add-comment-form">
+              <%= form_with model: [@disease, disease_status, Comment.new], html: { class: "add-comment-form" } do |f| %>
                 <div class="add-comment-form__group">
-                  <textarea data-controller="textarea-autogrow" class="add-comment-form__body" placeholder="Dodaj komentarz"></textarea>
+                  <%= f.text_area :body, data: { controller: "textarea-autogrow" },
+                      class: "add-comment-form__body", placeholder: "Dodaj komentarz" %>
                   <footer class="add-comment-form__footer">
                     <div class="add-comment-form__actions">
-                      <button class="add-comment-form__action">
+                      <span class="add-comment-form__action">
                         <i class="ri-emoji-sticker-line"></i>
-                      </button>
-                      <button class="add-comment-form__action">
+                      </span>
+                      <span class="add-comment-form__action">
                         <i class="ri-file-gif-line"></i>
-                      </button>
-                      <button class="add-comment-form__action">
+                      </span>
+                      <span class="add-comment-form__action">
                         <i class="ri-image-add-line"></i>
-                      </button>
+                      </span>
                     </div>
-                    <button class="add-comment-form__submit">
+                    <%= button_tag type: :submit, class: "add-comment-form__submit" do %>
                       <i class="ri-send-plane-2-fill"></i>
-                    </button>
-                  </footer>
-                </div>
-              </form>
-            </div>
+                    <% end %>
+                  </button>
+                </footer>
+              </div>
+            <% end %>
           </div>
-        <% end %>
-      </div>
-    <% else %>
-      <p class="no-results">
-        Na razie nie dodałeś żadnych aktualizacji.
-      </p>
-    <% end %>
-  </div>
-  <div class="dash-pagination">
-    <div class="dash-pagination__controls">
-      <%== pagy_nav(@pagy) if @pagy.pages > 1 %>
+        </div>
+      <% end %>
     </div>
-    <div class="dash-pagination__info">
-      <%== pagy_info(@pagy) %>
-    </div>
+  <% else %>
+    <p class="no-results">
+      Na razie nie dodałeś żadnych aktualizacji.
+    </p>
+  <% end %>
+</div>
+<div class="dash-pagination">
+  <div class="dash-pagination__controls">
+    <%== pagy_nav(@pagy) if @pagy.pages > 1 %>
   </div>
+  <div class="dash-pagination__info">
+    <%== pagy_info(@pagy) %>
+  </div>
+</div>
 </div>

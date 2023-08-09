@@ -9,6 +9,6 @@ class DiseaseStatusCommentsController < CommentsController
   end
 
   def set_commentable
-    @disease_status = @disease.statuses.find(params[:id])
+    @commentable = @disease.statuses.find(params[:disease_status_id])
   end
 end
