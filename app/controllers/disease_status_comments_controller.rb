@@ -1,4 +1,4 @@
-class DiseaseStatusCommentsController < CommentsController
+class DiseaseStatusCommentsController < BaseController
   before_action :set_commentable
 
   def index
@@ -36,5 +36,9 @@ class DiseaseStatusCommentsController < CommentsController
   def set_commentable
     @disease = Disease.find(params[:disease_id])
     @disease_status = DiseaseStatus.find(params[:disease_status_id])
+  end
+
+  def comment_params
+    params.require(:comment).permit(:body)
   end
 end

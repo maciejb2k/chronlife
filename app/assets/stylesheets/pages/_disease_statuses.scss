@@ -186,6 +186,11 @@
     }
 
     &--reaction {
+      &--active {
+        background: #208ed2;
+        color: #ffffff;
+      }
+
       &:hover {
         border: 1px solid #208ed2;
       }
@@ -263,14 +268,14 @@
 .comments-list {
   display: flex;
   flex-direction: column;
-  gap: 30px;
+  gap: 20px;
 }
 
 .comment {
   &__header {
     display: flex;
     gap: 15px;
-    margin-bottom: 10px;
+    margin-bottom: 8px;
 
     &__photo {
       width: 30px;
