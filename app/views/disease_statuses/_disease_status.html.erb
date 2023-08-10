@@ -65,7 +65,7 @@
         <%= disease_status.comments.size %>
       </span>
     <% end %>
-    <% if disease_status.reactions.where(account: current_account).exists? %>
+    <% if @liked_statuses.to_a.include?(disease_status) %>
       <%= render partial: "disease_statuses/unlike_button", locals: { disease:, disease_status: } %>
     <% else %>
       <%= render partial: "disease_statuses/like_button", locals: { disease:, disease_status: } %>

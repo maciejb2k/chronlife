@@ -9,5 +9,5 @@
 <% end %>
 
 <% if comments_size > 0 %>
-  <%= turbo_stream.remove Comment.new %>
+  <%= turbo_stream.remove "empty_comments_#{@disease_status.id}" %>
 <% end %>

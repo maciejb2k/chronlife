@@ -1,17 +1,29 @@
 class DiseaseStatusesController < ApplicationController
   layout "dashboard"
 
-  before_action :set_disease, except: %i[show_comments]
+  before_action :set_disease
   before_action :set_disease_status, only: %i[show edit update destroy]
   before_action :set_disease_status_options, only: %i[new create edit update]
 
-  before_action :set_breadcrumbs, except: %i[show_comments]
+  before_action :set_breadcrumbs
   before_action :set_breadcrumbs_new, only: %i[new create]
   before_action :set_breadcrumbs_show, only: %i[show]
   before_action :set_breadcrumbs_edit, only: %i[edit update]
 
   def index
-    @pagy, @disease_statuses = pagy(@disease.statuses.order(created_at: :desc), items: 8)
+    @pagy, @disease_statuses = pagy(
+      @disease
+      .statuses
+      .order(created_at: :desc)
+      .includes(:comments, :reactions),
+      items: 8
+    )
+
+    @liked_statuses = Reaction.where(
+      account: current_account,
+      reaction_type: "like",
+      reactable_type: "DiseaseStatus"
+    ).pluck(:reactable_id)
   end
 
   def show; end
