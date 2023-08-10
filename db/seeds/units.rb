@@ -1,3 +1,5 @@
+puts "Seeding units ..."
+
 # Units
 
 Unit.create(
@@ -209,3 +211,5 @@ Unit.create(
     }
   ]
 )
+
+puts "Seeding units done."

@@ -317,7 +317,7 @@
 }
 
 .auth--setup {
-  background: #edfff6;
+  background: #f6fbff;
 
   .auth__sidebar {
     background: url("/assets/auth-sidebar-setup.jpg") no-repeat center right;
@@ -325,10 +325,10 @@
   }
 
   .auth-form__submit {
-    background: #6cc884;
+    background: #aad9ff;
 
     &:hover {
-      background: #56a36b;
+      background: #9ad2ff;
     }
   }
 }

@@ -1,3 +1,5 @@
+puts "Seeding measurement types..."
+
 MeasurementType.create(
   [
     {
@@ -22,3 +24,5 @@ MeasurementType.create(
     }
   ]
 )
+
+puts "Seeding measurement types done."

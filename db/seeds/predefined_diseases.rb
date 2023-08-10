@@ -1,3 +1,5 @@
+puts "Seeding predefined diseases..."
+
 PredefinedDisease.create(
   [
     {
@@ -58,3 +60,5 @@ PredefinedDisease.create(
     }
   ]
 )
+
+puts "Seeding predefined diseases done."

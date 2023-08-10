@@ -1,3 +1,5 @@
+puts "Seeding predefined symptoms ..."
+
 # AZS
 
 azs = PredefinedDisease.find_by(name: "atopowe zapalenie skóry")
@@ -17,3 +19,5 @@ azs.predefined_symptoms.create(
     }
   ]
 )
+
+puts "Seeding predefined symptoms done."

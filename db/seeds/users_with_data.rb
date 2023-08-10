@@ -1,3 +1,7 @@
+puts "Seeding users with the data ..."
+
+# User & Account
+
 user = User.new(
   email: "tomasz.nowak@gmail.com",
   password: "password",
@@ -12,3 +16,5 @@ account = user.build_account(
   username: "tomasznowak"
 )
 account.save!
+
+puts "Seeding users with the data done."
