@@ -60,6 +60,10 @@ I've came up with the design of this application by myself. I am not using any t
 
 Maybe I'm weird, but I enjoy getting my hands dirty with CSS.
 
+## Hotwire (Turbo + Stimulus)
+
+This application is my first take on Turbo (I've used Stimulus before, so it's not that big deal). I haven't used the Turbo features in the whole project, but only in a few places, where the application required some interactivity, like the comments section and reactions for disease statuses, friend requests, some of the forms and flash messages.
+
 ## Features
 
 Below is a list of features that I've already implemented or I'm planning to implement in the future.

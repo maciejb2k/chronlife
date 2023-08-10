@@ -29,7 +29,7 @@ class DiseaseStatusesController < ApplicationController
       if @disease_status.save
         format.html do
           redirect_to disease_disease_statuses_path,
-                      notice: "Aktualizacja statusu choroby została poprawnie dodana."
+                      notice: "Nowy status choroby został poprawnie dodany."
         end
       else
         format.html { render :new, status: :unprocessable_entity }

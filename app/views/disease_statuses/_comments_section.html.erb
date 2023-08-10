@@ -1,7 +1,9 @@
 <%= turbo_frame_tag "comments_section_#{@disease_status.id}" do %>
   <div class="disease-status__comments">
-    <% if @comments.none? %>
-      <p class="disease-status__comments__empty">Brak komentarzy</p>
+    <%= turbo_frame_tag Comment.new do %>
+      <% if @comments.none? %>
+        <p class="disease-status__comments__empty">Brak komentarzy</p>
+      <% end %>
     <% end %>
 
     <div class="comments-list" id="comments_<%= @disease_status.id %>">
