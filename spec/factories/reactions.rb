@@ -4,7 +4,7 @@
 #
 #  id             :uuid             not null, primary key
 #  reactable_type :string           not null
-#  type           :string           default(""), not null
+#  reaction_type  :string           default(""), not null
 #  created_at     :datetime         not null
 #  updated_at     :datetime         not null
 #  account_id     :uuid             not null

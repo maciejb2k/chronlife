@@ -4,7 +4,7 @@
 #
 #  id                         :uuid             not null, primary key
 #  bio                        :text             default(""), not null
-#  birthday                   :date             default(Thu, 01 Jan 1970), not null
+#  birthday                   :date
 #  city                       :string           default(""), not null
 #  country                    :string           default(""), not null
 #  education                  :string           default(""), not null

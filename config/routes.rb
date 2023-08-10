@@ -53,6 +53,12 @@ Rails.application.routes.draw do
     resources :disease_photos, only: %i[index new create destroy]
     resources :disease_statuses do
       resources :disease_status_comments, as: :comments, only: %i[index create]
+      resources :disease_status_reactions, as: :reactions, only: %i[index] do
+        collection do
+          post :like
+          delete :unlike
+        end
+      end
     end
   end
 

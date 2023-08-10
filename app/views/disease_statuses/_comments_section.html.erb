@@ -1,15 +1,15 @@
 <%= turbo_frame_tag "comments_section_#{@disease_status.id}" do %>
   <div class="disease-status__comments">
-    <% unless @comments.any? %>
+    <% if @comments.none? %>
       <p class="disease-status__comments__empty">Brak komentarzy</p>
-    <% else %>
-      <div class="comments-list" id="comments_<%= @disease_status.id %>">
-        <%= render partial: "disease_statuses/comment", collection: @comments %>
-      </div>
-      <div id="next_link_<%= @disease_status.id %>">
-        <%= render "disease_statuses/load_more_comments" %>
-      </div>
     <% end %>
+
+    <div class="comments-list" id="comments_<%= @disease_status.id %>">
+      <%= render partial: "disease_statuses/comment", collection: @comments %>
+    </div>
+    <div id="next_link_<%= @disease_status.id %>">
+      <%= render "disease_statuses/load_more_comments" %>
+    </div>
   </div>
   <div class="disease-status__add-comment">
     <%= render "disease_statuses/add_comment_form" %>

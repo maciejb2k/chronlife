@@ -186,17 +186,22 @@
     }
 
     &--reaction {
-      &--active {
-        background: #208ed2;
-        color: #ffffff;
-      }
-
       &:hover {
         border: 1px solid #208ed2;
       }
 
       .disease-status__interaction__icon {
         color: #208ed2;
+      }
+
+      &--active {
+        border: 1px solid transparent;
+        background: #208ed2;
+        color: #ffffff;
+
+        .disease-status__interaction__icon {
+          color: #ffffff;
+        }
       }
     }
   }

@@ -18,16 +18,6 @@
 #  fk_rails_...  (account_id => accounts.id)
 #  fk_rails_...  (friend_id => accounts.id)
 #
-# Info:
-#
-# Account is a person who sent a friend request.
-# Friend is a person who received a friend request.
-#
-# :account -> :friend
-#
-# If we select all friend requests by :account, we will get all sent friend requests.
-# If we select all friend requests by :friend, we will get all received friend requests.
-#
 class FriendRequest < ApplicationRecord
   belongs_to :account
   belongs_to :friend, class_name: "Account"

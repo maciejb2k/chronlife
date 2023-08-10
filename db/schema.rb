@@ -22,7 +22,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_08_05_072036) do
     t.string "username"
     t.text "bio", default: "", null: false
     t.string "sex", default: "", null: false
-    t.date "birthday", default: "1970-01-01", null: false
+    t.date "birthday"
     t.string "country", default: "", null: false
     t.string "city", default: "", null: false
     t.string "phone_number", default: "", null: false
@@ -277,7 +277,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_08_05_072036) do
   end
 
   create_table "reactions", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
-    t.string "type", default: "", null: false
+    t.string "reaction_type", default: "", null: false
     t.uuid "account_id", null: false
     t.string "reactable_type", null: false
     t.uuid "reactable_id", null: false

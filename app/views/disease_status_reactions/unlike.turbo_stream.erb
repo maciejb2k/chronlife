@@ -1,0 +1,4 @@
+<%= turbo_stream.replace "reactions_#{@disease_status.id}" do %>
+  <%= render partial: "disease_statuses/like_button",
+      locals: { disease: @disease, disease_status: @disease_status } %>
+<% end %>

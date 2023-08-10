@@ -4,7 +4,7 @@
 #
 #  id             :uuid             not null, primary key
 #  reactable_type :string           not null
-#  type           :string           default(""), not null
+#  reaction_type  :string           default(""), not null
 #  created_at     :datetime         not null
 #  updated_at     :datetime         not null
 #  account_id     :uuid             not null
@@ -21,13 +21,13 @@
 #  fk_rails_...  (account_id => accounts.id)
 #
 class Reaction < ApplicationRecord
-  belongs_to :predefined_reaction, dependent: :destroy
   belongs_to :reactable, polymorphic: true
+  belongs_to :account
 
   TYPES = %w[like dislike haha love sad angry].freeze
 
-  validates :type, presence: true, inclusion: { in: TYPES }
-  validates :user_id, uniqueness: { scope: %i[reactable_id reactable_type] }
+  validates :reaction_type, presence: true, inclusion: { in: TYPES }
+  validates :account_id, uniqueness: { scope: %i[reactable_id reactable_type] }
 
   def like?
     type == "like"

@@ -65,12 +65,11 @@
         <%= disease_status.comments.size %>
       </span>
     <% end %>
-    <div class="disease-status__interaction disease-status__interaction--reaction">
-      <i class="ri-thumb-up-line disease-status__interaction__icon"></i>
-      <span class="disease-status__interaction__count" id="reactions_count_<%= disease_status.id %>">
-        <%= disease_status.reactions.size %>
-      </span>
-    </div>
+    <% if disease_status.reactions.where(account: current_account).exists? %>
+      <%= render partial: "disease_statuses/unlike_button", locals: { disease:, disease_status: } %>
+    <% else %>
+      <%= render partial: "disease_statuses/like_button", locals: { disease:, disease_status: } %>
+    <% end %>
     <p class="disease-status__date">
       <%= l disease_status.created_at, format: :long %>
     </p>
