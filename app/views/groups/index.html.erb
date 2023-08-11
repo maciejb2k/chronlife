@@ -1,0 +1,194 @@
+<div class="page-groups">
+  <header class="dash-header">
+    <div class="dash-header__left">
+      <h1 class="dash-header__title">
+        <i class="ri-group-line dash-header__title__icon"></i>
+        Grupy chorych
+      </h1>
+      <%= render "shared/breadcrumbs" %>
+    </div>
+    <div class="dash-header__right">
+      <%= link_to authenticated_root_path, class: "dash-button dash-button--back" do %>
+        <i class="ri-arrow-left-line dash-button__icon"></i>
+      <% end %>
+    </div>
+  </header>
+  <div class="dash-flash-messages">
+    <%= render "shared/dash_flash" %>
+  </div>
+  <div class="page-groups__content">
+    <div class="dash-group">
+      <header class="dash-group__header">
+        <h2 class="dash-group__title">
+          <i class="ri-user-heart-line dash-group__title__icon"></i>
+          Przypisane grupy
+        </h2>
+        <div class="dash-group__actions"></div>
+      </header>
+      <div class="dash-group__content">
+        <% if @account_groups.to_a.any? %>
+          <div class="groups-list">
+            <% @account_groups.each do |group| %>
+              <% members = group.accounts %>
+              <% members_count = group.accounts.size %>
+              <% group_name = group.predefined_disease.name %>
+
+              <div class="group">
+                <div class="group__content">
+                  <div class="group__text">
+                    <h3 class="group__title"><%= group_name %></h3>
+                    <p class="group__desc">Grupa tylko dla osób z tą chorobą.</p>
+                  </div>
+                  <div class="group__corner">
+                    <div data-controller="dropdown" class="comment__header__options dash-dropdown">
+                      <button class="dash-dropdown__button" type="button" data-action="dropdown#toggle click@window->dropdown#hide">
+                        <i class="ri-more-fill"></i>
+                      </button>
+                      <div
+                      data-dropdown-target="menu"
+                      class="hidden transition transform origin-top-right dash-dropdown__list "
+                      data-transition-enter-from="opacity-0 scale-95"
+                      data-transition-enter-to="opacity-100 scale-100"
+                      data-transition-leave-from="opacity-100 scale-100"
+                      data-transition-leave-to="opacity-0 scale-95"
+                    >
+                        <%= button_to leave_group_path(group), method: :delete,
+                          class: "dash-dropdown__item", data: { action: "dropdown#toggle", } do %>
+                          <i class="ri-close-line dash-dropdown__item__icon dash-dropdown__item__icon--delete"></i> Opuść
+                        <% end %>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="group__footer">
+                  <div class="group__members">
+                    <div class="group__members-list">
+                      <% if members_count > 0 %>
+                        <% members.each do |member| %>
+                          <div class="group__member-wrapper">
+                            <%= image_tag "avatar-placeholder.png", alt: "", class: "group__member" %>
+                          </div>
+                        <% end %>
+                      <% else %>
+                        <p class="group__members-empty">
+                          <i class="ri-close-circle-line"></i>
+                          Brak członków w grupie.
+                        </p>
+                      <% end %>
+                    </div>
+                    <% if members_count > 0 %>
+                      <div class="group__members-count">
+                        <% if members_count > 5 %>
+                          +<%= members_count - 5 %>
+                        <% else %>
+                          <%= members_count %>
+                        <% end %>
+                        <%= members_count == 1 ? 'członek' : 'członków' %>
+                      </div>
+                    <% end %>
+                  </div>
+                  <div class="group__actions">
+                    <%= link_to group_path(group), class: "dash-button dash-button--light-blue dash-button--small group__link" do %>
+                      <i class="ri-arrow-right-line group__link__icon"></i>
+                      Przejdź
+                    <% end %>
+                  </div>
+                </div>
+              </div>
+            <% end %>
+          </div>
+        <% else %>
+          <p class="dash-group__text">Brak grup do których zostałeś dodany.</p>
+        <% end %>
+      </div>
+      <div class="dash-pagination">
+        <div class="dash-pagination__controls">
+          <%== pagy_nav(@pagy_account) if @pagy_account.pages > 1 %>
+        </div>
+        <div class="dash-pagination__info">
+          <%== pagy_info(@pagy_account) %>
+        </div>
+      </div>
+    </div>
+    <div class="dash-group">
+      <header class="dash-group__header">
+        <h2 class="dash-group__title">
+          <i class="ri-user-add-line dash-group__title__icon"></i>
+          Dostępne grupy
+        </h2>
+        <div class="dash-group__actions">
+          <%= link_to diseases_path,
+              class: "dash-button dash-button--new dash-button--small" do %>
+            <i class="ri-add-line dash-button__icon"></i>
+            Dodaj choroby
+          <% end %>
+        </div>
+      </header>
+      <div class="dash-group__content">
+        <% if @available_groups.to_a.any? %>
+          <div class="groups-list">
+            <% @available_groups.each do |group| %>
+              <% members = group.accounts %>
+              <% members_count = group.accounts.size %>
+              <% group_name = group.predefined_disease.name %>
+
+              <div class="group">
+                <div class="group__content">
+                  <div class="group__text">
+                    <h3 class="group__title"><%= group_name %></h3>
+                    <p class="group__desc">Grupa tylko dla osób z tą chorobą.</p>
+                  </div>
+                  <div class="group__symbol">
+                    <i class="ri-heart-pulse-line"></i>
+                  </div>
+                </div>
+                <div class="group__footer">
+                  <div class="group__members">
+                    <div class="group__members-list">
+                      <% if members_count > 0 %>
+                        <% members.each do |member| %>
+                          <%= image_tag "avatar-placeholder.png", alt: "", title: member.full_name,
+                              class: "group__member" %>
+                        <% end %>
+                      <% else %>
+                        <p class="group__members-empty">
+                          <i class="ri-close-circle-line"></i>
+                          Brak członków w grupie.
+                        </p>
+                      <% end %>
+                    </div>
+                    <% if members_count > 0 %>
+                      <div class="group__members-count">
+                        <% if members_count > 5 %>
+                          +<%= members_count - 5 %>
+                        <% else %>
+                          <%= members_count %>
+                        <% end %>
+                        <%= members_count == 1 ? 'członek' : 'członków' %>
+                      </div>
+                    <% end %>
+                  </div>
+                  <%= button_to join_group_path(group), method: :post,
+                      class: "dash-button dash-button--new dash-button--small group__link" do %>
+                    <i class="ri-user-add-line group__link__icon"></i>
+                    Dołącz
+                  <% end %>
+                </div>
+              </div>
+            <% end %>
+          </div>
+        <% else %>
+          <p class="dash-group__text">Brak dostępnych grup do dodania.</p>
+        <% end %>
+      </div>
+      <div class="dash-pagination">
+        <div class="dash-pagination__controls">
+          <%== pagy_nav(@pagy_available) if @pagy_available.pages > 1 %>
+        </div>
+        <div class="dash-pagination__info">
+          <%== pagy_info(@pagy_available) %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

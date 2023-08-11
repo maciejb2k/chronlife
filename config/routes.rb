@@ -74,6 +74,13 @@ Rails.application.routes.draw do
 
   resources :friend_requests
 
+  resources :groups, only: %i[index show] do
+    member do
+      post :join_group, as: :join
+      delete :leave_group, as: :leave
+    end
+  end
+
   namespace :settings do
     get "/settings", to: redirect("/settings/account")
 

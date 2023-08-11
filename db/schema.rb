@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_08_05_072036) do
+ActiveRecord::Schema[7.0].define(version: 2023_08_11_121547) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pgcrypto"
   enable_extension "plpgsql"
@@ -173,6 +173,25 @@ ActiveRecord::Schema[7.0].define(version: 2023_08_05_072036) do
     t.datetime "updated_at", null: false
     t.index ["account_id"], name: "index_friendships_on_account_id"
     t.index ["friend_id"], name: "index_friendships_on_friend_id"
+  end
+
+  create_table "group_members", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
+    t.uuid "group_id"
+    t.uuid "account_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["account_id"], name: "index_group_members_on_account_id"
+    t.index ["group_id", "account_id"], name: "index_group_members_on_group_id_and_account_id", unique: true
+    t.index ["group_id"], name: "index_group_members_on_group_id"
+  end
+
+  create_table "groups", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
+    t.uuid "predefined_disease_id", null: false
+    t.string "name", default: "", null: false
+    t.string "description", default: "", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["predefined_disease_id"], name: "index_groups_on_predefined_disease_id"
   end
 
   create_table "measurement_types", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
@@ -397,6 +416,9 @@ ActiveRecord::Schema[7.0].define(version: 2023_08_05_072036) do
   add_foreign_key "friend_requests", "accounts", column: "friend_id"
   add_foreign_key "friendships", "accounts"
   add_foreign_key "friendships", "accounts", column: "friend_id"
+  add_foreign_key "group_members", "accounts"
+  add_foreign_key "group_members", "groups"
+  add_foreign_key "groups", "predefined_diseases"
   add_foreign_key "measurement_types", "units"
   add_foreign_key "measurements", "accounts"
   add_foreign_key "measurements", "measurement_types"

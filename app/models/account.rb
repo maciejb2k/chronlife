@@ -36,8 +36,6 @@
 class Account < ApplicationRecord
   include ImageUploader::Attachment(:image)
 
-  EDUCATION_OPTIONS = %w[none primary secondary bachelor master doctorate].freeze
-
   belongs_to :user, dependent: :destroy
 
   has_many :friend_requests, dependent: :destroy
@@ -49,12 +47,17 @@ class Account < ApplicationRecord
   has_many :friendships, dependent: :destroy
   has_many :friends, through: :friendships
 
+  has_many :group_members, dependent: :destroy
+  has_many :groups, through: :group_members
+
   has_many :diseases, dependent: :destroy
   has_many :treatments, dependent: :destroy
   has_many :notes, dependent: :destroy
   has_many :note_groups, dependent: :destroy
   has_many :note_tags, dependent: :destroy
   has_many :measurements, dependent: :destroy
+
+  EDUCATION_OPTIONS = %w[none primary secondary bachelor master doctorate].freeze
 
   validates :first_name, presence: true, length: { maximum: 32 }
   validates :last_name, presence: true, length: { maximum: 32 }
