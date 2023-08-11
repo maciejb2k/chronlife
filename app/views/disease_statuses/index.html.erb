@@ -28,7 +28,7 @@
     <% if @disease_statuses.to_a.any? %>
       <% @disease_statuses.each do |disease_status| %>
         <div class="disease-statuses-container">
-          <%= render partial: disease_status, locals: { disease: @disease, disease_status: } %>
+          <%= render partial: disease_status, locals: { disease: @disease, disease_status:, liked_statuses: @liked_statuses } %>
         </div>
       <% end %>
     <% else %>

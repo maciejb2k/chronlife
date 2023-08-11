@@ -20,7 +20,8 @@
             <% else %>
               <div class="disease-statuses-container">
                 <% @posts.each do |post| %>
-                  <%= render partial: post, locals: { disease: post.disease, disease_status: post } %>
+                  <%= render partial: post,locals: { disease: post.disease, disease_status: post,
+                      liked_statuses: @liked_statuses } %>
                 <% end %>
               </div>
             <% end %>
