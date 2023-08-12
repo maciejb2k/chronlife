@@ -4,6 +4,10 @@
   <%= render partial: "groups/posts/comment", locals: { comment: @comment } %>
 <% end %>
 
+<%= turbo_stream.update "comments_count_#{@post.id}" do %>
+  <%= comments_size %>
+<% end %>
+
 <% if comments_size > 0 %>
   <%= turbo_stream.remove "empty_comments_#{@post.id}" %>
 <% end %>

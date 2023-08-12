@@ -1,6 +1,6 @@
 class Groups::PostsController < Groups::BaseController
   def index
-    @pagy, @posts = pagy(@group.posts.order(created_at: :desc))
+    set_posts
     set_liked_posts
   end
 
@@ -14,7 +14,10 @@ class Groups::PostsController < Groups::BaseController
 
     if @post.save
       respond_to do |format|
-        format.turbo_stream { set_liked_posts }
+        format.turbo_stream do
+          set_posts
+          set_liked_posts
+        end
         format.html { redirect_to group_posts_path(@group), notice: "Post created successfully" }
       end
     else
@@ -23,6 +26,10 @@ class Groups::PostsController < Groups::BaseController
   end
 
   private
+
+  def set_posts
+    @pagy, @posts = pagy(@group.posts.order(created_at: :desc))
+  end
 
   def set_liked_posts
     @liked_posts = Reaction.where(
