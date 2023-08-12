@@ -1,0 +1,10 @@
+<%= turbo_frame_tag "reactions_#{post.id}" do %>
+  <%= button_to unlike_group_post_reactions_path(group, post),
+    method: :delete, class: "dash-post__interaction dash-post__interaction--reaction
+    dash-post__interaction--reaction--active" do %>
+    <i class="ri-thumb-up-fill dash-post__interaction__icon"></i>
+    <span class="dash-post__interaction__count">
+      <%= post.reactions.size %>
+    </span>
+  <% end %>
+<% end %>

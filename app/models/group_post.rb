@@ -20,7 +20,7 @@
 #  fk_rails_...  (group_id => groups.id)
 #
 class GroupPost < ApplicationRecord
-  belongs_to :group
+  belongs_to :group, inverse_of: :posts
   belongs_to :account
 
   has_many :comments, as: :commentable, dependent: :destroy

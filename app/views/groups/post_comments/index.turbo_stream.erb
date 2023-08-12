@@ -1,0 +1,7 @@
+<%= turbo_stream.append "comments_#{@post.id}" do %>
+  <%= render partial: "groups/posts/comment", collection: @comments %>
+<% end %>
+
+<%= turbo_stream.update "next_link_#{@post.id}" do %>
+  <%= render "groups/posts/load_more_comments" %>
+<% end %>

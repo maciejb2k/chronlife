@@ -22,7 +22,7 @@ class Group < ApplicationRecord
 
   has_many :group_members, dependent: :destroy
   has_many :accounts, through: :group_members
-  has_many :group_posts, dependent: :destroy
+  has_many :posts, class_name: "GroupPost", dependent: :destroy, inverse_of: :group
 
   validates :name, allow_blank: true, length: { maximum: 50 }
   validates :description, allow_blank: true, length: { maximum: 100 }

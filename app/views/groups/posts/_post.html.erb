@@ -1,0 +1,57 @@
+<div class="dash-post">
+  <header class="dash-post__header">
+    <div class="dash-post__header__left">
+      <%= image_tag "avatar-placeholder.png", alt: "Logo", class: "dash-post__photo" %>
+      <div class="dash-post__header__user">
+        <h3 class="dash-post__header__title"><%= post.account.full_name %></h3>
+        <p class="dash-post__header__username">
+          @<%= post.account.username %>
+        </p>
+      </div>
+    </div>
+    <div class="dash-post__header__right">
+      <div data-controller="dropdown" class="dash-dropdown">
+        <button class="dash-dropdown__button" type="button" data-action="dropdown#toggle click@window->dropdown#hide">
+          <i class="ri-more-fill"></i>
+        </button>
+        <div
+          data-dropdown-target="menu"
+          class="hidden transition transform origin-top-right dash-dropdown__list "
+          data-transition-enter-from="opacity-0 scale-95"
+          data-transition-enter-to="opacity-100 scale-100"
+          data-transition-leave-from="opacity-100 scale-100"
+          data-transition-leave-to="opacity-0 scale-95"
+        >
+          <%= link_to root_path,
+              data: { action: "dropdown#toggle" }, class: "dash-dropdown__item" do %>
+            <i class="ri-edit-line dash-dropdown__item__icon"></i> Edytuj
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </header>
+  <div class="dash-post__content">
+    <p class="dash-post__text">
+      <%= post.body %>
+    </p>
+  </div>
+  <div class="dash-post__interactions">
+    <%= link_to group_post_comments_path(group, post),
+         data: { turbo_frame: "comments_section_#{post.id}" },
+         class: "dash-post__interaction dash-post__interaction--comment" do %>
+      <i class="ri-chat-3-line dash-post__interaction__icon"></i>
+      <span class="dash-post__interaction__count" id="comments_count_<%= post.id %>">
+        <%= post.comments.size %>
+      </span>
+    <% end %>
+    <% if liked_posts.to_a.include?(post.id) %>
+      <%= render partial: "groups/posts/unlike_button", locals: { post:, group: } %>
+    <% else %>
+      <%= render partial: "groups/posts/like_button", locals: { post:, group: } %>
+    <% end %>
+    <p class="dash-post__date">
+      <%= l post.created_at, format: :long %>
+    </p>
+  </div>
+  <%= turbo_frame_tag "comments_section_#{post.id}" %>
+</div>

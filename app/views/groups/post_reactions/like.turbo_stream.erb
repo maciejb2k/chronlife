@@ -1,0 +1,4 @@
+<%= turbo_stream.replace "reactions_#{@post.id}" do %>
+  <%= render partial: "groups/posts/unlike_button",
+      locals: { group: @group, post: @post } %>
+<% end %>

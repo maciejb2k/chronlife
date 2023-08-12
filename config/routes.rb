@@ -81,7 +81,15 @@ Rails.application.routes.draw do
     end
 
     scope module: :groups do
-      resources :posts, only: %i[index]
+      resources :posts do
+        resources :post_comments, as: :comments, only: %i[index create]
+        resources :post_reactions, as: :reactions, only: %i[index] do
+          collection do
+            post :like
+            delete :unlike
+          end
+        end
+      end
     end
   end
 

@@ -1,0 +1,21 @@
+<%= form_with(model: @group_post, html: { class: "add-post-form" },
+    data: { controller: "reset-form", action: "turbo:submit-end->reset-form#clear" }) do |f| %>
+  <%= f.text_area :body, data: { controller: "textarea-autogrow" }, class: "add-post-form__body",
+      placeholder: "Napisz to, co masz na myśli"%>
+  <footer class="add-post-form__footer">
+    <div class="add-post-form__actions">
+      <span class="add-post-form__action">
+        <i class="ri-emoji-sticker-line"></i>
+      </span>
+      <span class="add-post-form__action">
+        <i class="ri-file-gif-line"></i>
+      </span>
+      <span class="add-post-form__action">
+        <i class="ri-image-add-line"></i>
+      </span>
+    </div>
+    <%= button_tag type: :submit, class: "add-post-form__submit" do %>
+      <i class="ri-send-plane-2-fill"></i>
+    <% end %>
+  </footer>
+<% end %>

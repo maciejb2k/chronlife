@@ -1,0 +1,19 @@
+<%= turbo_frame_tag "comments_section_#{@post.id}" do %>
+  <div class="dash-post__comments">
+    <% if @comments.none? %>
+      <%= turbo_frame_tag "empty_comments_#{@post.id}" do %>
+        <p class="dash-post__comments__empty">Brak komentarzy</p>
+      <% end %>
+    <% end %>
+
+    <div class="comments-list" id="comments_<%= @post.id %>">
+      <%= render partial: "groups/posts/comment", collection: @comments %>
+    </div>
+    <div id="next_link_<%= @post.id %>">
+      <%= render "groups/posts/load_more_comments" %>
+    </div>
+  </div>
+  <div class="dash-post__add-comment">
+    <%= render "groups/posts/add_comment_form" %>
+  </div>
+<% end %>

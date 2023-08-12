@@ -4,8 +4,7 @@
   }
 
   .group {
-    max-width: 1500px;
-    width: 1500px;
+    max-width: 1200px;
     margin: 0 auto;
 
     &__header {
@@ -52,6 +51,9 @@
     }
 
     &__nav {
+      border-bottom: 1px solid $dash-base-border;
+      padding-bottom: 30px;
+
       &__list {
         display: flex;
         align-items: center;
@@ -59,7 +61,6 @@
       }
 
       &__item {
-        max-width: 16.6666666667%;
         flex-grow: 1;
         flex-shrink: 0;
       }
@@ -85,6 +86,69 @@
 
     &__content {
       padding: 30px 0;
+    }
+  }
+
+  .add-post {
+    border-bottom: 1px solid $dash-base-border;
+    max-width: 800px;
+    width: 600px;
+    padding-bottom: 30px;
+
+    &__label {
+      padding-bottom: 10px;
+      font-size: var(--14px);
+    }
+
+    &-form {
+      background: #ffffff;
+      border: 1px solid $dash-base-border;
+      border-radius: 3px;
+      flex-direction: column;
+      align-items: stretch;
+
+      &__body {
+        padding: 20px;
+        border-radius: 3px;
+        font-size: var(--14px);
+        color: $dash-text-dark;
+        resize: none;
+        width: 100%;
+      }
+
+      &__footer {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 10px 10px 10px 20px;
+        background: #ffffff;
+      }
+
+      &__actions {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+      }
+
+      &__action {
+        font-size: var(--14px);
+        color: $dash-text-light;
+      }
+
+      &__submit {
+        font-size: var(--14px);
+        color: $dash-base;
+      }
+    }
+  }
+
+  .group-posts {
+    padding: 30px 0;
+    border-bottom: 1px solid $dash-base-border;
+
+    &__empty {
+      font-size: var(--14px);
+      color: $dash-text-light;
     }
   }
 }

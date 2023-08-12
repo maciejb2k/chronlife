@@ -4,7 +4,29 @@
       <%= render "groups/header" %>
       <%= render "groups/nav" %>
       <div class="group__content">
-
+        <%= turbo_frame_tag :new_group_post, src: new_group_post_path do %>
+          Ładowanie ...
+        <% end %>
+        <div class="group-posts">
+          <% if @posts.none? %>
+            <%= turbo_frame_tag "empty_group_posts_#{@group.id}" do %>
+              <p class="group-posts__empty">Brak postów w grupie.</p>
+            <% end %>
+          <% end %>
+          <div class="dash-posts-container" id="group_posts_<%= @group.id %>">
+            <% @posts.each do |post| %>
+              <%= render partial: "groups/posts/post", locals: { post:, group: @group, liked_posts: @liked_posts } %>
+            <% end %>
+          </div>
+        </div>
+        <div class="dash-pagination">
+          <div class="dash-pagination__controls">
+            <%== pagy_nav(@pagy) if @pagy.pages > 1 %>
+          </div>
+          <div class="dash-pagination__info">
+            <%== pagy_info(@pagy) %>
+          </div>
+        </div>
       </div>
     </div>
   </div>

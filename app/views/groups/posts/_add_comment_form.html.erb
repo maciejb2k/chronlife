@@ -1,0 +1,24 @@
+<%= form_with model: [:group, :post, Comment.new],
+    html: { class: "add-comment-form" },
+    data: { controller: "reset-form", action: "turbo:submit-end->reset-form#clear" } do |f| %>
+  <div class="add-comment-form__group">
+    <%= f.text_area :body, data: { controller: "textarea-autogrow" },
+            class: "add-comment-form__body", placeholder: "Dodaj komentarz" %>
+    <footer class="add-comment-form__footer">
+      <div class="add-comment-form__actions">
+        <span class="add-comment-form__action">
+          <i class="ri-emoji-sticker-line"></i>
+        </span>
+        <span class="add-comment-form__action">
+          <i class="ri-file-gif-line"></i>
+        </span>
+        <span class="add-comment-form__action">
+          <i class="ri-image-add-line"></i>
+        </span>
+      </div>
+      <%= button_tag type: :submit, class: "add-comment-form__submit" do %>
+        <i class="ri-send-plane-2-fill"></i>
+      <% end %>
+    </button>
+  </footer>
+<% end %>

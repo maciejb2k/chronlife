@@ -1,0 +1,14 @@
+<%= comments_size = @post.comments.size %>
+
+<%= turbo_stream.prepend "group_posts_#{@group.id}" do %>
+  <%= render partial: "groups/posts/post",
+      locals: { post: @post, group: @group, liked_posts: @liked_posts } %>
+<% end %>
+
+<%= turbo_stream.update "comments_count_#{@group.id}" do %>
+  <%= comments_size %>
+<% end %>
+
+<% if comments_size > 0 %>
+  <%= turbo_stream.remove "empty_group_posts_#{@group.id}" %>
+<% end %>

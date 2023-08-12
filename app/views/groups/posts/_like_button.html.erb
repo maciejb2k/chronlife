@@ -1,0 +1,9 @@
+<%= turbo_frame_tag "reactions_#{post.id}" do %>
+  <%= button_to like_group_post_reactions_path(group, post),
+    method: :post, class: "dash-post__interaction dash-post__interaction--reaction" do %>
+    <i class="ri-thumb-up-line dash-post__interaction__icon"></i>
+    <span class="dash-post__interaction__count">
+      <%= post.reactions.size %>
+    </span>
+  <% end %>
+<% end %>
