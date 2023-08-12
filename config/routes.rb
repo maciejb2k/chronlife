@@ -74,10 +74,14 @@ Rails.application.routes.draw do
 
   resources :friend_requests
 
-  resources :groups, only: %i[index show] do
+  resources :groups, only: %i[index] do
     member do
       post :join_group, as: :join
       delete :leave_group, as: :leave
+    end
+
+    scope module: :groups do
+      resources :posts, only: %i[index]
     end
   end
 

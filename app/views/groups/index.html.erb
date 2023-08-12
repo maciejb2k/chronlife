@@ -66,7 +66,8 @@
                       <% if members_count > 0 %>
                         <% members.each do |member| %>
                           <div class="group__member-wrapper">
-                            <%= image_tag "avatar-placeholder.png", alt: "", class: "group__member" %>
+                            <%= image_tag "avatar-placeholder.png", alt: "",
+                                title: member.full_name, class: "group__member" %>
                           </div>
                         <% end %>
                       <% else %>
@@ -88,7 +89,7 @@
                     <% end %>
                   </div>
                   <div class="group__actions">
-                    <%= link_to group_path(group), class: "dash-button dash-button--light-blue dash-button--small group__link" do %>
+                    <%= link_to group_posts_path(group), class: "dash-button dash-button--light-blue dash-button--small group__link" do %>
                       <i class="ri-arrow-right-line group__link__icon"></i>
                       Przejdź
                     <% end %>

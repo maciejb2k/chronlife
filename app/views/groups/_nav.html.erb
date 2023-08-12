@@ -1,0 +1,40 @@
+<nav class="group__nav">
+  <ul class="group__nav__list">
+    <li class="group__nav__item">
+      <%= link_to root_path, class: "group__nav__link #{"group__nav__link--active" if current_page?(group_posts_path)}" do %>
+        <i class="ri-question-answer-line"></i>
+        Posty
+      <% end %>
+    </li>
+    <li class="group__nav__item">
+      <%= link_to root_path, class: "group__nav__link" do %>
+        <i class="ri-hearts-line"></i>
+        Stan Zdrowia
+      <% end %>
+    </li>
+    <li class="group__nav__item">
+      <%= link_to root_path, class: "group__nav__link" do %>
+        <i class="ri-thermometer-line"></i>
+        Objawy
+      <% end %>
+    </li>
+    <li class="group__nav__item">
+      <%= link_to root_path, class: "group__nav__link" do %>
+        <i class="ri-fire-line"></i>
+        Czynniki Ryzyka
+      <% end %>
+    </li>
+    <li class="group__nav__item">
+      <%= link_to root_path, class: "group__nav__link" do %>
+        <i class="ri-hospital-line"></i>
+        Terapie
+      <% end %>
+    </li>
+    <li class="group__nav__item">
+      <%= link_to root_path, class: "group__nav__link" do %>
+        <i class="ri-camera-3-line"></i>
+        Zdjęcia
+      <% end %>
+    </li>
+  </ul>
+</nav>

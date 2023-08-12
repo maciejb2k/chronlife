@@ -18,7 +18,7 @@
             <% unless @posts.to_a.any? %>
               <p>Nie dodano na razie żadnych postów.</p>
             <% else %>
-              <div class="disease-statuses-container">
+              <div class="dash-posts-container">
                 <% @posts.each do |post| %>
                   <%= render partial: post,locals: { disease: post.disease, disease_status: post,
                       liked_statuses: @liked_statuses } %>

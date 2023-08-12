@@ -647,6 +647,17 @@
     }
   }
 
+  &--big {
+    .dash-dropdown__button {
+      width: 50px;
+      height: 50px;
+    }
+
+    .dash-dropdown__list {
+      margin-top: 1px;
+    }
+  }
+
   &__button {
     display: inline-flex;
     align-items: center;
@@ -718,6 +729,323 @@
 
     &:last-child {
       border-bottom: none;
+    }
+  }
+}
+
+.dash-posts-container {
+  max-width: 800px;
+  width: 600px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.dash-post {
+  background: #ffffff;
+  border-radius: 3px;
+  border: 1px solid $dash-base-border;
+  padding: 20px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+
+  &__top {
+    padding-bottom: 20px;
+    margin-left: 60px;
+  }
+
+  &__show-more {
+    display: inline-flex;
+    margin-top: 20px;
+    color: $dash-text-light;
+    font-size: var(--14px);
+    text-decoration: underline;
+  }
+
+  &__header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    margin-bottom: 20px;
+
+    &__left {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+    }
+
+    &__right {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+    }
+
+    &__diseae-name {
+      font-size: var(--13px);
+      font-weight: 500;
+      color: $dash-base;
+
+      &::first-letter {
+        text-transform: uppercase;
+      }
+    }
+
+    &__title {
+      font-size: var(--16px);
+      font-weight: 500;
+    }
+
+    &__username {
+      font-size: var(--14px);
+      font-weight: 400;
+      color: $dash-text-light;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+  }
+
+  &__mood {
+    font-size: var(--14px);
+    font-weight: 400;
+    color: $dash-text-light;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    font-weight: 500;
+
+    &__icon {
+      font-size: var(--18px);
+      font-weight: 400;
+    }
+
+    &--sad {
+      color: $color-danger;
+    }
+
+    &--normal {
+      color: #208ed2;
+    }
+
+    &--happy {
+      color: $color-success;
+    }
+  }
+
+  &__photo {
+    width: 40px;
+    height: 40px;
+    border-radius: 50px;
+  }
+
+  &__content {
+    padding: 10px 0 30px;
+    margin-left: 60px;
+  }
+
+  &__title {
+    font-size: var(--16px);
+    font-weight: 500;
+    color: $dash-text-dark;
+  }
+
+  &__text {
+    &::first-letter {
+      text-transform: uppercase;
+    }
+  }
+
+  &__actions {
+  }
+
+  &__comments {
+  }
+
+  &__date {
+    margin-left: auto;
+    font-size: var(--14px);
+    font-weight: 400;
+    color: $dash-text-light;
+    padding-right: 10px;
+  }
+
+  &__interactions {
+    margin-left: 60px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  &__interaction {
+    border: 1px solid $dash-base-border;
+    border-radius: 3px;
+    padding: 3px 15px;
+    font-size: var(--12px);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    transition: all 0.1s;
+
+    &:hover {
+      cursor: pointer;
+    }
+
+    &__icon {
+    }
+
+    &__count {
+    }
+
+    &--comment {
+      &:hover {
+        border: 1px solid $dash-base;
+      }
+
+      .dash-post__interaction__icon {
+        color: $dash-base;
+      }
+    }
+
+    &--reaction {
+      &:hover {
+        border: 1px solid #208ed2;
+      }
+
+      .dash-post__interaction__icon {
+        color: #208ed2;
+      }
+
+      &--active {
+        border: 1px solid transparent;
+        background: #208ed2;
+        color: #ffffff;
+
+        .dash-post__interaction__icon {
+          color: #ffffff;
+        }
+      }
+    }
+  }
+
+  &__comments {
+    border-top: 1px solid $dash-base-border;
+    margin-top: 20px;
+    padding: 20px 0 0;
+    display: flex;
+    flex-direction: column;
+    margin-left: 60px;
+
+    &__empty {
+      font-size: var(--14px);
+      font-weight: 400;
+      color: $dash-text-light;
+    }
+  }
+
+  &__add-comment {
+    padding: 20px 0 0;
+    gap: 20px;
+    margin-left: 60px;
+
+    .add-comment-form {
+      &__group {
+        border: 1px solid $dash-base-border;
+        display: flex;
+        flex-direction: column;
+        align-items: stretch;
+        border-radius: 5px;
+      }
+
+      &__footer {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 10px 10px 10px 20px;
+        background: #ffffff;
+      }
+
+      &__body {
+        padding: 20px;
+        border-radius: 3px;
+        font-size: var(--14px);
+        color: $dash-text-dark;
+        resize: none;
+      }
+
+      &__actions {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+      }
+
+      &__action {
+        font-size: var(--14px);
+        color: $dash-text-light;
+      }
+
+      &__submit {
+        font-size: var(--14px);
+        color: $dash-base;
+      }
+    }
+  }
+}
+
+.comments-list {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.comment {
+  &__header {
+    display: flex;
+    gap: 15px;
+    margin-bottom: 8px;
+
+    &__photo {
+      width: 30px;
+      height: 30px;
+      border-radius: 50px;
+    }
+
+    &__text {
+      display: flex;
+      flex-direction: column;
+    }
+
+    &__user {
+      font-size: var(--15px);
+      font-weight: 500;
+      color: $dash-text-dark;
+    }
+
+    &__username {
+      font-size: var(--14px);
+      font-weight: 400;
+      color: $dash-text-light;
+    }
+
+    &__date {
+      font-size: var(--13px);
+      font-weight: 400;
+      color: $dash-text-light;
+    }
+
+    &__options {
+      margin-left: auto;
+    }
+  }
+
+  &__content {
+    margin-left: 45px;
+
+    &__body {
+      font-size: var(--14px);
+      font-weight: 400;
+      color: $dash-text-dark;
     }
   }
 }

@@ -48,6 +48,9 @@ gem "omniauth-google-oauth2", "~> 1.1.1"
 gem 'omniauth-facebook', "~> 9.0.0"
 gem 'rqrcode', "~> 2.2.0"
 
+# Authorization
+gem "pundit", "~> 2.3.1"
+
 # Annotate models with database schema
 gem "annotate", "~> 3.2.0"
 

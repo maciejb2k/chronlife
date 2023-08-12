@@ -22,6 +22,7 @@ class Group < ApplicationRecord
 
   has_many :group_members, dependent: :destroy
   has_many :accounts, through: :group_members
+  has_many :group_posts, dependent: :destroy
 
   validates :name, allow_blank: true, length: { maximum: 50 }
   validates :description, allow_blank: true, length: { maximum: 100 }

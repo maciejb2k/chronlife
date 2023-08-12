@@ -1,5 +1,6 @@
 class ApplicationController < ActionController::Base
   include Pagy::Backend
+  include Pundit::Authorization
 
   helper_method :breadcrumbs
 

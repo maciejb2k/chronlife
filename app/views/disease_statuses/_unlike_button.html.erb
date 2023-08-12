@@ -1,9 +1,9 @@
 <%= turbo_frame_tag "reactions_#{disease_status.id}" do %>
   <%= button_to unlike_disease_disease_status_reactions_path(disease, disease_status),
-    method: :delete, class: "disease-status__interaction disease-status__interaction--reaction
-    disease-status__interaction--reaction--active" do %>
-    <i class="ri-thumb-up-fill disease-status__interaction__icon"></i>
-    <span class="disease-status__interaction__count">
+    method: :delete, class: "dash-post__interaction dash-post__interaction--reaction
+    dash-post__interaction--reaction--active" do %>
+    <i class="ri-thumb-up-fill dash-post__interaction__icon"></i>
+    <span class="dash-post__interaction__count">
       <%= disease_status.reactions.size %>
     </span>
   <% end %>

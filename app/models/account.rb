@@ -49,6 +49,7 @@ class Account < ApplicationRecord
 
   has_many :group_members, dependent: :destroy
   has_many :groups, through: :group_members
+  has_many :group_posts, dependent: :destroy
 
   has_many :diseases, dependent: :destroy
   has_many :treatments, dependent: :destroy

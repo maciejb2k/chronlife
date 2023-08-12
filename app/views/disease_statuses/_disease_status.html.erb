@@ -1,30 +1,30 @@
-<div class="disease-status">
-  <header class="disease-status__header">
-    <div class="disease-status__header__left">
-      <%= image_tag "avatar-placeholder.png", alt: "Logo", class: "disease-status__photo" %>
-      <div class="disease-status__header__user">
-        <h3 class="disease-status__header__title"><%= disease_status.disease.account.full_name %></h3>
-        <p class="disease-status__header__diseae-name">
+<div class="dash-post">
+  <header class="dash-post__header">
+    <div class="dash-post__header__left">
+      <%= image_tag "avatar-placeholder.png", alt: "Logo", class: "dash-post__photo" %>
+      <div class="dash-post__header__user">
+        <h3 class="dash-post__header__title"><%= disease_status.disease.account.full_name %></h3>
+        <p class="dash-post__header__diseae-name">
           <%= disease.predefined_disease.name %>
         </p>
       </div>
     </div>
-    <div class="disease-status__header__right">
+    <div class="dash-post__header__right">
       <% if disease_status.mood == 1 %>
-        <p class="disease-status__mood disease-status__mood--sad">
-          <i class="ri-emotion-unhappy-line disease-status__mood__icon"></i>Pogorszenie
+        <p class="dash-post__mood dash-post__mood--sad">
+          <i class="ri-emotion-unhappy-line dash-post__mood__icon"></i>Pogorszenie
         </p>
       <% elsif disease_status.mood == 2 %>
-        <p class="disease-status__mood disease-status__mood--normal">
-          <i class="ri-emotion-normal-line disease-status__mood__icon"></i>Bez zmian
+        <p class="dash-post__mood dash-post__mood--normal">
+          <i class="ri-emotion-normal-line dash-post__mood__icon"></i>Bez zmian
         </p>
       <% elsif disease_status.mood == 3 %>
-        <p class="disease-status__mood disease-status__mood--happy">
-          <i class="ri-emotion-happy-line disease-status__mood__icon"></i>Polepszenie
+        <p class="dash-post__mood dash-post__mood--happy">
+          <i class="ri-emotion-happy-line dash-post__mood__icon"></i>Polepszenie
         </p>
       <% else %>
-        <p class="disease-status__mood disease-status__mood--sad">
-          <i class="ri-sad-line disease-status__mood__icon"></i>Nieznane
+        <p class="dash-post__mood dash-post__mood--sad">
+          <i class="ri-sad-line dash-post__mood__icon"></i>Nieznane
         </p>
       <% end %>
       <div data-controller="dropdown" class="dash-dropdown">
@@ -51,17 +51,17 @@
       </div>
     </div>
   </header>
-  <div class="disease-status__content">
-    <p class="disease-status__text">
+  <div class="dash-post__content">
+    <p class="dash-post__text">
       <%= disease_status.content %>
     </p>
   </div>
-  <div class="disease-status__interactions">
+  <div class="dash-post__interactions">
     <%= link_to disease_disease_status_comments_path(disease, disease_status),
          data: { turbo_frame: "comments_section_#{disease_status.id}" },
-         class: "disease-status__interaction disease-status__interaction--comment" do %>
-      <i class="ri-chat-3-line disease-status__interaction__icon"></i>
-      <span class="disease-status__interaction__count" id="comments_count_<%= disease_status.id %>">
+         class: "dash-post__interaction dash-post__interaction--comment" do %>
+      <i class="ri-chat-3-line dash-post__interaction__icon"></i>
+      <span class="dash-post__interaction__count" id="comments_count_<%= disease_status.id %>">
         <%= disease_status.comments.size %>
       </span>
     <% end %>
@@ -70,7 +70,7 @@
     <% else %>
       <%= render partial: "disease_statuses/like_button", locals: { disease:, disease_status: } %>
     <% end %>
-    <p class="disease-status__date">
+    <p class="dash-post__date">
       <%= l disease_status.created_at, format: :long %>
     </p>
   </div>

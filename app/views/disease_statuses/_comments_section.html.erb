@@ -1,8 +1,8 @@
 <%= turbo_frame_tag "comments_section_#{@disease_status.id}" do %>
-  <div class="disease-status__comments">
+  <div class="dash-post__comments">
     <% if @comments.none? %>
       <%= turbo_frame_tag "empty_comments_#{@disease_status.id}" do %>
-        <p class="disease-status__comments__empty">Brak komentarzy</p>
+        <p class="dash-post__comments__empty">Brak komentarzy</p>
       <% end %>
     <% end %>
 
@@ -13,7 +13,7 @@
       <%= render "disease_statuses/load_more_comments" %>
     </div>
   </div>
-  <div class="disease-status__add-comment">
+  <div class="dash-post__add-comment">
     <%= render "disease_statuses/add_comment_form" %>
   </div>
 <% end %>
