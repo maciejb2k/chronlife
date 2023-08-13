@@ -1,7 +1,8 @@
 <nav class="group__nav">
   <ul class="group__nav__list">
     <li class="group__nav__item">
-      <%= link_to root_path, class: "group__nav__link #{"group__nav__link--active" if current_page?(group_posts_path)}" do %>
+      <%= link_to group_posts_path, class: "group__nav__link
+          #{"group__nav__link--active" if current_page?(group_posts_path)}" do %>
         <i class="ri-question-answer-line"></i>
         Posty
       <% end %>
@@ -13,7 +14,8 @@
       <% end %>
     </li>
     <li class="group__nav__item">
-      <%= link_to root_path, class: "group__nav__link" do %>
+      <%= link_to group_disease_symptoms_path, class: "group__nav__link
+          #{"group__nav__link--active" if current_page?(group_disease_symptoms_path)}" do %>
         <i class="ri-thermometer-line"></i>
         Objawy
       <% end %>

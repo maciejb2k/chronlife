@@ -1,0 +1,91 @@
+<div class="page-group">
+  <div class="dash-flash-messages">
+    <%= turbo_frame_tag "flash" do %>
+      <%= render "shared/dash_flash" %>
+    <% end %>
+  </div>
+  <div class="page-group__content">
+    <div class="group">
+      <%= render "groups/header" %>
+      <%= render "groups/nav" %>
+      <div class="group__content">
+        <div class="group-symptoms">
+          <div class="dash-group">
+            <header class="dash-group__header">
+              <h2 class="dash-group__title">
+                <i class="ri-fire-line dash-group__title__icon"></i>
+                Występujące objawy u chorych
+              </h2>
+              <div class="dash-group__actions"></div>
+            </header>
+            <div class="dash-group__content">
+              <div class="group-predefined-symptoms">
+                <p class="group-predefined-symptoms__text">Poniżej znajduje się lista predefiniowanych objawów na platformie występujących u wszystkich użytkowników z daną chorobą, posortowanych od najczęściej występujących.</p>
+                <% if @predefined_symptoms.any? %>
+                  <div class="group-predefined-symptoms__list">
+                    <% @predefined_symptoms.each do |name, count| %>
+                      <div class="predefined-symptom">
+                        <p class="predefined-symptom__name"><%= name %></p>
+                        <p class="predefined-symptom__count"><%= count %></p>
+                      </div>
+                    <% end %>
+                  </div>
+                <% else %>
+                  <p class="no-results">
+                    Uzytkownicy nie dodali na razie żadnych predefiniowanych objawów.
+                  </p>
+                <% end %>
+              </div>
+            </div>
+          </div>
+          <div class="dash-group">
+            <header class="dash-group__header">
+              <h2 class="dash-group__title">
+                <i class="ri-sparkling-line dash-group__title__icon"></i>
+                Wszystkie własne objawy
+              </h2>
+              <div class="dash-group__actions"></div>
+            </header>
+            <div class="dash-group__content">
+              <div class="group-custom-symptoms">
+                <p class="group-custom-symptoms__text">Poniżej znajduje się lista własnych, nietypowych objawów, które zgłosili użytkownicy.</p>
+                <% if @custom_symptoms.to_a.any? %>
+                  <div class="group-custom-symptoms__list">
+                    <% @custom_symptoms.each do |symptom| %>
+                      <div class="custom-symptom">
+                        <div class="custom-symptom__group">
+                          <i class="ri-sparkling-fill custom-symptom__icon"></i>
+                          <div>
+                            <span class="custom-symptom__name">
+                              <%= symptom.name %>
+                            </span>
+                            <span class="custom-symptom__account">
+                              @<%= symptom.disease.account.username %>
+                            </span>
+                          </div>
+                        </div>
+                        <i class="ri-arrow-right-s-line custom-symptom__icon"></i>
+                      </div>
+                    <% end %>
+                  </div>
+                <% else %>
+                  <p class="no-results">
+                    Użytkownicy nie dodali jeszcze własnych objawów.
+                  </p>
+                <% end %>
+              </div>
+            </div>
+            <div class="dash-pagination">
+              <div class="dash-pagination__controls">
+                <%== pagy_nav(@pagy_custom) if @pagy_custom.pages > 1 %>
+              </div>
+              <div class="dash-pagination__info">
+                <%== pagy_info(@pagy_custom) %>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

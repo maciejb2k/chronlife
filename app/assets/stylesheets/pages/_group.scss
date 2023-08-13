@@ -7,6 +7,12 @@
     max-width: 1200px;
     margin: 0 auto;
 
+    &__cover {
+      width: 100%;
+      height: 120px;
+      background: $dash-text-dark;
+    }
+
     &__header {
       padding-bottom: 30px;
       display: flex;
@@ -74,7 +80,7 @@
         justify-content: center;
         text-align: center;
         font-size: var(--14px);
-        padding: 20px 10px;
+        padding: 10px;
         gap: 10px;
 
         &--active {
@@ -149,6 +155,127 @@
     &__empty {
       font-size: var(--14px);
       color: $dash-text-light;
+    }
+  }
+
+  .group-symptoms {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+  }
+
+  .group-predefined-symptoms {
+    &__text {
+      font-size: var(--14px);
+      color: $dash-text-light;
+      max-width: 1000px;
+      padding-bottom: 20px;
+    }
+
+    &__list {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 10px;
+    }
+
+    .predefined-symptom {
+      background: #ffffff;
+      padding: 10px 20px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border: 1px solid $dash-base-border;
+      border-radius: 3px;
+
+      &__name {
+        display: block;
+        font-weight: 500;
+        color: $dash-text-dark;
+
+        &::first-letter {
+          text-transform: uppercase;
+        }
+      }
+
+      &__count {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 40px;
+        height: 40px;
+        color: $color-danger;
+        background: #ffefef;
+        font-weight: 600;
+      }
+    }
+  }
+
+  .group-custom-symptoms {
+    &__text {
+      font-size: var(--14px);
+      color: $dash-text-light;
+      max-width: 1000px;
+      padding-bottom: 20px;
+    }
+
+    &__list {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 10px;
+    }
+
+    .custom-symptom {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+      background: #ffffff;
+      padding: 10px 20px;
+      display: flex;
+      border: 1px solid $dash-base-border;
+      border-radius: 3px;
+      // box-shadow: 0 2px 3px rgba(22, 36, 65, 0.1);
+
+      &--predefined {
+        .symptom__icon {
+          color: #ec7777;
+        }
+      }
+
+      &--custom {
+        .symptom__icon {
+          color: #ecb977;
+        }
+      }
+
+      &__group {
+        display: flex;
+        align-items: center;
+        gap: 20px;
+      }
+
+      &__name {
+        display: block;
+        font-weight: 500;
+        color: $dash-text-dark;
+        margin-bottom: 3px;
+
+        &::first-letter {
+          text-transform: uppercase;
+        }
+      }
+
+      &__account {
+        display: block;
+        font-size: var(--14px);
+        color: $dash-text-light;
+      }
+
+      &__icon {
+        font-size: var(--16px);
+        font-weight: 500;
+        color: $dash-base;
+      }
     }
   }
 }

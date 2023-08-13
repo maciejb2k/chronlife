@@ -81,6 +81,7 @@ Rails.application.routes.draw do
     end
 
     scope module: :groups do
+      resources :disease_symptoms
       resources :posts do
         resources :post_comments, as: :comments, only: %i[index create]
         resources :post_reactions, as: :reactions, only: %i[index] do

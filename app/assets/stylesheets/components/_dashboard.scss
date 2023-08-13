@@ -626,6 +626,10 @@
 
   &__text {
     color: $dash-text-light;
+
+    &--margin {
+      padding-bottom: 10px;
+    }
   }
 }
 
