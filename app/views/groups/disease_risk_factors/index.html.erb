@@ -1,0 +1,65 @@
+<div class="page-group">
+  <div class="dash-flash-messages">
+    <%= turbo_frame_tag "flash" do %>
+      <%= render "shared/dash_flash" %>
+    <% end %>
+  </div>
+  <div class="page-group__content">
+    <div class="group">
+      <%= render "groups/header" %>
+      <%= render "groups/nav" %>
+      <div class="group__content">
+        <div class="group-symptoms">
+          <div class="dash-group">
+            <header class="dash-group__header">
+              <h2 class="dash-group__title">
+                <i class="ri-fire-line dash-group__title__icon"></i>
+                Wszystkie czynniki ryzyka
+              </h2>
+              <div class="dash-group__actions"></div>
+            </header>
+            <div class="dash-group__content">
+              <div class="group-risk-factors">
+                <p class="group-risk-factors__text">Poniżej znajduje się lista wszystkich czynników ryzyka, występujących na platformie. Lorem, ipsum dolor sit amet consectetur adipisicing elit. Amet, veniam?</p>
+                <% if @risk_factors.to_a.any? %>
+                  <div class="group-risk-factors__list">
+                    <% @risk_factors.each do |risk_factor| %>
+                      <div class="risk-factor">
+                        <div class="risk-factor__group">
+                          <i class="ri-fire-line risk-factor__icon"></i>
+                          <div>
+                            <div class="risk-factor__title">
+                              <%= risk_factor.name %>
+                            </div>
+                            <div class="risk-factor__user">
+                              @<%= risk_factor.disease.account.username %>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="risk-factor__severity">
+                          <%= risk_factor.severity %>/5
+                        </div>
+                      </div>
+                    <% end %>
+                  </div>
+                <% else %>
+                  <p class="no-results">
+                    Uzytkownicy nie dodali na razie żadnych czynników  ryzyka.
+                  </p>
+                <% end %>
+              </div>
+            </div>
+            <div class="dash-pagination">
+              <div class="dash-pagination__controls">
+                <%== pagy_nav(@pagy) if @pagy.pages > 1 %>
+              </div>
+              <div class="dash-pagination__info">
+                <%== pagy_info(@pagy) %>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

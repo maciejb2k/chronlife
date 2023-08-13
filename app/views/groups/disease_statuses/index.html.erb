@@ -1,0 +1,28 @@
+<div class="page-group">
+  <div class="dash-flash-messages">
+    <%= turbo_frame_tag "flash" do %>
+      <%= render "shared/dash_flash" %>
+    <% end %>
+  </div>
+  <div class="page-group__content">
+    <div class="group">
+      <%= render "groups/header" %>
+      <%= render "groups/nav" %>
+      <div class="group__content">
+        <div class="group-symptoms">
+          <div class="dash-group">
+            <header class="dash-group__header">
+              <h2 class="dash-group__title">
+                <i class="ri-hearts-line dash-group__title__icon"></i>
+                Wszystkie statusy
+              </h2>
+              <div class="dash-group__actions"></div>
+            </header>
+            <div class="dash-group__content">
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

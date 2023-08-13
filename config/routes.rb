@@ -82,6 +82,10 @@ Rails.application.routes.draw do
 
     scope module: :groups do
       resources :disease_symptoms
+      resources :disease_statuses
+      resources :disease_photos
+      resources :treatments
+      resources :disease_risk_factors
       resources :posts do
         resources :post_comments, as: :comments, only: %i[index create]
         resources :post_reactions, as: :reactions, only: %i[index] do

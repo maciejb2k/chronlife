@@ -278,4 +278,65 @@
       }
     }
   }
+
+  .group-risk-factors {
+    &__text {
+      font-size: var(--14px);
+      color: $dash-text-light;
+      max-width: 1000px;
+      padding-bottom: 20px;
+    }
+
+    &__list {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 10px;
+    }
+
+    .risk-factor {
+      width: 100%;
+      padding: 10px 20px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      font-weight: 500;
+      font-size: var(--16px);
+      cursor: pointer;
+      color: $dash-text-dark;
+      background: #ffffff;
+      border: 1px solid $dash-base-border;
+      border-radius: 3px;
+
+      &__group {
+        display: flex;
+        align-items: center;
+        gap: 15px;
+      }
+
+      &__title {
+        &::first-letter {
+          text-transform: uppercase;
+        }
+      }
+
+      &__severity {
+        font-weight: 500;
+        color: $color-danger;
+        font-size: var(--14px);
+      }
+
+      &__user {
+        font-weight: 400;
+        font-size: var(--14px);
+        color: $dash-text-light;
+      }
+
+      &__icon {
+        display: block;
+        font-size: var(--18px);
+        font-weight: 500;
+        color: $color-danger;
+      }
+    }
+  }
 }

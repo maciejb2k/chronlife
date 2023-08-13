@@ -8,7 +8,8 @@
       <% end %>
     </li>
     <li class="group__nav__item">
-      <%= link_to root_path, class: "group__nav__link" do %>
+      <%= link_to group_disease_statuses_path, class: "group__nav__link
+          #{"group__nav__link--active" if current_page?(group_disease_statuses_path)}" do %>
         <i class="ri-hearts-line"></i>
         Stan Zdrowia
       <% end %>
@@ -21,19 +22,22 @@
       <% end %>
     </li>
     <li class="group__nav__item">
-      <%= link_to root_path, class: "group__nav__link" do %>
+      <%= link_to group_disease_risk_factors_path, class: "group__nav__link
+          #{"group__nav__link--active" if current_page?(group_disease_risk_factors_path)}" do %>
         <i class="ri-fire-line"></i>
         Czynniki Ryzyka
       <% end %>
     </li>
     <li class="group__nav__item">
-      <%= link_to root_path, class: "group__nav__link" do %>
+      <%= link_to group_treatments_path, class: "group__nav__link
+          #{"group__nav__link--active" if current_page?(group_treatments_path)}" do %>
         <i class="ri-hospital-line"></i>
         Terapie
       <% end %>
     </li>
     <li class="group__nav__item">
-      <%= link_to root_path, class: "group__nav__link" do %>
+      <%= link_to group_disease_photos_path, class: "group__nav__link
+          #{"group__nav__link--active" if current_page?(group_disease_photos_path)}" do %>
         <i class="ri-camera-3-line"></i>
         Zdjęcia
       <% end %>
