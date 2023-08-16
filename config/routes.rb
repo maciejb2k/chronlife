@@ -1,5 +1,13 @@
 Rails.application.routes.draw do
-  mount Avo::Engine, at: Avo.configuration.root_path
+  devise_for :admins, path: "internal-panel",
+                      skip: [:registrations],
+                      controllers: {
+                        sessions: "admin/sessions"
+                      }
+
+  authenticate :admin do
+    mount Avo::Engine, at: Avo.configuration.root_path
+  end
 
   devise_for :users, controllers: {
     sessions: "auth/sessions",

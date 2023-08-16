@@ -1,7 +1,7 @@
 # For more information regarding these settings check out our docs https://docs.avohq.io
 Avo.configure do |config|
   ## == Routing ==
-  config.root_path = '/avo'
+  config.root_path = '/internal-panel'
   # used only when you have custom `map` configuration in your config.ru
   # config.prefix_path = "/internal"
 
@@ -20,6 +20,8 @@ Avo.configure do |config|
   ## == Authentication ==
   # config.current_user_method = {}
   # config.authenticate_with do
+  config.current_user_method = :current_admin
+  config.sign_out_path_name = :destroy_admin_session_path
   # end
 
   ## == Authorization ==

@@ -3,6 +3,7 @@
   height: 100vh;
   display: flex;
   background: $dash-bg;
+  overflow: hidden;
 
   &__content {
     flex-grow: 1;
