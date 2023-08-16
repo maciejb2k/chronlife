@@ -19,6 +19,27 @@
               <div class="dash-group__actions"></div>
             </header>
             <div class="dash-group__content">
+              <div class="group-statuses">
+                <p class="group-statuses__text">Poniżej znajdują się wszystkie aktualizacje zdrowia wszystkich użytkowników z daną chorobą.</p>
+                <%= turbo_frame_tag "posts_#{@pagy.page}" do %>
+                  <% unless @posts.to_a.any? %>
+                    <p>Nie dodano na razie żadnych postów.</p>
+                  <% else %>
+                    <div class="dash-posts-container">
+                      <% @posts.each do |post| %>
+                        <%= render partial: "disease_statuses/disease_status", locals: { disease: post.disease, disease_status: post,
+                      liked_statuses: @liked_statuses } %>
+                      <% end %>
+                    </div>
+                  <% end %>
+                  <% unless @pagy.page == @pagy.pages %>
+                    <%= turbo_frame_tag "posts_#{@pagy.next}", src: account_posts_path(page: @pagy.next),
+                  loading: "lazy" do %>
+                      <div>Pobieranie postów ...</div>
+                    <% end %>
+                  <% end %>
+                <% end %>
+              </div>
             </div>
           </div>
         </div>
