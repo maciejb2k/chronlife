@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_08_16_073714) do
+ActiveRecord::Schema[7.0].define(version: 2023_08_16_110758) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pgcrypto"
   enable_extension "plpgsql"
@@ -230,6 +230,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_08_16_073714) do
     t.uuid "account_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.boolean "is_norm_exceeded", default: false, null: false
     t.index ["account_id"], name: "index_measurements_on_account_id"
     t.index ["measurement_type_id"], name: "index_measurements_on_measurement_type_id"
   end
