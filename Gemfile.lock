@@ -46,6 +46,9 @@ GEM
       erubi (~> 1.4)
       rails-dom-testing (~> 2.0)
       rails-html-sanitizer (~> 1.1, >= 1.2.0)
+    active_link_to (1.0.5)
+      actionpack
+      addressable
     activejob (7.0.6)
       activesupport (= 7.0.6)
       globalid (>= 0.3.6)
@@ -72,6 +75,20 @@ GEM
       activerecord (>= 3.2, < 8.0)
       rake (>= 10.4, < 14.0)
     ast (2.4.2)
+    avo (2.39.0)
+      actionview (>= 6.0)
+      active_link_to
+      activerecord (>= 6.0)
+      addressable
+      docile
+      dry-initializer
+      httparty
+      inline_svg
+      meta-tags
+      pagy
+      turbo-rails
+      view_component (>= 2.54.0)
+      zeitwerk (>= 2.6.2)
     bcrypt (3.1.19)
     bindex (0.8.1)
     bootsnap (1.16.0)
@@ -118,6 +135,7 @@ GEM
       railties (>= 3.2)
     down (5.4.1)
       addressable (~> 2.8)
+    dry-initializer (3.1.1)
     erubi (1.12.0)
     factory_bot (6.2.1)
       activesupport (>= 5.0.0)
@@ -137,11 +155,17 @@ GEM
       activesupport (>= 6.1)
     hashie (5.0.0)
     htmlbeautifier (1.4.2)
+    httparty (0.21.0)
+      mini_mime (>= 1.0.0)
+      multi_xml (>= 0.5.2)
     i18n (1.14.1)
       concurrent-ruby (~> 1.0)
     importmap-rails (1.2.1)
       actionpack (>= 6.0.0)
       railties (>= 6.0.0)
+    inline_svg (1.9.0)
+      activesupport (>= 3.0)
+      nokogiri (>= 1.6)
     io-console (0.6.0)
     irb (1.7.1)
       reline (>= 0.3.0)
@@ -162,6 +186,8 @@ GEM
     marcel (1.0.2)
     matrix (0.4.2)
     memory_profiler (1.0.1)
+    meta-tags (2.18.0)
+      actionpack (>= 3.2.0, < 7.1)
     method_source (1.0.0)
     mini_mime (1.1.2)
     minitest (5.18.1)
@@ -421,6 +447,7 @@ PLATFORMS
 
 DEPENDENCIES
   annotate (~> 3.2.0)
+  avo (~> 2.39.0)
   bcrypt (~> 3.1.19)
   bootsnap (~> 1.16.0)
   capybara

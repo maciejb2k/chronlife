@@ -21,7 +21,5 @@ class DiseaseCategory < ApplicationRecord
 
   validates :name, length: { maximum: 100 }, presence: true, uniqueness: true
   validates :description, length: { maximum: 250 }, allow_blank: true
-  validates :icon, attached: true, content_type: ["image/png", "image/jpg", "image/jpeg"],
-                   size: { less_than: 2.megabytes }, allow_blank: true
   validates :color, format: { with: /\A#?(?:[A-F0-9]{3}){1,2}\z/i }, allow_blank: true
 end

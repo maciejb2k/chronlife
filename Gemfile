@@ -86,6 +86,9 @@ gem "simple_calendar", "~> 2.4"
 # Extended rake stats command
 gem 'rails_stats', "~> 1.0.2"
 
+# Admin panel
+gem "avo", "~> 2.39.0"
+
 group :development, :test do
   gem "debug", "~> 1.8.0", platforms: %i[ mri mingw x64_mingw ]
   gem "faker", "~> 3.2.0"
