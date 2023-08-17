@@ -44,3 +44,7 @@ doc/
 # Shrine gem
 /public/uploads
 
+# ERD gem
+/erd.png
+/erd.pdf
+
