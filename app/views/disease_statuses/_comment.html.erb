@@ -1,4 +1,4 @@
-<div class="comment">
+<div class="comment" id="<%= dom_id comment %>">
   <header class="comment__header">
     <%= image_tag user_image, alt: "Picture", class: "comment__header__photo" %>
     <div class="comment__header__text">
@@ -19,11 +19,7 @@
         data-transition-leave-from="opacity-100 scale-100"
         data-transition-leave-to="opacity-0 scale-95"
       >
-        <%= link_to edit_disease_disease_status_path(@disease, @disease_status),
-            data: { action: "dropdown#toggle" }, class: "dash-dropdown__item" do %>
-          <i class="ri-edit-line dash-dropdown__item__icon"></i> Edytuj
-        <% end %>
-        <%= button_to [@disease, @disease_status], method: :delete, class: "dash-dropdown__item",
+        <%= button_to [@disease, @disease_status, comment], method: :delete, class: "dash-dropdown__item",
             data: { action: "dropdown#toggle", confirm: "Are you sure?", turbo_confirm: "Are you sure?" } do %>
           <i class="ri-close-line dash-dropdown__item__icon dash-dropdown__item__icon--delete"></i> Usuń
         <% end %>

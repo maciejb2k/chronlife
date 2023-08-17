@@ -1,4 +1,4 @@
-<%= comments_size = @disease_status.comments.size %>
+<% comments_size = @disease_status.comments.size %>
 
 <%= turbo_stream.prepend "comments_#{@disease_status.id}" do %>
   <%= render partial: "disease_statuses/comment", locals: { comment: @comment } %>
@@ -9,5 +9,9 @@
 <% end %>
 
 <% if comments_size > 0 %>
-  <%= turbo_stream.remove "empty_comments_#{@disease_status.id}" %>
+  <%= turbo_stream.update "empty_comments_#{@disease_status.id}" %>
 <% end %>
+
+<%= turbo_stream.update :dash_toast,
+                        partial: "shared/dash_toast",
+                        locals: { message: "Poprawnie dodano komentarz", icon: "success" } %>

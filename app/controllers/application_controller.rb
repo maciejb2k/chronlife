@@ -2,6 +2,8 @@ class ApplicationController < ActionController::Base
   include Pagy::Backend
   include Pundit::Authorization
 
+  rescue_from Pundit::NotAuthorizedError, with: :user_not_authorized
+
   helper_method :breadcrumbs
 
   def current_account
@@ -14,5 +16,22 @@ class ApplicationController < ActionController::Base
 
   def add_breadcrumb(name, path = nil)
     breadcrumbs << Breadcrumb.new(name, path)
+  end
+
+  private
+
+  def user_not_authorized
+    message = "Nie masz uprawnień do wykonania tej akcji."
+
+    respond_to do |format|
+      format.turbo_stream do
+        render turbo_stream: turbo_stream.update(
+          :dash_toast,
+          partial: "shared/dash_toast",
+          locals: { message:, icon: "error" }
+        )
+      end
+      format.html { redirect_to root_path, alert: message }
+    end
   end
 end

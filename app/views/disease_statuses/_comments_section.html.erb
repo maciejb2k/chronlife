@@ -2,7 +2,7 @@
   <div class="dash-post__comments">
     <% if @comments.none? %>
       <%= turbo_frame_tag "empty_comments_#{@disease_status.id}" do %>
-        <p class="dash-post__comments__empty">Brak komentarzy</p>
+        <%= render "disease_statuses/empty_comments" %>
       <% end %>
     <% end %>
 
