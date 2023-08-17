@@ -23,7 +23,7 @@
 class SpecialistRequest < ApplicationRecord
   belongs_to :account
 
-  before_validation :set_status
+  before_validation :set_status, on: :create
   before_create :set_hash_code
 
   STATES = %w[pending approved rejected].freeze
@@ -32,6 +32,23 @@ class SpecialistRequest < ApplicationRecord
   validates :specialization_description, presence: true, length: { maximum: 100 }
   validates :field_of_expertise, presence: true, length: { maximum: 50 }
   validates :status, inclusion: { in: STATES }
+
+  def approve!
+    ActiveRecord::Base.transaction do
+      update!(status: "approved")
+      account.user.set_specialist_role!
+      account.user.specialist.update!(specialization:,
+                                      specialization_description:,
+                                      field_of_expertise:)
+    end
+  end
+
+  def reject!
+    ActiveRecord::Base.transaction do
+      update!(status: "rejected")
+      account.user.revoke_specialist_role!
+    end
+  end
 
   private
 

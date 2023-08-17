@@ -25,17 +25,43 @@
     <% end %>
   </div>
   <div class="page-specialists__content">
-    <% if @specialists.to_a.any? %>
-      <ul>
-        <% @specialists.each do |specialist| %>
-          <li>@<%= specialist.account.username %></li>
-        <% end %>
-      </ul>
-    <% else %>
-      <p class="no-results">
-        Na razie na platformie nie zarejestrowali się żadni specjaliści.
-      </p>
-    <% end %>
+    <div class="dash-group">
+      <header class="dash-group__header">
+        <h2 class="dash-group__title">
+          <i class="ri-group-line dash-group__title__icon""></i>
+          Wszyscy specjaliści na platformie
+        </h2>
+        <div class="dash-group__actions"></div>
+      </header>
+      <div class="dash-group__content">
+        <% if @specialists.to_a.any? %>
+          <div class="specialists-list">
+            <% @specialists.each do |specialist| %>
+              <div class="specialist">
+                <%= image_tag "avatar-placeholder.png", alt: "", class: "specialist__photo" %>
+                <p class="specialist__name"><%= specialist.account.full_name %></p>
+                <p class="specialist__speciality"><%= specialist.specialist.field_of_expertise %></p>
+                <footer class="specialist__footer">
+                  <div class="specialist__footer__left">
+                    <p class="specialist__label">Specjalizacja</p>
+                    <p class="specialist__desc"><%= specialist.specialist.specialization %></p>
+                  </div>
+                  <div class="specialist__footer__right">
+                    <%= link_to account_path(specialist.account), class: "specialist__button" do %>
+                      Zobacz <i class="ri-arrow-right-line"></i>
+                    <% end %>
+                  </div>
+                </footer>
+              </div>
+            <% end %>
+          </div>
+        <% else %>
+          <p class="no-results">
+            Na razie na platformie nie zarejestrowali się żadni specjaliści.
+          </p>
+        <% end %>      </div>
+    </div>
+
   </div>
   <div class="dash-pagination">
     <div class="dash-pagination__controls">

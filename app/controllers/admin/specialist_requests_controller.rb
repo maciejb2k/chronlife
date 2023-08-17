@@ -1,8 +1,8 @@
 class Admin::SpecialistRequestsController < Admin::BaseController
-  before_action :set_admin_specialist_request, only: %i[show edit update destroy]
+  before_action :set_admin_specialist_request, only: %i[show edit update destroy approve reject]
 
   def index
-    @admin_specialist_requests = SpecialistRequest.all
+    @admin_specialist_requests = SpecialistRequest.where(status: "pending").all
   end
 
   def show; end
@@ -48,6 +48,28 @@ class Admin::SpecialistRequestsController < Admin::BaseController
       format.html do
         redirect_to admin_specialist_requests_url,
                     notice: "Specialist request was successfully destroyed."
+      end
+    end
+  end
+
+  def approve
+    @admin_specialist_request.approve!
+
+    respond_to do |format|
+      format.html do
+        redirect_to admin_specialist_requests_url,
+                    notice: "Specialist request was successfully approved."
+      end
+    end
+  end
+
+  def reject
+    @admin_specialist_request.reject!
+
+    respond_to do |format|
+      format.html do
+        redirect_to admin_specialist_requests_url,
+                    notice: "Specialist request was successfully rejected."
       end
     end
   end

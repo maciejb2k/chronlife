@@ -3,12 +3,10 @@
 <h1>Specialist requests</h1>
 
 <div id="admin_specialist_requests">
-  <% @admin_specialist_requests.each do |admin_specialist_request| %>
-    <%= render admin_specialist_request %>
-    <p>
-      <%= link_to "Show this specialist request", admin_specialist_request %>
-    </p>
+  <% @admin_specialist_requests.each do |request| %>
+    <div>
+      <%= button_to "Odrzuć wniosek o lekarza", reject_admin_specialist_request_path(request), method: :post %>
+      <%= button_to "Zaakceptuj wniosek o lekarza", approve_admin_specialist_request_path(request), method: :post %>
+    </div>
   <% end %>
 </div>
-
-<%= link_to "New specialist request", new_admin_specialist_request_path %>

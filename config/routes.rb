@@ -8,7 +8,12 @@ Rails.application.routes.draw do
   authenticate :admin do
     mount Avo::Engine, at: Avo.configuration.root_path
     namespace :admin do
-      resources :specialist_requests
+      resources :specialist_requests do
+        member do
+          post :approve
+          post :reject
+        end
+      end
     end
   end
 

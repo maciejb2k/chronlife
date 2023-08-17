@@ -42,7 +42,7 @@ pl:
       specialist_request:
         statuses:
           pending: Oczekuje na weryfikację
-          accepted: Wniosek został zaakceptowany
+          approved: Wniosek został zaakceptowany
           rejected: Wniosek został odrzucony
       account:
         education:
