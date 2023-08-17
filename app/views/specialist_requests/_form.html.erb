@@ -1,0 +1,55 @@
+<%= form_with(model: @specialist_request, html: { class: "dash-form" }) do |f| %>
+  <div class="dash-form__container">
+    <div class="dash-form__group">
+      <div class="dash-form__group__container">
+        <div class="dash-form__group__left">
+          <div class="dash-form__group__title">Wykształcenie</div>
+          <p class="dash-form__group__description">Z jakiej dziedziny nauki jesteś specjalistą.</p>
+        </div>
+        <div class="dash-form__group__right">
+          <%= f.text_field :field_of_expertise, class: "dash-form__input",
+              placeholder: "Lekarz" %>
+        </div>
+      </div>
+      <%= render DashFormErrorComponent.new(model: @specialist_request,
+          field: :field_of_expertise) %>
+    </div>
+  </div>
+
+  <div class="dash-form__container">
+    <div class="dash-form__group">
+      <div class="dash-form__group__container">
+        <div class="dash-form__group__left">
+          <div class="dash-form__group__title">Specjalizacja</div>
+          <p class="dash-form__group__description">W czym się specjalizujesz</p>
+        </div>
+        <div class="dash-form__group__right">
+          <%= f.text_field :specialization, class: "dash-form__input",
+              placeholder: "Kardiolog" %>
+        </div>
+      </div>
+      <%= render DashFormErrorComponent.new(model: @specialist_request, field: :specialization) %>
+    </div>
+  </div>
+
+  <div class="dash-form__container">
+    <div class="dash-form__group">
+      <div class="dash-form__group__container">
+        <div class="dash-form__group__left">
+          <div class="dash-form__group__title">Opis</div>
+          <p class="dash-form__group__description">Opisz w kilku słowach czym się zajmujesz.</p>
+        </div>
+        <div class="dash-form__group__right">
+          <%= f.text_area :specialization_description, class: "dash-form__input dash-form__textarea",
+              placeholder: "Opis specjalizacji" %>
+        </div>
+      </div>
+      <%= render DashFormErrorComponent.new(model: @specialist_request,
+          field: :specialization_description) %>
+    </div>
+  </div>
+
+  <div class="dash-form__group">
+    <%= f.submit "Wyślij", class: "dash-form__submit dash-button dash-button--new" %>
+  </div>
+<% end %>

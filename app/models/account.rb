@@ -2,26 +2,23 @@
 #
 # Table name: accounts
 #
-#  id                         :uuid             not null, primary key
-#  bio                        :text             default(""), not null
-#  birthday                   :date
-#  city                       :string           default(""), not null
-#  country                    :string           default(""), not null
-#  education                  :string           default(""), not null
-#  field_of_expertise         :string           default(""), not null
-#  first_name                 :string           default(""), not null
-#  image_data                 :text
-#  is_verified                :boolean          default(FALSE), not null
-#  last_name                  :string           default(""), not null
-#  phone_number               :string           default(""), not null
-#  settings                   :jsonb            not null
-#  sex                        :string           default(""), not null
-#  specialization             :string           default(""), not null
-#  specialization_description :string           default(""), not null
-#  username                   :string
-#  created_at                 :datetime         not null
-#  updated_at                 :datetime         not null
-#  user_id                    :uuid             not null
+#  id           :uuid             not null, primary key
+#  bio          :text             default(""), not null
+#  birthday     :date
+#  city         :string           default(""), not null
+#  country      :string           default(""), not null
+#  education    :string           default(""), not null
+#  first_name   :string           default(""), not null
+#  image_data   :text
+#  is_verified  :boolean          default(FALSE), not null
+#  last_name    :string           default(""), not null
+#  phone_number :string           default(""), not null
+#  settings     :jsonb            not null
+#  sex          :string           default(""), not null
+#  username     :string
+#  created_at   :datetime         not null
+#  updated_at   :datetime         not null
+#  user_id      :uuid             not null
 #
 # Indexes
 #
@@ -57,6 +54,8 @@ class Account < ApplicationRecord
   has_many :note_groups, dependent: :destroy
   has_many :note_tags, dependent: :destroy
   has_many :measurements, dependent: :destroy
+
+  has_many :specialist_requests, dependent: :destroy
 
   EDUCATION_OPTIONS = %w[none primary secondary bachelor master doctorate].freeze
 

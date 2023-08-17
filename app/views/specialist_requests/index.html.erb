@@ -1,0 +1,56 @@
+<div class="page-specialist-requests">
+  <header class="dash-header">
+    <div class="dash-header__left">
+      <h1 class="dash-header__title">
+        <i class="ri-article-line dash-header__title__icon"></i>
+        Wnioski o status specjalisty
+      </h1>
+      <%= render "shared/breadcrumbs" %>
+    </div>
+    <div class="dash-header__right">
+      <% unless pending_request? %>
+        <%= link_to new_specialist_request_path, class: "dash-button dash-button--new" do %>
+          <i class="ri-article-line dash-button__icon"></i>
+          Wyślij wniosek
+        <% end %>
+      <% end %>
+      <%= link_to specialists_path, class: "dash-button dash-button--back" do %>
+        <i class="ri-arrow-left-line dash-button__icon"></i>
+      <% end %>
+    </div>
+  </header>
+  <div class="dash-flash-messages">
+    <%= turbo_frame_tag "flash" do %>
+      <%= render "shared/dash_flash" %>
+    <% end %>
+  </div>
+  <div class="page-specialist-requests__content">
+    <% if @specialist_requests.to_a.any? %>
+      <ul class="requests-list">
+        <% @specialist_requests.each do |request| %>
+          <li class="request-item">
+            <div>
+              <p>Wniosek o ID: <%= request.hash_code %></p>
+              <p class="request-item__date">Złożono dnia <%= l request.created_at, format: :long %></p>
+            </div>
+            <span class="request-item__status request-item__status--<%= request.status %>">
+              <%= I18n.t("activerecord.attributes.specialist_request.statuses.#{request.status}") %>
+            </span>
+          <% end %>
+        </ul>
+      <% else %>
+        <p class="no-results">
+          Na razie nie złożyłeś żadnych wniosków o status specjalisty.
+        </p>
+      <% end %>
+      <div class="dash-pagination">
+        <div class="dash-pagination__controls">
+          <%== pagy_nav(@pagy) if @pagy.pages > 1 %>
+        </div>
+        <div class="dash-pagination__info">
+          <%== pagy_info(@pagy) %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

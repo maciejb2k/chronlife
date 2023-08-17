@@ -39,6 +39,11 @@ pl:
           cured: Wyleczona
           relapsed: Nawrót
           unknown: Nieznany
+      specialist_request:
+        statuses:
+          pending: Oczekuje na weryfikację
+          accepted: Wniosek został zaakceptowany
+          rejected: Wniosek został odrzucony
       account:
         education:
           none: Brak

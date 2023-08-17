@@ -1,4 +1,4 @@
-puts "Seeding measurement types..."
+puts "Seeding measurement types ..."
 
 MeasurementType.create(
   [

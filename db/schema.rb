@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_08_16_110758) do
+ActiveRecord::Schema[7.0].define(version: 2023_08_16_161821) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pgcrypto"
   enable_extension "plpgsql"
@@ -28,9 +28,6 @@ ActiveRecord::Schema[7.0].define(version: 2023_08_16_110758) do
     t.string "phone_number", default: "", null: false
     t.string "education", default: "", null: false
     t.boolean "is_verified", default: false, null: false
-    t.string "specialization", default: "", null: false
-    t.string "specialization_description", default: "", null: false
-    t.string "field_of_expertise", default: "", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.uuid "user_id", null: false
@@ -334,6 +331,28 @@ ActiveRecord::Schema[7.0].define(version: 2023_08_16_110758) do
     t.index ["name"], name: "index_roles_on_name", unique: true
   end
 
+  create_table "specialist_requests", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
+    t.string "specialization", default: "", null: false
+    t.string "specialization_description", default: "", null: false
+    t.string "field_of_expertise", default: "", null: false
+    t.string "status", default: "", null: false
+    t.string "hash_code", default: "", null: false
+    t.uuid "account_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["account_id"], name: "index_specialist_requests_on_account_id"
+  end
+
+  create_table "specialists", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
+    t.string "specialization", default: "", null: false
+    t.string "specialization_description", default: "", null: false
+    t.string "field_of_expertise", default: "", null: false
+    t.uuid "user_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_specialists_on_user_id"
+  end
+
   create_table "treatment_diseases", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
     t.uuid "treatment_id", null: false
     t.uuid "disease_id", null: false
@@ -455,6 +474,8 @@ ActiveRecord::Schema[7.0].define(version: 2023_08_16_110758) do
   add_foreign_key "notes", "accounts"
   add_foreign_key "predefined_symptoms", "predefined_diseases"
   add_foreign_key "reactions", "accounts"
+  add_foreign_key "specialist_requests", "accounts"
+  add_foreign_key "specialists", "users"
   add_foreign_key "treatment_diseases", "diseases"
   add_foreign_key "treatment_diseases", "treatments"
   add_foreign_key "treatment_updates", "treatments"

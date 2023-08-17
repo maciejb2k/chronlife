@@ -1,0 +1,48 @@
+<div class="page-specialists">
+  <header class="dash-header">
+    <div class="dash-header__left">
+      <h1 class="dash-header__title">
+        <i class="ri-nurse-line dash-header__title__icon"></i>
+        Specjaliści
+      </h1>
+      <%= render "shared/breadcrumbs" %>
+    </div>
+    <div class="dash-header__right">
+      <%= link_to specialist_requests_path, class: "dash-button dash-button--blue" do %>
+        <i class="ri-article-line dash-button__icon"></i>
+        Złóż wniosek o status specjalisty
+      <% end %>
+      <%= link_to authenticated_root_path, class: "dash-button dash-button--back" do %>
+        <i class="ri-arrow-left-line dash-button__icon"></i>
+      <% end %>
+    </div>
+  </header>
+  <div class="dash-flash-messages">
+    <% if flash[:notice].present? %>
+      <%= render DashAlertComponent.new(type: :success) do %>
+        <%= flash[:notice] %>
+      <% end %>
+    <% end %>
+  </div>
+  <div class="page-specialists__content">
+    <% if @specialists.to_a.any? %>
+      <ul>
+        <% @specialists.each do |specialist| %>
+          <li>@<%= specialist.account.username %></li>
+        <% end %>
+      </ul>
+    <% else %>
+      <p class="no-results">
+        Na razie na platformie nie zarejestrowali się żadni specjaliści.
+      </p>
+    <% end %>
+  </div>
+  <div class="dash-pagination">
+    <div class="dash-pagination__controls">
+      <%== pagy_nav(@pagy) if @pagy.pages > 1 %>
+    </div>
+    <div class="dash-pagination__info">
+      <%== pagy_info(@pagy) %>
+    </div>
+  </div>
+</div>

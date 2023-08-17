@@ -53,9 +53,11 @@ class User < ApplicationRecord
   has_many :user_roles, dependent: :destroy
   has_many :roles, through: :user_roles
 
+  has_one :specialist, dependent: :destroy, inverse_of: :user, required: false
+
   accepts_nested_attributes_for :account
 
-  before_create :set_patient_role!
+  after_create :set_patient_role!
 
   def patient?
     roles.exists?(name: "patient")
@@ -103,21 +105,6 @@ class User < ApplicationRecord
     otp_backup_codes.present?
   end
 
-  def set_specialist_role!
-    add_role("specialist")
-  end
-
-  def set_patient_role!
-    add_role("patient")
-  end
-
-  def add_role(role_name)
-    role = Role.find_by(name: role_name)
-    return unless role
-
-    roles << role unless roles.include?(role)
-  end
-
   def self.from_omniauth!(auth)
     find_or_create_by!(provider: auth.provider, uid: auth.uid) do |user|
       user.email = auth.info.email
@@ -128,5 +115,43 @@ class User < ApplicationRecord
 
   def oauth_account?
     provider.present? && uid.present?
+  end
+
+  def set_specialist_role!
+    ActiveRecord::Base.transaction do
+      add_role("specialist")
+      create_specialist if role?("specialist") && specialist.nil?
+    end
+  end
+
+  def revoke_specialist_role!
+    ActiveRecord::Base.transaction do
+      remove_role("specialist")
+      specialist&.destroy
+    end
+  end
+
+  def set_patient_role!
+    ActiveRecord::Base.transaction do
+      add_role("patient")
+    end
+  end
+
+  def role?(role_name)
+    roles.exists?(name: role_name)
+  end
+
+  def add_role(role_name)
+    role = Role.find_by(name: role_name)
+    return unless role
+
+    roles << role unless roles.include?(role)
+  end
+
+  def remove_role(role_name)
+    role = Role.find_by(name: role_name)
+    return unless role
+
+    roles.delete(role)
   end
 end

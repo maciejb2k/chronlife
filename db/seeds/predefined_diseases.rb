@@ -1,4 +1,4 @@
-puts "Seeding predefined diseases..."
+puts "Seeding predefined diseases ..."
 
 PredefinedDisease.create(
   [

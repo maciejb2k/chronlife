@@ -11,12 +11,7 @@ class CreateAccounts < ActiveRecord::Migration[7.0]
       t.string :city, null: false, default: ""
       t.string :phone_number, null: false, default: ""
       t.string :education, null: false, default: ""
-
-      # Specialist role specific fields
       t.boolean :is_verified, null: false, default: false
-      t.string :specialization, null: false, default: ""
-      t.string :specialization_description, null: false, default: ""
-      t.string :field_of_expertise, null: false, default: ""
 
       t.timestamps
     end

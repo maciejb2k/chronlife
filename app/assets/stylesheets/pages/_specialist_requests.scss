@@ -1,0 +1,46 @@
+.page-specialist-requests {
+  &__content {
+    width: 600px;
+    padding: 30px 0;
+  }
+
+  .requests-list {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .request-item {
+    background: #ffffff;
+    border: 1px solid $dash-base-border;
+    padding: 20px;
+
+    &__status {
+      padding: 3px 10px;
+      border-radius: 3px;
+      font-size: var(--12px);
+      display: inline-block;
+
+      &--pending {
+        background: #cae6ff;
+        color: #0e3a5f;
+      }
+
+      &--approved {
+        background: #ceffca;
+        color: #0f5f0e;
+      }
+
+      &--rejected {
+        background: #ffcaca;
+        color: #5f0e0e;
+      }
+    }
+
+    &__date {
+      font-size: var(--14px);
+      color: $dash-text-light;
+      margin-bottom: 5px;
+    }
+  }
+}

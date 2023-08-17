@@ -7,6 +7,9 @@ Rails.application.routes.draw do
 
   authenticate :admin do
     mount Avo::Engine, at: Avo.configuration.root_path
+    namespace :admin do
+      resources :specialist_requests
+    end
   end
 
   devise_for :users, controllers: {
@@ -107,6 +110,9 @@ Rails.application.routes.draw do
       end
     end
   end
+
+  resources :specialists, only: %i[index]
+  resources :specialist_requests
 
   namespace :settings do
     get "/settings", to: redirect("/settings/account")
