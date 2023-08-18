@@ -28,10 +28,10 @@ class DiseaseSymptom < ApplicationRecord
 
   has_many :updates, class_name: "DiseaseSymptomUpdate", dependent: :destroy, inverse_of: :symptom
 
+  validates :name, length: { maximum: 100 }, if: -> { name.present? }
   validates :description, length: { maximum: 500 }, presence: true
   validates :first_noticed_at, allow_blank: true,
                                timeliness: { on_or_before: -> { Time.zone.now }, type: :date }
-  validates :name, length: { maximum: 100 }, if: -> { name.present? }
   validates :predefined_symptom_id, presence: true,
                                     uniqueness: {
                                       scope: :disease_id,

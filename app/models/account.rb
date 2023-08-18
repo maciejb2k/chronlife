@@ -61,8 +61,7 @@ class Account < ApplicationRecord
 
   validates :first_name, presence: true, length: { maximum: 32 }
   validates :last_name, presence: true, length: { maximum: 32 }
-  validates :username, presence: true, uniqueness: true, format: { with: /\A[a-z0-9_]+\z/i },
-                       length: { maximum: 50 }
+  validates :username, presence: true, uniqueness: true, length: { maximum: 50 }
 
   validates :bio, length: { maximum: 100 }, allow_blank: true
   validates :sex, inclusion: { in: %w[male female other] }, allow_blank: true

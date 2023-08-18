@@ -1,7 +1,10 @@
 <div class="page-friend-requests">
   <header class="dash-header">
     <div class="dash-header__left">
-      <h1 class="dash-header__title">Zaproszenia do znajomych</h1>
+      <h1 class="dash-header__title">
+        <i class="ri-inbox-2-line dash-header__title__icon"></i>
+        Zaproszenia do znajomych
+      </h1>
       <%= render "shared/breadcrumbs" %>
     </div>
     <div class="dash-header__right">
@@ -19,7 +22,10 @@
     <div class="requests-group">
       <div class="dash-group">
         <header class="dash-group__header">
-          <h2 class="dash-group__title">Oczekujące zaproszenia</h2>
+          <h2 class="dash-group__title">
+            <i class="ri-mail-unread-line dash-group__title__icon"></i>
+            Oczekujące zaproszenia
+          </h2>
           <div class="dash-group__actions"></div>
         </header>
         <div class="dash-group__content">
@@ -66,7 +72,10 @@
     <div class="requests-group">
       <div class="dash-group">
         <header class="dash-group__header">
-          <h2 class="dash-group__title">Wysłane zaproszenia</h2>
+          <h2 class="dash-group__title">
+            <i class="ri-mail-send-line dash-group__title__icon"></i>
+            Wysłane zaproszenia
+          </h2>
           <div class="dash-group__actions"></div>
         </header>
         <div class="dash-group__content" id="outgoing_requests">
