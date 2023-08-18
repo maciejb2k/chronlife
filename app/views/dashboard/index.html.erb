@@ -1,3 +1,139 @@
 <div class="dash-home">
-  <p>Zostałeś poprawnie zalogowany, witaj na platformie!</p>
+  <div class="dash-home__content">
+    <header class="dash-home__header">
+      <div class="dash-home__header__left">
+        <h1 class="dash-home__header__title">
+          <i class="ri-sketching dash-home__header__title__icon"></i>
+          Witaj, <%= current_account.first_name %>!
+        </h1>
+        <p class="dash-home__header__text">Dobrze cię widzieć ponownie na naszej platformie.</p>
+      </div>
+      <div class="dash-home__header__right">
+        <p class="dash-home__header__date">
+          <i class="ri-calendar-todo-line"></i>
+          <span><%= l Time.now, format: "%d %B %Y" %></span>
+        </p>
+        <p class="dash-home__header__date">
+          <i class="ri-time-line"></i>
+          <span><%= l Time.now, format: "%H:%M" %></span>
+        </p>
+      </div>
+    </header>
+    <div class="dash-home__group">
+      <div class="dash-home__group__left">
+        <div class="dash-group">
+          <header class="dash-group__header">
+            <h2 class="dash-group__title">
+              <i class="ri-article-line dash-group__title__icon"></i>
+              Najnowsze wpisy
+            </h2>
+            <div class="dash-group__actions">
+              <%= link_to root_path,
+              class: "dash-button dash-button--gray dash-button--small" do %>
+                <i class="ri-add-line dash-button__icon"></i>
+                Dodaj nowy wpis
+              <% end %>
+            </div>
+          </header>
+          <div class="dash-group__content">
+            <div class="dash-home__posts">
+              <%= turbo_frame_tag "posts_#{@pagy.page}" do %>
+                <% unless @posts.to_a.any? %>
+                  <p class="dash-home__text">Nie dodano na razie żadnych postów.</p>
+                <% else %>
+                  <div class="dash-posts-container">
+                    <% @posts.each do |post| %>
+                      <%= render partial: post, locals: { disease: post.disease, disease_status: post,
+                      liked_statuses: @liked_statuses } %>
+                    <% end %>
+                  </div>
+                <% end %>
+                <% unless @pagy.page == @pagy.pages %>
+                  <%= turbo_frame_tag "posts_#{@pagy.next}", src: account_posts_path(page: @pagy.next),
+                  loading: "lazy" do %>
+                    <div>Pobieranie postów ...</div>
+                  <% end %>
+                <% end %>
+              <% end %>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="dash-home__group__right">
+        <div class="dash-group dash-group--border">
+          <header class="dash-group__header">
+            <h2 class="dash-group__title">
+              <i class="ri-bar-chart-line dash-group__title__icon"></i>
+              Statystyki zdrowia
+            </h2>
+            <div class="dash-group__actions">
+              <%= link_to root_path,
+              class: "dash-button dash-button--gray dash-button--small" do %>
+                <i class="ri-layout-grid-line dash-button__icon"></i>
+                Dostosuj kafelki
+              <% end %>
+            </div>
+          </header>
+          <div class="dash-group__content">
+            <div class="dash-home__stats">
+              <div class="dash-stat">
+                <div class="dash-stat__icon">
+                  <i class="ri-stethoscope-line"></i>
+                </div>
+                <div class="dash-stat__content">
+                  <p class="dash-stat__text"><%= current_account.diseases.size %></p>
+                  <h3 class="dash-stat__title">choroby</h3>
+                </div>
+              </div>
+              <div class="dash-stat">
+                <div class="dash-stat__icon">
+                  <i class="ri-group-line"></i>
+                </div>
+                <div class="dash-stat__content">
+                  <p class="dash-stat__text"><%= current_account.groups.size %></p>
+                  <h3 class="dash-stat__title">grupy</h3>
+                </div>
+              </div>
+              <div class="dash-stat">
+                <div class="dash-stat__icon">
+                  <i class="ri-hospital-line"></i>
+                </div>
+                <div class="dash-stat__content">
+                  <p class="dash-stat__text"><%= current_account.treatments.size %></p>
+                  <h3 class="dash-stat__title">terapie</h3>
+                </div>
+              </div>
+              <div class="dash-stat">
+                <div class="dash-stat__icon">
+                  <i class="ri-heart-pulse-line"></i>
+                </div>
+                <div class="dash-stat__content">
+                  <p class="dash-stat__text"><%= current_account.measurements.size %></p>
+                  <h3 class="dash-stat__title">pomiary</h3>
+                </div>
+              </div>
+              <div class="dash-stat">
+                <div class="dash-stat__icon">
+                  <i class="ri-heart-pulse-line"></i>
+                </div>
+                <div class="dash-stat__content">
+                  <p class="dash-stat__text">0</p>
+                  <h3 class="dash-stat__title">wyników badań</h3>
+                </div>
+              </div>
+              <div class="dash-stat">
+                <div class="dash-stat__icon">
+                  <i class="ri-heart-pulse-line"></i>
+                </div>
+                <div class="dash-stat__content">
+                  <p class="dash-stat__text"><%= current_account.notes.size %></p>
+                  <h3 class="dash-stat__title">notatki</h3>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
