@@ -1,6 +1,6 @@
 class DiseaseStatusCommentsController < BaseController
   before_action :set_commentable
-  before_action :set_comment, only: [:destroy]
+  before_action :set_comment, only: %i[show edit update destroy]
 
   def index
     @pagy, @comments = pagy_countless(
@@ -8,7 +8,7 @@ class DiseaseStatusCommentsController < BaseController
       .comments
       .joins(:account)
       .includes(:account)
-      .order(created_at: :desc),
+      .order(updated_at: :desc),
       items: 3
     )
 
@@ -22,13 +22,38 @@ class DiseaseStatusCommentsController < BaseController
     @comment = @disease_status.comments.build comment_params
     @comment.account = current_account
 
-    if @comment.save!
-      respond_to do |format|
+    respond_to do |format|
+      if @comment.save
         format.turbo_stream
         format.html { redirect_to @disease_status, notice: "Poprawnie dodano nowy komentarz." }
+      else
+        format.turbo_stream do
+          render turbo_stream: turbo_stream.update(
+            :dash_toast,
+            partial: "shared/dash_toast",
+            locals: { message: @comment.errors.full_messages.first, icon: "error" }
+          )
+        end
+        format.html { render :new, status: :unprocessable_entity }
       end
-    else
-      render :new, status: :unprocessable_entity
+    end
+  end
+
+  def update
+    respond_to do |format|
+      if @comment.update(comment_params)
+        format.turbo_stream
+        format.html { redirect_to @comment, notice: "Poprawnie dodano nowy komentarz." }
+      else
+        format.turbo_stream do
+          render turbo_stream: turbo_stream.update(
+            :dash_toast,
+            partial: "shared/dash_toast",
+            locals: { message: @comment.errors.full_messages.first, icon: "error" }
+          )
+        end
+        format.html { render :new, status: :unprocessable_entity }
+      end
     end
   end
 

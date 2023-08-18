@@ -1,0 +1,5 @@
+<h1>Edytuj</h1>
+
+<%= turbo_frame_tag "comment_body_#{@comment.id}" do %>
+  <%= render "form" %>
+<% end %>

@@ -96,6 +96,15 @@
   }
 }
 
+.dash-button--gray {
+  background: #99968e;
+  color: #fff;
+
+  .dash-button__icon {
+    color: #ccc8be;
+  }
+}
+
 .dash-button--line {
   background: 0;
   border: 1px solid $dash-base-border;
@@ -1051,5 +1060,33 @@
       font-weight: 400;
       color: $dash-text-dark;
     }
+  }
+}
+
+.comment-edit-form {
+  display: flex;
+  flex-direction: column;
+
+  &__group {
+  }
+
+  &__body {
+    border: 1px solid $dash-base-border;
+    padding: 10px;
+    border-radius: 3px;
+    width: 100%;
+    font-size: var(--14px);
+    color: $dash-text-dark;
+    resize: none;
+  }
+
+  &__actions {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 10px;
+  }
+
+  &__submit {
   }
 }

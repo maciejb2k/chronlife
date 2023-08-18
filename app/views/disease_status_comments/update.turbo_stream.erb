@@ -1,0 +1,11 @@
+<%= turbo_stream.update "comment_body_#{@comment.id}" do %>
+  <p class="comment__content__body"><%= @comment.body %></p>
+<% end %>
+
+<%= turbo_stream.update :dash_toast,
+                        partial: "shared/dash_toast",
+                        locals: { message: "Poprawnie edytowano komentarz", icon: "success" } %>
+
+<%= turbo_stream.update "comment_date_#{@comment.id}" do %>
+  <%= render partial: "disease_statuses/comment_date", locals: { comment: @comment } %>
+<% end %>

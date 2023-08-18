@@ -70,7 +70,7 @@ Rails.application.routes.draw do
     resources :disease_treatments, only: %i[index]
     resources :disease_photos, only: %i[index new create destroy]
     resources :disease_statuses do
-      resources :disease_status_comments, as: :comments, only: %i[index create destroy]
+      resources :disease_status_comments, as: :comments
       resources :disease_status_reactions, as: :reactions, only: %i[index] do
         collection do
           post :like

@@ -1,17 +1,18 @@
-<div class="comment" id="<%= dom_id comment %>">
-  <header class="comment__header">
-    <%= image_tag user_image, alt: "Picture", class: "comment__header__photo" %>
-    <div class="comment__header__text">
-      <h3 class="comment__header__user"><%= comment.account.full_name %></h3>
-      <p class="comment__header__date">
-        <%= time_ago_in_words(comment.updated_at) %> temu
-      </p>
-    </div>
-    <div data-controller="dropdown" class="comment__header__options dash-dropdown dash-dropdown--small">
-      <button class="dash-dropdown__button" type="button" data-action="dropdown#toggle click@window->dropdown#hide">
-        <i class="ri-more-fill"></i>
-      </button>
-      <div
+<%= turbo_frame_tag dom_id comment do %>
+  <div class="comment">
+    <header class="comment__header">
+      <%= image_tag user_image, alt: "Picture", class: "comment__header__photo" %>
+      <div class="comment__header__text">
+        <h3 class="comment__header__user"><%= comment.account.full_name %></h3>
+        <%= turbo_frame_tag "comment_date_#{comment.id}" do %>
+          <%= render partial: "disease_statuses/comment_date", locals: { comment: } %>
+        <% end %>
+      </div>
+      <div data-controller="dropdown" class="comment__header__options dash-dropdown dash-dropdown--small">
+        <button class="dash-dropdown__button" type="button" data-action="dropdown#toggle click@window->dropdown#hide">
+          <i class="ri-more-fill"></i>
+        </button>
+        <div
         data-dropdown-target="menu"
         class="hidden transition transform origin-top-right dash-dropdown__list "
         data-transition-enter-from="opacity-0 scale-95"
@@ -19,14 +20,22 @@
         data-transition-leave-from="opacity-100 scale-100"
         data-transition-leave-to="opacity-0 scale-95"
       >
-        <%= button_to [@disease, @disease_status, comment], method: :delete, class: "dash-dropdown__item",
+          <%= link_to edit_disease_disease_status_comment_path(@disease, @disease_status, comment),
+              class: "dash-dropdown__item", data: { turbo_frame: "comment_body_#{comment.id}",
+              action: "dropdown#toggle" } do %>
+            <i class="ri-edit-line dash-dropdown__item__icon dash-dropdown__item__icon--edit"></i> Edytuj
+          <% end %>
+          <%= button_to [@disease, @disease_status, comment], method: :delete, class: "dash-dropdown__item",
             data: { action: "dropdown#toggle", confirm: "Are you sure?", turbo_confirm: "Are you sure?" } do %>
-          <i class="ri-close-line dash-dropdown__item__icon dash-dropdown__item__icon--delete"></i> Usuń
-        <% end %>
+            <i class="ri-close-line dash-dropdown__item__icon dash-dropdown__item__icon--delete"></i> Usuń
+          <% end %>
+        </div>
       </div>
+    </header>
+    <div class="comment__content">
+      <%= turbo_frame_tag "comment_body_#{comment.id}" do %>
+        <p class="comment__content__body"><%= comment.body %></p>
+      <% end %>
     </div>
-  </header>
-  <div class="comment__content">
-    <p class="comment__content__body"><%= comment.body %></p>
   </div>
-</div>
+<% end %>
