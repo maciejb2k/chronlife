@@ -1,6 +1,6 @@
 # ChronLife
 
-This repository contains my full-stack side project, which is a social platform for people with chronic diseases. I think this is the biggest project I've ever made by myself.
+This repository contains my full-stack project, which is a social platform for people with chronic diseases.
 
 The purpose of this project is to learn how to build a full-stack applications using Ruby on Rails and it's my final year project for my bachelor's degree in the Computer Science.
 
@@ -18,6 +18,23 @@ Technologies used in this project:
 </p>
 
 ![homepage showing hero section of the platform](screenshots/home.png)
+
+## What is this project about?
+
+The idea of this project, is to provide very simple and user friendly platform, where users can manage their chronic diseases, share their experiences with other people, find new friends and support each other.
+
+The platform provides advanced features for managing chronic diseases, like:
+- managing disease statuses
+- managing disease symptoms with updates of their severity in time
+- managing disease risk factors
+- managing disease therapies with updates of their effectiveness in time
+- managing disease photos
+- managing disease notes
+- managing common measurements like blood pressure, blood sugar, weight, etc.
+- managing results from medical tests
+- users with the same disease can join groups dedicated to their disease, so all of the informations above from all of the users with the same disease are aggregated in one place, so users can compare their disease statuses, symptoms, therapies, etc. with other people
+
+Checkout the screenshots from the application with detailed explanations below for more details.
 
 ## Getting started
 
