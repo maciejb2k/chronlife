@@ -20,6 +20,23 @@
     border-radius: 3px;
     padding: 10px 10px;
 
+    &--dangerous {
+      .measurement-item__value {
+        color: #f15a5a;
+      }
+    }
+
+    &__warning {
+      font-size: var(--12px);
+      text-align: center;
+      color: $dash-text-light;
+      padding: 3px 10px;
+      font-weight: 500;
+      color: #ffffff;
+      background: #f15a5a;
+      border-radius: 3px;
+    }
+
     &__label {
       font-size: var(--12px);
       text-align: center;

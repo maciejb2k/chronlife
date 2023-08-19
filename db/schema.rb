@@ -211,10 +211,10 @@ ActiveRecord::Schema[7.0].define(version: 2023_08_16_161821) do
   end
 
   create_table "measurement_types", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
-    t.string "name", default: "", null: false
     t.uuid "unit_id", null: false
-    t.decimal "upper_limit"
-    t.decimal "lower_limit"
+    t.string "name", default: "", null: false
+    t.string "upper_limit", default: "", null: false
+    t.string "lower_limit", default: "", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["unit_id"], name: "index_measurement_types_on_unit_id"
@@ -225,9 +225,9 @@ ActiveRecord::Schema[7.0].define(version: 2023_08_16_161821) do
     t.datetime "measurement_date", null: false
     t.uuid "measurement_type_id", null: false
     t.uuid "account_id", null: false
+    t.boolean "is_within_limits", default: true, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.boolean "is_norm_exceeded", default: false, null: false
     t.index ["account_id"], name: "index_measurements_on_account_id"
     t.index ["measurement_type_id"], name: "index_measurements_on_measurement_type_id"
   end

@@ -28,7 +28,9 @@
           <ul class="measurements-list">
             <% @measurements.each do |measurement| %>
               <% measurement_name = measurement.measurement_type.name %>
-              <%= link_to measurement_path(measurement), class: "measurement-item measurement-item--#{measurement_name}" do %>
+              <%= link_to measurement_path(measurement),
+                  class: "measurement-item measurement-item--#{measurement_name}
+                  #{"measurement-item--dangerous" unless measurement.is_within_limits}" do %>
                 <div class="measurement-item__left">
                   <div class="measurement-item__label">
                     <%= I18n.t("activerecord.attributes.measurement_types.#{measurement_name}") %>
@@ -39,6 +41,9 @@
                       <%= measurement.measurement_type.unit.symbol %>
                     </span>
                   </div>
+                  <% unless measurement.is_within_limits %>
+                    <p class="measurement-item__warning">!</p>
+                  <% end %>
                 </div>
                 <div class="measurement-item__time">
                   Godzina: <%= l(measurement.created_at, format: "%H:%M") %>

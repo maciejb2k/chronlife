@@ -3,7 +3,7 @@
 # Table name: measurements
 #
 #  id                  :uuid             not null, primary key
-#  is_norm_exceeded    :boolean          default(FALSE), not null
+#  is_within_limits    :boolean          default(TRUE), not null
 #  measurement_date    :datetime         not null
 #  value               :string           default("0.0"), not null
 #  created_at          :datetime         not null

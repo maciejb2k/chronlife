@@ -3,9 +3,9 @@
 # Table name: measurement_types
 #
 #  id          :uuid             not null, primary key
-#  lower_limit :decimal(, )
+#  lower_limit :string           default(""), not null
 #  name        :string           default(""), not null
-#  upper_limit :decimal(, )
+#  upper_limit :string           default(""), not null
 #  created_at  :datetime         not null
 #  updated_at  :datetime         not null
 #  unit_id     :uuid             not null

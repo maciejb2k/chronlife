@@ -29,26 +29,22 @@
         <div class="measurements-latest">
           <% Measurement::TYPES.each do |measurement| %>
             <div class="measurement-container">
-              <div class="measurement measurement--<%= measurement %>">
+              <div class="measurement measurement--<%= measurement %>
+              <%= "measurement--dangerous" if @latest[measurement] and !@latest[measurement].is_within_limits %>">
                 <div class="measurement__header">
                   <p class="measurement__title">
                     <%= I18n.t("activerecord.attributes.measurement_types.#{measurement}") %>
                   </p>
+                  <% if @latest[measurement] and !@latest[measurement].is_within_limits %>
+                    <p class="measurement__warning">!</p>
+                  <% end %>
                 </div>
                 <div class="measurement__body">
                   <p class="measurement__value">
-                    <% if @latest[measurement] %>
-                      <%= @latest[measurement].value %>
-                    <% else %>
-                      -
-                    <% end %>
+                    <%= @latest[measurement] ? @latest[measurement].value : '-' %>
                   </p>
                   <p class="measurement__symbol">
-                    <% if @latest[measurement] %>
-                      <%= @latest[measurement].measurement_type.unit.symbol %>
-                    <% else %>
-                      -
-                    <% end %>
+                    <%= @latest[measurement] ? @latest[measurement].measurement_type.unit.symbol : '-' %>
                   </p>
                 </div>
                 <div class="measurement__footer">
