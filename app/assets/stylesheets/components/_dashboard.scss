@@ -88,8 +88,8 @@
 }
 
 .dash-button--light-blue {
-  background: #cae6ff;
-  color: #0e3a5f;
+  background: $role-specialist-light;
+  color: $role-specialist-dark;
 
   .dash-button__icon {
     color: #0e3a5f;
@@ -795,7 +795,7 @@
       gap: 20px;
     }
 
-    &__diseae-name {
+    &__disease-name {
       font-size: var(--13px);
       font-weight: 500;
       color: $dash-base;
@@ -808,6 +808,9 @@
     &__title {
       font-size: var(--16px);
       font-weight: 500;
+      display: flex;
+      align-items: center;
+      gap: 8px;
     }
 
     &__username {
@@ -851,6 +854,10 @@
     width: 40px;
     height: 40px;
     border-radius: 50px;
+
+    &--specialist {
+      border: 2px solid $role-specialist-light;
+    }
   }
 
   &__content {
@@ -1022,6 +1029,10 @@
       width: 30px;
       height: 30px;
       border-radius: 50px;
+
+      &--specialist {
+        border: 2px solid $role-specialist-light;
+      }
     }
 
     &__text {
@@ -1033,6 +1044,9 @@
       font-size: var(--15px);
       font-weight: 500;
       color: $dash-text-dark;
+      display: flex;
+      align-items: center;
+      gap: 8px;
     }
 
     &__username {

@@ -3,7 +3,14 @@
     <div class="dash-post__header__left">
       <%= image_tag "avatar-placeholder.png", alt: "Logo", class: "dash-post__photo" %>
       <div class="dash-post__header__user">
-        <h3 class="dash-post__header__title"><%= post.account.full_name %></h3>
+        <h3 class="dash-post__header__title">
+          <%= post.account.full_name %>
+          <% if role_specialist? post.account.user %>
+            <span class="mark-specialist">
+              <i class="ri-check-line"></i>
+            </span>
+          <% end %>
+        </h3>
         <p class="dash-post__header__username">
           @<%= post.account.username %>
         </p>

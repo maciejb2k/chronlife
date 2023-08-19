@@ -157,13 +157,21 @@
         width: 60px;
         height: 60px;
         border-radius: 50%;
+        border: 4px solid transparent;
         // box-shadow: 0 2px 3px rgba(0, 0, 0, 0.2);
+
+        &--specialist {
+          border: 3px solid $role-specialist-light;
+        }
       }
 
       &__name {
         font-size: var(--16px);
         font-weight: 500;
         color: $dash-text-dark;
+        display: flex;
+        align-items: center;
+        gap: 8px;
       }
 
       &__email {
@@ -284,4 +292,13 @@
 .no-results {
   color: $dash-text-light;
   font-size: var(--14px);
+}
+
+.mark-specialist {
+  background: $role-specialist-light;
+  padding: 1px 5px;
+  border-radius: 3px;
+  font-size: var(--11px);
+  font-weight: 700;
+  color: $role-specialist-dark;
 }

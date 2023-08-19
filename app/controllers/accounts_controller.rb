@@ -5,7 +5,7 @@ class AccountsController < BaseController
   before_action :set_breadcrumbs
 
   def index
-    @pagy, @accounts = pagy(Account.includes(:user).all)
+    @pagy, @accounts = pagy(Account.includes(:user, :friends, :friend_requests).all)
   end
 
   private

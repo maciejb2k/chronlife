@@ -4,7 +4,7 @@
     </div>
     <div class="profile__card__content">
       <div class="profile__card__top">
-        <%= image_tag "avatar-placeholder.png", alt: "", class: "profile__card__avatar" %>
+        <%= image_tag "avatar-placeholder.png", alt: "", class: "profile__card__avatar #{"profile__card__avatar--specialist" if role_specialist? current_user}" %>
         <div class="profile__card__buttons">
           <% unless current_account == @account %>
             <button class="dash-button dash-button--line">
@@ -56,8 +56,30 @@
         </div>
       </div>
       <div class="profile__card__middle">
-        <h1 class="profile__card__name"><%= @account.full_name %></h1>
-        <p class="profile__card__description">@<%= @account.username %></p>
+        <div class="profile__card__middle__left">
+          <h1 class="profile__card__name">
+            <%= @account.full_name %>
+            <% if role_specialist? current_user %>
+              <span class="mark-specialist">
+                <i class="ri-check-line"></i>
+              </span>
+            <% end %>
+          </h1>
+          <p class="profile__card__description">@<%= @account.username %></p>
+        </div>
+        <div class="profile__card__middle__right">
+          <% if role_specialist? current_user %>
+            <div class="profile__card__specialist">
+              <%= current_user.specialist.field_of_expertise %>
+            </div>
+            <div class="profile__card__specialist-overtitle">
+              Specjalizacja:
+            </div>
+            <div class="profile__card__specialist-text">
+              <%= current_user.specialist.specialization.blank? ? '-' : current_user.specialist.specialization %>
+            </div>
+          <% end %>
+        </div>
       </div>
       <nav class="profile__card__nav">
         <ul class="profile__card__nav__list">

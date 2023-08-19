@@ -3,7 +3,14 @@
     <header class="comment__header">
       <%= image_tag user_image, alt: "Picture", class: "comment__header__photo" %>
       <div class="comment__header__text">
-        <h3 class="comment__header__user"><%= comment.account.full_name %></h3>
+        <h3 class="comment__header__user">
+          <%= comment.account.full_name %>
+          <% if role_specialist? comment.account.user %>
+            <span class="mark-specialist">
+              <i class="ri-check-line"></i>
+            </span>
+          <% end %>
+        </h3>
         <%= turbo_frame_tag "comment_date_#{comment.id}" do %>
           <%= render partial: "disease_statuses/comment_date", locals: { comment: } %>
         <% end %>

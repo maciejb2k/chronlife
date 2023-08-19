@@ -35,6 +35,10 @@
         height: 150px;
         border-radius: 50%;
         border: 5px solid #ffffff;
+
+        &--specialist {
+          border: 5px solid $role-specialist-light;
+        }
       }
 
       &__top {
@@ -47,6 +51,39 @@
         padding-bottom: 20px;
         border-bottom: 1px solid $dash-base-border;
         margin-bottom: 30px;
+        display: flex;
+        align-items: center;
+
+        &__left {
+          flex-grow: 1;
+        }
+
+        &__right {
+          display: flex;
+          flex-direction: column;
+          align-items: flex-end;
+        }
+      }
+
+      &__specialist {
+        display: inline-flex;
+        padding: 3px 20px;
+        border-radius: 3px;
+        background: #cae6ff;
+        color: #1a5b90;
+        font-size: var(--14px);
+        font-weight: 500;
+        margin-bottom: 10px;
+      }
+
+      &__specialist-overtitle {
+        font-size: var(--12px);
+        color: $dash-text-light;
+      }
+
+      &__specialist-text {
+        font-size: var(--14px);
+        color: $dash-text-dark;
       }
 
       &__buttons {
@@ -62,6 +99,9 @@
       &__name {
         font-size: var(--24px);
         font-weight: 500;
+        display: flex;
+        align-items: center;
+        gap: 8px;
       }
 
       &__description {

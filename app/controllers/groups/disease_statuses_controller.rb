@@ -4,7 +4,8 @@ class Groups::DiseaseStatusesController < Groups::BaseController
       DiseaseStatus
       .joins(disease: %i[account predefined_disease])
       .includes(:comments, :reactions, disease: %i[account predefined_disease])
-      .where(disease: { account: @group.accounts, predefined_disease: @group.predefined_disease }),
+      .where(disease: { account: @group.accounts, predefined_disease: @group.predefined_disease })
+      .order(updated_at: :desc),
       items: 10
     )
 

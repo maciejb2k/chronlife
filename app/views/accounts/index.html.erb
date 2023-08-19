@@ -21,10 +21,17 @@
   <div class="page-accounts__content">
     <div class="accounts-list">
       <% @accounts.each do |account| %>
-        <div class="account">
+        <div class="account <%= "account--specialist" if role_specialist? account.user %>">
           <%= link_to account_path(account), class: "account__info" do %>
             <%= image_tag "avatar-placeholder.png", class: "account__avatar" %>
-            <h3 class="account__name"><%= account.full_name %></h3>
+            <h3 class="account__name">
+              <%= account.full_name %>
+              <% if role_specialist? account.user %>
+                <span class="mark-specialist">
+                  <i class="ri-check-line"></i>
+                </span>
+              <% end %>
+            </h3>
             <p class="account__username">@<%= account.username %></p>
           <% end %>
           <div class="account__actions">

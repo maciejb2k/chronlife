@@ -3,8 +3,15 @@
     <div class="dash-post__header__left">
       <%= image_tag "avatar-placeholder.png", alt: "Logo", class: "dash-post__photo" %>
       <div class="dash-post__header__user">
-        <h3 class="dash-post__header__title"><%= disease_status.disease.account.full_name %></h3>
-        <p class="dash-post__header__diseae-name">
+        <h3 class="dash-post__header__title">
+          <%= disease_status.disease.account.full_name %>
+          <% if role_specialist? disease_status.disease.account.user %>
+            <span class="mark-specialist">
+              <i class="ri-check-line"></i>
+            </span>
+          <% end %>
+        </h3>
+        <p class="dash-post__header__disease-name">
           <%= disease.predefined_disease.name %>
         </p>
       </div>

@@ -20,6 +20,10 @@
     border-radius: 3px;
     background: #ffffff;
 
+    &--specialist {
+      border: 1px solid $role-specialist-light;
+    }
+
     &__avatar {
       width: 80px;
       height: 80px;
@@ -40,6 +44,9 @@
       font-size: var(--16px);
       color: $dash-text-dark;
       font-weight: 500;
+      display: flex;
+      align-items: center;
+      gap: 8px;
     }
 
     &__username {

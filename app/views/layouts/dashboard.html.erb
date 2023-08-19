@@ -5,7 +5,14 @@
       <div class="sidebar__profile">
         <%= image_tag user_image, alt: "profile picture", class: "sidebar__profile__picture" %>
         <%= link_to account_path(current_account), class: "sidebar__profile__info" do %>
-          <p class="sidebar__profile__name"><%= user_full_name %></p>
+          <p class="sidebar__profile__name">
+            <%= user_full_name %>
+            <% if role_specialist? current_user %>
+              <span class="mark-specialist">
+                <i class="ri-check-line"></i>
+              </span>
+            <% end %>
+          </p>
           <p class="sidebar__profile__email"><%= user_username %></p>
         <% end %>
       </div>

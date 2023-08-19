@@ -5,12 +5,12 @@
 
   .specialists-list {
     display: grid;
-    grid-template-columns: repeat(5, 1fr);
+    grid-template-columns: repeat(4, 1fr);
 
     .specialist {
       padding: 20px 0 0;
       background: #ffffff;
-      border: 1px solid #cae6ff;
+      border: 1px solid $role-specialist-border;
       border-radius: 3px;
       display: flex;
       flex-direction: column;
@@ -31,8 +31,8 @@
       &__speciality {
         padding: 3px 20px;
         border-radius: 3px;
-        background: #cae6ff;
-        color: #1a5b90;
+        background: $role-specialist-light;
+        color: $role-specialist-dark;
         font-size: var(--14px);
         font-weight: 500;
         margin-bottom: 20px;
@@ -40,9 +40,9 @@
 
       &__footer {
         padding: 10px 20px;
-        background: #f5faff;
+        background: $role-specialist-bg;
         align-self: stretch;
-        border-top: 1px solid #cae6ff;
+        border-top: 1px solid $role-specialist-border;
         display: flex;
         align-items: center;
 
@@ -66,9 +66,9 @@
 
       &__button {
         font-size: var(--12px);
-        color: #ffffff;
+        color: $role-specialist-button-color;
         font-weight: 500;
-        background: #2e9fdc;
+        background: $role-specialist-button-bg;
         padding: 8px 10px;
         border-radius: 3px;
         margin-left: 20px;

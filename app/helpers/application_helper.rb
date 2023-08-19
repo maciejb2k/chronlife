@@ -1,6 +1,10 @@
 module ApplicationHelper
   include Pagy::Frontend
 
+  def role_specialist? (user)
+    user.specialist?
+  end
+
   def current_account
     @current_account ||= current_user.account
   end
