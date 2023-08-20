@@ -1,7 +1,7 @@
 module ApplicationHelper
   include Pagy::Frontend
 
-  def role_specialist? (user)
+  def role_specialist?(user)
     user.specialist?
   end
 

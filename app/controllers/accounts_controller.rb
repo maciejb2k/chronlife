@@ -8,6 +8,10 @@ class AccountsController < BaseController
     @pagy, @accounts = pagy(Account.includes(:user, :friends, :friend_requests).all)
   end
 
+  def show
+    authorize @account
+  end
+
   private
 
   def set_account
