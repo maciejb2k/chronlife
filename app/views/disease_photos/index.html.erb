@@ -45,21 +45,20 @@
               <% end %>
             </div>
           </div>
-        </div>
-      <% end %>
+        <% end %>
+      </div>
+    <% else %>
+      <p class="no-results">
+        Na razie nie dodałeś żadnych zdjęć.
+      </p>
+    <% end %>
+  </div>
+  <div class="dash-pagination">
+    <div class="dash-pagination__controls">
+      <%== pagy_nav(@pagy) if @pagy.pages > 1 %>
     </div>
-  <% else %>
-    <p class="no-results">
-      Na razie nie dodałeś żadnych zdjęć.
-    </p>
-  <% end %>
-</div>
-<div class="dash-pagination">
-  <div class="dash-pagination__controls">
-    <%== pagy_nav(@pagy) if @pagy.pages > 1 %>
+    <div class="dash-pagination__info">
+      <%== pagy_info(@pagy) %>
+    </div>
   </div>
-  <div class="dash-pagination__info">
-    <%== pagy_info(@pagy) %>
-  </div>
-</div>
 </div>

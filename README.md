@@ -98,4 +98,100 @@ Below is a list of features that I've already implemented or I'm planning to imp
 
 ![sign in screen](screenshots/password.png)
 
+![two factor authentication screen](screenshots/2fa_setup.png)
+
 ![two factor authentication screen](screenshots/2fa.png)
+
+### Dashboard
+
+![alt text](screenshots/dash_home.png)
+
+### Diseases
+
+![alt text](screenshots/diseases.png)
+![alt text](screenshots/disease.png)
+![alt text](screenshots/edit_disease.png)
+
+#### Disease Statuses
+
+![alt text](screenshots/disease_statuses.png)
+![alt text](screenshots/disease_status.png)
+![alt text](screenshots/edit_disease_status.png)
+
+#### Disease Symptoms
+
+![alt text](screenshots/disease_symptoms.png)
+![alt text](screenshots/disease_symptom.png)
+![alt text](screenshots/add_disease_symptom.png)
+
+#### Disease Risk Factors
+
+![alt text](screenshots/disease_risk_factors.png)
+![alt text](screenshots/disease_risk_factor.png)
+
+#### Disease Treatments
+
+![alt text](screenshots/treatments.png)
+![alt text](screenshots/treatment.png)
+![alt text](screenshots/edit_treatment.png)
+
+#### Disease Photos
+![alt text](screenshots/disease_photos.png)
+![alt text](screenshots/disease_photo.png)
+
+### Groups
+
+![alt text](screenshots/groups.png)
+
+#### Group Posts
+
+![alt text](screenshots/group_posts.png)
+
+#### Group Disease Statuses
+
+![alt text](screenshots/group_disease_statuses.png)
+
+#### Group Disease Symptoms
+
+![alt text](screenshots/group_disease_symptoms.png)
+
+#### Group Disease Risk Factors
+
+![alt text](screenshots/group_risk_factors.png)
+
+#### Group Disease Treatments
+
+![alt text](screenshots/group_treatments.png)
+
+#### Group Disease Photos
+
+![alt text](screenshots/group_disease_photos.png)
+
+### Measurements
+
+![alt text](screenshots/measurements.png)
+![alt text](screenshots/measurements_calendar.png)
+![alt text](screenshots/measurements_by_day.png)
+![alt text](screenshots/measurement.png)
+
+### Notes
+
+![alt text](screenshots/notes.png)
+![alt text](screenshots/note.png)
+![alt text](screenshots/add_note.png)
+
+### Articles
+
+![alt text](screenshots/articles.png)
+![alt text](screenshots/new_article.png)
+![alt text](screenshots/article.png)
+
+### Specialists
+
+![alt text](screenshots/specialists.png)
+![alt text](screenshots/specialist_profile.png)
+![alt text](screenshots/specialists_requests.png)
+
+### Settings
+
+![alt text](screenshots/settings.png)

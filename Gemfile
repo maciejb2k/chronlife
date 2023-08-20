@@ -65,7 +65,7 @@ gem "shrine", "~> 3.5.0"
 gem "htmlbeautifier", "~> 1.4.2"
 
 # For profiling
-gem 'rack-mini-profiler', "~> 3.1.0"
+# gem 'rack-mini-profiler', "~> 3.1.0"
 
 # For memory profiling
 gem 'memory_profiler', "~> 1.0.1"

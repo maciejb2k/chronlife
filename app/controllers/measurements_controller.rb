@@ -36,7 +36,7 @@ class MeasurementsController < BaseController
     @pagy, @measurements = pagy(
       current_account.measurements.includes(measurement_type: :unit).where(
         measurement_date: @selected_datetime.all_day
-      )
+      ).order(measurement_date: :asc)
     )
     set_breadcrumbs_show_by_day
   rescue ArgumentError, TypeError
