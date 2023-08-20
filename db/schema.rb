@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_08_16_161821) do
+ActiveRecord::Schema[7.0].define(version: 2023_08_20_085902) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pgcrypto"
   enable_extension "plpgsql"
@@ -73,6 +73,28 @@ ActiveRecord::Schema[7.0].define(version: 2023_08_16_161821) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["email"], name: "index_admins_on_email", unique: true
+  end
+
+  create_table "article_tags", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
+    t.string "name", default: "", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "article_tags_articles", id: false, force: :cascade do |t|
+    t.bigint "article_id", null: false
+    t.bigint "article_tag_id", null: false
+    t.index ["article_id", "article_tag_id"], name: "index_article_tags_articles_on_article_id_and_article_tag_id", unique: true
+  end
+
+  create_table "articles", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
+    t.string "title", default: "", null: false
+    t.string "description", default: "", null: false
+    t.text "body", default: "", null: false
+    t.uuid "account_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["account_id"], name: "index_articles_on_account_id"
   end
 
   create_table "comments", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
@@ -441,6 +463,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_08_16_161821) do
   add_foreign_key "accounts", "users"
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "articles", "accounts"
   add_foreign_key "comments", "accounts"
   add_foreign_key "disease_photos", "diseases"
   add_foreign_key "disease_risk_factors", "diseases"

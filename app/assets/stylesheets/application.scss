@@ -10,6 +10,7 @@
 // External
 @import "external/tom-select";
 @import "external/simple-calendar";
+@import "external/quill";
 
 // Layouts
 @import "layouts/dashboard";
@@ -47,3 +48,5 @@
 @import "pages/specialists";
 @import "pages/specialist_requests";
 @import "pages/dash_home";
+@import "pages/article";
+@import "pages/articles";

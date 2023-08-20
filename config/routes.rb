@@ -61,6 +61,8 @@ Rails.application.routes.draw do
     end
   end
 
+  resources :articles
+
   resources :diseases do
     resources :disease_symptoms do
       resources :disease_symptom_updates, only: %i[create destroy]

@@ -386,6 +386,10 @@
     width: 800px;
     padding: 20px 0;
 
+    &--vertical {
+      width: 500px;
+    }
+
     &--large {
       width: 1000px;
     }
@@ -393,6 +397,21 @@
     &__container {
       display: flex;
       gap: 60px;
+
+      &--vertical {
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+
+        .dash-form__group__left {
+          width: 100%;
+          flex-basis: auto;
+        }
+
+        .dash-form__group__right {
+          width: 100%;
+        }
+      }
     }
 
     &__error {
@@ -1103,4 +1122,8 @@
 
   &__submit {
   }
+}
+
+.dash-quill {
+  background: #ffffff;
 }

@@ -56,6 +56,7 @@ class Account < ApplicationRecord
   has_many :measurements, dependent: :destroy
 
   has_many :specialist_requests, dependent: :destroy
+  has_many :articles, dependent: :destroy
 
   EDUCATION_OPTIONS = %w[none primary secondary bachelor master doctorate].freeze
 

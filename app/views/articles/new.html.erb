@@ -1,0 +1,23 @@
+<div class="new-article">
+  <header class="dash-header">
+    <div class="dash-header__left">
+      <h1 class="dash-header__title">Dodaj nowy artykuł</h1>
+      <%= render "shared/breadcrumbs" %>
+    </div>
+    <div class="dash-header__right">
+      <%= link_to articles_path, class: "dash-button dash-button--back" do %>
+        <i class="ri-arrow-left-line dash-button__icon"></i>
+      <% end %>
+    </div>
+  </header>
+  <div class="dash-flash-messages">
+    <% if flash[:notice].present? %>
+      <%= render DashAlertComponent.new(type: :success) do %>
+        <%= flash[:notice] %>
+      <% end %>
+    <% end %>
+  </div>
+  <div>
+    <%= render "form" %>
+  </div>
+</div>

@@ -1,0 +1,28 @@
+<div class="edit-article">
+  <header class="dash-header">
+    <div class="dash-header__left">
+      <h1 class="dash-header__title">Edytuj artykuł</h1>
+      <%= render "shared/breadcrumbs" %>
+    </div>
+    <div class="dash-header__right">
+      <%= button_to @article, class: "dash-button dash-button--delete",
+          method: :delete, form: { data: { turbo_confirm: 'Czy na pewno chcesz usunąć?' } } do %>
+        <i class="ri-close-line dash-button__icon"></i>
+        Usuń
+      <% end %>
+      <%= link_to article_path(@article), class: "dash-button dash-button--back" do %>
+        <i class="ri-arrow-left-line dash-button__icon"></i>
+      <% end %>
+    </div>
+  </header>
+  <div class="dash-flash-messages">
+    <% if flash[:notice].present? %>
+      <%= render DashAlertComponent.new(type: :success) do %>
+        <%= flash[:notice] %>
+      <% end %>
+    <% end %>
+  </div>
+  <div>
+    <%= render "form" %>
+  </div>
+</div>

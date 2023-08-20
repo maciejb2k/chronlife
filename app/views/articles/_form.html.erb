@@ -1,0 +1,38 @@
+<%= form_with(model: @article, html: { class: "dash-form" }) do |f| %>
+  <div class="dash-form__container">
+    <div class="dash-form__group">
+      <div class="dash-form__group__container dash-form__group__container--vertical">
+        <div class="dash-form__group__left">
+          <div class="dash-form__group__title">Tytuł</div>
+          <p class="dash-form__group__description">Podaj tytuł artykułu.</p>
+        </div>
+        <div class="dash-form__group__right">
+          <%= f.text_field :title, class: "dash-form__input", placeholder: "Recenzja leków." %>
+        </div>
+      </div>
+      <%= render DashFormErrorComponent.new(model: @article, field: :title) %>
+    </div>
+  </div>
+
+  <div class="dash-form__container">
+    <div class="dash-form__group">
+      <div class="dash-form__group__container dash-form__group__container--vertical">
+        <div class="dash-form__group__left">
+          <div class="dash-form__group__title">Treść</div>
+          <p class="dash-form__group__description">Za pomocą poniższego edytora możesz napisać artykuł..</p>
+        </div>
+        <div class="dash-form__group__right dash-form__group__right--full">
+          <div class="dash-quill" data-controller="quill">
+            <%= f.hidden_field :body, data: { quill_target: "input" } %>
+            <div data-quill-target="editor" class="dash-quill"></div>
+          </div>
+        </div>
+      </div>
+      <%= render DashFormErrorComponent.new(model: @article, field: :body) %>
+    </div>
+  </div>
+
+  <div class="dash-form__group">
+    <%= f.submit "Zapisz", class: "dash-form__submit dash-button dash-button--new" %>
+  </div>
+<% end %>
