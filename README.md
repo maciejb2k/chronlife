@@ -1,8 +1,6 @@
 # ChronLife
 
-This repository contains my full-stack project, which is a social platform for people with chronic diseases.
-
-The purpose of this project is to learn how to build full-stack applications using Ruby on Rails and it's my final year project for my bachelor's degree in Computer Science.
+This repository contains my full-stack side project, which is a social platform for people with chronic diseases.
 
 **NOTICE**: This project is currently available only in the Polish language due to university requirements (the code is in English, no worries), but I18n is already configured, only the translation files are missing. I will add the translations in the future.
 
