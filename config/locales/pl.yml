@@ -25,6 +25,9 @@ pl:
       success: Aktualizacja została dodana
     destroy:
       success: Aktualizacja została usunięta
+  disease_treatments:
+    breadcrumbs:
+      index: terapie
   disease_risk_factors:
     breadcrumbs:
       index: czynniki ryzyka
