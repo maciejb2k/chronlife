@@ -1,30 +1,25 @@
 class NotesController < BaseController
-  layout "dashboard"
-
   before_action :set_note, only: %i[show edit update destroy pin unpin add_tag remove_tag]
   before_action :set_tags, only: %i[show edit add_tag]
   before_action :set_tags_options, only: %i[show edit add_tag]
-
   before_action :set_breadcrumbs
-  before_action :set_breadcrumbs_new, only: %i[new create]
-  before_action :set_breadcrumbs_show, only: %i[show]
-  before_action :set_breadcrumbs_edit, only: %i[edit update]
 
   def index
     notes = current_account.notes.order(created_at: :desc)
 
     if params[:tag_id].present?
       tag = current_account.note_tags.find_by(id: params[:tag_id])
-      notes = tag ? notes.joins(:note_tag_associations).where(note_tag_associations: { note_tag_id: tag.id }) : []
+      query = notes.joins(:note_tag_associations).where(note_tag_associations: { note_tag_id: tag.id })
+      notes = tag ? query : []
     end
 
     pinned_notes = notes.where(is_pinned: true)
     unpinned_notes = notes.where(is_pinned: false)
     tags = current_account.note_tags.order(:name)
 
-    @pagy_pinned, @notes_pinned = pagy(pinned_notes)
-    @pagy_all, @notes = pagy(unpinned_notes)
-    @pagy_tags, @tags = pagy(tags)
+    @pagy_pinned, @notes_pinned = pagy(pinned_notes, page_param: :pinned_page)
+    @pagy_all, @notes = pagy(unpinned_notes, page_param: :unpinned_page)
+    @pagy_tags, @tags = pagy(tags, page_param: :tags_page)
   end
 
   def show
@@ -36,14 +31,12 @@ class NotesController < BaseController
     @note = Note.new
   end
 
-  def edit; end
-
   def create
     @note = current_account.notes.build(note_params)
 
     respond_to do |format|
       if @note.save
-        format.html { redirect_to notes_path, notice: "Notatka została poprawnie utworzona." }
+        format.html { redirect_to notes_path, notice: t(".success") }
       else
         format.html { render :new, status: :unprocessable_entity }
       end
@@ -53,7 +46,7 @@ class NotesController < BaseController
   def update
     respond_to do |format|
       if @note.update(note_params)
-        format.html { redirect_to note_url(@note), notice: "Notatka została poprawnie edytowana." }
+        format.html { redirect_to note_url(@note), notice: t(".success") }
       else
         format.html { render :edit, status: :unprocessable_entity }
       end
@@ -64,8 +57,7 @@ class NotesController < BaseController
     @note.destroy
 
     respond_to do |format|
-      format.html { redirect_to notes_url, notice: "Note was successfully destroyed." }
-      format.json { head :no_content }
+      format.html { redirect_to notes_url, notice: t(".success") }
     end
   end
 
@@ -96,9 +88,11 @@ class NotesController < BaseController
       @error_message = e.record.errors.messages_for(:note_tag_id).first
 
       format.turbo_stream do
-        render turbo_stream: turbo_stream.replace(@note, partial: "note_tag_associations/form")
+        render turbo_stream: turbo_stream.replace(
+          @note, partial: "note_tag_associations/form"
+        )
       end
-      format.html { redirect_to note_path(@note) }
+      format.html { redirect_to note_path(@note), alert: @error_message }
     end
   end
 
@@ -108,7 +102,6 @@ class NotesController < BaseController
 
     respond_to do |format|
       format.html { redirect_to note_path(@note) }
-      format.json { head :no_content }
     end
   end
 
@@ -139,19 +132,17 @@ class NotesController < BaseController
   end
 
   def set_breadcrumbs
-    add_breadcrumb("home", authenticated_root_path)
-    add_breadcrumb("notatki", notes_path)
-  end
+    add_breadcrumb t("breadcrumbs.home"), authenticated_root_path
+    add_breadcrumb t(".breadcrumbs.index"), notes_path
 
-  def set_breadcrumbs_new
-    add_breadcrumb("nowa notatka", new_note_path)
-  end
-
-  def set_breadcrumbs_show
-    add_breadcrumb(@note.title, @note)
-  end
-
-  def set_breadcrumbs_edit
-    add_breadcrumb("edytuj notatkę", edit_note_path(@note))
+    case action_name.to_sym
+    when :new, :create
+      add_breadcrumb t(".breadcrumbs.new"), new_note_path
+    when :show
+      add_breadcrumb @note.title, @note
+    when :edit, :update
+      add_breadcrumb @note.title, @note
+      add_breadcrumb t(".breadcrumbs.edit"), edit_note_path(@note)
+    end
   end
 end

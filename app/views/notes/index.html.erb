@@ -14,10 +14,8 @@
     </div>
   </header>
   <div class="dash-flash-messages">
-    <% if flash[:notice].present? %>
-      <%= render DashAlertComponent.new(type: :success) do %>
-        <%= flash[:notice] %>
-      <% end %>
+    <%= turbo_frame_tag "flash" do %>
+      <%= render "shared/dash_flash" %>
     <% end %>
   </div>
   <div class="page-notes__content">
@@ -50,7 +48,7 @@
                     </div>
                     <div class="note__buttons">
                       <%= link_to unpin_note_path(note), class: "note__button note__button--unpin",
-                    data: { turbo_method: :patch }, method: :patch do %>
+                          data: { turbo_method: :patch }, method: :patch do %>
                         <i class="ri-unpin-line note__button__icon"></i>
                       <% end %>
                     </div>
@@ -159,7 +157,7 @@
           <% end %>
           <div class="dash-pagination">
             <div class="dash-pagination__controls">
-              <%== pagy_nav(@pagy_all) if @pagy_all.pages > 1 %>
+              <%= pagy_nav(@pagy_all) if @pagy_all.pages > 1 %>
             </div>
           </div>
         </div>

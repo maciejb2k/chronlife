@@ -1,11 +1,6 @@
 class NoteTagsController < BaseController
-  layout "dashboard"
-
   before_action :set_note_tag, only: %i[edit update destroy]
-
   before_action :set_breadcrumbs
-  before_action :set_breadcrumbs_new, only: %i[new create]
-  before_action :set_breadcrumbs_edit, only: %i[edit update]
 
   def new
     @note_tag = NoteTag.new
@@ -16,7 +11,7 @@ class NoteTagsController < BaseController
 
     respond_to do |format|
       if @note_tag.save
-        format.html { redirect_to notes_path, notice: "Tag została poprawnie utworzony." }
+        format.html { redirect_to notes_path, notice: t(".success") }
       else
         format.html { render :new, status: :unprocessable_entity }
       end
@@ -26,7 +21,7 @@ class NoteTagsController < BaseController
   def update
     respond_to do |format|
       if @note_tag.update(note_tag_params)
-        format.html { redirect_to note_tag_url(@note_tag), notice: "Tag został poprawnie zaktualizowany." }
+        format.html { redirect_to note_tag_url(@note_tag), notice: t(".success") }
       else
         format.html { render :edit, status: :unprocessable_entity }
       end
@@ -37,8 +32,7 @@ class NoteTagsController < BaseController
     @note_tag.destroy
 
     respond_to do |format|
-      format.html { redirect_to notes_url, notice: "Tag został poprawnie usunięty." }
-      format.json { head :no_content }
+      format.html { redirect_to notes_url, notice: t(".success") }
     end
   end
 
@@ -53,15 +47,15 @@ class NoteTagsController < BaseController
   end
 
   def set_breadcrumbs
-    add_breadcrumb("home", authenticated_root_path)
-    add_breadcrumb("notatki", notes_path)
-  end
+    add_breadcrumb t("breadcrumbs.home"), authenticated_root_path
+    add_breadcrumb t("notes.breadcrumbs.index"), notes_path
 
-  def set_breadcrumbs_new
-    add_breadcrumb("nowa notatka", new_note_path)
-  end
-
-  def set_breadcrumbs_edit
-    add_breadcrumb("edytuj tag", edit_note_tag_path(@note_tag))
+    case action_name.to_sym
+    when :new, :create
+      add_breadcrumb t(".breadcrumbs.new"), new_note_tag_path
+    when :edit, :update
+      add_breadcrumb @note_tag.title, @note_tag
+      add_breadcrumb t(".breadcrumbs.edit"), edit_note_tag_path(@note_tag)
+    end
   end
 end

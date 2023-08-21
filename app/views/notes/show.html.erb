@@ -20,10 +20,8 @@
     </div>
   </header>
   <div class="dash-flash-messages">
-    <% if flash[:notice].present? %>
-      <%= render DashAlertComponent.new(type: :success) do %>
-        <%= flash[:notice] %>
-      <% end %>
+    <%= turbo_frame_tag "flash" do %>
+      <%= render "shared/dash_flash" %>
     <% end %>
   </div>
   <div class="page-note__content">
@@ -55,8 +53,9 @@
                       <p class="assigned-tags__tag__name"><%= tag.note_tag.name %></p>
                     </div>
                     <div class="assigned-tags__tag__right">
-                      <%= button_to remove_tag_note_path(@note, note_tag_id: tag.note_tag.id), class: "assigned-tags__tag__button",
-                          method: :delete, form: { data: { turbo_confirm: 'Czy na pewno chcesz usunąć?' } } do %>
+                      <%= button_to remove_tag_note_path(@note, note_tag_id: tag.note_tag.id),
+                          class: "assigned-tags__tag__button", method: :delete,
+                          form: { data: { turbo_confirm: 'Czy na pewno chcesz usunąć?' } } do %>
                         <i class="ri-close-line"></i>
                       <% end %>
                     </div>

@@ -47,6 +47,39 @@ pl:
       success: Pomiar został poprawnie usunięty.
     show_by_day:
       invalid_date: Nieprawidłowa data pomiaru.
+  notes:
+    breadcrumbs:
+      index: notatki
+      new: dodaj notatkę
+      edit: edytuj notatkę
+    create:
+      success: Notatka została dodana.
+    update:
+      success: Notatka została zaktualizowana.
+    destroy:
+      success: Notatka została usunięta.
+  note_tags:
+    breadcrumbs:
+      index: tagi
+      new: dodaj tag
+      edit: edytuj tag
+    create:
+      success: Tag został dodany.
+    update:
+      success: Tag został zaktualizowany.
+    destroy:
+      success: Tag został usunięty.
+  treatments:
+    breadcrumbs:
+      index: terapie
+      new: dodaj terapię
+      edit: edytuj terapię
+    create:
+      success: Terapia została dodana
+    update:
+      success: Terapia została zaktualizowana
+    destroy:
+      success: Terapia została usunięta
   diseases:
     breadcrumbs:
       home: home

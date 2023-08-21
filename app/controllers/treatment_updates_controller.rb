@@ -1,6 +1,4 @@
 class TreatmentUpdatesController < BaseController
-  layout "dashboard"
-
   before_action :set_treatment
   before_action :set_treatment_update, only: %i[edit update destroy]
   before_action :set_treatment_status_options, only: %i[new create edit update]
@@ -13,8 +11,6 @@ class TreatmentUpdatesController < BaseController
     @treatment_update = TreatmentUpdate.new
   end
 
-  def edit; end
-
   def create
     @treatment_update = @treatment.updates.build(treatment_update_params)
 
@@ -24,10 +20,8 @@ class TreatmentUpdatesController < BaseController
           redirect_to @treatment,
                       notice: "Aktualizacja terapii została pomyślnie dodana."
         end
-        format.json { render :show, status: :created, location: @treatment_update }
       else
         format.html { render :new, status: :unprocessable_entity }
-        format.json { render json: @treatment_update.errors, status: :unprocessable_entity }
       end
     end
   end
@@ -39,10 +33,8 @@ class TreatmentUpdatesController < BaseController
           redirect_to edit_treatment_treatment_update_path(@treatment, @treatment_update),
                       notice: "Aktualizacja terapii została pomyślnie zapisana."
         end
-        format.json { render :show, status: :ok, location: @treatment_update }
       else
         format.html { render :edit, status: :unprocessable_entity }
-        format.json { render json: @treatment_update.errors, status: :unprocessable_entity }
       end
     end
   end
@@ -54,7 +46,6 @@ class TreatmentUpdatesController < BaseController
       format.html do
         redirect_to @treatment, notice: "Aktualizacja terapii została pomyślnie usunięta."
       end
-      format.json { head :no_content }
     end
   end
 

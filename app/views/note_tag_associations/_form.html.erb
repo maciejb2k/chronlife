@@ -1,6 +1,5 @@
-<%= form_with(model: @note, url: add_tag_note_path(@note),
-    method: :post, html: { class: "assign-tag-form" },
-    id: dom_id(@note)) do |form| %>
+<%= form_with(model: @note, url: add_tag_note_path(@note), method: :post,
+    html: { class: "assign-tag-form" }, id: dom_id(@note)) do |form| %>
   <div class="dash-form__inline-group dash-form__simple-group ">
     <div>
       <%= form.label :note_tag_id, "Tag", class: "dash-form__label" %>

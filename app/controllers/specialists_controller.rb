@@ -1,6 +1,4 @@
 class SpecialistsController < BaseController
-  layout "dashboard"
-
   before_action :set_breadcrumbs
 
   def index

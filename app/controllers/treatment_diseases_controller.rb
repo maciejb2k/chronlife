@@ -1,6 +1,4 @@
 class TreatmentDiseasesController < BaseController
-  layout "dashboard"
-
   before_action :set_treatment
   before_action :set_diseases, only: %i[new create]
   before_action :set_treatment_disease, only: %i[destroy]
@@ -17,10 +15,7 @@ class TreatmentDiseasesController < BaseController
 
     respond_to do |format|
       if @treatment_disease.save
-        format.html do
-          redirect_to treatment_url(@treatment),
-                      notice: "Choroba została poprawnie przypisana do terapii."
-        end
+        format.html { redirect_to treatment_url(@treatment), notice: t(".success") }
       else
         format.html { render :new, status: :unprocessable_entity }
       end
@@ -31,10 +26,7 @@ class TreatmentDiseasesController < BaseController
     @treatment_disease.destroy
 
     respond_to do |format|
-      format.html do
-        redirect_to treatment_url(@treatment),
-                    notice: "Choroba została poprawnie usunięta z terapii."
-      end
+      format.html { redirect_to treatment_url(@treatment), notice: t(".success") }
     end
   end
 

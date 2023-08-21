@@ -1,6 +1,4 @@
 class PostsController < BaseController
-  layout "dashboard"
-
   before_action :set_account
 
   def index
@@ -19,8 +17,6 @@ class PostsController < BaseController
       reactable_type: "DiseaseStatus"
     ).pluck(:reactable_id)
   end
-
-  def destroy; end
 
   private
 
