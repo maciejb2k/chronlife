@@ -43,6 +43,8 @@ class FriendRequest < ApplicationRecord
   end
 
   def not_pending
-    errors.add(:friend, "already requested friendship") if friend.sent_friend_requests.any?
+    return unless friend.sent_friend_requests.include?(account)
+
+    errors.add(:friend, "already requested friendship")
   end
 end

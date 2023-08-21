@@ -56,7 +56,7 @@ class FriendRequestsController < BaseController
       current_account.received_friend_requests.includes(:account)
     )
     @pagy_outgoing, @outgoing = pagy(
-      current_account.sent_friend_requests.includes(:account)
+      current_account.sent_friend_requests.includes(:friend)
     )
   end
 

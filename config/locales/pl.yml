@@ -1,6 +1,11 @@
 pl:
   site:
     title: Przewlekli.pl
+  breadcrumbs:
+    home: home
+  accounts:
+    breadcrumbs:
+      index: użytkownicy
   diseases:
     breadcrumbs:
       home: home
