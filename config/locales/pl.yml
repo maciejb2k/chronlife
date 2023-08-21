@@ -5,6 +5,26 @@ pl:
     breadcrumbs:
       home: home
       index: choroby
+  disease_symptoms:
+    breadcrumbs:
+      index: objawy
+      new: dodaj objaw
+      edit: edytuj objaw
+    index:
+      title: Objawy
+      new: Dodaj objaw
+      no_results: Na razie nie dodałeś żadnych objawów.
+    create:
+      success: Objaw został dodany
+    update:
+      success: Objaw został zaktualizowany
+    destroy:
+      success: Objaw został usunięty
+  disease_symptom_updates:
+    create:
+      success: Aktualizacja została dodana
+    destroy:
+      success: Aktualizacja została usunięta
   disease_risk_factors:
     breadcrumbs:
       index: czynniki ryzyka

@@ -1,7 +1,8 @@
 <%= form_with(
-      model: [@disease, @disease_symptom, @disease_symptom_update],
+      model: @disease_symptom_update,
+      url: disease_symptom_updates_path(@disease, @disease_symptom),
       html: { class: "dash-form dash-form--simple" },
-      id: dom_id(@disease_symptom_update)
+      data: { controller: "reset-form", action: "turbo:submit-end->reset-form#clear" }
     ) do |form|
 %>
   <div class="dash-form__simple-group">

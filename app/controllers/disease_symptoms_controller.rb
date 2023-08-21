@@ -4,23 +4,24 @@ class DiseaseSymptomsController < BaseController
 
   before_action :set_disease_symptom, only: %i[show edit update destroy]
   before_action :set_symptom_name, only: %i[show edit update destroy]
-  before_action :load_predefined_symptoms, only: %i[new edit update create]
-
+  before_action :set_predefined_symptoms, only: %i[new edit update create]
   before_action :set_breadcrumbs
-  before_action :set_breadcrumbs_new, only: %i[new create]
-  before_action :set_breadcrumbs_show, only: %i[show]
-  before_action :set_breadcrumbs_edit, only: %i[edit update]
 
   def index
-    @disease_symptoms = @disease.symptoms.includes(:predefined_symptom)
-    @predefined_symptoms = @disease_symptoms.to_a.select { |d| d.predefined_symptom_id.present? }
-    @custom_symptoms = @disease_symptoms.to_a.select { |d| d.predefined_symptom_id.blank? }
-  end
+    @pagy_predefined, @predefined_symptoms = pagy(
+      @disease
+      .symptoms
+      .includes(:predefined_symptom)
+      .where.not(predefined_symptom_id: nil),
+      page_param: :predefined_symptom_page
+    )
 
-  def show
-    @disease_symptom_update = DiseaseSymptomUpdate.new
-    @pagy, @disease_symptom_updates = pagy(
-      @disease_symptom.updates.all, items: 8
+    @pagy_custom, @custom_symptoms = pagy(
+      @disease
+      .symptoms
+      .includes(:predefined_symptom)
+      .where(predefined_symptom_id: nil),
+      page_param: :custom_symptom_page
     )
   end
 
@@ -28,16 +29,13 @@ class DiseaseSymptomsController < BaseController
     @disease_symptom = DiseaseSymptom.new
   end
 
-  def edit; end
-
   def create
     @disease_symptom = @disease.symptoms.new(disease_symptom_params)
 
     respond_to do |format|
       if @disease_symptom.save
         format.html do
-          redirect_to disease_disease_symptoms_path,
-                      notice: "Nowy objaw został poprawnie dodany."
+          redirect_to disease_symptom_path(@disease, @disease_symptom), notice: t(".success")
         end
       else
         format.html { render :new, status: :unprocessable_entity }
@@ -49,8 +47,7 @@ class DiseaseSymptomsController < BaseController
     respond_to do |format|
       if @disease_symptom.update(disease_symptom_params)
         format.html do
-          redirect_to [@disease, @disease_symptom],
-                      notice: "Objaw został poprawnie zaktualizowany."
+          redirect_to disease_symptom_path(@disease, @disease_symptom), notice: t(".success")
         end
       else
         format.html { render :edit, status: :unprocessable_entity }
@@ -63,17 +60,12 @@ class DiseaseSymptomsController < BaseController
 
     respond_to do |format|
       format.html do
-        redirect_to disease_disease_symptoms_path,
-                    notice: "Objaw został poprawie usunięty."
+        redirect_to disease_symptoms_path, notice: t(".success")
       end
     end
   end
 
   private
-
-  def set_disease
-    @disease = current_account.diseases.find(params[:disease_id])
-  end
 
   def set_disease_symptom
     @disease_symptom = @disease.symptoms.find(params[:id])
@@ -93,33 +85,26 @@ class DiseaseSymptomsController < BaseController
                                             :predefined_symptom_id)
   end
 
-  def disease_symptom_update_params
-    params.require(:disease_symptom_update).permit(:intensity, :update_date)
+  def set_predefined_symptoms
+    @predefined_symptoms = @disease.predefined_disease.predefined_symptoms.map do |d|
+      [d.name, d.id]
+    end
   end
 
   def set_breadcrumbs
-    add_breadcrumb("home", authenticated_root_path)
-    add_breadcrumb("choroby", diseases_path)
-    add_breadcrumb(@disease.predefined_disease.name, @disease)
-    add_breadcrumb("objawy", disease_disease_symptoms_path)
-  end
+    add_breadcrumb t("diseases.breadcrumbs.home"), authenticated_root_path
+    add_breadcrumb t("diseases.breadcrumbs.index"), diseases_path
+    add_breadcrumb @disease.predefined_disease.name, @disease
+    add_breadcrumb t(".breadcrumbs.index"), disease_symptoms_path
 
-  def set_breadcrumbs_new
-    add_breadcrumb("dodaj objaw", new_disease_disease_symptom_path)
-  end
-
-  def set_breadcrumbs_show
-    add_breadcrumb(@symptom_name, [@disease, @disease_symptom])
-  end
-
-  def set_breadcrumbs_edit
-    add_breadcrumb(@symptom_name, [@disease, @disease_symptom])
-    add_breadcrumb("edytuj objaw", edit_disease_disease_symptom_path(@disease, @disease_symptom))
-  end
-
-  def load_predefined_symptoms
-    @predefined_symptoms = @disease.predefined_disease.predefined_symptoms.map do |d|
-      [d.name, d.id]
+    case action_name.to_sym
+    when :new, :create
+      add_breadcrumb t(".breadcrumbs.new"), new_disease_symptom_path
+    when :show
+      add_breadcrumb @symptom_name, disease_symptom_path(@disease, @disease_symptom)
+    when :edit, :update
+      add_breadcrumb @symptom_name, disease_symptom_path(@disease, @disease_symptom)
+      add_breadcrumb t(".breadcrumbs.edit"), edit_disease_symptom_path(@disease, @disease_symptom)
     end
   end
 end

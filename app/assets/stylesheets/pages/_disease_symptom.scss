@@ -92,6 +92,11 @@
       }
     }
 
+    .symptom-updates-list {
+      display: flex;
+      flex-direction: column;
+    }
+
     .symptom-update {
       border-bottom: 1px solid $dash-base-border;
       display: flex;

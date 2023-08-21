@@ -1,0 +1,11 @@
+<%= turbo_stream.remove dom_id @disease_symptom_update %>
+
+<% if @pagy.count == 0 %>
+  <%= turbo_stream.update :no_results_disease_symptom_updates do %>
+    <%= render "no_results" %>
+  <% end %>
+<% end %>
+
+<%= turbo_stream.update(:disease_symptom_updates_pagination, partial: "pagination") %>
+<%= turbo_stream.update(:disease_symptom_updates_chart, partial: "chart") %>
+<%= turbo_stream.update(:disease_symptom_updates_latest, partial: "latest_update") %>

@@ -8,7 +8,7 @@
       <%= render "shared/breadcrumbs" %>
     </div>
     <div class="dash-header__right">
-      <%= link_to new_disease_disease_symptom_path, class: "dash-button dash-button--new" do %>
+      <%= link_to new_disease_symptom_path, class: "dash-button dash-button--new" do %>
         <i class="ri-add-line dash-button__icon"></i>
         Dodaj nowy objaw
       <% end %>
@@ -18,29 +18,22 @@
     </div>
   </header>
   <div class="dash-flash-messages">
-    <% if flash[:notice].present? %>
-      <%= render DashAlertComponent.new(type: :success) do %>
-        <%= flash[:notice] %>
-      <% end %>
+    <%= turbo_frame_tag "flash" do %>
+      <%= render "shared/dash_flash" %>
     <% end %>
   </div>
   <div class="page-disease-symptoms__content">
-    <div class="groups">
-      <div class="symptom-group">
-        <div class="symptom-group__header">
-          <h2 class="symptom-group__title">Występujące objawy</h2>
-          <p class="symptom-group__desc">
-            <% if @predefined_symptoms.to_a.any? %>
-              Wyświetlanie <%= @predefined_symptoms.length %> objawów
-            <% else %>
-              Tutaj pojawią się najczęściej występujące objawy.
-            <% end %>
-          </p>
-        </div>
-        <div class="symptom-group__list">
-          <% if @predefined_symptoms.to_a.any? %>
+    <div class="dash-group">
+      <header class="dash-group__header">
+        <h2 class="dash-group__title">Predefiniowane objawy</h2>
+        <div class="dash-group__actions"></div>
+      </header>
+      <div class="dash-group__content">
+        <% if @predefined_symptoms.to_a.any? %>
+          <div class="symptoms-list">
             <% @predefined_symptoms.each do |disease_symptom| %>
-              <%= link_to [@disease, disease_symptom], class: "symptom symptom--predefined" do %>
+              <%= link_to disease_symptom_path(@disease, disease_symptom),
+                  class: "symptom symptom--predefined" do %>
                 <div class="symptom__group">
                   <i class="ri-sparkling-fill symptom__icon"></i>
                   <div>
@@ -55,28 +48,33 @@
                 <i class="ri-arrow-right-s-line symptom__icon"></i>
               <% end %>
             <% end %>
-          <% else %>
-            <p class="no-results">
-              Na razie nie dodałeś żadnych ogólnych objawów.
-            </p>
-          <% end %>
+          </div>
+        <% else %>
+          <p class="no-results">
+            Na razie nie dodałeś żadnych predefiniowanych objawów.
+          </p>
+        <% end %>
+      </div>
+      <div class="dash-pagination">
+        <div class="dash-pagination__controls">
+          <%== pagy_nav(@pagy_predefined) if @pagy_predefined.pages > 1 %>
+        </div>
+        <div class="dash-pagination__info">
+          <%== pagy_info(@pagy_predefined) %>
         </div>
       </div>
-      <div class="symptom-group">
-        <div class="symptom-group__header">
-          <h2 class="symptom-group__title">Własne objawy</h2>
-          <p class="symptom-group__desc">
-            <% if @custom_symptoms.to_a.any? %>
-              Wyświetlanie <%= @custom_symptoms.length %> objawów
-            <% else %>
-              Tutaj pojawią się twoje własne objawy.
-            <% end %>
-          </p>
-        </div>
-        <div class="symptom-group__list">
-          <% if @custom_symptoms.to_a.any? %>
+    </div>
+    <div class="dash-group">
+      <header class="dash-group__header">
+        <h2 class="dash-group__title">Własne objawy</h2>
+        <div class="dash-group__actions"></div>
+      </header>
+      <div class="dash-group__content">
+        <% if @custom_symptoms.to_a.any? %>
+          <div class="symptoms-list">
             <% @custom_symptoms.each do |disease_symptom| %>
-              <%= link_to [@disease, disease_symptom], class: "symptom symptom--custom" do %>
+              <%= link_to disease_symptom_path(@disease, disease_symptom),
+                  class: "symptom symptom--predefined" do %>
                 <div class="symptom__group">
                   <i class="ri-sparkling-line symptom__icon"></i>
                   <div>
@@ -91,11 +89,19 @@
                 <i class="ri-arrow-right-s-line symptom__icon"></i>
               <% end %>
             <% end %>
-          <% else %>
-            <p class="no-results">
-              Na razie nie dodałeś żadnych własnych objawów.
-            </p>
-          <% end %>
+          </div>
+        <% else %>
+          <p class="no-results">
+            Na razie nie dodałeś żadnych własnych objawów.
+          </p>
+        <% end %>
+      </div>
+      <div class="dash-pagination">
+        <div class="dash-pagination__controls">
+          <%== pagy_nav(@pagy_custom) if @pagy_custom.pages > 1 %>
+        </div>
+        <div class="dash-pagination__info">
+          <%== pagy_info(@pagy_custom) %>
         </div>
       </div>
     </div>

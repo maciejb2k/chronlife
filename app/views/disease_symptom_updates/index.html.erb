@@ -1,0 +1,29 @@
+<div class="page-disease-symptom-updates">
+  <%= turbo_frame_tag :disease_symptom_updates do %>
+    <%= turbo_frame_tag :no_results_disease_symptom_updates do %>
+      <% if @disease_symptom_updates.none? %>
+        <%= render "no_results"%>
+      <% end %>
+    <% end %>
+
+    <%= turbo_frame_tag :disease_symptom_updates_list do %>
+      <div class="symptom-updates-list">
+        <% @disease_symptom_updates.each do |disease| %>
+          <%= render partial: "symptom_update", locals: { model: disease } %>
+        <% end %>
+      </div>
+    <% end %>
+
+    <%= turbo_frame_tag :disease_symptom_updates_pagination do %>
+      <%= render "pagination" %>
+    <% end %>
+  <% end %>
+
+  <%= turbo_frame_tag :disease_symptom_updates_chart do %>
+    <%= render "chart" %>
+  <% end %>
+
+  <%= turbo_frame_tag :disease_symptom_updates_latest do %>
+    <%= render "latest_update" %>
+  <% end %>
+</div>

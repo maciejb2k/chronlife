@@ -1,0 +1,5 @@
+<% if @disease_symptom_updates.to_a.any? %>
+  <%= @disease_symptom_updates.first.intensity %>/5 - <%= intensity_to_emoji(@disease_symptom_updates.first.intensity) %>
+<% else %>
+  Brak danych
+<% end %>

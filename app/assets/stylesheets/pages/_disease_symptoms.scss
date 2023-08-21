@@ -2,36 +2,18 @@
   &__content {
     padding: 30px 0;
     border-bottom: 1px solid $dash-base-border;
-  }
-
-  .groups {
     display: flex;
     gap: 50px;
+  }
 
-    .symptom-group {
-      max-width: 500px;
-      width: 50%;
+  .dash-group {
+    width: 600px;
+  }
 
-      &__header {
-        margin-bottom: 20px;
-      }
-
-      &__title {
-        font-size: var(--22px);
-        color: $dash-text-dark;
-      }
-
-      &__desc {
-        font-size: var(--14px);
-        color: $dash-text-light;
-      }
-
-      &__list {
-        display: flex;
-        flex-direction: column;
-        gap: 8px;
-      }
-    }
+  .symptoms-list {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
   }
 }
 
@@ -45,7 +27,6 @@
   display: flex;
   border: 1px solid $dash-base-border;
   border-radius: 3px;
-  // box-shadow: 0 2px 3px rgba(22, 36, 65, 0.1);
 
   &--predefined {
     .symptom__icon {

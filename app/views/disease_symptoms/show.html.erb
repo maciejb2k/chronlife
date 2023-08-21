@@ -5,25 +5,23 @@
       <%= render "shared/breadcrumbs" %>
     </div>
     <div class="dash-header__right">
-      <%= link_to edit_disease_disease_symptom_path, class: "dash-button dash-button--info" do %>
+      <%= link_to edit_disease_symptom_path, class: "dash-button dash-button--info" do %>
         <i class="ri-edit-2-line dash-button__icon"></i>
         Edytuj
       <% end %>
-      <%= button_to [@disease, @disease_symptom], class: "dash-button dash-button--delete",
+      <%= button_to disease_symptom_path(@disease, @disease_symptom), class: "dash-button dash-button--delete",
           method: :delete, form: { data: { turbo_confirm: 'Czy na pewno chcesz usunąć?' } } do %>
         <i class="ri-close-line dash-button__icon"></i>
         Usuń
       <% end %>
-      <%= link_to disease_disease_symptoms_path, class: "dash-button dash-button--back" do %>
+      <%= link_to disease_symptoms_path, class: "dash-button dash-button--back" do %>
         <i class="ri-arrow-left-line dash-button__icon"></i>
       <% end %>
     </div>
   </header>
   <div class="dash-flash-messages">
-    <% if flash[:notice].present? %>
-      <%= render DashAlertComponent.new(type: :success) do %>
-        <%= flash[:notice] %>
-      <% end %>
+    <%= turbo_frame_tag "flash" do %>
+      <%= render "shared/dash_flash" %>
     <% end %>
   </div>
   <div class="page-disease-symptom__content">
@@ -66,10 +64,8 @@
               </div>
               <div class="dash-info__group__right">
                 <div class="dash-info__group__value">
-                  <% if @disease_symptom_updates.to_a.any? %>
-                    <%= @disease_symptom_updates.first.intensity %>/5 - <%= intensity_to_emoji(@disease_symptom_updates.first.intensity) %>
-                  <% else %>
-                    Brak danych
+                  <%= turbo_frame_tag :disease_symptom_updates_latest, src: disease_symptom_updates_path(@disease, @disease_symptom) do %>
+                    Ładowanie ...
                   <% end %>
                 </div>
               </div>
@@ -83,7 +79,9 @@
           <div class="dash-group__actions"></div>
         </header>
         <div class="dash-group__content">
-          <%= column_chart @disease_symptom_updates.group_by_day(:update_date).average(:intensity), min: 1, max: 5 %>
+          <%= turbo_frame_tag :disease_symptom_updates_chart, src: disease_symptom_updates_path(@disease, @disease_symptom) do %>
+            Ładowanie ...
+          <% end %>
         </div>
       </div>
     </div>
@@ -94,7 +92,9 @@
           <div class="dash-group__actions"></div>
         </header>
         <div class="dash-group__content">
-          <%= render "disease_symptom_updates/form" %>
+          <%= turbo_frame_tag :new_disease_symptom_update, src: new_disease_symptom_update_path(@disease, @disease_symptom) do %>
+            Ładowanie ...
+          <% end %>
         </div>
       </div>
       <div class="dash-group">
@@ -103,25 +103,9 @@
           <div class="dash-group__actions"></div>
         </header>
         <div class="dash-group__content">
-          <% if @disease_symptom_updates.to_a.any? %>
-            <div class="diseases" id="disease-symptom-updates">
-              <% @disease_symptom_updates.each do |disease| %>
-                <%= render "disease_symptom_updates/symptom_update", model: disease %>
-              <% end %>
-            </div>
-          <% else %>
-            <p class="no-results">
-              Na razie nie dodałeś żadnych aktualizacji objawu.
-            </p>
+          <%= turbo_frame_tag :disease_symptom_updates, src: disease_symptom_updates_path(@disease, @disease_symptom) do %>
+            Ładowanie ...
           <% end %>
-          <div class="dash-pagination">
-            <div class="dash-pagination__controls">
-              <%== pagy_nav(@pagy) if @pagy.pages > 1 %>
-            </div>
-            <div class="dash-pagination__info">
-              <%== pagy_info(@pagy) %>
-            </div>
-          </div>
         </div>
       </div>
     </div>

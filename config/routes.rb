@@ -64,10 +64,9 @@ Rails.application.routes.draw do
   resources :articles
 
   resources :diseases do
-    resources :disease_symptoms do
-      resources :disease_symptom_updates, only: %i[create destroy]
+    resources :disease_symptoms, as: :symptoms do
+      resources :disease_symptom_updates, as: :updates, except: %i[edit update]
     end
-
     resources :disease_risk_factors, as: :risk_factors
     resources :disease_treatments, only: %i[index]
     resources :disease_photos, as: :photos, only: %i[index new create destroy]

@@ -1,0 +1,11 @@
+<%= turbo_stream.prepend :disease_symptom_updates_list do %>
+  <%= render "disease_symptom_updates/symptom_update", model: @disease_symptom_update %>
+<% end %>
+
+<% if @pagy.count > 0 %>
+  <%= turbo_stream.update :no_results_disease_symptom_updates %>
+<% end %>
+
+<%= turbo_stream.update(:disease_symptom_updates_pagination, partial: "pagination") %>
+<%= turbo_stream.update(:disease_symptom_updates_chart, partial: "chart") %>
+<%= turbo_stream.update(:disease_symptom_updates_latest, partial: "latest_update") %>
