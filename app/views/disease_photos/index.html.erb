@@ -10,7 +10,7 @@
       <%= render "shared/breadcrumbs" %>
     </div>
     <div class="dash-header__right">
-      <%= link_to new_disease_disease_photo_path, class: "dash-button dash-button--new" do %>
+      <%= link_to new_disease_photo_path, class: "dash-button dash-button--new" do %>
         <i class="ri-add-line dash-button__icon"></i>
         Dodaj nowe zdjęcie
       <% end %>
@@ -20,10 +20,8 @@
     </div>
   </header>
   <div class="dash-flash-messages">
-    <% if flash[:notice].present? %>
-      <%= render DashAlertComponent.new(type: :success) do %>
-        <%= flash[:notice] %>
-      <% end %>
+    <%= turbo_frame_tag "flash" do %>
+      <%= render "shared/dash_flash" %>
     <% end %>
   </div>
   <div class="page-disease-photos__content">
@@ -39,8 +37,9 @@
                 <i class="ri-calendar-line"></i>
                 <%= disease_photo.created_at.strftime("%d.%m.%Y") %>r.
               </p>
-              <%= button_to [@disease, disease_photo], method: :delete,
-                  data: { confirm: "Czy na pewno chcesz usunąć?", turbo_confirm: "Czy na pewno chcesz usunąć?" } do %>
+              <%= button_to disease_photo_path(@disease, disease_photo), method: :delete,
+                  data: { confirm: "Czy na pewno chcesz usunąć?",
+                  turbo_confirm: "Czy na pewno chcesz usunąć?" } do %>
                 <i class="ri-close-line disease-photo__delete-icon"></i>
               <% end %>
             </div>

@@ -20,6 +20,16 @@ pl:
       success: Czynnik ryzyka został zaktualizowany
     destroy:
       success: Czynnik ryzyka został usunięty
+  disease_photos:
+    breadcrumbs:
+      index: zdjęcia
+      new: dodaj zdjęcie
+    create:
+      success: Zdjęcie zostało dodane.
+    update:
+      success: Zdjęcie zostało zaktualizowane.
+    destroy:
+      success: Zdjęcie zostało usunięte.
   activerecord:
     attributes:
       treatment_update:

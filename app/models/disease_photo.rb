@@ -22,5 +22,6 @@ class DiseasePhoto < ApplicationRecord
 
   belongs_to :disease, inverse_of: :photos
 
+  validates :image, presence: true
   validates :caption, length: { maximum: 50 }, allow_blank: true
 end

@@ -2,7 +2,7 @@ class DiseasePhotosController < BaseController
   include DashboardLayout
   include DiseaseSettable
 
-  before_action :set_disease_photo, only: %i[edit update destroy]
+  before_action :set_disease_photo, only: %i[destroy]
   before_action :set_breadcrumbs
 
   def index
@@ -21,8 +21,7 @@ class DiseasePhotosController < BaseController
     respond_to do |format|
       if @disease_photo.save
         format.html do
-          redirect_to disease_disease_photos_path,
-                      notice: "Zdjęcie zostało poprawnie dodane."
+          redirect_to disease_photos_path, notice: t(".success")
         end
       else
         format.html { render :new, status: :unprocessable_entity }
@@ -35,7 +34,7 @@ class DiseasePhotosController < BaseController
 
     respond_to do |format|
       format.html do
-        redirect_to disease_disease_photos_path, notice: "Zdjęcie zostało poprawnie usunięte."
+        redirect_to disease_photos_path, notice: t(".success")
       end
     end
   end
@@ -51,14 +50,14 @@ class DiseasePhotosController < BaseController
   end
 
   def set_breadcrumbs
-    add_breadcrumb "home", authenticated_root_path
-    add_breadcrumb "choroby", diseases_path
+    add_breadcrumb t("diseases.breadcrumbs.home"), authenticated_root_path
+    add_breadcrumb t("diseases.breadcrumbs.index"), diseases_path
     add_breadcrumb @disease.predefined_disease.name, @disease
-    add_breadcrumb "zdjęcia", disease_disease_photos_path
+    add_breadcrumb t(".breadcrumbs.index"), disease_risk_factors_path
 
     case action_name.to_sym
     when :new, :create
-      add_breadcrumb "dodaj zdjęcie", new_disease_disease_photo_path(@disease, @disease_photo)
+      add_breadcrumb t(".breadcrumbs.new"), new_disease_photo_path(@disease, @disease_photo)
     end
   end
 end

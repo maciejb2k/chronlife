@@ -1,4 +1,5 @@
-<%= form_with(model: [@disease, @disease_photo], html: { class: "dash-form" }) do |form| %>
+<%= form_with(model: @disease_photo, url: disease_photos_path(@disease),
+    html: { class: "dash-form" }) do |form| %>
   <div class="dash-form__container">
     <div class="dash-form__group">
       <div class="dash-form__group__container">
