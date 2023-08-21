@@ -181,11 +181,21 @@
   &__title {
     font-size: var(--26px);
     color: $dash-text-dark;
+    display: flex;
+    align-items: center;
+    gap: 10px;
 
     &__icon {
       font-weight: 400;
       color: #f18449;
-      margin-right: 5px;
+    }
+
+    &__text {
+      display: block;
+
+      &::first-letter {
+        text-transform: uppercase;
+      }
     }
 
     &::first-letter {

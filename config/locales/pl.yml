@@ -5,6 +5,14 @@ pl:
     breadcrumbs:
       home: home
       index: choroby
+      new: dodaj chorobę
+      edit: edytuj chorobę
+    create:
+      success: Choroba została dodana
+    update:
+      success: Choroba została zaktualizowana
+    destroy:
+      success: Choroba została usunięta
   disease_symptoms:
     breadcrumbs:
       index: objawy

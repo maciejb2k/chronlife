@@ -3,7 +3,7 @@
     <div class="dash-header__left">
       <h1 class="dash-header__title">
         <i class="ri-edit-box-line dash-header__title__icon"></i>
-        Edytuj chorobę
+        <span class="dash-header__title__text">Edytuj chorobę</span>
       </h1>
       <%= render "shared/breadcrumbs" %>
     </div>
@@ -19,13 +19,11 @@
     </div>
   </header>
   <div class="dash-flash-messages">
-    <% if flash[:notice].present? %>
-      <%= render DashAlertComponent.new(type: :success) do %>
-        <%= flash[:notice] %>
-      <% end %>
+    <%= turbo_frame_tag "flash" do %>
+      <%= render "shared/dash_flash" %>
     <% end %>
   </div>
   <div>
-    <%= render "form", disease: @disease %>
+    <%= render "form" %>
   </div>
 </div>

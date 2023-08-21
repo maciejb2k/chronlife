@@ -1,7 +1,9 @@
 <div class="new-diseases">
   <header class="dash-header">
     <div class="dash-header__left">
-      <h1 class="dash-header__title">Dodaj nową chorobę</h1>
+      <h1 class="dash-header__title">
+        <span class="dash-header__title__text">Dodaj nową chorobę</span>
+      </h1>
       <%= render "shared/breadcrumbs" %>
     </div>
     <div class="dash-header__right">
@@ -11,13 +13,11 @@
     </div>
   </header>
   <div class="dash-flash-messages">
-    <% if flash[:notice].present? %>
-      <%= render DashAlertComponent.new(type: :success) do %>
-        <%= flash[:notice] %>
-      <% end %>
+    <%= turbo_frame_tag "flash" do %>
+      <%= render "shared/dash_flash" %>
     <% end %>
   </div>
   <div>
-    <%= render "form", disease: @disease %>
+    <%= render "form" %>
   </div>
 </div>

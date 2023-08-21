@@ -3,7 +3,7 @@
     <div class="dash-header__left">
       <h1 class="dash-header__title">
         <i class="ri-dossier-line dash-header__title__icon"></i>
-        <%= @disease_name %>
+        <span class="dash-header__title__text"><%= @disease.predefined_disease.name %></span>
       </h1>
       <%= render "shared/breadcrumbs" %>
     </div>
@@ -14,10 +14,8 @@
     </div>
   </header>
   <div class="dash-flash-messages">
-    <% if flash[:notice].present? %>
-      <%= render DashAlertComponent.new(type: :success) do %>
-        <%= flash[:notice] %>
-      <% end %>
+    <%= turbo_frame_tag "flash" do %>
+      <%= render "shared/dash_flash" %>
     <% end %>
   </div>
   <div class="page-disease__content">

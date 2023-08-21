@@ -1,4 +1,4 @@
-<%= form_with model: disease, html: { class: "dash-form" } do |f| %>
+<%= form_with model: @disease, html: { class: "dash-form" } do |f| %>
   <div class="dash-form__container">
     <div class="dash-form__group">
       <div class="dash-form__group__container">
@@ -11,7 +11,7 @@
             { include_blank: false }, class: "dash-form__input", disabled: @selected_disease_id.present? %>
         </div>
       </div>
-      <%= render DashFormErrorComponent.new(model: disease, field: :predefined_disease_id) %>
+      <%= render DashFormErrorComponent.new(model: @disease, field: :predefined_disease_id) %>
     </div>
   </div>
   <div class="dash-form__container">
@@ -30,7 +30,7 @@
           </div>
         </div>
       </div>
-      <%= render DashFormErrorComponent.new(model: disease, field: :diagnosed_by_hp) %>
+      <%= render DashFormErrorComponent.new(model: @disease, field: :diagnosed_by_hp) %>
     </div>
   </div>
   <div class="dash-form__container">
@@ -44,7 +44,7 @@
           <%= f.date_field :diagnosed_at, class: "dash-form__input dash-form__input-date" %>
         </div>
       </div>
-      <%= render DashFormErrorComponent.new(model: disease, field: :diagnosed_at) %>
+      <%= render DashFormErrorComponent.new(model: @disease, field: :diagnosed_at) %>
     </div>
   </div>
   <div class="dash-form__container">
@@ -61,7 +61,7 @@
           </div>
         </div>
       </div>
-      <%= render DashFormErrorComponent.new(model: disease, field: :severity) %>
+      <%= render DashFormErrorComponent.new(model: @disease, field: :severity) %>
     </div>
   </div>
   <div class="dash-form__container">
@@ -77,7 +77,7 @@
           </div>
         </div>
       </div>
-      <%= render DashFormErrorComponent.new(model: disease, field: :color) %>
+      <%= render DashFormErrorComponent.new(model: @disease, field: :color) %>
     </div>
   </div>
   <div class="dash-form__group">
