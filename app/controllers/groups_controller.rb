@@ -1,10 +1,6 @@
 class GroupsController < BaseController
-  layout "dashboard"
-
   before_action :set_group, only: %i[show join_group leave_group]
-
   before_action :set_breadcrumbs
-  before_action :set_breadcrumbs_show, only: %i[show]
 
   def index
     @pagy_account, @account_groups = pagy(
@@ -22,16 +18,20 @@ class GroupsController < BaseController
     @avaliable_groups_ids = @available_groups.map(&:id)
   end
 
-  def show; end
-
   def join_group
     @group.accounts << current_account
-    redirect_to groups_path, notice: "Poprawnie dołączono do grupy."
+
+    respond_to do |format|
+      format.html { redirect_to groups_path, notice: t(".success") }
+    end
   end
 
   def leave_group
     @group.accounts.delete(current_account)
-    redirect_to groups_path, notice: "Poprawnie opuściłeś grupę."
+
+    respond_to do |format|
+      format.html { redirect_to groups_path, notice: t(".success") }
+    end
   end
 
   private
@@ -41,11 +41,12 @@ class GroupsController < BaseController
   end
 
   def set_breadcrumbs
-    add_breadcrumb("home", authenticated_root_path)
-    add_breadcrumb("grupy chorych", groups_path)
-  end
+    add_breadcrumb t("breadcrumbs.home"), authenticated_root_path
+    add_breadcrumb t(".breadcrumbs.index"), groups_path
 
-  def set_breadcrumbs_show
-    add_breadcrumb(@group.predefined_disease.name, @group)
+    case action_name.to_sym
+    when :show
+      add_breadcrumb @group.predefined_disease.name, @group
+    end
   end
 end

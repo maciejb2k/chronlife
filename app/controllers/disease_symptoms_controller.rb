@@ -1,6 +1,5 @@
 class DiseaseSymptomsController < BaseController
   include DiseaseSettable
-  include DashboardLayout
 
   before_action :set_disease_symptom, only: %i[show edit update destroy]
   before_action :set_symptom_name, only: %i[show edit update destroy]

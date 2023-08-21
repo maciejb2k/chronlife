@@ -1,4 +1,4 @@
-class NotesController < ApplicationController
+class NotesController < BaseController
   layout "dashboard"
 
   before_action :set_note, only: %i[show edit update destroy pin unpin add_tag remove_tag]

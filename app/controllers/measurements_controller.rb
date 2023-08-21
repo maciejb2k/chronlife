@@ -1,12 +1,7 @@
 class MeasurementsController < BaseController
-  layout "dashboard"
-
   before_action :set_measurement, only: %i[show edit update destroy]
-
+  before_action :set_validation_context, only: %i[create update]
   before_action :set_breadcrumbs
-  before_action :set_breadcrumbs_new, only: %i[new create]
-  before_action :set_breadcrumbs_show, only: %i[show edit update]
-  after_action :set_breadcrumbs_show_by_day, only: %i[show_by_day]
 
   def index
     @latest_measurements =
@@ -29,18 +24,17 @@ class MeasurementsController < BaseController
     @measurements = current_account.measurements.group_by_day(:measurement_date).count
   end
 
-  def show; end
-
   def show_by_day
     @selected_datetime = Date.parse(params[:day])
     @pagy, @measurements = pagy(
-      current_account.measurements.includes(measurement_type: :unit).where(
-        measurement_date: @selected_datetime.all_day
-      ).order(measurement_date: :asc)
+      current_account
+      .measurements
+      .includes(measurement_type: :unit)
+      .where(measurement_date: @selected_datetime.all_day)
+      .order(measurement_date: :asc)
     )
-    set_breadcrumbs_show_by_day
   rescue ArgumentError, TypeError
-    flash[:error] = "Nieprawidłowa data pomiaru."
+    flash[:error] = t(".invalid_date")
     redirect_to measurements_path
   end
 
@@ -49,8 +43,6 @@ class MeasurementsController < BaseController
     @measurement = Measurement.new(measurement_type:)
   end
 
-  def edit; end
-
   def create
     # find_by! or find_by and handling the error by myself - which is better?
     measurement_type = MeasurementType.find_by!(name: params[:measurement_type])
@@ -58,14 +50,11 @@ class MeasurementsController < BaseController
     @measurement = current_account.measurements.build(measurement_params)
     @measurement.measurement_type = measurement_type
 
-    validation_key = generate_validation_key(@measurement.measurement_type.name)
-
     respond_to do |format|
-      if @measurement.valid?(validation_key)
+      if @measurement.valid?(@validation_context)
         @measurement.save
-
         format.html do
-          flash[:success] = "Pomiar został poprawnie dodany."
+          flash[:success] = t(".success")
           redirect_to measurements_path
         end
       else
@@ -75,15 +64,9 @@ class MeasurementsController < BaseController
   end
 
   def update
-    validation_key = generate_validation_key(@measurement.measurement_type.name)
-
     respond_to do |format|
-      if @measurement.update_with_context(measurement_params, validation_key)
-
-        format.html do
-          redirect_to measurement_url(@measurement),
-                      notice: "Pomiar został poprawnie zaktualizowany."
-        end
+      if @measurement.update_with_context(measurement_params, @validation_context)
+        format.html { redirect_to measurement_url(@measurement), notice: t(".success") }
       else
         format.html { render :edit, status: :unprocessable_entity }
       end
@@ -94,10 +77,7 @@ class MeasurementsController < BaseController
     @measurement.destroy
 
     respond_to do |format|
-      format.html do
-        redirect_to measurements_url, notice: "Pomiar został poprawnie usunięty."
-      end
-      format.json { head :no_content }
+      format.html { redirect_to measurements_url, notice: t(".success") }
     end
   end
 
@@ -111,56 +91,51 @@ class MeasurementsController < BaseController
     params.require(:measurement).permit(:value, :measurement_date)
   end
 
+  def set_validation_context
+    @validation_context = get_validation_context(@measurement.measurement_type.name)
+  end
+
+  def get_validation_context(measurement_type)
+    "measurement_#{measurement_type}".to_sym
+  end
+
   def set_breadcrumbs
-    add_breadcrumb("home", authenticated_root_path)
-    add_breadcrumb("monitorowanie zdrowia", measurements_path)
+    add_breadcrumb t("breadcrumbs.home"), authenticated_root_path
+    add_breadcrumb t(".breadcrumbs.index"), measurements_path
+
+    case action_name.to_sym
+    when :new, :create
+      set_breadcrumbs_new
+    when :show
+      add_breadcrumb(
+        t(".breadcrumbs.show", date: l(@measurement.measurement_date, format: "%d %B %Yr.")),
+        measurement_path(params[:id])
+      )
+    when :show_by_day
+      add_breadcrumb(
+        t(".breadcrumbs.show_by_day", date: Date.parse(params[:day])),
+        show_by_day_measurements_path(day: params[:day])
+      )
+    end
   end
 
   def set_breadcrumbs_new
     case params[:measurement_type].to_sym
     when :weight
-      add_breadcrumb(
-        "pomiar wagi",
-        new_measurements_path(measurement_type: :weight)
-      )
+      add_breadcrumb t(".breadcrumbs.new.weight"),
+                     new_measurements_path(measurement_type: :weight)
     when :heart_beat
-      add_breadcrumb(
-        "pomiar tętna",
-        new_measurements_path(measurement_type: :heart_beat)
-      )
+      add_breadcrumb t(".breadcrumbs.new.heart_beat"),
+                     new_measurements_path(measurement_type: :heart_beat)
     when :blood_pressure
-      add_breadcrumb(
-        "pomiar ciśnienia krwi",
-        new_measurements_path(measurement_type: :blood_pressure)
-      )
+      add_breadcrumb t(".breadcrumbs.new.blood_pressure"),
+                     new_measurements_path(measurement_type: :blood_pressure)
     when :sugar
-      add_breadcrumb(
-        "pomiar cukru",
-        new_measurements_path(measurement_type: :sugar)
-      )
+      add_breadcrumb t(".breadcrumbs.new.sugar"),
+                     new_measurements_path(measurement_type: :sugar)
     when :spo2
-      add_breadcrumb(
-        "pomiar saturacji krwi",
-        new_measurements_path(measurement_type: :spo2)
-      )
+      add_breadcrumb t(".breadcrumbs.new.spo2"),
+                     new_measurements_path(measurement_type: :spo2)
     end
-  end
-
-  def set_breadcrumbs_show
-    add_breadcrumb(
-      "pomiar z #{l(@measurement.measurement_date, format: '%d %B %Yr.')}",
-      measurement_path(params[:id])
-    )
-  end
-
-  def set_breadcrumbs_show_by_day
-    add_breadcrumb(
-      "pomiary z dnia #{@selected_datetime}",
-      show_by_day_measurements_path(day: params[:day])
-    )
-  end
-
-  def generate_validation_key(measurement_type)
-    "measurement_#{measurement_type}".to_sym
   end
 end

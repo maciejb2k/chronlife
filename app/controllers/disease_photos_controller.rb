@@ -1,5 +1,4 @@
 class DiseasePhotosController < BaseController
-  include DashboardLayout
   include DiseaseSettable
 
   before_action :set_disease_photo, only: %i[destroy]

@@ -1,6 +1,4 @@
 class FriendsController < BaseController
-  layout "dashboard"
-
   before_action :set_account
   before_action :set_friend, only: :destroy
 
@@ -10,7 +8,6 @@ class FriendsController < BaseController
 
   def destroy
     @account.friends.destroy(@friend)
-    head :no_content
   end
 
   private

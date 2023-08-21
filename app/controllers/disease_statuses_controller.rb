@@ -1,5 +1,4 @@
-class DiseaseStatusesController < ApplicationController
-  include DashboardLayout
+class DiseaseStatusesController < BaseController
   include DiseaseSettable
 
   before_action :set_disease_status, only: %i[show edit update destroy]
@@ -87,10 +86,10 @@ class DiseaseStatusesController < ApplicationController
     when :new, :create
       add_breadcrumb t(".breadcrumbs.new"), new_disease_status_path
     when :show
-      add_breadcrumb t(".breadcrumbs.show", date: disease_status.updated_at),
+      add_breadcrumb t(".breadcrumbs.show", date: @disease_status.updated_at),
                      disease_status_path(@disease, @disease_status)
     when :edit, :update
-      add_breadcrumb t(".breadcrumbs.show"), edit_disease_status_path(@disease, @disease_status)
+      add_breadcrumb t(".breadcrumbs.edit"), edit_disease_status_path(@disease, @disease_status)
     end
   end
 end

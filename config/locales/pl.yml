@@ -17,6 +17,36 @@ pl:
       success: Artykuł został zaktualizowany
     destroy:
       success: Artykuł został usunięty
+  friend_requests:
+    breadcrumbs:
+      index: zaproszenia do znajomych
+  groups:
+    breadcrumbs:
+      index: grupy chorych
+    join_group:
+      success: Poprawnie dołączono do grupy.
+    leave_group:
+      success: Poprawnie opuściłeś grupę.
+  measurements:
+    breadcrumbs:
+      index: pomiary
+      new:
+        weight: pomiar wagi
+        heart_beat: pomiar tętna
+        blood_pressure: pomiar ciśnienia krwi
+        sugar: pomiar poziomu cukru
+        spo2: pomiar saturacji krwi
+      edit: edytuj pomiar
+      show: pomiar z dnia %{date}
+      show_by_day: pomiary z dnia %{date}
+    create:
+      success: Pomiar został poprawnie dodany.
+    update:
+      success: Pomiar został poprawnie zaktualizowany.
+    destroy:
+      success: Pomiar został poprawnie usunięty.
+    show_by_day:
+      invalid_date: Nieprawidłowa data pomiaru.
   diseases:
     breadcrumbs:
       home: home

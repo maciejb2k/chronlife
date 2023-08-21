@@ -1,5 +1,4 @@
 class DiseaseTreatmentsController < BaseController
-  include DashboardLayout
   include DiseaseSettable
 
   before_action :set_breadcrumbs

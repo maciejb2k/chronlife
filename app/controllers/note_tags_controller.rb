@@ -1,4 +1,4 @@
-class NoteTagsController < ApplicationController
+class NoteTagsController < BaseController
   layout "dashboard"
 
   before_action :set_note_tag, only: %i[edit update destroy]

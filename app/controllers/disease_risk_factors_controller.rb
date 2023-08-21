@@ -1,6 +1,5 @@
-class DiseaseRiskFactorsController < ApplicationController
+class DiseaseRiskFactorsController < BaseController
   include DiseaseSettable
-  include DashboardLayout
 
   before_action :set_disease_risk_factor, only: %i[show edit update destroy]
   before_action :set_breadcrumbs

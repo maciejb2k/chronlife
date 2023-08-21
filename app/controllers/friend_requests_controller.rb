@@ -65,7 +65,7 @@ class FriendRequestsController < BaseController
   end
 
   def set_breadcrumbs
-    add_breadcrumb "Home", authenticated_root_path
-    add_breadcrumb "Zaproszenia do znajomych", friend_requests_path
+    add_breadcrumb t("breadcrumbs.home"), authenticated_root_path
+    add_breadcrumb t(".breadcrumbs.index"), friend_requests_path
   end
 end

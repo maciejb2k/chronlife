@@ -1,5 +1,5 @@
 class BaseController < ApplicationController
-  layout "dashboard"
+  include DashboardLayout
 
   before_action :authenticate_user!
   before_action :user_account_setup

@@ -1,6 +1,4 @@
 class AccountsController < BaseController
-  include DashboardLayout
-
   before_action :set_account, only: %i[show edit update destroy]
   before_action :set_breadcrumbs
 
