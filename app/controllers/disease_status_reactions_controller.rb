@@ -1,4 +1,6 @@
 class DiseaseStatusReactionsController < BaseController
+  include DiseaseSettable
+
   before_action :set_reactable
 
   def index
@@ -31,12 +33,11 @@ class DiseaseStatusReactionsController < BaseController
 
   private
 
-  def reaction_params
-    params.require(:disease_status_reaction).permit(:reaction_type)
+  def set_reactable
+    @disease_status = DiseaseStatus.find(params[:disease_status_id])
   end
 
-  def set_reactable
-    @disease = Disease.find(params[:disease_id])
-    @disease_status = DiseaseStatus.find(params[:disease_status_id])
+  def reaction_params
+    params.require(:disease_status_reaction).permit(:reaction_type)
   end
 end

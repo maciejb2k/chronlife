@@ -1,11 +1,7 @@
 class DiseasesController < BaseController
   before_action :set_disease, only: %i[show edit update destroy]
   before_action :load_predefined_diseases, only: %i[new edit create]
-
   before_action :set_breadcrumbs
-  before_action :set_breadcrumbs_new, only: %i[new create]
-  before_action :set_breadcrumbs_show, only: %i[show]
-  before_action :set_breadcrumbs_edit, only: %i[edit update]
 
   def index
     @pagy, @diseases = pagy(
@@ -75,20 +71,18 @@ class DiseasesController < BaseController
   end
 
   def set_breadcrumbs
-    add_breadcrumb("Home", authenticated_root_path)
-    add_breadcrumb("Choroby", diseases_path)
-  end
+    add_breadcrumb "home", authenticated_root_path
+    add_breadcrumb "choroby", diseases_path
 
-  def set_breadcrumbs_new
-    add_breadcrumb("nowa choroba", new_disease_path)
-  end
-
-  def set_breadcrumbs_show
-    add_breadcrumb(disease_name, @disease)
-  end
-
-  def set_breadcrumbs_edit
-    add_breadcrumb("edytuj chorobę", edit_disease_path(@disease))
+    case action_name.to_sym
+    when :new, :create
+      add_breadcrumb "nowa choroba", new_disease_path
+    when :show
+      add_breadcrumb disease_name, @disease
+    when :edit, :update
+      add_breadcrumb disease_name, @disease
+      add_breadcrumb "edytuj chorobę", edit_disease_path(@disease)
+    end
   end
 
   def load_predefined_diseases

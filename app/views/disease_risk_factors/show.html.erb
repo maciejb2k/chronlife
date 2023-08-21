@@ -5,25 +5,24 @@
       <%= render "shared/breadcrumbs" %>
     </div>
     <div class="dash-header__right">
-      <%= link_to edit_disease_disease_risk_factor_path, class: "dash-button dash-button--info" do %>
+      <%= link_to edit_disease_risk_factor_path, class: "dash-button dash-button--info" do %>
         <i class="ri-edit-2-line dash-button__icon"></i>
         Edytuj
       <% end %>
-      <%= button_to [@disease, @disease_risk_factor], class: "dash-button dash-button--delete",
-          method: :delete, form: { data: { turbo_confirm: 'Czy na pewno chcesz usunąć?' } } do %>
+      <%= button_to disease_risk_factor_path(@disease, @disease_risk_factor),
+          class: "dash-button dash-button--delete", method: :delete,
+          form: { data: { turbo_confirm: 'Czy na pewno chcesz usunąć?' } } do %>
         <i class="ri-close-line dash-button__icon"></i>
         Usuń
       <% end %>
-      <%= link_to disease_disease_risk_factors_path, class: "dash-button dash-button--back" do %>
+      <%= link_to disease_risk_factors_path, class: "dash-button dash-button--back" do %>
         <i class="ri-arrow-left-line dash-button__icon"></i>
       <% end %>
     </div>
   </header>
   <div class="dash-flash-messages">
-    <% if flash[:notice].present? %>
-      <%= render DashAlertComponent.new(type: :success) do %>
-        <%= flash[:notice] %>
-      <% end %>
+    <%= turbo_frame_tag "flash" do %>
+      <%= render "shared/dash_flash" %>
     <% end %>
   </div>
   <div class="page-disease-risk-factor__content">
@@ -68,6 +67,5 @@
         </div>
       </div>
     </div>
-
   </div>
 </div>

@@ -5,16 +5,14 @@
       <%= render "shared/breadcrumbs" %>
     </div>
     <div class="dash-header__right">
-      <%= link_to [@disease, @disease_risk_factor], class: "dash-button dash-button--back" do %>
+      <%= link_to disease_risk_factors_path(@disease), class: "dash-button dash-button--back" do %>
         <i class="ri-arrow-left-line dash-button__icon"></i>
       <% end %>
     </div>
   </header>
   <div class="dash-flash-messages">
-    <% if flash[:notice].present? %>
-      <%= render DashAlertComponent.new(type: :success) do %>
-        <%= flash[:notice] %>
-      <% end %>
+    <%= turbo_frame_tag "flash" do %>
+      <%= render "shared/dash_flash" %>
     <% end %>
   </div>
   <div>

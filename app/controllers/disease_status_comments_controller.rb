@@ -1,4 +1,6 @@
 class DiseaseStatusCommentsController < BaseController
+  include DiseaseSettable
+
   before_action :set_commentable
   before_action :set_comment, only: %i[show edit update destroy]
 
@@ -70,7 +72,6 @@ class DiseaseStatusCommentsController < BaseController
   private
 
   def set_commentable
-    @disease = Disease.find(params[:disease_id])
     @disease_status = DiseaseStatus.find(params[:disease_status_id])
   end
 

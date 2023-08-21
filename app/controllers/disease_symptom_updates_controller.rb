@@ -1,4 +1,6 @@
 class DiseaseSymptomUpdatesController < BaseController
+  include DiseaseSettable
+
   before_action :set_disease_symptom
   before_action :set_disease_symptom_update, only: %i[destroy]
 
@@ -42,7 +44,6 @@ class DiseaseSymptomUpdatesController < BaseController
   private
 
   def set_disease_symptom
-    @disease = current_account.diseases.find(params[:disease_id])
     @disease_symptom = @disease.symptoms.find(params[:disease_symptom_id])
   end
 

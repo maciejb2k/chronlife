@@ -1,7 +1,7 @@
 class DiseaseStatusesController < ApplicationController
-  layout "dashboard"
+  include DashboardLayout
+  include DiseaseSettable
 
-  before_action :set_disease
   before_action :set_disease_status, only: %i[show edit update destroy]
   before_action :set_disease_status_options, only: %i[new create edit update]
 
@@ -74,10 +74,6 @@ class DiseaseStatusesController < ApplicationController
   end
 
   private
-
-  def set_disease
-    @disease = current_account.diseases.find(params[:disease_id])
-  end
 
   def set_disease_status
     @disease_status = @disease.statuses.find(params[:id])

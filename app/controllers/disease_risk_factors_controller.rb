@@ -1,25 +1,19 @@
 class DiseaseRiskFactorsController < ApplicationController
-  layout "dashboard"
+  include DiseaseSettable
+  include DashboardLayout
 
-  before_action :set_disease
   before_action :set_disease_risk_factor, only: %i[show edit update destroy]
-
   before_action :set_breadcrumbs
-  before_action :set_breadcrumbs_new, only: %i[new create]
-  before_action :set_breadcrumbs_show, only: %i[show]
-  before_action :set_breadcrumbs_edit, only: %i[edit update]
 
   def index
-    @pagy, @disease_risk_factors = pagy(@disease.risk_factors.order(severity: :desc))
+    @pagy, @disease_risk_factors = pagy(
+      @disease.risk_factors.order(severity: :desc)
+    )
   end
-
-  def show; end
 
   def new
     @disease_risk_factor = DiseaseRiskFactor.new
   end
-
-  def edit; end
 
   def create
     @disease_risk_factor = @disease.risk_factors.build(disease_risk_factor_params)
@@ -27,13 +21,10 @@ class DiseaseRiskFactorsController < ApplicationController
     respond_to do |format|
       if @disease_risk_factor.save
         format.html do
-          redirect_to disease_disease_risk_factors_path,
-                      notice: "Nowy czynnik ryzyka został poprawnie dodany."
+          redirect_to disease_risk_factors_path, notice: t(".success")
         end
-        format.json { render :show, status: :created, location: @disease_risk_factor }
       else
         format.html { render :new, status: :unprocessable_entity }
-        format.json { render json: @disease_risk_factor.errors, status: :unprocessable_entity }
       end
     end
   end
@@ -42,13 +33,11 @@ class DiseaseRiskFactorsController < ApplicationController
     respond_to do |format|
       if @disease_risk_factor.update(disease_risk_factor_params)
         format.html do
-          redirect_to disease_disease_risk_factor_url(@disease_risk_factor),
-                      notice: "Czynnik ryzyka został poprawnie zaktualizowany."
+          redirect_to disease_risk_factor_path(@disease, @disease_risk_factor),
+                      notice: t(".success")
         end
-        format.json { render :show, status: :ok, location: @disease_risk_factor }
       else
         format.html { render :edit, status: :unprocessable_entity }
-        format.json { render json: @disease_risk_factor.errors, status: :unprocessable_entity }
       end
     end
   end
@@ -58,18 +47,12 @@ class DiseaseRiskFactorsController < ApplicationController
 
     respond_to do |format|
       format.html do
-        redirect_to disease_disease_risk_factors_url,
-                    notice: "Czynnik ryzyka został poprawnie usunięty."
+        redirect_to disease_risk_factors_path, notice: t(".success")
       end
-      format.json { head :no_content }
     end
   end
 
   private
-
-  def set_disease
-    @disease = current_account.diseases.find(params[:disease_id])
-  end
 
   def set_disease_risk_factor
     @disease_risk_factor = @disease.risk_factors.find(params[:id])
@@ -80,25 +63,22 @@ class DiseaseRiskFactorsController < ApplicationController
   end
 
   def set_breadcrumbs
-    add_breadcrumb("home", authenticated_root_path)
-    add_breadcrumb("choroby", diseases_path)
-    add_breadcrumb(@disease.predefined_disease.name, @disease)
-    add_breadcrumb("czynniki ryzyka", disease_disease_risk_factors_path)
-  end
+    add_breadcrumb t("diseases.breadcrumbs.home"), authenticated_root_path
+    add_breadcrumb t("diseases.breadcrumbs.index"), diseases_path
+    add_breadcrumb @disease.predefined_disease.name, @disease
+    add_breadcrumb t(".breadcrumbs.index"), disease_risk_factors_path
 
-  def set_breadcrumbs_new
-    add_breadcrumb("dodaj czynnik ryzyka", new_disease_disease_risk_factor_path)
-  end
-
-  def set_breadcrumbs_show
-    add_breadcrumb(@disease_risk_factor.name, [@disease, @disease_symptom])
-  end
-
-  def set_breadcrumbs_edit
-    add_breadcrumb(@disease_risk_factor.name, [@disease, @disease_risk_factor])
-    add_breadcrumb(
-      "edytuj objaw",
-      edit_disease_disease_risk_factor_path(@disease, @disease_risk_factor)
-    )
+    case action_name.to_sym
+    when :new, :create
+      add_breadcrumb t(".breadcrumbs.new"), new_disease_risk_factor_path
+    when :show
+      add_breadcrumb @disease_risk_factor.name,
+                     disease_risk_factor_path(@disease, @disease_risk_factor)
+    when :edit, :update
+      add_breadcrumb @disease_risk_factor.name,
+                     disease_risk_factor_path(@disease, @disease_risk_factor)
+      add_breadcrumb t(".breadcrumbs.edit"),
+                     edit_disease_risk_factor_path(@disease, @disease_risk_factor)
+    end
   end
 end

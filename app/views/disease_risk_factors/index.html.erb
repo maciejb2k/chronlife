@@ -3,14 +3,14 @@
     <div class="dash-header__left">
       <h1 class="dash-header__title">
         <i class="ri-fire-line dash-header__title__icon"></i>
-        Czynniki ryzyka
+        <%= t '.title' %>
       </h1>
       <%= render "shared/breadcrumbs" %>
     </div>
     <div class="dash-header__right">
-      <%= link_to new_disease_disease_risk_factor_path, class: "dash-button dash-button--new" do %>
+      <%= link_to new_disease_risk_factor_path, class: "dash-button dash-button--new" do %>
         <i class="ri-add-line dash-button__icon"></i>
-        Dodaj nowy czynnik
+        <%= t '.new' %>
       <% end %>
       <%= link_to @disease, class: "dash-button dash-button--back" do %>
         <i class="ri-arrow-left-line dash-button__icon"></i>
@@ -18,17 +18,16 @@
     </div>
   </header>
   <div class="dash-flash-messages">
-    <% if flash[:notice].present? %>
-      <%= render DashAlertComponent.new(type: :success) do %>
-        <%= flash[:notice] %>
-      <% end %>
+    <%= turbo_frame_tag "flash" do %>
+      <%= render "shared/dash_flash" %>
     <% end %>
   </div>
   <div class="page-disease-risk-factors__content">
     <% if @disease_risk_factors.to_a.any? %>
       <div class="risk-factors">
-        <% @disease_risk_factors .each do |risk_factor| %>
-          <%= link_to [@disease, risk_factor], class: "risk-factors__item" do %>
+        <% @disease_risk_factors.each do |risk_factor| %>
+          <%= link_to disease_risk_factor_path(@disease, risk_factor),
+              class: "risk-factors__item" do %>
             <div class="risk-factors__item__group">
               <i class="ri-fire-line risk-factors__item__icon"></i>
               <div>
@@ -46,7 +45,7 @@
       </div>
     <% else %>
       <p class="no-results">
-        Na razie nie dodałeś żadnych czynników ryzyka.
+        <%= t '.no_results' %>
       </p>
     <% end %>
   </div>
