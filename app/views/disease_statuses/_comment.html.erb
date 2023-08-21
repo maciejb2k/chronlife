@@ -27,13 +27,14 @@
         data-transition-leave-from="opacity-100 scale-100"
         data-transition-leave-to="opacity-0 scale-95"
       >
-          <%= link_to edit_disease_disease_status_comment_path(@disease, @disease_status, comment),
+          <%= link_to edit_disease_status_comment_path(@disease, @disease_status, comment),
               class: "dash-dropdown__item", data: { turbo_frame: "comment_body_#{comment.id}",
               action: "dropdown#toggle" } do %>
             <i class="ri-edit-line dash-dropdown__item__icon dash-dropdown__item__icon--edit"></i> Edytuj
           <% end %>
-          <%= button_to [@disease, @disease_status, comment], method: :delete, class: "dash-dropdown__item",
-            data: { action: "dropdown#toggle", confirm: "Are you sure?", turbo_confirm: "Are you sure?" } do %>
+          <%= button_to disease_status_comment_path(@disease, @disease_status, comment),
+              method: :delete, class: "dash-dropdown__item", data: { action: "dropdown#toggle",
+              confirm: "Are you sure?", turbo_confirm: "Are you sure?" } do %>
             <i class="ri-close-line dash-dropdown__item__icon dash-dropdown__item__icon--delete"></i> Usuń
           <% end %>
         </div>

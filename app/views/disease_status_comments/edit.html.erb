@@ -1,5 +1,5 @@
 <h1>Edytuj</h1>
 
 <%= turbo_frame_tag "comment_body_#{@comment.id}" do %>
-  <%= render "form" %>
+  <%= render "form", url: disease_status_comment_path(@disease, @disease_status, @comment) %>
 <% end %>

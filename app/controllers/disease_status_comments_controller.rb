@@ -27,7 +27,7 @@ class DiseaseStatusCommentsController < BaseController
     respond_to do |format|
       if @comment.save
         format.turbo_stream
-        format.html { redirect_to @disease_status, notice: "Poprawnie dodano nowy komentarz." }
+        format.html { redirect_to @disease_status, notice: t(".success") }
       else
         format.turbo_stream do
           render turbo_stream: turbo_stream.update(
@@ -45,7 +45,7 @@ class DiseaseStatusCommentsController < BaseController
     respond_to do |format|
       if @comment.update(comment_params)
         format.turbo_stream
-        format.html { redirect_to @comment, notice: "Poprawnie dodano nowy komentarz." }
+        format.html { redirect_to @comment, notice: t(".success") }
       else
         format.turbo_stream do
           render turbo_stream: turbo_stream.update(
@@ -65,14 +65,14 @@ class DiseaseStatusCommentsController < BaseController
 
     respond_to do |format|
       format.turbo_stream
-      format.html { redirect_to @disease_status, notice: "Poprawnie usunięto komentarz." }
+      format.html { redirect_to @disease_status, notice: t(".success") }
     end
   end
 
   private
 
   def set_commentable
-    @disease_status = DiseaseStatus.find(params[:disease_status_id])
+    @disease_status = DiseaseStatus.find(params[:status_id])
   end
 
   def set_comment

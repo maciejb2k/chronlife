@@ -8,7 +8,7 @@
       <%= render "shared/breadcrumbs" %>
     </div>
     <div class="dash-header__right">
-      <%= link_to new_disease_disease_status_path, class: "dash-button dash-button--new" do %>
+      <%= link_to new_disease_status_path, class: "dash-button dash-button--new" do %>
         <i class="ri-add-line dash-button__icon"></i>
         Dodaj aktualizację
       <% end %>
@@ -18,17 +18,16 @@
     </div>
   </header>
   <div class="dash-flash-messages">
-    <% if flash[:notice].present? %>
-      <%= render DashAlertComponent.new(type: :success) do %>
-        <%= flash[:notice] %>
-      <% end %>
+    <%= turbo_frame_tag "flash" do %>
+      <%= render "shared/dash_flash" %>
     <% end %>
   </div>
   <div class="page-disease-statuses__content">
     <% if @disease_statuses.to_a.any? %>
       <% @disease_statuses.each do |disease_status| %>
         <div class="dash-posts-container">
-          <%= render partial: disease_status, locals: { disease: @disease, disease_status:, liked_statuses: @liked_statuses } %>
+          <%= render partial: disease_status, locals: { disease: @disease,
+              disease_status:, liked_statuses: @liked_statuses } %>
         </div>
       <% end %>
     <% else %>

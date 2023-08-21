@@ -46,11 +46,11 @@
           data-transition-leave-from="opacity-100 scale-100"
           data-transition-leave-to="opacity-0 scale-95"
         >
-          <%= link_to edit_disease_disease_status_path(disease, disease_status),
+          <%= link_to edit_disease_status_path(disease, disease_status),
               data: { action: "dropdown#toggle" }, class: "dash-dropdown__item" do %>
             <i class="ri-edit-line dash-dropdown__item__icon"></i> Edytuj
           <% end %>
-          <%= button_to [disease, disease_status], method: :delete, class: "dash-dropdown__item",
+          <%= button_to disease_status_path(disease, disease_status), method: :delete, class: "dash-dropdown__item",
               data: { action: "dropdown#toggle", confirm: "Are you sure?", turbo_confirm: "Are you sure?" } do %>
             <i class="ri-close-line dash-dropdown__item__icon dash-dropdown__item__icon--delete"></i> Usuń
           <% end %>
@@ -64,7 +64,7 @@
     </p>
   </div>
   <div class="dash-post__interactions">
-    <%= link_to disease_disease_status_comments_path(disease, disease_status),
+    <%= link_to disease_status_comments_path(disease, disease_status),
          data: { turbo_frame: "comments_section_#{disease_status.id}" },
          class: "dash-post__interaction dash-post__interaction--comment" do %>
       <i class="ri-chat-3-line dash-post__interaction__icon"></i>

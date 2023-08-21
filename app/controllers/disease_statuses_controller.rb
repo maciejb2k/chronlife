@@ -4,11 +4,7 @@ class DiseaseStatusesController < ApplicationController
 
   before_action :set_disease_status, only: %i[show edit update destroy]
   before_action :set_disease_status_options, only: %i[new create edit update]
-
   before_action :set_breadcrumbs
-  before_action :set_breadcrumbs_new, only: %i[new create]
-  before_action :set_breadcrumbs_show, only: %i[show]
-  before_action :set_breadcrumbs_edit, only: %i[edit update]
 
   def index
     @pagy, @disease_statuses = pagy(
@@ -26,36 +22,31 @@ class DiseaseStatusesController < ApplicationController
     ).pluck(:reactable_id)
   end
 
-  def show; end
-
   def new
     @disease_status = DiseaseStatus.new
+    @url = disease_statuses_path
   end
 
-  def edit; end
-
   def create
-    @disease_status = @disease.statuses.new(disease_status_params)
+    @disease_status = @disease.statuses.build(disease_status_params)
 
     respond_to do |format|
       if @disease_status.save
-        format.html do
-          redirect_to disease_disease_statuses_path,
-                      notice: "Nowy status choroby został poprawnie dodany."
-        end
+        format.html { redirect_to disease_statuses_path, notice: t(".success") }
       else
         format.html { render :new, status: :unprocessable_entity }
       end
     end
   end
 
+  def edit
+    @url = disease_statuses_path
+  end
+
   def update
     respond_to do |format|
       if @disease_status.update(disease_status_params)
-        format.html do
-          redirect_to disease_disease_status_path(@disease_status),
-                      notice: "Poprawnie zaktualizowano status choroby."
-        end
+        format.html { redirect_to disease_status_path(@disease_status), notice: t(".success") }
       else
         format.html { render :edit, status: :unprocessable_entity }
       end
@@ -66,10 +57,7 @@ class DiseaseStatusesController < ApplicationController
     @disease_status.destroy
 
     respond_to do |format|
-      format.html do
-        redirect_to disease_disease_statuses_path,
-                    notice: "Status choroby został poprawnie usunięty."
-      end
+      format.html { redirect_to disease_statuses_path, notice: t(".success") }
     end
   end
 
@@ -90,24 +78,19 @@ class DiseaseStatusesController < ApplicationController
   end
 
   def set_breadcrumbs
-    add_breadcrumb("home", authenticated_root_path)
-    add_breadcrumb("choroby", diseases_path)
-    add_breadcrumb(@disease.predefined_disease.name, @disease)
-    add_breadcrumb("stan zdrowia", disease_disease_statuses_path)
-  end
+    add_breadcrumb t("diseases.breadcrumbs.home"), authenticated_root_path
+    add_breadcrumb t("diseases.breadcrumbs.index"), diseases_path
+    add_breadcrumb @disease.predefined_disease.name, @disease
+    add_breadcrumb t(".breadcrumbs.index"), disease_statuses_path
 
-  def set_breadcrumbs_new
-    add_breadcrumb("dodaj aktualizację", new_disease_disease_status_path)
-  end
-
-  def set_breadcrumbs_show
-    add_breadcrumb("Stan z dnia #{@disease_status.created_at}", [@disease, @disease_status])
-  end
-
-  def set_breadcrumbs_edit
-    add_breadcrumb(
-      "edytuj status",
-      edit_disease_disease_status_path(@disease, @disease_status)
-    )
+    case action_name.to_sym
+    when :new, :create
+      add_breadcrumb t(".breadcrumbs.new"), new_disease_status_path
+    when :show
+      add_breadcrumb t(".breadcrumbs.show", date: disease_status.updated_at),
+                     disease_status_path(@disease, @disease_status)
+    when :edit, :update
+      add_breadcrumb t(".breadcrumbs.show"), edit_disease_status_path(@disease, @disease_status)
+    end
   end
 end

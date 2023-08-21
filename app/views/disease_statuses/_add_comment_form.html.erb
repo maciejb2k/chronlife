@@ -1,4 +1,5 @@
-<%= form_with model: [@disease, @disease_status, Comment.new],
+<%= form_with model: Comment.new,
+    url: disease_status_comments_path(@disease, @disease_status),
     html: { class: "add-comment-form" },
     data: { controller: "reset-form", action: "turbo:submit-end->reset-form#clear" } do |f| %>
   <div class="add-comment-form__group">

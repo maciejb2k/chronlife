@@ -34,7 +34,7 @@ class DiseaseStatusReactionsController < BaseController
   private
 
   def set_reactable
-    @disease_status = DiseaseStatus.find(params[:disease_status_id])
+    @disease_status = DiseaseStatus.find(params[:status_id])
   end
 
   def reaction_params

@@ -13,6 +13,25 @@ pl:
       success: Choroba została zaktualizowana
     destroy:
       success: Choroba została usunięta
+  disease_statuses:
+    breadcrumbs:
+      index: stan zdrowia
+      new: dodaj nowy stan zdrowia
+      show: Stan zdrowia z dnia %{date}
+      edit: edytuj status
+    create:
+      success: Stan zdrowia został dodany
+    update:
+      success: Stan zdrowia został zaktualizowany
+    destroy:
+      success: Stan zdrowia został usunięty
+  disease_status_comments:
+    create:
+      success: Poprawnie dodano nowy komentarz.
+    update:
+      success: Poprawnie edytowano komentarz.
+    destroy:
+      success: Poprawnie usunięto komentarz.
   disease_symptoms:
     breadcrumbs:
       index: objawy
