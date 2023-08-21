@@ -6,6 +6,17 @@ pl:
   accounts:
     breadcrumbs:
       index: użytkownicy
+  articles:
+    breadcrumbs:
+      index: strefa wiedzy
+      new: dodaj artykuł
+      edit: edytuj artykuł
+    create:
+      success: Artykuł został dodany
+    update:
+      success: Artykuł został zaktualizowany
+    destroy:
+      success: Artykuł został usunięty
   diseases:
     breadcrumbs:
       home: home
