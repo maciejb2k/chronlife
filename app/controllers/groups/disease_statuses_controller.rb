@@ -1,4 +1,6 @@
 class Groups::DiseaseStatusesController < Groups::BaseController
+  before_action :set_breadcrumbs
+
   def index
     @pagy, @posts = pagy(
       DiseaseStatus
@@ -14,5 +16,12 @@ class Groups::DiseaseStatusesController < Groups::BaseController
       reaction_type: "like",
       reactable_type: "DiseaseStatus"
     ).pluck(:reactable_id)
+  end
+
+  private
+
+  def set_breadcrumbs
+    add_breadcrumb t("groups.disease_statuses_controller.breadcrumbs.index"),
+                   group_disease_statuses_path(@group)
   end
 end

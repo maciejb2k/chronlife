@@ -24,7 +24,7 @@ class Groups::PostCommentsController < Groups::BaseController
     if @comment.save!
       respond_to do |format|
         format.turbo_stream
-        format.html { redirect_to @comment, notice: "Poprawnie dodano nowy komentarz." }
+        format.html { redirect_to @comment }
       end
     else
       render :new, status: :unprocessable_entity

@@ -1,4 +1,6 @@
 class Groups::DiseaseSymptomsController < Groups::BaseController
+  before_action :set_breadcrumbs
+
   def index
     @predefined_symptoms =
       DiseaseSymptom
@@ -17,5 +19,12 @@ class Groups::DiseaseSymptomsController < Groups::BaseController
       .where(disease: { account: @group.accounts, predefined_disease: @group.predefined_disease },
              predefined_symptom_id: nil)
     )
+  end
+
+  private
+
+  def set_breadcrumbs
+    add_breadcrumb t("groups.disease_symptoms_controller.breadcrumbs.index"),
+                   group_disease_symptoms_path(@group)
   end
 end

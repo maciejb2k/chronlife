@@ -27,6 +27,31 @@ pl:
       success: Poprawnie dołączono do grupy.
     leave_group:
       success: Poprawnie opuściłeś grupę.
+    base_controller:
+      breadcrumbs:
+        index: grupy chorych
+        new: dodaj grupę
+        edit: edytuj grupę
+    posts_controller:
+      breadcrumbs:
+        index: posty
+      create:
+        success: Post został dodany.
+    disease_photos_controller:
+      breadcrumbs:
+        index: zdjęcia
+    disease_risk_factors_controller:
+      breadcrumbs:
+        index: czynniki ryzyka
+    disease_statuses_controller:
+      breadcrumbs:
+        index: aktualizacje zdrowia
+    disease_symptoms_controller:
+      breadcrumbs:
+        index: objawy
+    treatments_controller:
+      breadcrumbs:
+        index: terapie
   measurements:
     breadcrumbs:
       index: pomiary

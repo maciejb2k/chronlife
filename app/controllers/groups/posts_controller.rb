@@ -1,4 +1,6 @@
 class Groups::PostsController < Groups::BaseController
+  before_action :set_breadcrumbs
+
   def index
     set_posts
     set_liked_posts
@@ -18,7 +20,7 @@ class Groups::PostsController < Groups::BaseController
           set_posts
           set_liked_posts
         end
-        format.html { redirect_to group_posts_path(@group), notice: "Post created successfully" }
+        format.html { redirect_to group_posts_path(@group), notice: t(".success") }
       end
     else
       render :new, status: :unprocessable_entity
@@ -41,5 +43,9 @@ class Groups::PostsController < Groups::BaseController
 
   def post_params
     params.require(:group_post).permit(:body)
+  end
+
+  def set_breadcrumbs
+    add_breadcrumb t("groups.posts_controller.breadcrumbs.index"), group_posts_path(@group)
   end
 end
