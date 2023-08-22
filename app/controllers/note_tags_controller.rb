@@ -54,7 +54,7 @@ class NoteTagsController < BaseController
     when :new, :create
       add_breadcrumb t(".breadcrumbs.new"), new_note_tag_path
     when :edit, :update
-      add_breadcrumb @note_tag.title, @note_tag
+      add_breadcrumb @note_tag.name, @note_tag
       add_breadcrumb t(".breadcrumbs.edit"), edit_note_tag_path(@note_tag)
     end
   end

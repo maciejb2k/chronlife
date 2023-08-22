@@ -74,6 +74,21 @@ pl:
       success: Tag został dodany do notatki.
     destroy:
       success: Tag został usunięty z notatki.
+  specialists:
+    breadcrumbs:
+      index: specjaliści
+  specialist_requests:
+    check_request_sent: Wniosek o status specjalisty został już wysłany.
+    breadcrumbs:
+      index: wnioski o status specjalisty
+      new: dodaj wniosek
+      edit: edytuj wniosek
+    create:
+      success: Wniosek został dodany
+    update:
+      success: Wniosek został zaktualizowany
+    destroy:
+      success: Wniosek został usunięty
   treatments:
     breadcrumbs:
       index: terapie
