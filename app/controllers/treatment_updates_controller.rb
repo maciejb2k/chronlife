@@ -2,10 +2,7 @@ class TreatmentUpdatesController < BaseController
   before_action :set_treatment
   before_action :set_treatment_update, only: %i[edit update destroy]
   before_action :set_treatment_status_options, only: %i[new create edit update]
-
   before_action :set_breadcrumbs
-  before_action :set_breadcrumbs_new, only: %i[new create]
-  before_action :set_breadcrumbs_edit, only: %i[edit update]
 
   def new
     @treatment_update = TreatmentUpdate.new
@@ -16,10 +13,7 @@ class TreatmentUpdatesController < BaseController
 
     respond_to do |format|
       if @treatment_update.save
-        format.html do
-          redirect_to @treatment,
-                      notice: "Aktualizacja terapii została pomyślnie dodana."
-        end
+        format.html { redirect_to @treatment, notice: t(".success") }
       else
         format.html { render :new, status: :unprocessable_entity }
       end
@@ -29,10 +23,7 @@ class TreatmentUpdatesController < BaseController
   def update
     respond_to do |format|
       if @treatment_update.update(treatment_update_params)
-        format.html do
-          redirect_to edit_treatment_treatment_update_path(@treatment, @treatment_update),
-                      notice: "Aktualizacja terapii została pomyślnie zapisana."
-        end
+        format.html { redirect_to treatment_path(@treatment), notice: t(".success") }
       else
         format.html { render :edit, status: :unprocessable_entity }
       end
@@ -43,9 +34,7 @@ class TreatmentUpdatesController < BaseController
     @treatment_update.destroy
 
     respond_to do |format|
-      format.html do
-        redirect_to @treatment, notice: "Aktualizacja terapii została pomyślnie usunięta."
-      end
+      format.html { redirect_to @treatment, notice: t(".success") }
     end
   end
 
@@ -71,16 +60,16 @@ class TreatmentUpdatesController < BaseController
   end
 
   def set_breadcrumbs
-    add_breadcrumb("home", authenticated_root_path)
-    add_breadcrumb("terapie", treatments_path)
-    add_breadcrumb(@treatment.title, treatment_path(@treatment))
-  end
+    add_breadcrumb t("breadcrumbs.home"), authenticated_root_path
+    add_breadcrumb t(".breadcrumbs.index"), treatments_path
+    add_breadcrumb @treatment.title, treatment_path(@treatment)
 
-  def set_breadcrumbs_new
-    add_breadcrumb("dodaj aktualizację", new_treatment_path)
-  end
-
-  def set_breadcrumbs_edit
-    add_breadcrumb("edytuj aktualizację", edit_treatment_path(@treatment))
+    case action_name.to_sym
+    when :new, :create
+      add_breadcrumb t(".breadcrumbs.new"), new_treatment_treatment_update_path(@treatment)
+    when :edit, :update
+      add_breadcrumb t(".breadcrumbs.edit"),
+                     edit_treatment_treatment_update_path(@treatment, @treatment_update)
+    end
   end
 end

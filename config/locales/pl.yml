@@ -100,6 +100,28 @@ pl:
       success: Terapia została zaktualizowana
     destroy:
       success: Terapia została usunięta
+  treatment_updates:
+    breadcrumbs:
+      index: aktualizacje
+      new: dodaj aktualizację
+      edit: edytuj aktualizację
+    create:
+      success: Aktualizacja została dodana
+    update:
+      success: Aktualizacja została zaktualizowana
+    destroy:
+      success: Aktualizacja została usunięta
+  treatment_diseases:
+    breadcrumbs:
+      index: choroby
+      new: dodaj chorobę
+      edit: edytuj chorobę
+    create:
+      success: Choroba została dodana
+    update:
+      success: Choroba została zaktualizowana
+    destroy:
+      success: Choroba została usunięta
   diseases:
     breadcrumbs:
       home: home

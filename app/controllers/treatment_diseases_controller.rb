@@ -2,9 +2,7 @@ class TreatmentDiseasesController < BaseController
   before_action :set_treatment
   before_action :set_diseases, only: %i[new create]
   before_action :set_treatment_disease, only: %i[destroy]
-
   before_action :set_breadcrumbs
-  before_action :set_breadcrumbs_new, only: %i[new create]
 
   def new
     @treatment_disease = TreatmentDisease.new
@@ -32,10 +30,6 @@ class TreatmentDiseasesController < BaseController
 
   private
 
-  def treatment_disease_params
-    params.require(:treatment_disease).permit(:disease_id)
-  end
-
   def set_treatment
     @treatment = current_account.treatments.find(params[:treatment_id])
   end
@@ -48,13 +42,18 @@ class TreatmentDiseasesController < BaseController
     @diseases = current_account.diseases.all.map { |d| [d.predefined_disease.name, d.id] }
   end
 
-  def set_breadcrumbs
-    add_breadcrumb("home", authenticated_root_path)
-    add_breadcrumb("choroby", diseases_path)
-    add_breadcrumb(@treatment.title, treatment_path(@treatment))
+  def treatment_disease_params
+    params.require(:treatment_disease).permit(:disease_id)
   end
 
-  def set_breadcrumbs_new
-    add_breadcrumb("przypisz chorobę", new_treatment_treatment_disease_path)
+  def set_breadcrumbs
+    add_breadcrumb t("breadcrumbs.home"), authenticated_root_path
+    add_breadcrumb t(".breadcrumbs.index"), treatments_path
+    add_breadcrumb @treatment.title, treatment_path(@treatment)
+
+    case action_name.to_sym
+    when :new, :create
+      add_breadcrumb t(".breadcrumbs.new"), new_treatment_treatment_disease_path(@treatment)
+    end
   end
 end

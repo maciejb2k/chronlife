@@ -1,7 +1,9 @@
 <div class="page-account">
   <div class="page-account__container">
     <div class="dash-flash-messages">
-      <%= turbo_frame_tag "flash" %>
+      <%= turbo_frame_tag "flash" do %>
+        <%= render "shared/dash_flash" %>
+      <% end %>
     </div>
     <%= render "accounts/card" %>
     <div class="card-group">
