@@ -1,0 +1,8 @@
+<% if @pagy.count == 0 %>
+  <%= turbo_stream.update :no_results_note_tag_associations do %>
+    <%= render "no_results" %>
+  <% end %>
+<% end %>
+
+<%= turbo_stream.remove dom_id @note_tag_association %>
+<%= turbo_stream.update(:pagination_note_tag_associations, partial: "pagination") %>

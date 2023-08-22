@@ -4,9 +4,10 @@ class DashboardController < BaseController
   def index
     @pagy, @posts = pagy(
       DiseaseStatus
-      .joins(:disease)
-      .includes(:disease, :comments, :reactions, disease: %i[predefined_disease account])
-      .order(created_at: :desc),
+      .joins(disease: %i[account predefined_disease])
+      .includes(:comments, :reactions, disease: %i[account predefined_disease])
+      .where(disease: { account: current_account.friends })
+      .order(updated_at: :desc),
       items: 10
     )
   end

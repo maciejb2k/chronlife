@@ -44,11 +44,10 @@ Rails.application.routes.draw do
   resources :my_health, only: [:index]
 
   resources :notes do
+    resources :note_tag_associations, only: %i[index new create destroy]
     member do
       patch :pin
       patch :unpin
-      post :add_tag
-      delete :remove_tag
     end
   end
   resources :note_tags, except: %i[index show]

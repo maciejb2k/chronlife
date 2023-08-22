@@ -69,6 +69,11 @@ pl:
       success: Tag został zaktualizowany.
     destroy:
       success: Tag został usunięty.
+  note_tag_associations:
+    create:
+      success: Tag został dodany do notatki.
+    destroy:
+      success: Tag został usunięty z notatki.
   treatments:
     breadcrumbs:
       index: terapie

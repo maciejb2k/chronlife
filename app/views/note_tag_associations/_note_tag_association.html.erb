@@ -1,0 +1,12 @@
+<li class="assigned-tags__tag" id="<%= dom_id tag %>">
+  <div class="assigned-tags__tag__left">
+    <p class="assigned-tags__tag__name"><%= tag.note_tag.name %></p>
+  </div>
+  <div class="assigned-tags__tag__right">
+    <%= button_to [@note, tag], method: :delete,
+        class: "assigned-tags__tag__button",
+        form: { data: { turbo_confirm: 'Czy na pewno chcesz usunąć?' } } do %>
+      <i class="ri-close-line"></i>
+    <% end %>
+  </div>
+</li>

@@ -1,0 +1,9 @@
+<% if @pagy.count > 0 %>
+  <%= turbo_stream.update :no_results_note_tag_associations %>
+<% end %>
+
+<%= turbo_stream.prepend :list_note_tag_associations do %>
+  <%= render partial: "note_tag_association", locals: { tag: @note_tag_association } %>
+<% end %>
+
+<%= turbo_stream.update(:pagination_note_tag_associations, partial: "pagination") %>

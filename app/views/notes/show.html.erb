@@ -43,37 +43,10 @@
           <div class="dash-group__actions"></div>
         </header>
         <div class="dash-group__content">
-          <%= render "note_tag_associations/form" %>
-          <div class="assigned-tags">
-            <% if @note_tags.to_a.any? %>
-              <ul class="assigned-tags__list">
-                <% @note_tags.to_a.each do |tag| %>
-                  <li class="assigned-tags__tag">
-                    <div class="assigned-tags__tag__left">
-                      <p class="assigned-tags__tag__name"><%= tag.note_tag.name %></p>
-                    </div>
-                    <div class="assigned-tags__tag__right">
-                      <%= button_to remove_tag_note_path(@note, note_tag_id: tag.note_tag.id),
-                          class: "assigned-tags__tag__button", method: :delete,
-                          form: { data: { turbo_confirm: 'Czy na pewno chcesz usunąć?' } } do %>
-                        <i class="ri-close-line"></i>
-                      <% end %>
-                    </div>
-                  </li>
-                <% end %>
-              </ul>
-            <% else %>
-              <p class="dash-group__text">Na przypisałeś na razie żadnych tagów.</p>
-            <% end %>
-          </div>
-          <div class="dash-pagination">
-            <div class="dash-pagination__controls">
-              <%== pagy_nav(@pagy) if @pagy.pages > 1 %>
-            </div>
-            <div class="dash-pagination__info">
-              <%== pagy_info(@pagy) %>
-            </div>
-          </div>
+          <%= turbo_frame_tag :add_note_tag_association, src: new_note_note_tag_association_path(@note) %>
+          <%= turbo_frame_tag :note_tag_associations, src: note_note_tag_associations_path(@note) do %>
+            <p>Ładowanie ...</p>
+          <% end %>
         </div>
       </div>
     </div>

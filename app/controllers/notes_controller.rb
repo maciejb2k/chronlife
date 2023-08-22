@@ -1,7 +1,6 @@
 class NotesController < BaseController
-  before_action :set_note, only: %i[show edit update destroy pin unpin add_tag remove_tag]
+  before_action :set_note, only: %i[show edit update destroy pin unpin]
   before_action :set_tags, only: %i[show edit add_tag]
-  before_action :set_tags_options, only: %i[show edit add_tag]
   before_action :set_breadcrumbs
 
   def index
@@ -9,7 +8,8 @@ class NotesController < BaseController
 
     if params[:tag_id].present?
       tag = current_account.note_tags.find_by(id: params[:tag_id])
-      query = notes.joins(:note_tag_associations).where(note_tag_associations: { note_tag_id: tag.id })
+      query = notes.joins(:note_tag_associations)
+                   .where(note_tag_associations: { note_tag_id: tag.id })
       notes = tag ? query : []
     end
 
@@ -20,11 +20,6 @@ class NotesController < BaseController
     @pagy_pinned, @notes_pinned = pagy(pinned_notes, page_param: :pinned_page)
     @pagy_all, @notes = pagy(unpinned_notes, page_param: :unpinned_page)
     @pagy_tags, @tags = pagy(tags, page_param: :tags_page)
-  end
-
-  def show
-    @note_tag = @note.tags.build
-    @pagy, @note_tags = pagy(@note.note_tag_associations)
   end
 
   def new
@@ -75,36 +70,6 @@ class NotesController < BaseController
     redirect_to notes_path
   end
 
-  def add_tag
-    @tag = current_account.note_tags.find(add_tag_params[:note_tag_id])
-
-    respond_to do |format|
-      @note.tags << @tag
-
-      format.html do
-        redirect_to note_path(@note)
-      end
-    rescue ActiveRecord::RecordInvalid => e
-      @error_message = e.record.errors.messages_for(:note_tag_id).first
-
-      format.turbo_stream do
-        render turbo_stream: turbo_stream.replace(
-          @note, partial: "note_tag_associations/form"
-        )
-      end
-      format.html { redirect_to note_path(@note), alert: @error_message }
-    end
-  end
-
-  def remove_tag
-    @tag = current_account.note_tags.find(remove_tag_params[:note_tag_id])
-    @note.tags.delete(@tag)
-
-    respond_to do |format|
-      format.html { redirect_to note_path(@note) }
-    end
-  end
-
   private
 
   def set_note
@@ -115,20 +80,8 @@ class NotesController < BaseController
     @tags = current_account.note_tags
   end
 
-  def set_tags_options
-    @tags_options = @tags.map { |tag| [tag.name, tag.id] }
-  end
-
   def note_params
     params.require(:note).permit(:title, :content, :background_color, :is_pinned)
-  end
-
-  def add_tag_params
-    params.require(:note).permit(:note_tag_id)
-  end
-
-  def remove_tag_params
-    params.permit(:note_tag_id)
   end
 
   def set_breadcrumbs
