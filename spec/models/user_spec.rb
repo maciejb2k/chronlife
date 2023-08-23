@@ -36,8 +36,21 @@
 #  index_users_on_reset_password_token  (reset_password_token) UNIQUE
 #  index_users_on_unlock_token          (unlock_token) UNIQUE
 #
-require 'rails_helper'
+require "rails_helper"
 
 RSpec.describe User, type: :model do
-  pending "add some examples to (or delete) #{__FILE__}"
+  describe "associations" do
+    it { is_expected.to have_one(:account).dependent(:destroy) }
+    it { is_expected.to have_many(:user_roles).dependent(:destroy) }
+    it { is_expected.to have_many(:roles).through(:user_roles) }
+    it { is_expected.to have_one(:specialist).dependent(:destroy) }
+  end
+
+  describe "roles" do
+    let(:user) { create(:user, :specialist) }
+
+    it "has a patient role by default" do
+      expect(user.patient?).to be true
+    end
+  end
 end

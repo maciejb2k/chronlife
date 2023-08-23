@@ -54,3 +54,9 @@ Rails/UniqueValidationWithoutIndex:
 
 Metrics/ClassLength:
   Enabled: false
+
+RSpec/FilePath:
+  Enabled: false
+
+RSpec/Rails/InferredSpecType:
+  Enabled: false

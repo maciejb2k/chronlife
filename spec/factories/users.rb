@@ -38,6 +38,22 @@
 #
 FactoryBot.define do
   factory :user do
-    
+    transient do
+      skip_confirmation { true }
+    end
+
+    uid { SecureRandom.uuid }
+    email { Faker::Internet.safe_email }
+    password { "password" }
+
+    after(:build) do |user, evaluator|
+      user.skip_confirmation! if evaluator.skip_confirmation
+    end
+
+    trait :specialist do
+      after(:create) do |user, _|
+        user.set_specialist_role!
+      end
+    end
   end
 end

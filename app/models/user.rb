@@ -37,7 +37,6 @@
 #  index_users_on_unlock_token          (unlock_token) UNIQUE
 #
 class User < ApplicationRecord
-  devise :two_factor_authenticatable
   devise :two_factor_authenticatable, :registerable, :recoverable, :rememberable,
          :validatable, :confirmable, :trackable, :lockable,
          :omniauthable, omniauth_providers: [:google_oauth2]
@@ -52,10 +51,7 @@ class User < ApplicationRecord
   has_one :account, dependent: :destroy
   has_many :user_roles, dependent: :destroy
   has_many :roles, through: :user_roles
-
   has_one :specialist, dependent: :destroy, inverse_of: :user, required: false
-
-  accepts_nested_attributes_for :account
 
   after_create :set_patient_role!
 

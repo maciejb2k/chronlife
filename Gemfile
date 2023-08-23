@@ -101,6 +101,7 @@ group :development, :test do
   gem "rubocop-rspec", "~> 2.22.0", require: false
   gem "simplecov", "~> 0.22.0", require: false
   gem 'rails-erd', "~> 1.7.2"
+  gem 'shoulda-matchers', '~> 5.3.0'
 end
 
 group :development do
@@ -111,4 +112,5 @@ group :test do
   gem "capybara"
   gem "selenium-webdriver"
   gem "webdrivers"
+
 end
