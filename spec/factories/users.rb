@@ -43,7 +43,7 @@ FactoryBot.define do
     end
 
     uid { SecureRandom.uuid }
-    email { Faker::Internet.safe_email }
+    email { Faker::Internet.email }
     password { "password" }
 
     after(:build) do |user, evaluator|

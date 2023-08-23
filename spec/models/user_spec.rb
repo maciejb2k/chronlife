@@ -47,10 +47,68 @@ RSpec.describe User, type: :model do
   end
 
   describe "roles" do
-    let(:user) { create(:user, :specialist) }
+    context "when the user is a new record" do
+      let_it_be(:user) { create(:user) }
 
-    it "has a patient role by default" do
-      expect(user.patient?).to be true
+      it "has a patient role by default" do
+        expect(user.patient?).to be true
+      end
+
+      it "has only one role" do
+        expect(user.roles.size).to eq(1)
+      end
+
+      it "does not have a specialist role" do
+        expect(user.specialist?).to be false
+      end
+
+      it "does not have an associated specialists record" do
+        expect(user.specialist).not_to be_present
+      end
+    end
+
+    context "when the user is a specialist" do
+      let_it_be(:user) { create(:user, :specialist) }
+
+      it "has a patient role" do
+        expect(user.patient?).to be true
+      end
+
+      it "has a specialist role" do
+        expect(user.specialist?).to be true
+      end
+
+      it "has two roles" do
+        expect(user.roles.size).to eq(2)
+      end
+
+      it "has associated specialists record" do
+        expect(user.specialist).to be_present
+      end
+    end
+
+    context "when the specialist role is revoked" do
+      let_it_be(:user) { create(:user, :specialist) }
+
+      before do
+        user.revoke_specialist_role!
+      end
+
+      it "has only a patient role" do
+        expect(user.patient?).to be true
+      end
+
+      it "does not have a specialist role" do
+        expect(user.specialist?).to be false
+      end
+
+      it "has one role" do
+        expect(user.roles.size).to eq(1)
+      end
+
+      it "does not have an associated specialists record" do
+        expect(user.specialist).not_to be_present
+      end
     end
   end
 end

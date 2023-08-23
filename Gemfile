@@ -102,6 +102,7 @@ group :development, :test do
   gem "simplecov", "~> 0.22.0", require: false
   gem 'rails-erd', "~> 1.7.2"
   gem 'shoulda-matchers', '~> 5.3.0'
+  gem "test-prof", "~> 1.0"
 end
 
 group :development do
@@ -112,5 +113,4 @@ group :test do
   gem "capybara"
   gem "selenium-webdriver"
   gem "webdrivers"
-
 end

@@ -124,6 +124,7 @@ class User < ApplicationRecord
     ActiveRecord::Base.transaction do
       remove_role("specialist")
       specialist&.destroy
+      self.specialist = nil
     end
   end
 
