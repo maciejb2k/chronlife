@@ -14,11 +14,8 @@ class Settings::TwoFactorAuthentication::ConfirmationsController < BaseControlle
                                               otp_secret: session[:new_otp_secret])
       flash[:notice] = "Poprawnie włączono dwuskładnikowe uwierzytelnianie."
 
-      current_user.otp_required_for_login = true
-      current_user.otp_secret = session[:new_otp_secret]
+      current_user.enable_two_factor! session[:new_otp_secret]
       @recovery_codes = current_user.generate_otp_backup_codes!
-      current_user.save!
-
       session.delete(:new_otp_secret)
 
       respond_to do |format|
@@ -50,13 +47,8 @@ class Settings::TwoFactorAuthentication::ConfirmationsController < BaseControlle
 
   def prepare_two_factor_form
     @new_otp_secret = session[:new_otp_secret]
-    @provision_url = current_user.otp_provisioning_uri(
-      current_user.email,
-      otp_secret: @new_otp_secret,
-      issuer: "Przewlekli.pl"
-    )
-
-    @qrcode = RQRCode::QRCode.new(@provision_url)
+    @provision_url = current_user.two_factor_provisioning_uri(@new_otp_secret)
+    @qrcode = current_user.two_factor_otp_qrcode(@provision_url)
   end
 
   def set_breadcrumbs

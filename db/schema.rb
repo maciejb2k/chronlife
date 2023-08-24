@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_08_20_085902) do
+ActiveRecord::Schema[7.0].define(version: 2023_08_24_054749) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pgcrypto"
   enable_extension "plpgsql"
@@ -450,7 +450,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_08_20_085902) do
     t.datetime "updated_at", null: false
     t.string "otp_secret"
     t.integer "consumed_timestep"
-    t.boolean "otp_required_for_login"
+    t.boolean "otp_required_for_login", default: false
     t.string "otp_backup_codes", array: true
     t.string "provider"
     t.string "uid"

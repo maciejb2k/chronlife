@@ -60,3 +60,9 @@ RSpec/FilePath:
 
 RSpec/Rails/InferredSpecType:
   Enabled: false
+
+RSpec/NestedGroups:
+  Enabled: false
+
+RSpec/MultipleExpectations:
+  Enabled: false

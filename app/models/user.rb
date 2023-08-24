@@ -16,7 +16,7 @@
 #  last_sign_in_ip        :string
 #  locked_at              :datetime
 #  otp_backup_codes       :string           is an Array
-#  otp_required_for_login :boolean
+#  otp_required_for_login :boolean          default(FALSE)
 #  otp_secret             :string
 #  provider               :string
 #  remember_created_at    :datetime
@@ -46,8 +46,6 @@ class User < ApplicationRecord
          otp_number_of_backup_codes: 10,
          otp_secret_encryption_key: ENV.fetch("OTP_SECRET_KEY", nil)
 
-  serialize :otp_backup_codes, JSON
-
   has_one :account, dependent: :destroy
   has_many :user_roles, dependent: :destroy
   has_many :roles, through: :user_roles
@@ -55,16 +53,13 @@ class User < ApplicationRecord
 
   after_create :set_patient_role!
 
-  def patient?
-    roles.exists?(name: "patient")
-  end
+  # 2FA
 
-  def specialist?
-    roles.exists?(name: "specialist")
-  end
-
-  def enable_two_factor!
-    update!(otp_required_for_login: true)
+  def enable_two_factor!(secret = nil)
+    update!(
+      otp_required_for_login: true,
+      otp_secret: secret || User.generate_otp_secret
+    )
   end
 
   def disable_two_factor!
@@ -75,20 +70,16 @@ class User < ApplicationRecord
     )
   end
 
-  def two_factor_qr_code_uri
-    issuer = ENV.fetch("OTP_2FA_ISSUER_NAME", nil)
-    label = [issuer, email].join(":")
-
-    otp_provisioning_uri(label, issuer:)
+  def two_factor_provisioning_uri(secret)
+    otp_provisioning_uri(
+      email,
+      otp_secret: secret,
+      issuer: ENV.fetch("OTP_2FA_ISSUER_NAME", "Przewlekli.pl")
+    )
   end
 
-  def otp_qrcode
-    provision_uri = otp_provisioning_uri(email, issuer: "Przewlekli.pl")
-    RQRCode::QRCode.new(provision_uri)
-  end
-
-  def otp_enabled?
-    otp_required_for_login
+  def two_factor_otp_qrcode(uri)
+    RQRCode::QRCode.new(uri)
   end
 
   def generate_two_factor_secret_if_missing!
@@ -101,6 +92,12 @@ class User < ApplicationRecord
     otp_backup_codes.present?
   end
 
+  def otp_enabled?
+    otp_required_for_login
+  end
+
+  # Omniauth
+
   def self.from_omniauth!(auth)
     find_or_create_by!(provider: auth.provider, uid: auth.uid) do |user|
       user.email = auth.info.email
@@ -111,6 +108,16 @@ class User < ApplicationRecord
 
   def oauth_account?
     provider.present? && uid.present?
+  end
+
+  # Roles
+
+  def patient?
+    roles.exists?(name: "patient")
+  end
+
+  def specialist?
+    roles.exists?(name: "specialist")
   end
 
   def set_specialist_role!

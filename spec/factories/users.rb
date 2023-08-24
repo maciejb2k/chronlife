@@ -16,7 +16,7 @@
 #  last_sign_in_ip        :string
 #  locked_at              :datetime
 #  otp_backup_codes       :string           is an Array
-#  otp_required_for_login :boolean
+#  otp_required_for_login :boolean          default(FALSE)
 #  otp_secret             :string
 #  provider               :string
 #  remember_created_at    :datetime
@@ -53,6 +53,12 @@ FactoryBot.define do
     trait :specialist do
       after(:create) do |user, _|
         user.set_specialist_role!
+      end
+    end
+
+    trait :two_factor_enabled do
+      after(:create) do |user, _|
+        user.enable_two_factor!
       end
     end
   end

@@ -9,9 +9,7 @@ class Settings::TwoFactorAuthentication::OtpController < BaseController
   end
 
   def destroy
-    current_user.otp_required_for_login = false
-    current_user.otp_backup_codes&.clear
-    current_user.save!
+    current_user.disable_two_factor!
 
     redirect_to settings_security_path,
                 notice: "Dwuskładnikowe uwierzytelnianie zostało pomyślnie wyłączone."
