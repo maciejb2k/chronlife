@@ -227,6 +227,12 @@ pl:
     destroy:
       success: Zdjęcie zostało usunięte.
   activerecord:
+    errors:
+      models:
+        disease:
+          attributes:
+            predefined_disease_id:
+              taken: już przypisałeś tę chorobę do swojego profilu
     attributes:
       treatment_update:
         statuses:

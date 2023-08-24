@@ -28,6 +28,10 @@
 #
 FactoryBot.define do
   factory :disease do
-    
+    account
+    predefined_disease
+    severity { rand(1..5) }
+    diagnosed_at { Faker::Date.between(from: 10.years.ago, to: Time.zone.today) }
+    color { Faker::Color.hex_color }
   end
 end

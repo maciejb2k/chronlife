@@ -20,9 +20,9 @@
 #
 FactoryBot.define do
   factory :disease_risk_factor do
-    name { "MyString" }
-    description { "MyText" }
-    severity { 1 }
-    disease { nil }
+    name { Faker::Lorem.word }
+    description { Faker::Lorem.paragraph_by_chars(number: 100) }
+    severity { rand(1..5) }
+    disease
   end
 end
