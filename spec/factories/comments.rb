@@ -21,6 +21,16 @@
 #
 FactoryBot.define do
   factory :comment do
-    
+    body { Faker::Lorem.paragraph }
+    account
+    for_disease_status # default trait
+
+    trait :for_disease_status do
+      association :commentable, factory: :disease_status
+    end
+
+    trait :for_group_post do
+      association :commentable, factory: :group_post
+    end
   end
 end
