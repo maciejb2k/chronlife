@@ -16,6 +16,8 @@
 #
 FactoryBot.define do
   factory :disease_category do
-    
+    name { Faker::Lorem.word }
+    description { Faker::Lorem.sentence }
+    color { Faker::Color.hex_color }
   end
 end

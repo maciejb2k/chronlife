@@ -17,8 +17,6 @@
 class DiseaseCategory < ApplicationRecord
   has_many :diseases, dependent: :destroy
 
-  has_one_attached :icon
-
   validates :name, length: { maximum: 100 }, presence: true, uniqueness: true
   validates :description, length: { maximum: 250 }, allow_blank: true
   validates :color, format: { with: /\A#?(?:[A-F0-9]{3}){1,2}\z/i }, allow_blank: true
