@@ -18,8 +18,33 @@
 #
 #  fk_rails_...  (account_id => accounts.id)
 #
-require 'rails_helper'
+require "rails_helper"
 
 RSpec.describe Article, type: :model do
-  pending "add some examples to (or delete) #{__FILE__}"
+  describe "Factory" do
+    it "has valid factory" do
+      expect(create(:article)).to be_valid
+    end
+  end
+
+  describe "associations" do
+    it { is_expected.to belong_to(:account) }
+  end
+
+  describe "validations" do
+    describe "title" do
+      it { is_expected.to validate_presence_of(:title) }
+      it { is_expected.to validate_length_of(:title).is_at_most(100) }
+    end
+
+    describe "description" do
+      it { is_expected.to validate_length_of(:description).is_at_most(100) }
+      it { is_expected.to allow_value("").for(:description) }
+    end
+
+    describe "body" do
+      it { is_expected.to validate_presence_of(:body) }
+      it { is_expected.to validate_length_of(:body).is_at_most(5000) }
+    end
+  end
 end

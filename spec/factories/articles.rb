@@ -20,8 +20,9 @@
 #
 FactoryBot.define do
   factory :article do
-    titile { "MyString" }
-    body { "MyText" }
-    account { nil }
+    title { "Article title" }
+    body { Faker::Lorem.paragraph }
+    description { Faker::Lorem.sentence }
+    account
   end
 end

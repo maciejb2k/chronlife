@@ -8,7 +8,5 @@
 #  updated_at :datetime         not null
 #
 FactoryBot.define do
-  factory :article_tag do
-    
-  end
+  factory :article_tag do; end
 end
