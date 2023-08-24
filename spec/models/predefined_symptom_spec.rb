@@ -19,8 +19,16 @@
 #
 #  fk_rails_...  (predefined_disease_id => predefined_diseases.id)
 #
-require 'rails_helper'
+require "rails_helper"
 
 RSpec.describe PredefinedSymptom, type: :model do
-  pending "add some examples to (or delete) #{__FILE__}"
+  describe "Factory" do
+    it "has valid factory" do
+      expect(create(:predefined_symptom)).to be_valid
+    end
+  end
+
+  describe "associations" do
+    it { is_expected.to belong_to(:predefined_disease) }
+  end
 end

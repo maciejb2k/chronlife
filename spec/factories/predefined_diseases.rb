@@ -16,7 +16,7 @@
 #
 FactoryBot.define do
   factory :predefined_disease do
-    name { Faker::Lorem.word }
+    name { Faker::Alphanumeric.alphanumeric(number: 32) }
     description { Faker::Lorem.paragraph }
   end
 end

@@ -21,6 +21,8 @@
 #
 FactoryBot.define do
   factory :predefined_symptom do
-    
+    name { Faker::Alphanumeric.alphanumeric(number: 32) }
+    description { Faker::Lorem.paragraph }
+    predefined_disease
   end
 end

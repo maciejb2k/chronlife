@@ -19,8 +19,8 @@
 #
 FactoryBot.define do
   factory :disease_symptom_update do
-    intensity { 1 }
-    update_date { "2023-07-17" }
-    disease_symptom { nil }
+    intensity { rand(0..5) }
+    update_date { Faker::Date.between(from: 1.year.ago, to: Time.zone.today) }
+    symptom factory: :custom_disease_symptom
   end
 end

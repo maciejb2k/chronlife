@@ -26,7 +26,20 @@ FactoryBot.define do
   factory :disease_symptom do
     description { "MyText" }
     first_noticed_at { "2023-07-17" }
-    disease { nil }
+    disease
     predefined_symptom { nil }
+
+    trait :with_custom_symptom do
+      name { Faker::Alphanumeric.alphanumeric(number: 32) }
+    end
+
+    trait :with_predefined_symptom do
+      after(:build) do |disease_symptom|
+        disease_symptom.predefined_symptom = create(:predefined_symptom)
+      end
+    end
+
+    factory :custom_disease_symptom, traits: [:with_custom_symptom]
+    factory :predfined_disease_symptom, traits: [:with_predefined_symptom]
   end
 end

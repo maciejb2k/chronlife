@@ -233,6 +233,12 @@ pl:
           attributes:
             predefined_disease_id:
               taken: już przypisałeś tę chorobę do swojego profilu
+        disease_symptom:
+          set_name_or_predefined: wybierz z listy albo podaj własną nazwę objawu
+          only_name_or_predefined: tylko jedno pole może być wypełnione
+          attributes:
+            predefined_symptom_id:
+              taken: objaw już został dodany do tej choroby
     attributes:
       treatment_update:
         statuses:

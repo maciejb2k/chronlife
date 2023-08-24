@@ -33,10 +33,7 @@ class DiseaseSymptom < ApplicationRecord
   validates :first_noticed_at, allow_blank: true,
                                timeliness: { on_or_before: -> { Time.zone.now }, type: :date }
   validates :predefined_symptom_id, presence: true,
-                                    uniqueness: {
-                                      scope: :disease_id,
-                                      message: "objaw już został dodany do tej choroby"
-                                    },
+                                    uniqueness: { scope: :disease_id },
                                     if: -> { predefined_symptom_id.present? }
 
   validate :only_one_field_set
@@ -45,9 +42,9 @@ class DiseaseSymptom < ApplicationRecord
 
   def only_one_field_set
     if predefined_symptom_id.blank? && name.blank?
-      errors.add(:predefined_symptom_id, "wybierz z listy albo podaj własną nazwę objawu")
+      errors.add(:predefined_symptom_id, :set_name_or_predefined)
     elsif predefined_symptom_id.present? && name.present?
-      errors.add(:predefined_symptom_id, "tylko jedno pole może być wypełnione")
+      errors.add(:predefined_symptom_id, :only_name_or_predefined)
     end
   end
 end
