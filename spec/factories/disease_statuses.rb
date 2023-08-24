@@ -20,6 +20,9 @@
 #
 FactoryBot.define do
   factory :disease_status do
-    
+    content { Faker::Lorem.paragraph }
+    mood { rand(1..3) }
+    status { DiseaseStatus::STATUSES.sample }
+    disease
   end
 end
