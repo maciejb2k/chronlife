@@ -6,7 +6,7 @@ gem "rails", "~> 7.0.6"
 
 # Cool stuff
 gem "pg", "~> 1.1"
-gem "puma", "~> 5.0"
+gem "puma", "~> 5.6"
 gem "tzinfo-data", "~> 2.0.6", platforms: %i[ mingw mswin x64_mingw jruby ]
 gem "bootsnap", "~> 1.16.0", require: false
 
