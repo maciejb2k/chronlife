@@ -20,7 +20,7 @@
 #
 FactoryBot.define do
   factory :friend_request do
-    user { nil }
+    account { nil }
     friend { nil }
   end
 end

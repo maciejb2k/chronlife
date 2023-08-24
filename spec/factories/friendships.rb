@@ -20,7 +20,7 @@
 #
 FactoryBot.define do
   factory :friendship do
-    user { nil }
+    account { nil }
     friend { nil }
   end
 end

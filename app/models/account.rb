@@ -33,7 +33,7 @@
 class Account < ApplicationRecord
   include ImageUploader::Attachment(:image)
 
-  belongs_to :user, dependent: :destroy
+  belongs_to :user
 
   has_many :friend_requests, dependent: :destroy
   has_many :sent_friend_requests, class_name: "FriendRequest",
@@ -59,13 +59,14 @@ class Account < ApplicationRecord
   has_many :articles, dependent: :destroy
 
   EDUCATION_OPTIONS = %w[none primary secondary bachelor master doctorate].freeze
+  SEX_OPTIONS = %w[male female other].freeze
 
   validates :first_name, presence: true, length: { maximum: 32 }
   validates :last_name, presence: true, length: { maximum: 32 }
   validates :username, presence: true, uniqueness: true, length: { maximum: 50 }
 
   validates :bio, length: { maximum: 100 }, allow_blank: true
-  validates :sex, inclusion: { in: %w[male female other] }, allow_blank: true
+  validates :sex, inclusion: { in: SEX_OPTIONS }, allow_blank: true
   validates :birthday, timeliness: {
                          on_or_after: -> { 100.years.ago },
                          on_or_before: -> { 3.years.ago.to_date },
@@ -79,6 +80,16 @@ class Account < ApplicationRecord
                           in: EDUCATION_OPTIONS
                         },
                         allow_blank: true
+
+  def full_name
+    "#{first_name} #{last_name}"
+  end
+
+  def account_incomplete?
+    first_name.blank? || last_name.blank? || username.blank?
+  end
+
+  # Friendship methods
 
   def all_friend_requests
     FriendRequest.where(
@@ -96,13 +107,5 @@ class Account < ApplicationRecord
 
   def friend_request_received?(account)
     received_friend_requests.exists?(account_id: account.id)
-  end
-
-  def account_incomplete?
-    first_name.blank? || last_name.blank? || username.blank? || birthday.blank?
-  end
-
-  def full_name
-    "#{first_name} #{last_name}"
   end
 end

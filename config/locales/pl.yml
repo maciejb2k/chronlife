@@ -252,6 +252,7 @@ pl:
           rejected: Wniosek został odrzucony
       account:
         education:
+          one: education
           none: Brak
           primary: Podstawowe
           secondary: Średnie

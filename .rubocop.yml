@@ -66,3 +66,7 @@ RSpec/NestedGroups:
 
 RSpec/MultipleExpectations:
   Enabled: false
+
+# it was annoying in account specs in associations
+RSpec/ImplicitSubject:
+  Enabled: false

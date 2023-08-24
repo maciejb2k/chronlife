@@ -33,5 +33,14 @@
 FactoryBot.define do
   factory :account do
     user
+    first_name { Faker::Name.first_name }
+    last_name { Faker::Name.last_name }
+    username { "#{first_name}#{last_name}" }
+
+    trait :incomplete do
+      first_name { nil }
+      last_name { nil }
+      username { nil }
+    end
   end
 end
