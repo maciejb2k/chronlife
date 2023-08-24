@@ -19,6 +19,11 @@
 #
 FactoryBot.define do
   factory :disease_photo do
-    
+    image do
+      Rack::Test::UploadedFile.new(Rails.root.join("spec", "assets", "photo1.jpg"), "image/jpg")
+    end
+
+    caption { "MyString" }
+    disease
   end
 end

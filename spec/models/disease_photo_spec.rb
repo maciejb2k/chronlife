@@ -17,8 +17,29 @@
 #
 #  fk_rails_...  (disease_id => diseases.id)
 #
-require 'rails_helper'
+require "rails_helper"
 
 RSpec.describe DiseasePhoto, type: :model do
-  pending "add some examples to (or delete) #{__FILE__}"
+  describe "factory" do
+    it "has a valid factory" do
+      expect(build(:disease_photo)).to be_valid
+    end
+  end
+
+  describe "associations" do
+    it { is_expected.to belong_to(:disease) }
+  end
+
+  describe "validations" do
+    describe "image" do
+      it { is_expected.to validate_presence_of(:image) }
+    end
+
+    describe "caption" do
+      it { is_expected.to validate_length_of(:caption).is_at_most(50) }
+      it { is_expected.to allow_value("").for(:caption) }
+    end
+  end
+
+  # TODO: Shrine validations
 end
