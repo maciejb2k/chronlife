@@ -72,6 +72,10 @@ This application is my first take on **Turbo** (I've used **Stimulus** before, s
 
 I haven't used the Turbo features in the whole project, but only in a few places, where the application required **eager-loaded frames** or some **interactivity**, like the comments section and reactions for disease statuses, friend requests, some of the forms and flash messages.
 
+## RSpec
+
+Right now, there are only [model specs](https://github.com/maciejb2k/chronlife/tree/main/spec/models) (`393 examples, 0 failures`), but I'm planning to add system specs in the future.
+
 ## Application overview
 
 Below is a list of features that I've already implemented or I'm planning to implement in the future.
