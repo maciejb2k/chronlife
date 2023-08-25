@@ -21,6 +21,8 @@
 #
 FactoryBot.define do
   factory :group_post do
-    
+    body { Faker::Lorem.sentence }
+    group
+    account
   end
 end

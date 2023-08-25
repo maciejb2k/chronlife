@@ -19,8 +19,24 @@
 #  fk_rails_...  (account_id => accounts.id)
 #  fk_rails_...  (group_id => groups.id)
 #
-require 'rails_helper'
+require "rails_helper"
 
 RSpec.describe GroupPost, type: :model do
-  pending "add some examples to (or delete) #{__FILE__}"
+  describe "factory" do
+    it { expect(create(:group_post)).to be_valid }
+  end
+
+  describe "associations" do
+    it { is_expected.to belong_to(:group).inverse_of(:posts) }
+    it { is_expected.to belong_to(:account) }
+    it { is_expected.to have_many(:comments).dependent(:destroy) }
+    it { is_expected.to have_many(:reactions).dependent(:destroy) }
+  end
+
+  describe "validations" do
+    describe "body" do
+      it { is_expected.to validate_presence_of(:body) }
+      it { is_expected.to validate_length_of(:body).is_at_most(250) }
+    end
+  end
 end

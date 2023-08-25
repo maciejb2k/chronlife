@@ -19,8 +19,26 @@
 #  fk_rails_...  (account_id => accounts.id)
 #  fk_rails_...  (group_id => groups.id)
 #
-require 'rails_helper'
+require "rails_helper"
 
 RSpec.describe GroupMember, type: :model do
-  pending "add some examples to (or delete) #{__FILE__}"
+  subject { build(:group_member, group: create(:group), account: create(:account)) }
+
+  describe "factory" do
+    it { is_expected.to be_valid }
+  end
+
+  describe "associations" do
+    it { is_expected.to belong_to(:group) }
+    it { is_expected.to belong_to(:account) }
+  end
+
+  describe "validations" do
+    it do
+      is_expected.to(
+        validate_uniqueness_of(:account_id).scoped_to(:group_id)
+        .case_insensitive.with_message(I18n.t("errors.messages.taken"))
+      )
+    end
+  end
 end
