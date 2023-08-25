@@ -22,6 +22,16 @@
 #
 FactoryBot.define do
   factory :reaction do
-    
+    reaction_type { "like" }
+    account
+    for_disease_status # default trait
+
+    trait :for_disease_status do
+      association :reactable, factory: :disease_status
+    end
+
+    trait :for_group_post do
+      association :reactable, factory: :group_post
+    end
   end
 end
