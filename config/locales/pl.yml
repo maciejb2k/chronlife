@@ -249,6 +249,8 @@ pl:
           attributes:
             note_tag_id:
               taken: Tag został już przypisany do notatki.
+        treatment:
+          days_difference_errror: Niepoprawny format daty.
     attributes:
       treatment_update:
         statuses:

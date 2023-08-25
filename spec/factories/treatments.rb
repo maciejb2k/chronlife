@@ -23,10 +23,10 @@
 #
 FactoryBot.define do
   factory :treatment do
-    title { "MyString" }
-    description { "MyText" }
-    start_date { "2023-07-20" }
-    end_date { "2023-07-20" }
-    effectiveness { 1 }
+    title { Faker::Lorem.sentence(word_count: 3) }
+    description { Faker::Lorem.paragraph(sentence_count: 2) }
+    start_date { Faker::Date.between(from: 1.year.ago, to: Time.zone.today) }
+    effectiveness { rand(1..5) }
+    account
   end
 end

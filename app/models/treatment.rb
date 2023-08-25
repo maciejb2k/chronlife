@@ -44,12 +44,12 @@ class Treatment < ApplicationRecord
                          on_or_before: -> { Time.zone.now },
                          type: :date
                        },
-                       allow_blank: true
+                       allow_blank: true,
+                       if: :start_date?
 
   def days_difference
-    today = Time.zone.today
-    (today - start_date).to_i
-  rescue ArgumentError
-    raise "Invalid date format. Please use a valid date in the format yyyy-mm-dd."
+    (Time.zone.today - start_date).to_i
+  rescue TypeError
+    raise :days_difference_errror
   end
 end
