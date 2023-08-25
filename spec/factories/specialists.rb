@@ -20,6 +20,9 @@
 #
 FactoryBot.define do
   factory :specialist do
-    
+    specialization { Faker::Job.field }
+    specialization_description { Faker::Job.key_skill }
+    field_of_expertise { Faker::Job.field }
+    user
   end
 end

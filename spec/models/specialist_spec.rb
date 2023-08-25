@@ -18,8 +18,31 @@
 #
 #  fk_rails_...  (user_id => users.id)
 #
-require 'rails_helper'
+require "rails_helper"
 
 RSpec.describe Specialist, type: :model do
-  pending "add some examples to (or delete) #{__FILE__}"
+  describe "factory" do
+    it { expect(build(:specialist)).to be_valid }
+  end
+
+  describe "associations" do
+    it { is_expected.to belong_to(:user) }
+  end
+
+  describe "validations" do
+    describe "specialization" do
+      it { is_expected.to validate_presence_of(:specialization) }
+      it { is_expected.to validate_length_of(:specialization).is_at_most(50) }
+    end
+
+    describe "specialization_description" do
+      it { is_expected.to validate_presence_of(:specialization_description) }
+      it { is_expected.to validate_length_of(:specialization_description).is_at_most(100) }
+    end
+
+    describe "field_of_expertise" do
+      it { is_expected.to validate_presence_of(:field_of_expertise) }
+      it { is_expected.to validate_length_of(:field_of_expertise).is_at_most(50) }
+    end
+  end
 end
