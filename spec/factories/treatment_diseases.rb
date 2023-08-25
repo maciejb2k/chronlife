@@ -21,6 +21,7 @@
 #
 FactoryBot.define do
   factory :treatment_disease do
-    
+    treatment { nil }
+    disease { nil }
   end
 end

@@ -19,8 +19,28 @@
 #  fk_rails_...  (disease_id => diseases.id)
 #  fk_rails_...  (treatment_id => treatments.id)
 #
-require 'rails_helper'
+require "rails_helper"
 
 RSpec.describe TreatmentDisease, type: :model do
-  pending "add some examples to (or delete) #{__FILE__}"
+  subject { build(:treatment_disease, treatment: create(:treatment), disease: create(:disease)) }
+
+  describe "factory" do
+    it { is_expected.to be_valid }
+  end
+
+  describe "associations" do
+    it { is_expected.to belong_to(:treatment) }
+    it { is_expected.to belong_to(:disease) }
+  end
+
+  describe "validations" do
+    describe "disease_id" do
+      it do
+        is_expected.to(
+          validate_uniqueness_of(:disease_id).scoped_to(:treatment_id)
+          .case_insensitive.with_message(:taken)
+        )
+      end
+    end
+  end
 end

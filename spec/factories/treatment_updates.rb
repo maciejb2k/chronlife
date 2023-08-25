@@ -21,10 +21,10 @@
 #
 FactoryBot.define do
   factory :treatment_update do
-    name { "MyString" }
-    status { "MyString" }
-    description { "MyText" }
-    update_date { "2023-07-20" }
-    treatment { nil }
+    name { Faker::Lorem.word }
+    status { TreatmentUpdate::STATUSES.sample }
+    description { Faker::Lorem.paragraph }
+    update_date { Faker::Date.between(from: 1.year.ago, to: Time.zone.today) }
+    treatment
   end
 end

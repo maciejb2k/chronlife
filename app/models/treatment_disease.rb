@@ -23,7 +23,5 @@ class TreatmentDisease < ApplicationRecord
   belongs_to :treatment, inverse_of: :treatment_diseases
   belongs_to :disease, inverse_of: :treatment_diseases
 
-  validates :disease_id,
-            uniqueness: { scope: :treatment_id,
-                          message: "Choroba została już przypisana do tej terapii." }
+  validates :disease_id, uniqueness: { scope: :treatment_id }
 end

@@ -251,6 +251,10 @@ pl:
               taken: Tag został już przypisany do notatki.
         treatment:
           days_difference_errror: Niepoprawny format daty.
+        treatment_disease:
+          attributes:
+            disease_id:
+              taken: choroba już została dodana do tej terapii
     attributes:
       treatment_update:
         statuses:
