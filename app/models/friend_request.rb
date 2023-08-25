@@ -23,9 +23,9 @@ class FriendRequest < ApplicationRecord
   belongs_to :friend, class_name: "Account"
 
   validates :account_id, uniqueness: { scope: :friend_id }
+  validate :not_self
   validate :not_friends
   validate :not_pending
-  validate :not_self
 
   def accept
     account.friends << friend
@@ -35,16 +35,16 @@ class FriendRequest < ApplicationRecord
   private
 
   def not_self
-    errors.add(:friend, "can't be equal to user") if account == friend
+    errors.add(:friend, :cannot_send_to_yourself) if account == friend
   end
 
   def not_friends
-    errors.add(:friend, "is already added") if account.friends.include?(friend)
+    errors.add(:friend, :already_friend) if account.friends.include?(friend)
   end
 
   def not_pending
     return unless friend.sent_friend_requests.include?(account)
 
-    errors.add(:friend, "already requested friendship")
+    errors.add(:friend, :already_sent)
   end
 end

@@ -239,6 +239,10 @@ pl:
           attributes:
             predefined_symptom_id:
               taken: objaw już został dodany do tej choroby
+        friend_request:
+          cannot_send_to_yourself: nie możesz wysłać zaproszenia do siebie
+          already_friend: jesteście już znajomymi
+          already_sent: zaproszenie zostało już wysłane
     attributes:
       treatment_update:
         statuses:

@@ -18,6 +18,7 @@
 #  fk_rails_...  (account_id => accounts.id)
 #  fk_rails_...  (friend_id => accounts.id)
 #
+
 FactoryBot.define do
   factory :friend_request do
     account { nil }
