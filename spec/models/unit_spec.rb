@@ -13,8 +13,14 @@
 #
 #  index_units_on_symbol  (symbol) UNIQUE
 #
-require 'rails_helper'
+require "rails_helper"
 
 RSpec.describe Unit, type: :model do
-  pending "add some examples to (or delete) #{__FILE__}"
+  describe "factory" do
+    it { expect(build(:unit)).to be_valid }
+  end
+
+  describe "associations" do
+    it { is_expected.to have_many(:measurement_types).dependent(:destroy) }
+  end
 end
