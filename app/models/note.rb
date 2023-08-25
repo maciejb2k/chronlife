@@ -23,7 +23,8 @@ class Note < ApplicationRecord
   belongs_to :account
 
   has_many :note_group_associations, dependent: :destroy
-  has_many :groups, through: :note_group_associations, class_name: "NoteGroup", inverse_of: :notes
+  has_many :groups, through: :note_group_associations, class_name: "NoteGroup",
+                    source: :note_group, inverse_of: :notes
   has_many :note_tag_associations, dependent: :destroy
   has_many :tags, through: :note_tag_associations, class_name: "NoteTag", source: :note_tag,
                   inverse_of: :notes

@@ -19,8 +19,27 @@
 #  fk_rails_...  (note_id => notes.id)
 #  fk_rails_...  (note_tag_id => note_tags.id)
 #
-require 'rails_helper'
+require "rails_helper"
 
 RSpec.describe NoteTagAssociation, type: :model do
-  pending "add some examples to (or delete) #{__FILE__}"
+  describe "associations" do
+    it { is_expected.to belong_to(:note) }
+    it { is_expected.to belong_to(:note_tag) }
+  end
+
+  describe "validations" do
+    let_it_be(:note) { create(:note) }
+    let_it_be(:note_tag) { create(:note_tag) }
+    let_it_be(:note_tag_association) do
+      create(:note_tag_association, note:, note_tag:)
+    end
+
+    it do
+      expect(note_tag_association).to(
+        validate_uniqueness_of(:note_tag_id)
+        .scoped_to(:note_id)
+        .case_insensitive.with_message(:taken)
+      )
+    end
+  end
 end

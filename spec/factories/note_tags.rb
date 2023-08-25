@@ -19,6 +19,7 @@
 #
 FactoryBot.define do
   factory :note_tag do
-    
+    name { Faker::Alphanumeric.alpha(number: 16) }
+    account
   end
 end

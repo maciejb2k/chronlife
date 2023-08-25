@@ -245,6 +245,10 @@ pl:
           already_sent: zaproszenie zostało już wysłane
         friendship:
           cannot_friend_yourself: nie możesz dodać siebie do znajomych
+        note_tag_association:
+          attributes:
+            note_tag_id:
+              taken: Tag został już przypisany do notatki.
     attributes:
       treatment_update:
         statuses:

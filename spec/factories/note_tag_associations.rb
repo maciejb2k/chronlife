@@ -21,6 +21,7 @@
 #
 FactoryBot.define do
   factory :note_tag_association do
-    
+    note { nil }
+    note_tag { nil }
   end
 end
