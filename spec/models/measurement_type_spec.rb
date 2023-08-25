@@ -18,8 +18,15 @@
 #
 #  fk_rails_...  (unit_id => units.id)
 #
-require 'rails_helper'
+require "rails_helper"
 
 RSpec.describe MeasurementType, type: :model do
+  describe "factory" do
+    it { expect(build(:measurement_type)).to be_valid }
+  end
 
+  describe "associations" do
+    it { is_expected.to belong_to(:unit) }
+    it { is_expected.to have_many(:measurements).dependent(:destroy) }
+  end
 end
