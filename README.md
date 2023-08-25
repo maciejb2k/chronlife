@@ -255,20 +255,26 @@ Below is the current ERD diagram of the application.
 ## TODO
 
 ### Important
-- [ ] Add specs (model, system)
-- [ ] Fix query performance issues (n+1, etc.)
+- [x] Add models specs
+- [ ] Add system specs
 - [ ] Add authorization using Pundit policies
+- [ ] Fix query performance issues (n+1, etc.)
 - [ ] Fix all Rubocop errors
 - [ ] Complete the seeder
 - [ ] Fix roles and permissions
-- [ ] Add RWD
+- [ ] Add caching
+- [ ] Add mailers
+- [ ] Add background jobs
 
 ### Less important, but also important
-- [ ] Add translations
+- [x] Add controller translations
+- [x] Add models translations
+- [x] Refactor controllers
 - [ ] Refactor routes
-- [ ] Refactor controllers
+- [ ] Add views translations
 - [ ] Refactor ugly if statements
 - [ ] Move from importmaps to `jsbundling-rails`
+- [ ] Add RWD
 
 ## Final thoughts
 
