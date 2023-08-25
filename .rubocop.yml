@@ -70,3 +70,6 @@ RSpec/MultipleExpectations:
 # it was annoying in account specs in associations
 RSpec/ImplicitSubject:
   Enabled: false
+
+RSpec/ExampleLength:
+  Enabled: false
