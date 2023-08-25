@@ -20,8 +20,8 @@
 #  fk_rails_...  (user_id => users.id)
 #
 class UserRole < ApplicationRecord
-  belongs_to :user, dependent: :destroy
-  belongs_to :role, dependent: :destroy
+  belongs_to :user
+  belongs_to :role
 
   validates :user_id, uniqueness: { scope: :role_id }
 end
