@@ -23,7 +23,7 @@
 class SpecialistRequest < ApplicationRecord
   belongs_to :account
 
-  before_validation :set_status, on: :create
+  before_validation :set_default_status, on: :create
   before_create :set_hash_code
 
   STATES = %w[pending approved rejected].freeze
@@ -52,7 +52,7 @@ class SpecialistRequest < ApplicationRecord
 
   private
 
-  def set_status
+  def set_default_status
     self.status = "pending"
   end
 

@@ -15,7 +15,7 @@
 #
 FactoryBot.define do
   factory :admin do
-    uid { SecureRandom.uuid }
+    id { SecureRandom.uuid }
     email { Faker::Internet.email }
     password { "password" }
   end

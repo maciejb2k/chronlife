@@ -13,8 +13,10 @@
 #
 #  index_admins_on_email  (email) UNIQUE
 #
-require 'rails_helper'
+require "rails_helper"
 
 RSpec.describe Admin, type: :model do
-  pending "add some examples to (or delete) #{__FILE__}"
+  describe "factory" do
+    it { expect(build(:admin)).to be_valid }
+  end
 end
