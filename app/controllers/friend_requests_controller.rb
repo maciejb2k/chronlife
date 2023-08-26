@@ -15,7 +15,7 @@ class FriendRequestsController < BaseController
       if @friend_request.save
         format.html { redirect_to accounts_path, notice: "Wysłano zaproszenie do grona znajomych" }
       else
-        format.html { redirect_to accounts_path, notice: "Nie udało się wysłać zaproszenia." }
+        format.html { render :index, notice: "Nie udało się wysłać zaproszenia." }
       end
     end
   end

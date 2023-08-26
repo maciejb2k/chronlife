@@ -10,10 +10,6 @@ class AccountsController < BaseController
     )
   end
 
-  def show
-    authorize @account
-  end
-
   private
 
   def set_account

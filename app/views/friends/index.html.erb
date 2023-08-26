@@ -10,45 +10,51 @@
           <h2 class="card-group__header__title">Znajomi</h2>
         </div>
         <div class="card-group__header__right">
-          <%= link_to friend_requests_path, class: "dash-button dash-button--blue dash-button--small" do %>
-            <i class="ri-user-add-line dash-button__icon"></i>
-            Przeglądaj zaproszenia
+          <% if policy(@account).show? %>
+            <%= link_to friend_requests_path, class: "dash-button dash-button--blue dash-button--small" do %>
+              <i class="ri-user-add-line dash-button__icon"></i>
+              Przeglądaj zaproszenia
+            <% end %>
           <% end %>
         </div>
       </header>
       <div class="card-group__content">
-        <% if @friends.to_a.any? %>
-          <ul class="friends-list">
-            <% @friends.each do |friend| %>
-              <li class="friend">
-                <div class="friend__left">
-                  <div class="friend__avatar">
-                    <%= image_tag "avatar-placeholder.png", alt: friend.full_name, class: "friend__image" %>
+        <% if policy(@account).show? %>
+          <% if @friends.to_a.any? %>
+            <ul class="friends-list">
+              <% @friends.each do |friend| %>
+                <li class="friend">
+                  <div class="friend__left">
+                    <div class="friend__avatar">
+                      <%= image_tag "avatar-placeholder.png", alt: friend.full_name, class: "friend__image" %>
+                    </div>
+                    <%= link_to account_path(friend), class: "friend__info" do %>
+                      <p class="friend__name"><%= friend.full_name %></p>
+                      <p class="friend__username">@<%= friend.username %></p>
+                    <% end %>
                   </div>
-                  <%= link_to account_path(friend), class: "friend__info" do %>
-                    <p class="friend__name"><%= friend.full_name %></p>
-                    <p class="friend__username">@<%= friend.username %></p>
-                  <% end %>
-                </div>
-                <div class="friend__right">
-                  <%= button_to account_path(friend), class: "friend__button" do %>
-                    <i class="ri-arrow-right-line friend__icon friend__icon--show"></i>
-                  <% end %>
-                </div>
-              </li>
-            <% end %>
-          </ul>
+                  <div class="friend__right">
+                    <%= button_to account_path(friend), class: "friend__button" do %>
+                      <i class="ri-arrow-right-line friend__icon friend__icon--show"></i>
+                    <% end %>
+                  </div>
+                </li>
+              <% end %>
+            </ul>
+          <% else %>
+            <p class="dash-group__text">Nie dodano żadnych znajomych.</p>
+          <% end %>
+          <div class="dash-pagination friends-pagination">
+            <div class="dash-pagination__controls">
+              <%== pagy_nav(@pagy) if @pagy.pages > 1 %>
+            </div>
+            <div class="dash-pagination__info">
+              <%== pagy_info(@pagy) %>
+            </div>
+          </div>
         <% else %>
-          <p class="dash-group__text">Nie dodano żadnych znajomych.</p>
+          <p class="dash-text">Nie możesz wyświetlić tych informacji, ponieważ nie jesteście znajomymi.</p>
         <% end %>
-        <div class="dash-pagination friends-pagination">
-          <div class="dash-pagination__controls">
-            <%== pagy_nav(@pagy) if @pagy.pages > 1 %>
-          </div>
-          <div class="dash-pagination__info">
-            <%== pagy_info(@pagy) %>
-          </div>
-        </div>
       </div>
     </div>
   </div>

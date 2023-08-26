@@ -6,7 +6,7 @@
       <div class="profile__card__top">
         <%= image_tag "avatar-placeholder.png", alt: "", class: "profile__card__avatar" %>
         <div class="profile__card__buttons">
-          <% unless current_account == @account %>
+          <% if policy(@account).show? %>
             <button class="dash-button dash-button--line">
               <i class="ri-chat-3-line dash-button__icon"></i>
               Wyślij wiadomość
@@ -35,7 +35,7 @@
               <% end %>
             <% end %>
           <% end %>
-          <div data-controller="dropdown" class="dash-dropdown">
+          <div data-controller="dropdown" class="dash-dropdown dash-dropdown--big">
             <button class="dash-dropdown__button" type="button" data-action="dropdown#toggle click@window->dropdown#hide">
               <i class="ri-more-fill"></i>
             </button>

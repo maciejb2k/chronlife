@@ -15,26 +15,30 @@
         </div>
       </header>
       <div class="card-group__content">
-        <div class="posts-list">
-          <%= turbo_frame_tag "posts_#{@pagy.page}" do %>
-            <% unless @posts.to_a.any? %>
-              <p>Nie dodano na razie żadnych postów.</p>
-            <% else %>
-              <div class="dash-posts-container">
-                <% @posts.each do |post| %>
-                  <%= render partial: post, locals: { disease: post.disease, disease_status: post,
+        <% if policy(@account).show? %>
+          <div class="posts-list">
+            <%= turbo_frame_tag "posts_#{@pagy.page}" do %>
+              <% unless @posts.to_a.any? %>
+                <p>Nie dodano na razie żadnych postów.</p>
+              <% else %>
+                <div class="dash-posts-container">
+                  <% @posts.each do |post| %>
+                    <%= render partial: post, locals: { disease: post.disease, disease_status: post,
                       liked_statuses: @liked_statuses } %>
-                <% end %>
-              </div>
-            <% end %>
-            <% unless @pagy.page == @pagy.pages %>
-              <%= turbo_frame_tag "posts_#{@pagy.next}", src: account_posts_path(page: @pagy.next),
+                  <% end %>
+                </div>
+              <% end %>
+              <% unless @pagy.page == @pagy.pages %>
+                <%= turbo_frame_tag "posts_#{@pagy.next}", src: account_posts_path(page: @pagy.next),
                   loading: "lazy" do %>
-                <div>Pobieranie postów ...</div>
+                  <div>Pobieranie postów ...</div>
+                <% end %>
               <% end %>
             <% end %>
-          <% end %>
-        </div>
+          </div>
+        <% else %>
+          <p class="dash-text">Nie możesz wyświetlić tych informacji, ponieważ nie jesteście znajomymi.</p>
+        <% end %>
       </div>
     </div>
   </div>
