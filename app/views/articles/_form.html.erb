@@ -3,11 +3,11 @@
     <div class="dash-form__group">
       <div class="dash-form__group__container dash-form__group__container--vertical">
         <div class="dash-form__group__left">
-          <div class="dash-form__group__title">Tytuł</div>
-          <p class="dash-form__group__description">Podaj tytuł artykułu.</p>
+          <div class="dash-form__group__title"><%= t(".title.title") %></div>
+          <p class="dash-form__group__description"><%= t(".title.description") %></p>
         </div>
         <div class="dash-form__group__right">
-          <%= f.text_field :title, class: "dash-form__input", placeholder: "Recenzja leków." %>
+          <%= f.text_field :title, class: "dash-form__input", placeholder: t(".title.placeholder") %>
         </div>
       </div>
       <%= render DashFormErrorComponent.new(model: @article, field: :title) %>
@@ -17,8 +17,8 @@
     <div class="dash-form__group">
       <div class="dash-form__group__container dash-form__group__container--vertical">
         <div class="dash-form__group__left">
-          <div class="dash-form__group__title">Treść</div>
-          <p class="dash-form__group__description">Za pomocą poniższego edytora możesz napisać artykuł..</p>
+          <div class="dash-form__group__title"><%= t(".body.title") %></div>
+          <p class="dash-form__group__description"><%= t(".body.description") %></p>
         </div>
         <div class="dash-form__group__right dash-form__group__right--full">
           <div class="dash-quill" data-controller="quill">
@@ -31,6 +31,6 @@
     </div>
   </div>
   <div class="dash-form__group">
-    <%= f.submit "Zapisz", class: "dash-form__submit dash-button dash-button--new" %>
+    <%= f.submit t("dash_form.submit"), class: "dash-form__submit dash-button dash-button--new" %>
   </div>
 <% end %>

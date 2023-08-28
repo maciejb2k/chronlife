@@ -1,4 +1,6 @@
 pl:
+  dash_form:
+    submit: Zapisz
   accounts:
     index:
       title: Wszystkie osoby
@@ -22,3 +24,106 @@ pl:
       title: Informacje
       text: Lorem, ipsum dolor sit amet consectetur adipisicing elit. Vero, quam.
       unauthorized: Nie możesz wyświetlić tych informacji, ponieważ nie jesteście znajomymi.
+  articles:
+    index:
+      title: Strefa wiedzy
+      button:
+        new: Dodaj nowy artykuł
+        sort: Sortowanie
+        filter: Filtrowanie
+      all: Wszystkie artykuły
+      article:
+        body: Lorem, ipsum dolor sit amet consectetur adipisicing elit. Mollitia est eligendi quisquam voluptates ipsum aut ea quam consequatur amet repellendus.
+      no_results: Na razie nie dodano żadnych artykułów.
+    edit:
+      title: Edytuj artykuł
+      button:
+        delete: Usuń
+      turbo:
+        confirm: Czy na pewno chcesz usunąć ten artykuł?
+    new:
+      title: Dodaj nowy artykuł
+    show:
+      button:
+        edit: Edytuj
+    form:
+      title:
+        title: Tytuł
+        description: Podaj tytuł artykułu
+        placeholder: Recenzja leków.
+      body:
+        title: Treść
+        description: Za pomocą poniższego edytora możesz napisać artykuł..
+  dashboard:
+    index:
+      welcome: Witaj, %{name}!
+      welcome_back: Dobrze cię widzieć ponownie na naszej platformie.
+      new_posts: Najnowsze wpisy
+      button:
+        add_post: Dodaj nowy wpis
+        adjust_stats: Dostosuj kafelki
+      fetching_posts: Pobieranie wpisów...
+      stats: Twoje statystyki
+      diseases: choroby
+      groups: grupy
+      treatments: terapie
+      measurements: pomiary
+      lab_results: wyniki badań
+      notes: notatki
+  disease_photos:
+    index:
+      title: Zdjęcia
+      button:
+        new: Dodaj nowe zdjęcie
+      photo:
+        turbo:
+          confirm: Czy na pewno chcesz usunąć to zdjęcie?
+    new:
+      title: Dodaj nowe zdjęcie
+    form:
+      image:
+        title: Zdjęcie
+        description: Wybierz zdjęcie związane z chorobą.
+      caption:
+        title: Podpis
+        description: Podaj podpis do zdjęcia.
+        placeholder: Zdjęcie zrobione w szpitalu.
+  disease_risk_factors:
+    index:
+      title: Czynniki ryzyka
+      button:
+        new: Dodaj nowy czynnik ryzyka
+      no_results: Na razie nie dodano żadnych czynników ryzyka.
+    new:
+      title: Dodaj nowy czynnik ryzyka
+    edit:
+      title: Edytuj czynnik ryzyka
+    show:
+      button:
+        edit: Edytuj
+        delete: Usuń
+        turbo:
+          confirm: Czy na pewno chcesz usunąć?
+      info: Informacje
+      name:
+        title: Nazwa
+        description: Nazwa czynnika ryzyka
+      desc:
+        title: Opis
+        description: Jak ten czynnik wpływa na twoje objawy.
+      severity:
+        title: Nasilenie
+        description: Jak bardzo ten czynnik wpływa na twoje objawy.
+    form:
+      name:
+        title: Nazwa
+        description: Co powoduje zaostrzenie objawów.
+        placeholder: Orzeszki ziemne
+      desc:
+        title: Opis
+        description: Opisz dokładnie jak dany czynnik wpływa na zaostrzenie objawów.
+        placeholder: Na następny dzień następuje zaostrzenie wysypki.
+      severity:
+        title: Nasilenie
+        description: W skali od 1 do 5 jak mocno wpływa na ciebie ten czynnik.
+

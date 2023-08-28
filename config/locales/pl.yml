@@ -206,10 +206,6 @@ pl:
       index: czynniki ryzyka
       new: dodaj czynnik ryzyka
       edit: edytuj czynnik ryzyka
-    index:
-      title: Czynniki ryzyka
-      new: Dodaj czynnik ryzyka
-      no_results: Na razie nie dodałeś żadnych czynników ryzyka.
     create:
       success: Czynnik ryzyka został dodany
     update:

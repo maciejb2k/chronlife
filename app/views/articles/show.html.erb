@@ -7,7 +7,7 @@
     <div class="dash-header__right">
       <%= link_to edit_article_path(@article), class: "dash-button dash-button--edit" do %>
         <i class="ri-edit-line dash-button__icon"></i>
-        Edytuj artykuł
+        <%= t(".button.edit") %>
       <% end %>
       <%= link_to articles_path, class: "dash-button dash-button--back" do %>
         <i class="ri-arrow-left-line dash-button__icon"></i>
@@ -22,7 +22,7 @@
   <div class="page-article__content">
     <div class="article-preview">
       <div class="article-preview__image-container">
-        <%= image_tag "article-default.png", class: "article-preview__image" %>
+        <%= image_tag "article-default.png", alt: "", class: "article-preview__image" %>
       </div>
       <div class="article-preview__content">
         <div class="article-preview__content__info">

@@ -5,14 +5,14 @@
     <div class="dash-header__left">
       <h1 class="dash-header__title">
         <i class="ri-camera-3-line dash-header__title__icon"></i>
-        Zdjęcia
+        <%= t(".title") %>
       </h1>
       <%= render "shared/breadcrumbs" %>
     </div>
     <div class="dash-header__right">
       <%= link_to new_disease_photo_path, class: "dash-button dash-button--new" do %>
         <i class="ri-add-line dash-button__icon"></i>
-        Dodaj nowe zdjęcie
+        <%= t(".button.new") %>
       <% end %>
       <%= link_to @disease, class: "dash-button dash-button--back" do %>
         <i class="ri-arrow-left-line dash-button__icon"></i>
@@ -38,8 +38,7 @@
                 <%= disease_photo.created_at.strftime("%d.%m.%Y") %>r.
               </p>
               <%= button_to disease_photo_path(@disease, disease_photo), method: :delete,
-                  data: { confirm: "Czy na pewno chcesz usunąć?",
-                  turbo_confirm: "Czy na pewno chcesz usunąć?" } do %>
+                  data: { confirm: t(".photo.turbo.confirm"), turbo_confirm: t(".photo.turbo.confirm") } do %>
                 <i class="ri-close-line disease-photo__delete-icon"></i>
               <% end %>
             </div>

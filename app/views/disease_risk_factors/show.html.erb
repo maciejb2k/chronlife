@@ -7,11 +7,11 @@
     <div class="dash-header__right">
       <%= link_to edit_disease_risk_factor_path, class: "dash-button dash-button--info" do %>
         <i class="ri-edit-2-line dash-button__icon"></i>
-        Edytuj
+        <%= t(".button.edit") %>
       <% end %>
       <%= button_to disease_risk_factor_path(@disease, @disease_risk_factor),
           class: "dash-button dash-button--delete", method: :delete,
-          form: { data: { turbo_confirm: 'Czy na pewno chcesz usunąć?' } } do %>
+          form: { data: { turbo_confirm: t(".button.turbo.confirm") } } do %>
         <i class="ri-close-line dash-button__icon"></i>
         Usuń
       <% end %>
@@ -28,15 +28,15 @@
   <div class="page-disease-risk-factor__content">
     <div class="dash-group dash-group--border">
       <header class="dash-group__header">
-        <h2 class="dash-group__title">Informacje</h2>
+        <h2 class="dash-group__title"><%= t(".info") %></h2>
         <div class="dash-group__actions"></div>
       </header>
       <div class="dash-group__content">
         <div class="dash-info">
           <div class="dash-info__group">
             <div class="dash-info__group__left">
-              <div class="dash-info__group__label">Nazwa</div>
-              <div class="dash-info__group__desc">Nazwa czynnika ryzyka.</div>
+              <div class="dash-info__group__label"><%= t(".name.title") %></div>
+              <div class="dash-info__group__desc"><%= t(".name.description") %></div>
             </div>
             <div class="dash-info__group__right">
               <div class="dash-info__group__value"><%= @disease_risk_factor.name %></div>
@@ -44,8 +44,8 @@
           </div>
           <div class="dash-info__group">
             <div class="dash-info__group__left">
-              <div class="dash-info__group__label">Opis</div>
-              <div class="dash-info__group__desc">Jak ten czynnik wpływa na twoje objawy.</div>
+              <div class="dash-info__group__label"><%= t(".desc.title") %></div>
+              <div class="dash-info__group__desc"><%= t(".desc.description") %></div>
             </div>
             <div class="dash-info__group__right">
               <div class="dash-info__group__value">
@@ -55,8 +55,8 @@
           </div>
           <div class="dash-info__group">
             <div class="dash-info__group__left">
-              <div class="dash-info__group__label">Dotkliwość</div>
-              <div class="dash-info__group__desc">Jak silnie ten czynnik na ciebie oddziałuje.</div>
+              <div class="dash-info__group__label"><%= t(".severity.title") %></div>
+              <div class="dash-info__group__desc"><%= t(".severity.description") %></div>
             </div>
             <div class="dash-info__group__right">
               <div class="dash-info__group__value">

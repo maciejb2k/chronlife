@@ -3,11 +3,11 @@
     <div class="dash-form__group">
       <div class="dash-form__group__container">
         <div class="dash-form__group__left">
-          <div class="dash-form__group__title">Nazwa</div>
-          <p class="dash-form__group__description">Co powoduje zaostrzenie objawów.</p>
+          <div class="dash-form__group__title"><%= t(".name.title") %></div>
+          <p class="dash-form__group__description"><%= t(".name.description") %></p>
         </div>
         <div class="dash-form__group__right">
-          <%= form.text_field :name, class: "dash-form__input", placeholder: "Orzeszki ziemne" %>
+          <%= form.text_field :name, class: "dash-form__input", placeholder: t(".name.placeholder") %>
         </div>
       </div>
       <%= render DashFormErrorComponent.new(model: @disease_risk_factor, field: :name) %>
@@ -17,12 +17,12 @@
     <div class="dash-form__group">
       <div class="dash-form__group__container">
         <div class="dash-form__group__left">
-          <div class="dash-form__group__title">Opis</div>
-          <p class="dash-form__group__description">Opisz dokładnie jak dany czynnik wpływa na zaostrzenie objawów.</p>
+          <div class="dash-form__group__title"><%= t(".desc.title") %></div>
+          <p class="dash-form__group__description"><%= t(".desc.description") %></p>
         </div>
         <div class="dash-form__group__right">
           <%= form.text_area :description, class: "dash-form__input dash-form__textarea",
-              placeholder: "Na następny dzień następuje zaostrzenie wysypki." %>
+              placeholder: t(".desc.placeholder") %>
         </div>
       </div>
       <%= render DashFormErrorComponent.new(model: @disease_risk_factor, field: :description) %>
@@ -32,8 +32,8 @@
     <div class="dash-form__group">
       <div class="dash-form__group__container">
         <div class="dash-form__group__left">
-          <div class="dash-form__group__title">Dotkliwość</div>
-          <p class="dash-form__group__description">W skali od 1 do 5 jak mocno wpływa na ciebie ten czynnik.</p>
+          <div class="dash-form__group__title"><%= t(".severity.title") %></div>
+          <p class="dash-form__group__description"><%= t(".severity.description") %></p>
         </div>
         <div class="dash-form__group__right">
           <div class="dash-form__range" data-controller="range-slider">
@@ -47,6 +47,6 @@
     </div>
   </div>
   <div class="dash-form__group">
-    <%= form.submit "Zapisz", class: "dash-form__submit dash-button dash-button--new" %>
+    <%= form.submit t("dash_form.submit"), class: "dash-form__submit dash-button dash-button--new" %>
   </div>
 <% end %>

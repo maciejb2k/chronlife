@@ -3,14 +3,14 @@
     <div class="dash-header__left">
       <h1 class="dash-header__title">
         <i class="ri-profile-line dash-header__title__icon"></i>
-        Strefa wiedzy
+        <%= t(".title") %>
       </h1>
       <%= render "shared/breadcrumbs" %>
     </div>
     <div class="dash-header__right">
       <%= link_to new_article_path, class: "dash-button dash-button--new" do %>
         <i class="ri-add-line dash-button__icon"></i>
-        Dodaj nowy artykuł
+        <%= t(".button.new") %>
       <% end %>
       <%= link_to authenticated_root_path, class: "dash-button dash-button--back" do %>
         <i class="ri-arrow-left-line dash-button__icon"></i>
@@ -27,16 +27,16 @@
       <header class="dash-group__header">
         <h2 class="dash-group__title">
           <i class="ri-newspaper-line dash-group__title__icon"></i>
-          Wszystkie artykuły
+          <%= t(".all") %>
         </h2>
         <div class="dash-group__actions">
           <%= link_to articles_path, class: "dash-button dash-button--light-blue dash-button--small" do %>
             <i class="ri-sort-desc dash-button__icon"></i>
-            Sortowanie
+            <%= t(".button.sort") %>
           <% end %>
           <%= link_to articles_path, class: "dash-button dash-button--blue dash-button--small" do %>
             <i class="ri-equalizer-line dash-button__icon"></i>
-            Filtrowanie
+            <%= t(".button.filter") %>
           <% end %>
         </div>
       </header>
@@ -46,7 +46,7 @@
             <% @articles.each do |article| %>
               <%= link_to article, class: "article" do %>
                 <div class="article__image-container">
-                  <%= image_tag "article-default.png", class: "article__image" %>
+                  <%= image_tag "article-default.png", alt: "", class: "article__image" %>
                 </div>
                 <div class="article__content">
                   <h2 class="article__content__title">
@@ -63,14 +63,14 @@
                       <%= article.updated_at.strftime("%d.%m.%Y") %>
                     </div>
                   </div>
-                  <p class="article__content__text">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Mollitia est eligendi quisquam voluptates ipsum aut ea quam consequatur amet repellendus.</p>
+                  <p class="article__content__text"><%= t(".article.body") %></p>
                 </div>
               <% end %>
             <% end %>
           </div>
         <% else %>
           <p class="no-results">
-            Na razie nie dodano żadnych artykułów.
+            <%= t(".no_results") %>
           </p>
         <% end %>
       </div>

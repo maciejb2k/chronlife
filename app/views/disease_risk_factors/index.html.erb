@@ -3,14 +3,14 @@
     <div class="dash-header__left">
       <h1 class="dash-header__title">
         <i class="ri-fire-line dash-header__title__icon"></i>
-        <%= t '.title' %>
+        <%= t(".title") %>
       </h1>
       <%= render "shared/breadcrumbs" %>
     </div>
     <div class="dash-header__right">
       <%= link_to new_disease_risk_factor_path, class: "dash-button dash-button--new" do %>
         <i class="ri-add-line dash-button__icon"></i>
-        <%= t '.new' %>
+        <%= t(".button.new") %>
       <% end %>
       <%= link_to @disease, class: "dash-button dash-button--back" do %>
         <i class="ri-arrow-left-line dash-button__icon"></i>
@@ -45,7 +45,7 @@
       </div>
     <% else %>
       <p class="no-results">
-        <%= t '.no_results' %>
+        <%= t(".no_results") %>
       </p>
     <% end %>
   </div>

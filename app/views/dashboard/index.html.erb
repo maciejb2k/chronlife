@@ -4,9 +4,9 @@
       <div class="dash-home__header__left">
         <h1 class="dash-home__header__title">
           <i class="ri-sketching dash-home__header__title__icon"></i>
-          Witaj, <%= current_account.first_name %>!
+          <%= t(".welcome", name: current_account.first_name) %>
         </h1>
-        <p class="dash-home__header__text">Dobrze cię widzieć ponownie na naszej platformie.</p>
+        <p class="dash-home__header__text"><%= t(".welcome_back") %></p>
       </div>
       <div class="dash-home__header__right">
         <p class="dash-home__header__date">
@@ -25,13 +25,13 @@
           <header class="dash-group__header">
             <h2 class="dash-group__title">
               <i class="ri-article-line dash-group__title__icon"></i>
-              Najnowsze wpisy
+              <%= t(".new_posts") %>
             </h2>
             <div class="dash-group__actions">
               <%= link_to root_path,
               class: "dash-button dash-button--gray dash-button--small" do %>
                 <i class="ri-add-line dash-button__icon"></i>
-                Dodaj nowy wpis
+                <%= t(".button.add_post") %>
               <% end %>
             </div>
           </header>
@@ -51,7 +51,7 @@
                 <% unless @pagy.page == @pagy.pages %>
                   <%= turbo_frame_tag "posts_#{@pagy.next}", src: account_posts_path(page: @pagy.next),
                   loading: "lazy" do %>
-                    <div>Pobieranie postów ...</div>
+                    <div><%= t(".fetching_posts") %></div>
                   <% end %>
                 <% end %>
               <% end %>
@@ -64,13 +64,13 @@
           <header class="dash-group__header">
             <h2 class="dash-group__title">
               <i class="ri-bar-chart-line dash-group__title__icon"></i>
-              Twoje statystyki
+              <%= t(".stats") %>
             </h2>
             <div class="dash-group__actions">
               <%= link_to root_path,
                   class: "dash-button dash-button--gray dash-button--small" do %>
                 <i class="ri-layout-grid-line dash-button__icon"></i>
-                Dostosuj kafelki
+                <%= t(".button.adjust_stats") %>
               <% end %>
             </div>
           </header>
@@ -82,7 +82,7 @@
                 </div>
                 <div class="dash-stat__content">
                   <p class="dash-stat__text"><%= current_account.diseases.size %></p>
-                  <h3 class="dash-stat__title">choroby</h3>
+                  <h3 class="dash-stat__title"><%= t(".diseases") %></h3>
                 </div>
               </div>
               <div class="dash-stat">
@@ -91,7 +91,7 @@
                 </div>
                 <div class="dash-stat__content">
                   <p class="dash-stat__text"><%= current_account.groups.size %></p>
-                  <h3 class="dash-stat__title">grupy</h3>
+                  <h3 class="dash-stat__title"><%= t(".groups") %></h3>
                 </div>
               </div>
               <div class="dash-stat">
@@ -100,7 +100,7 @@
                 </div>
                 <div class="dash-stat__content">
                   <p class="dash-stat__text"><%= current_account.treatments.size %></p>
-                  <h3 class="dash-stat__title">terapie</h3>
+                  <h3 class="dash-stat__title"><%= t(".treatments") %></h3>
                 </div>
               </div>
               <div class="dash-stat">
@@ -109,7 +109,7 @@
                 </div>
                 <div class="dash-stat__content">
                   <p class="dash-stat__text"><%= current_account.measurements.size %></p>
-                  <h3 class="dash-stat__title">pomiary</h3>
+                  <h3 class="dash-stat__title"><%= t(".measurements") %></h3>
                 </div>
               </div>
               <div class="dash-stat">
@@ -118,7 +118,7 @@
                 </div>
                 <div class="dash-stat__content">
                   <p class="dash-stat__text">0</p>
-                  <h3 class="dash-stat__title">wyników badań</h3>
+                  <h3 class="dash-stat__title"><%= t(".lab_results") %></h3>
                 </div>
               </div>
               <div class="dash-stat">
@@ -127,7 +127,7 @@
                 </div>
                 <div class="dash-stat__content">
                   <p class="dash-stat__text"><%= current_account.notes.size %></p>
-                  <h3 class="dash-stat__title">notatki</h3>
+                  <h3 class="dash-stat__title"><%= t(".notes") %></h3>
                 </div>
               </div>
             </div>
