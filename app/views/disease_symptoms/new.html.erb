@@ -5,7 +5,7 @@
       <%= render "shared/breadcrumbs" %>
     </div>
     <div class="dash-header__right">
-      <%= link_to [:disease, @disease_symptom], class: "dash-button dash-button--back" do %>
+      <%= link_to disease_symptoms_path(@disease), class: "dash-button dash-button--back" do %>
         <i class="ri-arrow-left-line dash-button__icon"></i>
       <% end %>
     </div>

@@ -48,10 +48,11 @@ class MeasurementsController < BaseController
     measurement_type = MeasurementType.find_by!(name: params[:measurement_type])
 
     @measurement = current_account.measurements.build(measurement_params)
-    @measurement.measurement_type = measurement_type
+    @measurement.measurement_type = measurement_type.name
+    validation_context = get_validation_context(measurement_type)
 
     respond_to do |format|
-      if @measurement.valid?(@validation_context)
+      if @measurement.valid?(validation_context)
         @measurement.save
         format.html do
           flash[:success] = t(".success")
@@ -65,7 +66,8 @@ class MeasurementsController < BaseController
 
   def update
     respond_to do |format|
-      if @measurement.update_with_context(measurement_params, @validation_context)
+      validation_context = get_validation_context(@measurement.measurement_type.name)
+      if @measurement.update_with_context(measurement_params, validation_context)
         format.html { redirect_to measurement_url(@measurement), notice: t(".success") }
       else
         format.html { render :edit, status: :unprocessable_entity }
