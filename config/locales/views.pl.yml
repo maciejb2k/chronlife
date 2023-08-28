@@ -1,0 +1,24 @@
+pl:
+  accounts:
+    index:
+      title: Wszystkie osoby
+      your_profile: Twój profil
+      message: Wiadomość
+      friend: Znajomy
+      accept_request: Zaakceptuj zaproszenie
+      request_sent: Wysłasno zaproszenie
+      add_friend: Dodaj znajomego
+    card:
+      send_message: Wyślij wiadomość
+      accept_request: Zaakceptuj zaproszenie
+      request_sent: Wysłano zaproszenie
+      add_friend: Dodaj znajomego
+      report: Zgłoś
+      specialization: Specjalizacje
+      informations: Informacje
+      friends: Znajomi
+      disease_statuses: Aktualizacje zdrowia
+    show:
+      title: Informacje
+      text: Lorem, ipsum dolor sit amet consectetur adipisicing elit. Vero, quam.
+      unauthorized: Nie możesz wyświetlić tych informacji, ponieważ nie jesteście znajomymi.

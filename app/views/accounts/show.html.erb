@@ -7,16 +7,16 @@
     <div class="card-group">
       <header class="card-group__header">
         <div class="card-group__header__left">
-          <h2 class="card-group__header__title">Informacje</h2>
+          <h2 class="card-group__header__title"><%= t(".title") %></h2>
         </div>
         <div class="card-group__header__right">
         </div>
       </header>
       <div class="card-group__content">
         <% if policy(@account).show? %>
-          <p class="card-group__text">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Vero, quam.</p>
+          <p class="card-group__text"><%= t(".text") %></p>
         <% else %>
-          <p class="dash-text">Nie możesz wyświetlić tych informacji, ponieważ nie jesteście znajomymi.</p>
+          <p class="dash-text"><%= t(".unauthorized") %></p>
         <% end %>
       </div>
     </div>

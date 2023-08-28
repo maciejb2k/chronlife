@@ -3,7 +3,7 @@
     <div class="dash-header__left">
       <h1 class="dash-header__title">
         <i class="ri-group-2-line dash-header__title__icon"></i>
-        Wszystkie osoby
+        <%= t(".title") %>
       </h1>
       <%= render "shared/breadcrumbs" %>
     </div>
@@ -38,32 +38,32 @@
             <% if current_account?(account) %>
               <%= link_to account_path(account), class: "account__button account__button--you" do %>
                 <i class="ri-user-line"></i>
-                Twój profil
+                <%= t(".your_profile") %>
               <% end %>
             <% elsif friend?(account) %>
               <%= link_to account_path(account), class: "account__button account__button--friend" do %>
                 <i class="ri-user-shared-line"></i>
-                Znajomy
+                <%= t(".friend") %>
               <% end %>
               <%= link_to account_path(account), class: "account__button account__button--msg" do %>
                 <i class="ri-chat-4-line"></i>
-                Wiadomość
+                <%= t(".message") %>
               <% end %>
             <% elsif received_friend_request?(account) %>
               <%= link_to account_path(account), class: "account__button account__button--accept" do %>
                 <i class="ri-mail-send-line"></i>
-                Zaakceptuj zaproszenie
+                <%= t(".accept_request") %>
               <% end %>
             <% elsif sent_friend_request?(account) %>
               <div class="account__button account__button account__button--send">
                 <i class="ri-mail-send-line"></i>
-                Wysłano zaproszenie
+                <%= t(".request_sent") %>
               </div>
             <% else %>
               <%= button_to friend_requests_path(account_id: account), method: :post,
                     class: "account__button account__button--add", form_class: "w-full" do %>
                 <i class="ri-user-add-line"></i>
-                Dodaj znajomego
+                <%= t(".add_friend") %>
               <% end %>
             <% end %>
           </div>

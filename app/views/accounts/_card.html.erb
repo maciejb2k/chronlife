@@ -9,7 +9,7 @@
           <% if policy(@account).show? %>
             <button class="dash-button dash-button--line">
               <i class="ri-chat-3-line dash-button__icon"></i>
-              Wyślij wiadomość
+              <%= t(".send_message") %>
             </button>
           <% end %>
           <% unless current_account == @account %>
@@ -20,18 +20,18 @@
             <% elsif current_account.friend_request_sent?(@account) %>
               <div class="dash-button dash-button--light-blue">
                 <i class="ri-mail-send-line dash-button__icon"></i>
-                Wysłano zaproszenie
+                <%= t(".request_sent") %>
               </div>
             <% elsif current_account.friend_request_received?(@account) %>
               <div class="dash-button dash-button--blue">
                 <i class="ri-mail-send-line dash-button__icon"></i>
-                Zaakceptuj zaproszenie
+                <%= t(".accept_request") %>
               </div>
             <% else %>
               <%= button_to friend_requests_path(account_id: @account), method: :post,
                   class: "dash-button dash-button--new" do %>
                 <i class="ri-user-add-line dash-button__icon"></i>
-                Dodaj znajomego
+                <%= t(".add_friend") %>
               <% end %>
             <% end %>
           <% end %>
@@ -49,7 +49,7 @@
             >
               <%= link_to settings_settings_path, class: "dash-dropdown__item" do %>
                 <i class="ri-alert-line dash-dropdown__item__icon"></i>
-                Zgłoś
+                <%= t(".report") %>
               <% end %>
             </div>
           </div>
@@ -73,7 +73,7 @@
               <%= @account.user.specialist.field_of_expertise %>
             </div>
             <div class="profile__card__specialist-overtitle">
-              Specjalizacja:
+              <%= t(".specialization") %>
             </div>
             <div class="profile__card__specialist-text">
               <%= @account.user.specialist.specialization.blank? ? '-' : @account.user.specialist.specialization %>
@@ -86,19 +86,19 @@
           <li class="profile__card__nav__item">
             <%= link_to account_path(@account),
                 class: "profile__card__nav__link #{'profile__card__nav__link--active' if current_page?(account_path(@account))}" do %>
-              Informacje
+              <%= t(".informations") %>
             <% end %>
           </li>
           <li class="profile__card__nav__item">
             <%= link_to account_friends_path(@account),
                 class: "profile__card__nav__link #{'profile__card__nav__link--active' if current_page?(account_friends_path(@account))}" do %>
-              Znajomi
+              <%= t(".friends") %>
             <% end %>
           </li>
           <li class="profile__card__nav__item">
             <%= link_to account_posts_path(@account),
                 class: "profile__card__nav__link #{'profile__card__nav__link--active' if current_page?(account_posts_path(@account))}" do %>
-              Aktualizacje zdrowia
+              <%= t(".disease_statuses") %>
             <% end %>
           </li>
         </ul>

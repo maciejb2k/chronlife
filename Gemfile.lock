@@ -466,7 +466,7 @@ DEPENDENCIES
   factory_bot_rails (~> 6.2.0)
   faker (~> 3.2.0)
   groupdate (~> 6.3.0)
-  has_scope
+  has_scope (~> 0.8.1)
   htmlbeautifier (~> 1.4.2)
   importmap-rails (~> 1.2.1)
   jbuilder (~> 2.11.5)
