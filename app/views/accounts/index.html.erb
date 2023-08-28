@@ -35,12 +35,12 @@
             <p class="account__username">@<%= account.username %></p>
           <% end %>
           <div class="account__actions">
-            <% if current_account == account %>
+            <% if current_account?(account) %>
               <%= link_to account_path(account), class: "account__button account__button--you" do %>
                 <i class="ri-user-line"></i>
                 Twój profil
               <% end %>
-            <% elsif current_account.friend?(account) %>
+            <% elsif friend?(account) %>
               <%= link_to account_path(account), class: "account__button account__button--friend" do %>
                 <i class="ri-user-shared-line"></i>
                 Znajomy
@@ -49,16 +49,16 @@
                 <i class="ri-chat-4-line"></i>
                 Wiadomość
               <% end %>
-            <% elsif current_account.friend_request_received?(account) %>
+            <% elsif received_friend_request?(account) %>
               <%= link_to account_path(account), class: "account__button account__button--accept" do %>
                 <i class="ri-mail-send-line"></i>
                 Zaakceptuj zaproszenie
               <% end %>
-            <% elsif current_account.friend_request_sent?(account) %>
-              <%= link_to account_path(account), class: "account__button account__button account__button--send" do %>
+            <% elsif sent_friend_request?(account) %>
+              <div class="account__button account__button account__button--send">
                 <i class="ri-mail-send-line"></i>
                 Wysłano zaproszenie
-              <% end %>
+              </div>
             <% else %>
               <%= button_to friend_requests_path(account_id: account), method: :post,
                     class: "account__button account__button--add", form_class: "w-full" do %>

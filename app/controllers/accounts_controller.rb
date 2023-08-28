@@ -5,9 +5,15 @@ class AccountsController < BaseController
   def index
     @pagy, @accounts = pagy(
       Account
+      .joins(user: :roles)
       .includes(user: :roles)
+      .order(:username)
       .all
     )
+
+    @friends = current_account.friends.pluck(:id)
+    @sent_friend_requests = current_account.sent_friend_requests.pluck(:friend_id)
+    @received_friend_requests = current_account.received_friend_requests.pluck(:account_id)
   end
 
   private

@@ -117,7 +117,11 @@ class User < ApplicationRecord
   end
 
   def specialist?
-    roles.exists?(name: "specialist")
+    if roles.loaded?
+      roles.any? { |role| role.name == "specialist" }
+    else
+      roles.exists?(name: "specialist")
+    end
   end
 
   def set_specialist_role!
