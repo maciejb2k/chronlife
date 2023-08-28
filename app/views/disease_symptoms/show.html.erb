@@ -1,7 +1,9 @@
 <div class="page-disease-symptom">
   <header class="dash-header">
     <div class="dash-header__left">
-      <h1 class="dash-header__title"><%= @symptom_name %></h1>
+      <h1 class="dash-header__title">
+        <span class="dash-header__title__text"><%= @symptom_name %></span>
+      </h1>
       <%= render "shared/breadcrumbs" %>
     </div>
     <div class="dash-header__right">

@@ -1,6 +1,5 @@
 class MeasurementsController < BaseController
   before_action :set_measurement, only: %i[show edit update destroy]
-  before_action :set_validation_context, only: %i[create update]
   before_action :set_breadcrumbs
 
   def index
@@ -48,8 +47,8 @@ class MeasurementsController < BaseController
     measurement_type = MeasurementType.find_by!(name: params[:measurement_type])
 
     @measurement = current_account.measurements.build(measurement_params)
-    @measurement.measurement_type = measurement_type.name
-    validation_context = get_validation_context(measurement_type)
+    @measurement.measurement_type = measurement_type
+    validation_context = get_validation_context(measurement_type.name)
 
     respond_to do |format|
       if @measurement.valid?(validation_context)
@@ -91,10 +90,6 @@ class MeasurementsController < BaseController
 
   def measurement_params
     params.require(:measurement).permit(:value, :measurement_date)
-  end
-
-  def set_validation_context
-    @validation_context = get_validation_context(@measurement.measurement_type.name)
   end
 
   def get_validation_context(measurement_type)

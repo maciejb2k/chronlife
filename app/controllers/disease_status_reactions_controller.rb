@@ -1,6 +1,4 @@
 class DiseaseStatusReactionsController < BaseController
-  include DiseaseSettable
-
   before_action :set_reactable
 
   def index
@@ -8,6 +6,7 @@ class DiseaseStatusReactionsController < BaseController
   end
 
   def like
+    authorize @disease_status, :like?
     @reaction = @disease_status.reactions.build(reaction_type: "like")
     @reaction.account = current_account
 
@@ -22,6 +21,7 @@ class DiseaseStatusReactionsController < BaseController
   end
 
   def unlike
+    authorize @disease_status, :unlike?
     @reaction = @disease_status.reactions.find_by!(account: current_account)
     @reaction.destroy!
 
@@ -34,6 +34,7 @@ class DiseaseStatusReactionsController < BaseController
   private
 
   def set_reactable
+    @disease = Disease.find(params[:disease_id])
     @disease_status = DiseaseStatus.find(params[:status_id])
   end
 

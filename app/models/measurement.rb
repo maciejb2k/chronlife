@@ -35,7 +35,10 @@ class Measurement < ApplicationRecord
                     on: :measurement_weight
   validates :value, numericality: { greater_than_or_equal_to: 30, less_than_or_equal_to: 220 },
                     on: :measurement_heart_beat
-  validates :value, format: { with: %r{\A\d{1,3}/\d{1,3}\z}, message: "powinno być w formacie 120/80" },
+  validates :value, format: {
+                      with: %r{\A\d{1,3}/\d{1,3}\z},
+                      message: :invalid_measurement_blood_pressure
+                    },
                     on: :measurement_blood_pressure
   validates :value, numericality: { greater_than_or_equal_to: 0, less_than_or_equal_to: 1000 },
                     on: :measurement_sugar

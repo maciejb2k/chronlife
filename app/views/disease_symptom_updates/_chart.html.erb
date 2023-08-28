@@ -1,1 +1,1 @@
-<%= column_chart @disease_symptom_updates.group_by_day(:update_date).average(:intensity), min: 1, max: 5 %>
+<%= line_chart @disease_symptom_updates.group_by_day(:update_date).average(:intensity), min: 0, max: 5, curve: true %>

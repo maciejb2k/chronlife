@@ -43,6 +43,8 @@ class DiseaseStatusesController < BaseController
   end
 
   def update
+    authorize @disease_status
+
     respond_to do |format|
       if @disease_status.update(disease_status_params)
         format.html { redirect_to disease_status_path(@disease_status), notice: t(".success") }
@@ -53,6 +55,7 @@ class DiseaseStatusesController < BaseController
   end
 
   def destroy
+    authorize @disease_status
     @disease_status.destroy
 
     respond_to do |format|

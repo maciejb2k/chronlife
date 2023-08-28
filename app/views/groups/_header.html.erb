@@ -17,16 +17,16 @@
         <i class="ri-more-fill"></i>
       </button>
       <div
-              data-dropdown-target="menu"
-              class="hidden transition transform origin-top-right dash-dropdown__list"
-              data-transition-enter-from="opacity-0 scale-95"
-              data-transition-enter-to="opacity-100 scale-100"
-              data-transition-leave-from="opacity-100 scale-100"
-              data-transition-leave-to="opacity-0 scale-95"
-            >
-        <%= link_to root_path, class: "dash-dropdown__item" do %>
-          <i class="ri-settings-line dash-dropdown__item__icon"></i>
-          Ustawienia
+        data-dropdown-target="menu"
+        class="hidden transition transform origin-top-right dash-dropdown__list"
+        data-transition-enter-from="opacity-0 scale-95"
+        data-transition-enter-to="opacity-100 scale-100"
+        data-transition-leave-from="opacity-100 scale-100"
+        data-transition-leave-to="opacity-0 scale-95"
+      >
+        <%= button_to leave_group_path(@group), method: :delete,
+          class: "dash-dropdown__item", data: { action: "dropdown#toggle", } do %>
+          <i class="ri-close-line dash-dropdown__item__icon dash-dropdown__item__icon--delete"></i> Opuść
         <% end %>
       </div>
     </div>

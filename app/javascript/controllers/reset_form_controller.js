@@ -8,5 +8,10 @@ export default class extends Controller {
 
   clear() {
     this.element.reset();
+    this.element
+      .querySelectorAll(".dash-form__group__error")
+      .forEach((error) => {
+        error.remove();
+      });
   }
 }

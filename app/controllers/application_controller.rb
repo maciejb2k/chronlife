@@ -31,7 +31,6 @@ class ApplicationController < ActionController::Base
           locals: { message:, icon: "error" }
         )
       end
-      format.html { redirect_to root_path, alert: message }
     end
   end
 end

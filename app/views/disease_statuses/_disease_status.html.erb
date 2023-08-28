@@ -46,13 +46,19 @@
           data-transition-leave-from="opacity-100 scale-100"
           data-transition-leave-to="opacity-0 scale-95"
         >
-          <%= link_to edit_disease_status_path(disease, disease_status),
+          <% if policy(disease_status).owner? %>
+            <%= link_to edit_disease_status_path(disease, disease_status),
               data: { action: "dropdown#toggle" }, class: "dash-dropdown__item" do %>
-            <i class="ri-edit-line dash-dropdown__item__icon"></i> Edytuj
-          <% end %>
-          <%= button_to disease_status_path(disease, disease_status), method: :delete, class: "dash-dropdown__item",
+              <i class="ri-edit-line dash-dropdown__item__icon"></i> Edytuj
+            <% end %>
+            <%= button_to disease_status_path(disease, disease_status), method: :delete, class: "dash-dropdown__item",
               data: { action: "dropdown#toggle", confirm: "Are you sure?", turbo_confirm: "Are you sure?" } do %>
-            <i class="ri-close-line dash-dropdown__item__icon dash-dropdown__item__icon--delete"></i> Usuń
+              <i class="ri-close-line dash-dropdown__item__icon dash-dropdown__item__icon--delete"></i> Usuń
+            <% end %>
+          <% else %>
+            <div class="dash-dropdown__item">
+              <i class="ri-alert-line dash-dropdown__item__icon"></i> Zgłoś
+            </div>
           <% end %>
         </div>
       </div>

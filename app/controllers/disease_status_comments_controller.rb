@@ -1,6 +1,4 @@
 class DiseaseStatusCommentsController < BaseController
-  include DiseaseSettable
-
   before_action :set_commentable
   before_action :set_comment, only: %i[show edit update destroy]
 
@@ -42,6 +40,8 @@ class DiseaseStatusCommentsController < BaseController
   end
 
   def update
+    authorize @comment
+
     respond_to do |format|
       if @comment.update(comment_params)
         format.turbo_stream
@@ -72,6 +72,7 @@ class DiseaseStatusCommentsController < BaseController
   private
 
   def set_commentable
+    @disease = Disease.find(params[:disease_id])
     @disease_status = DiseaseStatus.find(params[:status_id])
   end
 

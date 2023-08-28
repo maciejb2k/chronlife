@@ -255,6 +255,10 @@ pl:
           attributes:
             disease_id:
               taken: choroba już została dodana do tej terapii
+        measurement:
+          attributes:
+            value:
+              invalid_measurement_blood_pressure: "powinno być w formacie 120/80"
     attributes:
       treatment_update:
         statuses:
