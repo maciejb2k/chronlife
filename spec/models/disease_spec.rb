@@ -86,4 +86,29 @@ RSpec.describe Disease, type: :model do
       end
     end
   end
+
+  describe "scopes" do
+    describe ".is_diagnosed_by_hp" do
+      subject(:diseases) { described_class.is_diagnosed_by_hp }
+
+      let_it_be(:disease1) { create(:disease, diagnosed_by_hp: true) }
+      let_it_be(:disease2) { create(:disease, diagnosed_by_hp: false) }
+
+      it { is_expected.to include(disease1) }
+      it { is_expected.not_to include(disease2) }
+      it { expect(diseases.length).to eq(1) }
+    end
+
+    describe ".by_severity" do
+      subject(:diseases) { described_class.by_severity(3) }
+
+      let_it_be(:disease1) { create(:disease, severity: 3) }
+      let_it_be(:disease2) { create(:disease, severity: 4) }
+      let_it_be(:disease3) { create(:disease, severity: 1) }
+
+      it { is_expected.to include(disease1) }
+      it { is_expected.not_to include(disease2) }
+      it { expect(diseases.length).to eq(1) }
+    end
+  end
 end

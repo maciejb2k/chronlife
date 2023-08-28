@@ -3,12 +3,19 @@ class DiseasesController < BaseController
   before_action :set_predefined_diseases, only: %i[new create edit update]
   before_action :set_breadcrumbs
 
+  with_options only: %i[index] do
+    has_scope :by_severity
+    has_scope :is_diagnosed_by_hp, type: :boolean
+  end
+
   def index
     @pagy, @diseases = pagy(
-      current_account
-      .diseases
-      .includes(:predefined_disease)
-      .order(severity: :desc)
+      apply_scopes(
+        current_account
+        .diseases
+        .includes(:predefined_disease)
+        .order(severity: :desc)
+      )
     )
   end
 

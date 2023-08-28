@@ -49,4 +49,7 @@ class Disease < ApplicationRecord
                        }
   validates :color, format: { with: /\A#?(?:[A-F0-9]{3}){1,2}\z/i }, allow_blank: true
   validates :predefined_disease_id, uniqueness: { scope: :account_id }
+
+  scope :is_diagnosed_by_hp, -> { where(diagnosed_by_hp: true) }
+  scope :by_severity, ->(severity) { where(severity:) }
 end

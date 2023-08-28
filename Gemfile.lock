@@ -153,6 +153,9 @@ GEM
       activesupport (>= 5.0)
     groupdate (6.3.0)
       activesupport (>= 6.1)
+    has_scope (0.8.1)
+      actionpack (>= 5.2)
+      activesupport (>= 5.2)
     hashie (5.0.0)
     htmlbeautifier (1.4.2)
     httparty (0.21.0)
@@ -463,6 +466,7 @@ DEPENDENCIES
   factory_bot_rails (~> 6.2.0)
   faker (~> 3.2.0)
   groupdate (~> 6.3.0)
+  has_scope
   htmlbeautifier (~> 1.4.2)
   importmap-rails (~> 1.2.1)
   jbuilder (~> 2.11.5)

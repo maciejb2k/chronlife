@@ -89,6 +89,9 @@ gem 'rails_stats', "~> 1.0.2"
 # Admin panel
 gem "avo", "~> 2.39.0"
 
+# Dynamically apply scopes
+gem "has_scope", "~> 0.8.1"
+
 group :development, :test do
   gem "debug", "~> 1.8.0", platforms: %i[ mri mingw x64_mingw ]
   gem "faker", "~> 3.2.0"
