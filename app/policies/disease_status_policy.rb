@@ -8,11 +8,11 @@ class DiseaseStatusPolicy < ApplicationPolicy
   end
 
   def like?
-    friend? || group_member?
+    owner? || friend? || group_member?
   end
 
   def unlike?
-    friend? || group_member?
+    owner? || friend? || group_member?
   end
 
   def owner?
