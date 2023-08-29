@@ -1,0 +1,26 @@
+<%= form_with(model: [:settings, @account], html: { class: "settings-form" } ) do |f| %>
+  <div class="settings-form__group">
+    <%= f.label :first_name, t(".first_name.label"), class: "settings-form__label" %>
+    <%= f.text_field :first_name, class: "settings-form__input" %>
+    <%= render DashFormErrorComponent.new(model: @account, field: :first_name) %>
+  </div>
+  <div class="settings-form__group">
+    <%= f.label :last_name, t(".last_name.label"), class: "settings-form__label" %>
+    <%= f.text_field :last_name, class: "settings-form__input" %>
+    <%= render DashFormErrorComponent.new(model: @account, field: :last_name) %>
+  </div>
+  <div class="settings-form__group">
+    <%= f.label :username, t(".username.label"), class: "settings-form__label" %>
+    <%= f.text_field :username, class: "settings-form__input", disabled: true %>
+    <p class="settings-form__desc"><%= t(".username.desc") %></p>
+    <%= render DashFormErrorComponent.new(model: @account, field: :username) %>
+  </div>
+  <div class="settings-form__group">
+    <%= f.label :birthday, t(".birthday.label"), class: "settings-form__label" %>
+    <%= f.date_field :birthday, class: "settings-form__input" %>
+    <%= render DashFormErrorComponent.new(model: @account, field: :birthday) %>
+  </div>
+  <div class="settings-form__group">
+    <%= f.submit t("dash_form.submit"), class: "dash-button dash-button--new" %>
+  </div>
+<% end %>

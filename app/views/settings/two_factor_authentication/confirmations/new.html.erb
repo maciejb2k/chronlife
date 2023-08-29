@@ -1,7 +1,7 @@
 <div class="page-setup-2fa">
   <header class="dash-header">
     <div class="dash-header__left">
-      <h1 class="dash-header__title">Skonfiguruj 2FA</h1>
+      <h1 class="dash-header__title"><%= t(".title") %></h1>
       <%= render "shared/breadcrumbs" %>
     </div>
     <div class="dash-header__right">
@@ -31,7 +31,7 @@
         </div>
         <div class="setup-2fa__right">
           <div class="setup-2fa__totp">
-            <p class="setup-2fa__totp__label">Jeżeli nie możesz zeskanować kodu QR, to skopiuj poniższy tekst do aplikacji:</p>
+            <p class="setup-2fa__totp__label"><%= t(".desc") %></p>
             <p class="setup-2fa__totp__link"><%= @provision_url %></p>
           </div>
           <%= render "form" %>

@@ -541,3 +541,104 @@ pl:
       note_tag_id:
         label: Tag
       submit: Dodaj
+  pages:
+    home:
+      nav:
+        patients: Chorzy
+        specialists: Specjaliści
+        social: Społeczność
+        sign_in: Zaloguj się
+        sign_up: Dołącz do nas
+      hero:
+        overtitle: "#1 platforma w Polsce"
+        title:
+          non_color: Poczuj się jak
+          color: w domu
+        desc: Dołącz do społeczności osób wspólnie zmagającymi się ze swoimi problemami zdrowotnymi.
+        link: Poznaj naszą platformę
+      showcase:
+        monitoring: Monitorowanie zdrowia
+        security: Bezpieczeństwo
+      footer:
+        text: Copyright © 2023 by Maciej Biel. Wszelkie prawa zastrzeżone.
+  posts:
+    index:
+      title: Wszystkie aktualizacje zdrowia
+      no_posts: Nie dodano na razie żadnych aktualizacji zdrowia.
+      turbo:
+        fetching: Pobieranie aktualizacji zdrowia...
+  settings:
+    nav:
+      account: Konto
+      security: Prywatność
+    account:
+      show:
+        title: Ustawienia konta
+        personal_data:
+          title: Twoje dane
+        avatar:
+          title: Zdjęcie profilowe
+        address:
+          title: Dane adresowe
+        education:
+          title: Wykształcenie
+      account_form:
+        first_name:
+          label: Imię
+          placeholder: Jan
+        last_name:
+          label: Nazwisko
+          placeholder: Kowalski
+        username:
+          label: Nazwa użytkownika
+          placeholder: jan.kowalski
+          desc: Nie możesz zmienić swojej nazwy użytkownika.
+        birthday:
+          label: Data urodzenia
+          placeholder: 01-01-2000
+      address_form:
+        city:
+          label: Miasto
+          placeholder: Rzeszów
+        country:
+          label: Kraj
+          placeholder: Polska
+      avatar_form:
+        image:
+          new_label: Nowe zdjęcie profilowe
+          change_label: Zmień zdjęcie profilowe
+        delete: Usuń zdjęcie profilowe
+      education_form:
+        education:
+          label: Wykształcenie
+    security:
+      show:
+        title: Zabezpieczenia
+        password:
+          title: Zmień hasło
+          disabled: Ta opcja jest dla ciebie wyłączona, ponieważ zarejestrowałeś się poprzez zewnętrznego dostawcę.
+          not_available: Ta opcja jest na razie niedostępna.
+        two_factor:
+          title: Dwuskładnikowe uwierzytelnianie
+          enabled: Dwuskładnikowe uwierzytelnianie jest włączone na twoim koncie.
+          not_enabled: Dwuskładnikowe uwierzytelnianie jest wyłączone na twoim koncie.
+          button:
+            enable: Włącz
+            codes: Wygeneruj nowe kody zapasowe
+            disable:
+              title: Wyłącz
+              turbo:
+                confirm: Czy na pewno chcesz wyłączyć dwuskładnikowe uwierzytelnianie?
+    two_factor_authentication:
+      confirmations:
+        new:
+          title: Skonfiguruj dwuskładnikowe uwierzytelnianie
+          desc: "Jeżeli nie możesz zeskanować kodu QR, to skopiuj poniższy tekst do aplikacji:"
+        form:
+          otp_attempt:
+            label: Kod jednorazowy
+          submit: Potwierdź
+      recovery_codes:
+        success:
+          title: Kody zapasowe
+          desc: Poprawnie skonfigurowano 2FA. Poniżej wygenerowano listę kodów zapasowych, którymi możesz odzyskać konto, jeżeli stracisz dostęp do telefonu. Zapisz je na później.

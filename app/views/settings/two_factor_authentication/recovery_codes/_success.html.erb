@@ -1,7 +1,7 @@
 <div class="recovery-codes">
   <header class="recovery-codes__header">
-    <h2 class="recovery-codes__title">Kody zapasowe.</h2>
-    <p class="recovery-codes__desc">Poprawnie skonfigurowano 2FA. Poniżej wygenerowano listę kodów zapasowych, którymi możesz odzyskać konto, jeżeli stracisz dostęp do telefonu. Zapisz je na później.</p>
+    <h2 class="recovery-codes__title"><%= t(".title") %></h2>
+    <p class="recovery-codes__desc"><%= t(".desc") %></p>
   </header>
   <ul class="recovery-codes__list">
     <% @recovery_codes.each do |code| %>

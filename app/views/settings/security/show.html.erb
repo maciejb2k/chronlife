@@ -1,7 +1,10 @@
 <div class="page-settings">
   <header class="dash-header">
     <div class="dash-header__left">
-      <h1 class="dash-header__title">Zabezpieczenia</h1>
+      <h1 class="dash-header__title">
+        <i class="ri-lock-line dash-header__title__icon"></i>
+        <%= t(".title") %>
+      </h1>
       <%= render "shared/breadcrumbs" %>
     </div>
     <div class="dash-header__right">
@@ -17,59 +20,44 @@
   </div>
   <div class="page-settings__content">
     <div class="page-settings__nav">
-      <%= render "shared/settings_nav" %>
+      <%= render "settings/nav" %>
     </div>
     <div class="page-settings__frame">
       <div class="settings-group">
         <header class="settings-group__header">
-          <h3 class="settings-group__header__title">Zmień Hasło</h3>
+          <h3 class="settings-group__header__title"><%= t(".password.title") %></h3>
         </header>
         <div class="settings-group__content">
           <% if @resource.oauth_account? %>
-            <p class="settings-group__text">Ta opcja jest dla ciebie wyłączona, ponieważ zarejestrowałeś się poprzez zewnętrznego dostawcę.</p>
+            <p class="settings-group__text"><%= t(".password.disabled") %></p>
           <% else %>
-            <%= form_for(@resource, url: registration_path(@resource), html: { method: :put, class: "auth-form" }) do |f| %>
-              <div class="settings-form__group">
-                <%= f.label :current_password, "Obecne hasło", class: "settings-form__label" %>
-                <%= f.password_field :current_password, class: "settings-form__input"  %>
-                <%= render DashFormErrorComponent.new(model: @resource, field: :current_password) %>
-              </div>
-              <div class="settings-form__group">
-                <%= f.label :password, "Hasło", class: "settings-form__label" %>
-                <%= f.password_field :password, class: "settings-form__input"  %>
-                <%= render DashFormErrorComponent.new(model: @resource, field: :password) %>
-              </div>
-              <div class="settings-form__group">
-                <%= f.label :password_confirmation, "Powtórz hasło", class: "settings-form__label" %>
-                <%= f.password_field :password_confirmation, class: "settings-form__input" %>
-                <%= render DashFormErrorComponent.new(model: @resource, field: :password_confirmation) %>
-              </div>
-              <div class="settings-form__group">
-                <%= f.submit "Zapisz", class: "dash-button dash-button--new settings-form__submit" %>
-              </div>
-            <% end %>
+            <p class="settings-group__text"><%= t(".password.not_available") %></p>
           <% end %>
         </div>
       </div>
       <div class="settings-group">
         <header class="settings-group__header">
-          <h3 class="settings-group__header__title">Dwuskładnikowe uwierzytelnianie</h3>
+          <h3 class="settings-group__header__title"><%= t(".two_factor.title") %></h3>
         </header>
         <div class="settings-group__content">
           <% if current_user.otp_enabled? %>
             <div class="settings-group__text-button">
-              <p class="settings-group__text">Dwuskładnikowe uwierzytelnianie jest włączone na twoim koncie.</p>
+              <p class="settings-group__text"><%= t(".two_factor.enabled") %></p>
               <div class="settings-group__buttons">
-                <%= link_to 'Wygeneruj nowe kody zapasowe', settings_two_factor_authentication_recovery_codes_path, class: "dash-button dash-button--new", data: { turbo: false } %>
-                <%= button_to 'Wyłącz 2FA', settings_two_factor_authentication_otp_path, method: :delete,
-                class: "dash-button dash-button--delete", data: { action: "dropdown#toggle",
-                confirm: "Are you sure?", turbo_confirm: "Are you sure?" } %>
+                <%= link_to t(".two_factor.button.codes"),
+                    settings_two_factor_authentication_recovery_codes_path,
+                    class: "dash-button dash-button--new", data: { turbo: false } %>
+                <%= button_to t(".two_factor.button.disable.title"),
+                    settings_two_factor_authentication_otp_path, method: :delete,
+                    class: "dash-button dash-button--delete", data: { action: "dropdown#toggle",
+                    confirm: t(".two_factor.button.disable.turbo.confirm"),
+                    turbo_confirm: t(".two_factor.button.disable.turbo.confirm") } %>
               </div>
             </div>
           <% else %>
             <div class="settings-group__text-button">
-              <p class="settings-group__text">2FA nie jest włączone na twoim koncie.</p>
-              <%= button_to 'Włącz', settings_two_factor_authentication_otp_path, method: :post, class: "dash-button dash-button--new" %>
+              <p class="settings-group__text"><%= t(".two_factor.not_enabled") %></p>
+              <%= button_to t(".two_factor.button.enable"), settings_two_factor_authentication_otp_path, method: :post, class: "dash-button dash-button--new" %>
             </div>
           <% end %>
         </div>

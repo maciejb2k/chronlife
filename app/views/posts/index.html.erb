@@ -9,7 +9,7 @@
     <div class="card-group">
       <header class="card-group__header">
         <div class="card-group__header__left">
-          <h2 class="card-group__header__title">Wszystkie aktualizacje zdrowia</h2>
+          <h2 class="card-group__header__title"><%= t(".title") %></h2>
         </div>
         <div class="card-group__header__right">
         </div>
@@ -19,7 +19,7 @@
           <div class="posts-list">
             <%= turbo_frame_tag "posts_#{@pagy.page}" do %>
               <% unless @posts.to_a.any? %>
-                <p>Nie dodano na razie żadnych postów.</p>
+                <p class="no-results"><%= t(".no_posts") %></p>
               <% else %>
                 <div class="dash-posts-container">
                   <% @posts.each do |post| %>
@@ -31,13 +31,13 @@
               <% unless @pagy.page == @pagy.pages %>
                 <%= turbo_frame_tag "posts_#{@pagy.next}", src: account_posts_path(page: @pagy.next),
                   loading: "lazy" do %>
-                  <div>Pobieranie postów ...</div>
+                  <div><%= t(".turbo.fetching") %></div>
                 <% end %>
               <% end %>
             <% end %>
           </div>
         <% else %>
-          <p class="dash-text">Nie możesz wyświetlić tych informacji, ponieważ nie jesteście znajomymi.</p>
+          <p class="dash-text"><%= t("accounts.unauthorized") %></p>
         <% end %>
       </div>
     </div>

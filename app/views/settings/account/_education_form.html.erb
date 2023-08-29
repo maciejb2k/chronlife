@@ -1,0 +1,11 @@
+<%= form_with(model: [:settings, @account], html: { class: "settings-form" } ) do |f| %>
+  <div class="settings-form__group">
+    <%= f.label :education, t(".education.label"), class: "settings-form__label" %>
+    <%= f.select :education, options_for_select(@education_options, @account.education),
+        { include_blank: true }, class: "settings-form__input" %>
+    <%= render DashFormErrorComponent.new(model: @account, field: :education) %>
+  </div>
+  <div class="settings-form__group">
+    <%= f.submit t("dash_form.submit"), class: "dash-button dash-button--new settings-form__submit" %>
+  </div>
+<% end %>

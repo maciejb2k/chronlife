@@ -3,13 +3,13 @@
     <li class="settings-nav__list__item">
       <%= link_to settings_account_path, class: "settings-nav__list__link #{'settings-nav__list__link--active' if current_page?(settings_account_path)}" do %>
         <i class="ri-user-3-line settings-nav__list__icon"></i>
-        Konto
+        <%= t(".account") %>
       <% end %>
     </li>
     <li class="settings-nav__list__item">
       <%= link_to settings_security_path, class: "settings-nav__list__link #{'settings-nav__list__link--active' if current_page?(settings_security_path)}" do %>
         <i class="ri-lock-line settings-nav__list__icon"></i>
-        Prywatność
+        <%= t(".security") %>
       <% end %>
     </li>
   </ul>

@@ -64,4 +64,17 @@ module ApplicationHelper
       "😡"
     end
   end
+
+  def localized_logo_image_tag(options = {})
+    current_locale = I18n.locale
+
+    image_paths = {
+      pl: "logo_light_pl.png",
+      en: "logo_light_en.png"
+    }
+
+    localized_image_name = image_paths[current_locale] || image_paths[:en]
+
+    image_tag localized_image_name, options
+  end
 end

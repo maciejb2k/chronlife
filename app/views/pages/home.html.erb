@@ -2,22 +2,22 @@
   <header class="nav">
     <div class="container">
       <div class="nav__content">
-        <%= image_tag "logo_light.png", class: "nav__logo", alt: "" %>
+        <%= localized_logo_image_tag class: "nav__logo", alt: "" %>
         <div class="nav__right">
           <ul class="nav__list">
             <li class="nav__item">
-              <%= link_to "Chorzy", root_path, class: "nav__link" %>
+              <%= link_to t(".nav.patients"), root_path, class: "nav__link" %>
             </li>
             <li class="nav__item">
-              <%= link_to "Lekarze", root_path, class: "nav__link" %>
+              <%= link_to t(".nav.specialists"), root_path, class: "nav__link" %>
             </li>
             <li class="nav__item">
-              <%= link_to "Społeczność", root_path, class: "nav__link" %>
+              <%= link_to t(".nav.social"), root_path, class: "nav__link" %>
             </li>
           </ul>
           <div class="nav__buttons">
-            <%= link_to "Zaloguj się", new_user_session_path, class: "nav__button nav__button--login" %>
-            <%= link_to "Dołącz do nas", new_user_registration_path, class: "nav__button nav__button--register" %>
+            <%= link_to t(".nav.sign_in"), new_user_session_path, class: "nav__button nav__button--login" %>
+            <%= link_to t(".nav.sign_up"), new_user_registration_path, class: "nav__button nav__button--register" %>
           </div>
         </div>
       </div>
@@ -27,10 +27,10 @@
     <div class="container">
       <div class="hero__content">
         <div class="hero__text-group">
-          <p class="hero__overtitle">#1 platforma w Polsce <i class="ri-trophy-line"></i></p>
-          <h1 class="hero__title">Poczuj się jak <span class="hero__title__color">w domu</span> <span class="hero__title__emoji"><i class="ri-emotion-happy-line"></i></span></h1>
-          <p class="hero__desc">Dołącz do społeczności osób wspólnie zmagającymi się ze swoimi problemami zdrowotnymi.</p>
-          <%= link_to "Poznaj naszą platformę", root_path, class: "hero__link" %>
+          <p class="hero__overtitle"><%= t(".hero.overtitle") %> <i class="ri-trophy-line"></i></p>
+          <h1 class="hero__title"><%= t(".hero.title.non_color") %> <span class="hero__title__color"><%= t(".hero.title.color") %></span> <span class="hero__title__emoji"><i class="ri-emotion-happy-line"></i></span></h1>
+          <p class="hero__desc"><%= t(".hero.desc") %></p>
+          <%= link_to t(".hero.link"), root_path, class: "hero__link" %>
         </div>
         <%= image_tag "happy-people.png", class: "hero__photo", alt: "" %>
       </div>
@@ -44,7 +44,7 @@
             <%= image_tag "ss1.png", alt: "", class: "showcase__group__photo" %>
           </div>
           <div class="showcase__group__right">
-            <h2 class="showcase__group__title">Śledzenie zdrowia</h2>
+            <h2 class="showcase__group__title"><%= t(".showcase.monitoring") %></h2>
             <p class="showcase__group__desc">Lorem ipsum dolor sit amet consectetur adipisicing elit. Eius error rerum dolorem vitae quia ex suscipit tempora animi fugit aut! Lorem ipsum dolor sit amet consectetur adipisicing elit. Eius error rerum dolorem vitae quia ex suscipit tempora animi fugit aut!</p>
             <%= link_to "Dowiedz się więcej", root_path, class: "showcase__group__link" %>
           </div>
@@ -54,7 +54,7 @@
             <%= image_tag "ss3.png", alt: "", class: "showcase__group__photo" %>
           </div>
           <div class="showcase__group__right">
-            <h2 class="showcase__group__title">Bezpieczeństwo</h2>
+            <h2 class="showcase__group__title"><%= t(".showcase.security") %></h2>
             <p class="showcase__group__desc">Lorem ipsum dolor sit amet consectetur adipisicing elit. Eius error rerum dolorem vitae quia ex suscipit tempora animi fugit aut! Lorem ipsum dolor sit amet consectetur adipisicing elit. Eius error rerum dolorem vitae quia ex suscipit tempora animi fugit aut!</p>
             <%= link_to "Dowiedz się więcej", root_path, class: "showcase__group__link" %>
           </div>
@@ -63,6 +63,6 @@
     </div>
   </div>
   <div class="footer">
-    Copyright © 2023 by Maciej Biel. Wszelkie prawa zastrzeżone.
+    <%= t(".footer.text") %>
   </div>
 </div>

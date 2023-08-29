@@ -1,0 +1,22 @@
+<%= form_with(model: [:settings, @account], html: { class: "settings-form" } ) do |f| %>
+  <div class="settings-form__group">
+    <% if @account.image %>
+      <%= f.label :image, t(".image.change_label"), class: "settings-form__label" %>
+    <% else %>
+      <%= f.label :image, t(".image.new_label"), class: "settings-form__label" %>
+    <% end %>
+    <%= f.hidden_field :image, value: @account.cached_image_data, id: nil %>
+    <%= f.file_field :image %>
+    <%= render DashFormErrorComponent.new(model: @account, field: :image) %>
+  </div>
+  <div class="settings-form__group">
+    <%= f.submit t("dash_form.submit"), class: "dash-button dash-button--new settings-form__submit" %>
+  </div>
+<% end %>
+<% if @account.image %>
+  <%= button_to delete_profile_picture_settings_account_path,
+      method: :delete, class: "settings-form__delete-link" do %>
+    <i class="ri-close-line settings-form__delete-link__icon"></i>
+    <%= t(".delete") %>
+  <% end %>
+<% end %>
