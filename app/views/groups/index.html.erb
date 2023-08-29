@@ -3,7 +3,7 @@
     <div class="dash-header__left">
       <h1 class="dash-header__title">
         <i class="ri-group-line dash-header__title__icon"></i>
-        Grupy chorych
+        <%= t(".title") %>
       </h1>
       <%= render "shared/breadcrumbs" %>
     </div>
@@ -21,7 +21,7 @@
       <header class="dash-group__header">
         <h2 class="dash-group__title">
           <i class="ri-user-heart-line dash-group__title__icon"></i>
-          Przypisane grupy
+          <%= t(".assigned") %>
         </h2>
         <div class="dash-group__actions"></div>
       </header>
@@ -37,7 +37,7 @@
                 <div class="group__content">
                   <div class="group__text">
                     <h3 class="group__title"><%= group_name %></h3>
-                    <p class="group__desc">Grupa tylko dla osób z tą chorobą.</p>
+                    <p class="group__desc"><%= t(".group.desc") %></p>
                   </div>
                   <div class="group__corner">
                     <div data-controller="dropdown" class="comment__header__options dash-dropdown">
@@ -54,7 +54,8 @@
                     >
                         <%= button_to leave_group_path(group), method: :delete,
                           class: "dash-dropdown__item", data: { action: "dropdown#toggle", } do %>
-                          <i class="ri-close-line dash-dropdown__item__icon dash-dropdown__item__icon--delete"></i> Opuść
+                          <i class="ri-close-line dash-dropdown__item__icon dash-dropdown__item__icon--delete"></i>
+                          <%= t(".group.leave") %>
                         <% end %>
                       </div>
                     </div>
@@ -73,7 +74,7 @@
                       <% else %>
                         <p class="group__members-empty">
                           <i class="ri-close-circle-line"></i>
-                          Brak członków w grupie.
+                          <%= t(".group.no_members") %>
                         </p>
                       <% end %>
                     </div>
@@ -84,14 +85,14 @@
                         <% else %>
                           <%= members_count %>
                         <% end %>
-                        <%= members_count == 1 ? 'członek' : 'członków' %>
+                        <%= t(".group.members", count: members_count) %>
                       </div>
                     <% end %>
                   </div>
                   <div class="group__actions">
                     <%= link_to group_posts_path(group), class: "dash-button dash-button--light-blue dash-button--small group__link" do %>
                       <i class="ri-arrow-right-line group__link__icon"></i>
-                      Przejdź
+                      <%= t(".group.open") %>
                     <% end %>
                   </div>
                 </div>
@@ -99,7 +100,7 @@
             <% end %>
           </div>
         <% else %>
-          <p class="dash-group__text">Brak grup do których zostałeś dodany.</p>
+          <p class="dash-group__text"><%= t(".no_assigned_groups") %></p>
         <% end %>
       </div>
       <div class="dash-pagination">
@@ -115,13 +116,13 @@
       <header class="dash-group__header">
         <h2 class="dash-group__title">
           <i class="ri-user-add-line dash-group__title__icon"></i>
-          Dostępne grupy
+          <%= t(".available") %>
         </h2>
         <div class="dash-group__actions">
           <%= link_to diseases_path,
               class: "dash-button dash-button--new dash-button--small" do %>
             <i class="ri-add-line dash-button__icon"></i>
-            Dodaj choroby
+            <%= t(".button.assign") %>
           <% end %>
         </div>
       </header>
@@ -137,7 +138,7 @@
                 <div class="group__content">
                   <div class="group__text">
                     <h3 class="group__title"><%= group_name %></h3>
-                    <p class="group__desc">Grupa tylko dla osób z tą chorobą.</p>
+                    <p class="group__desc"><%= t(".group.desc") %></p>
                   </div>
                   <div class="group__symbol">
                     <i class="ri-heart-pulse-line"></i>
@@ -154,7 +155,7 @@
                       <% else %>
                         <p class="group__members-empty">
                           <i class="ri-close-circle-line"></i>
-                          Brak członków w grupie.
+                          <%= t(".group.no_members") %>
                         </p>
                       <% end %>
                     </div>
@@ -172,14 +173,14 @@
                   <%= button_to join_group_path(group), method: :post,
                       class: "dash-button dash-button--new dash-button--small group__link" do %>
                     <i class="ri-user-add-line group__link__icon"></i>
-                    Dołącz
+                    <%= t(".group.join") %>
                   <% end %>
                 </div>
               </div>
             <% end %>
           </div>
         <% else %>
-          <p class="dash-group__text">Brak dostępnych grup do dodania.</p>
+          <p class="dash-group__text"><%= t(".no_available_groups") %></p>
         <% end %>
       </div>
       <div class="dash-pagination">

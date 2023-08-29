@@ -3,7 +3,7 @@
     <div class="dash-header__left">
       <h1 class="dash-header__title">
         <i class="ri-inbox-2-line dash-header__title__icon"></i>
-        Zaproszenia do znajomych
+        <%= t(".title") %>
       </h1>
       <%= render "shared/breadcrumbs" %>
     </div>
@@ -24,7 +24,7 @@
         <header class="dash-group__header">
           <h2 class="dash-group__title">
             <i class="ri-mail-unread-line dash-group__title__icon"></i>
-            Oczekujące zaproszenia
+            <%= t(".recieved_requests") %>
           </h2>
           <div class="dash-group__actions"></div>
         </header>
@@ -56,7 +56,7 @@
               <% end %>
             </ul>
           <% else %>
-            <p class="dash-group__text">Brak oczekujących zaproszeń.</p>
+            <p class="dash-group__text"><%= t(".no_recieved_requests") %></p>
           <% end %>
         </div>
       </div>
@@ -74,7 +74,7 @@
         <header class="dash-group__header">
           <h2 class="dash-group__title">
             <i class="ri-mail-send-line dash-group__title__icon"></i>
-            Wysłane zaproszenia
+            <%= t(".outgoing_requests") %>
           </h2>
           <div class="dash-group__actions"></div>
         </header>

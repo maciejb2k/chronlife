@@ -7,13 +7,15 @@
     <div class="card-group">
       <header class="card-group__header">
         <div class="card-group__header__left">
-          <h2 class="card-group__header__title">Znajomi</h2>
+          <h2 class="card-group__header__title">
+            <%= t(".title") %>
+          </h2>
         </div>
         <div class="card-group__header__right">
           <% if policy(@account).show? %>
             <%= link_to friend_requests_path, class: "dash-button dash-button--blue dash-button--small" do %>
               <i class="ri-user-add-line dash-button__icon"></i>
-              Przeglądaj zaproszenia
+              <%= t(".button.show") %>
             <% end %>
           <% end %>
         </div>
@@ -42,7 +44,7 @@
               <% end %>
             </ul>
           <% else %>
-            <p class="dash-group__text">Nie dodano żadnych znajomych.</p>
+            <p class="dash-group__text"><%= t(".no_results") %></p>
           <% end %>
           <div class="dash-pagination friends-pagination">
             <div class="dash-pagination__controls">
@@ -53,7 +55,9 @@
             </div>
           </div>
         <% else %>
-          <p class="dash-text">Nie możesz wyświetlić tych informacji, ponieważ nie jesteście znajomymi.</p>
+          <p class="dash-text">
+            <%= t("accounts.unauthorized") %>
+          </p>
         <% end %>
       </div>
     </div>

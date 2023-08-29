@@ -2,7 +2,7 @@
   <div class="group__header__left">
     <p class="group__header__overtitle">
       <i class="ri-group-2-line"></i>
-      Społeczność chorych na:
+      <%= t(".overtitle") %>
     </p>
     <h1 class="group__header__title">
       <span class="group__header__title__text">
@@ -26,7 +26,8 @@
       >
         <%= button_to leave_group_path(@group), method: :delete,
           class: "dash-dropdown__item", data: { action: "dropdown#toggle", } do %>
-          <i class="ri-close-line dash-dropdown__item__icon dash-dropdown__item__icon--delete"></i> Opuść
+          <i class="ri-close-line dash-dropdown__item__icon dash-dropdown__item__icon--delete"></i>
+          <%= t(".leave") %>
         <% end %>
       </div>
     </div>

@@ -16,13 +16,13 @@
             <header class="dash-group__header">
               <h2 class="dash-group__title">
                 <i class="ri-camera-line dash-group__title__icon"></i>
-                Wszystkie zdjęcia
+                <%= t(".title") %>
               </h2>
               <div class="dash-group__actions"></div>
             </header>
             <div class="dash-group__content">
               <div class="group-photos">
-                <p class="group-photos__text">Poniżej znajdują się wszystkie zdjęcia wszystkich użytkowników z daną chorobą.</p>
+                <p class="group-photos__text"><%= t(".description") %></p>
                 <% if @photos.to_a.any? %>
                   <div class="group-photos__list">
                     <% @photos.each do |photo| %>
@@ -44,7 +44,7 @@
                   </div>
                 <% else %>
                   <p class="no-results">
-                    Uzytkownicy nie dodali na razie żadnych zdjęć.
+                    <%= t(".no_results") %>
                   </p>
                 <% end %>
               </div>

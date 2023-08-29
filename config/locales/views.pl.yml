@@ -2,6 +2,7 @@ pl:
   dash_form:
     submit: Zapisz
   accounts:
+    unauthorized: Nie możesz wyświetlić tych informacji, ponieważ nie jesteście znajomymi.
     index:
       title: Wszystkie osoby
       your_profile: Twój profil
@@ -316,5 +317,80 @@ pl:
       risk_factors: Czynniki ryzyka
       photos: Zdjęcia
       edit: Edytuj chorobę
-
-
+  friend_requests:
+    index:
+      title: Zaproszenia do znajomych
+      recieved_requests: Otrzymane zaproszenia
+      no_recieved_requests: Brak otrzymanych zaproszeń
+      outgoing_requests: Wysłane zaproszenia
+    outgoing_requests:
+      no_outgoing_requests: Brak wysłanych zaproszeń
+  friends:
+    index:
+      title: Znajomi
+      button:
+        show: Przeglądaj zaproszenia
+      no_results: Nie dodano żadnych znajomych.
+  groups:
+    index:
+      title: Grupy chorych
+      assigned: Przypisane choroby
+      available: Dostępne choroby
+      button:
+        assign: Dodaj choroby
+      group:
+        desc: Grupa tylko dla osób z tą chorobą.
+        leave: Opuść grupę
+        no_members: Brak członków w grupie.
+        members:
+          one: członek
+          other: "członków"
+        open: Przejdź
+        join: Dołącz
+      no_assigned_groups: Brak grup do których zostałeś dodany.
+      no_available_groups: Brak dostępnych grup do dołączenia.
+    header:
+      overtitle: "Społeczność chorych na:"
+      leave: Opuść
+    nav:
+      posts: Posty
+      statuses: Stan zdrowia
+      symptoms: Objawy
+      risk_factors: Czynniki ryzyka
+      treatments: Terapie
+      photos: Zdjęcia
+    treatments:
+      index:
+        title: Wszystkie terapie
+        description: Poniżej znajdują się wszystkie terapie, którymi użytkownicy próbują leczyć między innymi daną chorobę.
+        no_results: Uzytkownicy nie dodali na razie żadnych terapii.
+        treatment:
+          show: Zobacz
+          duration: "Terapia trwa od %{duration} dni"
+    disease_symptoms:
+      index:
+        predefined:
+          title: Występujące objawy u chorych
+          description: Poniżej znajdują się wszystkie objawy, które występują u użytkowników z tą chorobą.
+          no_results: Uzytkownicy nie dodali na razie żadnych objawów.
+        custom:
+          title: Własne objawy
+          description: Poniżej znajdują się wszystkie objawy, które użytkownicy dodali sami.
+          no_results: Uzytkownicy nie dodali na razie żadnych objawów.
+    disease_risk_factors:
+      index:
+        title: Wszystkie czynniki ryzyka
+        description: Poniżej znajdują się wszystkie czynniki ryzyka, które użytkownicy dodali sami.
+        no_results: Uzytkownicy nie dodali na razie żadnych czynników ryzyka.
+    disease_statuses:
+      index:
+        title: Wszystkie aktualizacje
+        description: Poniżej znajdują się wszystkie aktualizacje, które użytkownicy dodali sami.
+        no_results: Uzytkownicy nie dodali na razie żadnych aktualizacji.
+        turbo:
+          fetching: Pobieranie...
+    disease_photos:
+      index:
+        title: Wszystkie zdjęcia
+        description: Poniżej znajdują się wszystkie zdjęcia, które użytkownicy dodali sami.
+        no_results: Uzytkownicy nie dodali na razie żadnych zdjęć.

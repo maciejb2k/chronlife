@@ -14,13 +14,13 @@
             <header class="dash-group__header">
               <h2 class="dash-group__title">
                 <i class="ri-hospital-line dash-group__title__icon"></i>
-                Wszystkie terapie
+                <%= t(".title") %>
               </h2>
               <div class="dash-group__actions"></div>
             </header>
             <div class="dash-group__content">
               <div class="group-treatments">
-                <p class="group-treatments__text">Poniżej znajdują się wszystkie terapie, którymi użytkownicy próbują leczyć między innymi daną chorobę.</p>
+                <p class="group-treatments__text"><%= t(".description") %></p>
                 <% if @treatments.to_a.any? %>
                   <div class="group-treatments__list">
                     <% @treatments.each do |treatment| %>
@@ -39,16 +39,16 @@
                         <div class="treatment__footer">
                           <span class="treatment__date">
                             <i class="ri-calendar-line treatment__icon"></i>
-                            Terapia trwa od <%= treatment.days_difference %> dni
+                            <%= t(".treatment.duration", duration: treatment.days_difference) %>
                           </span>
-                          <%= link_to "Zobacz", treatment, class: "treatment__button" %>
+                          <%= link_to t(".treatment.show"), treatment, class: "treatment__button" %>
                         </div>
                       </div>
                     <% end %>
                   </div>
                 <% else %>
                   <p class="no-results">
-                    Uzytkownicy nie dodali na razie żadnych czynników  ryzyka.
+                    <%= t(".no_results") %>
                   </p>
                 <% end %>
               </div>
