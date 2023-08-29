@@ -1,11 +1,11 @@
 <%= form_with(model: [@note, @note_tag_association], html: { class: "assign-tag-form" }) do |form| %>
   <div class="dash-form__inline-group dash-form__simple-group ">
     <div>
-      <%= form.label :note_tag_id, "Tag", class: "dash-form__label" %>
+      <%= form.label :note_tag_id, t(".note_tag_id.label"), class: "dash-form__label" %>
       <%= form.select :note_tag_id, options_for_select(@tags_options),
           { include_blank: false }, class: "dash-form__input dash-form__select" %>
     </div>
-    <%= form.submit "Dodaj", class: "dash-button dash-button--new" %>
+    <%= form.submit t(".submit"), class: "dash-button dash-button--new" %>
   </div>
   <% if @note_tag_association.errors.any? %>
     <div class="dash-form__group__error">

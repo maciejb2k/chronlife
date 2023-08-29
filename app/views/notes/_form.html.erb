@@ -3,11 +3,11 @@
     <div class="dash-form__group">
       <div class="dash-form__group__container">
         <div class="dash-form__group__left">
-          <div class="dash-form__group__title">Tytuł</div>
-          <p class="dash-form__group__description">Nadaj tytuł swojej notatce.</p>
+          <div class="dash-form__group__title"><%= t(".title.title") %></div>
+          <p class="dash-form__group__description"><%= t(".title.description") %></p>
         </div>
         <div class="dash-form__group__right">
-          <%= f.text_field :title, class: "dash-form__input", placeholder: "Tytuł notatki" %>
+          <%= f.text_field :title, class: "dash-form__input", placeholder: t(".title.placeholder") %>
         </div>
       </div>
       <%= render DashFormErrorComponent.new(model: @note, field: :title) %>
@@ -18,12 +18,12 @@
     <div class="dash-form__group dash-form__group--large">
       <div class="dash-form__group__container">
         <div class="dash-form__group__left">
-          <div class="dash-form__group__title">Notatka</div>
-          <p class="dash-form__group__description">Co chcesz napisać w notatce.</p>
+          <div class="dash-form__group__title"><%= t(".content.title") %></div>
+          <p class="dash-form__group__description"><%= t(".content.description") %></p>
         </div>
         <div class="dash-form__group__right dash-form__group__right--full">
           <%= f.text_area :content, class: "dash-form__input dash-form__textarea",
-              placeholder: "Wpisz tutaj cokolwiek.", data: { controller: "textarea-autogrow" } %>
+              placeholder: t(".content.placeholder"), data: { controller: "textarea-autogrow" } %>
         </div>
       </div>
       <%= render DashFormErrorComponent.new(model: @note, field: :content) %>
@@ -34,14 +34,14 @@
     <div class="dash-form__group">
       <div class="dash-form__group__container">
         <div class="dash-form__group__left">
-          <div class="dash-form__group__title">Przypięcie</div>
-          <p class="dash-form__group__description">Możesz przypiąć swoją notatkę.</p>
+          <div class="dash-form__group__title"><%= t(".pinned.title") %></div>
+          <p class="dash-form__group__description"><%= t(".pinned.description") %></p>
         </div>
         <div class="dash-form__group__right">
           <div class="dash-form__checkbox">
             <%= f.check_box :is_pinned, class: "dash-form__checkbox__input" %>
             <%= f.label :is_pinned, class: "dash-form__checkbox__label" do %>
-              Czy notatka ma być przypięta?
+              <%= t(".pinned.label") %>
             <% end %>
           </div>
         </div>
@@ -51,6 +51,6 @@
   </div>
 
   <div class="dash-form__group">
-    <%= f.submit "Zapisz", class: "dash-form__submit dash-button dash-button--new" %>
+    <%= f.submit t("dash_form.submit"), class: "dash-form__submit dash-button dash-button--new" %>
   </div>
 <% end %>

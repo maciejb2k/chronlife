@@ -3,7 +3,7 @@
     <div class="dash-header__left">
       <h1 class="dash-header__title">
         <i class="ri-sticky-note-line dash-header__title__icon"></i>
-        Notatki
+        <%= t(".title") %>
       </h1>
       <%= render "shared/breadcrumbs" %>
     </div>
@@ -24,7 +24,7 @@
         <header class="dash-group__header">
           <h2 class="dash-group__title">
             <i class="ri-pushpin-line dash-group__title__icon"></i>
-            Przypięte Notatki
+            <%= t(".pinned_notes") %>
           </h2>
           <div class="dash-group__actions">
             <div class="dash-pagination__info">
@@ -57,7 +57,7 @@
               <% end %>
             </div>
           <% else %>
-            <p class="dash-group__text">Na razie nie przypiąłeś żadnych notatek</p>
+            <p class="dash-group__text"><%= t(".empty_pinned_notes") %></p>
           <% end %>
           <div class="dash-pagination">
             <div class="dash-pagination__controls">
@@ -70,7 +70,7 @@
         <header class="dash-group__header">
           <h2 class="dash-group__title">
             <i class="ri-sticky-note-2-line dash-group__title__icon"></i>
-            Wszystkie Notatki
+            <%= t(".all_notes") %>
           </h2>
           <div class="dash-group__actions">
             <div class="dash-pagination__info">
@@ -118,18 +118,18 @@
         <header class="dash-group__header">
           <h2 class="dash-group__title">
             <i class="ri-hashtag dash-group__title__icon"></i>
-            Tagi
+            <%= t(".tags.title") %>
           </h2>
           <div class="dash-group__actions">
             <% if params[:tag_id].present? %>
               <%= link_to notes_path, class: "dash-button dash-button--delete dash-button--small" do %>
                 <i class="ri-close-line dash-button__icon"></i>
-                Wyczyść
+                <%= t(".tags.clear") %>
               <% end %>
             <% end %>
             <%= link_to new_note_tag_path, class: "dash-button dash-button--new dash-button--small" do %>
               <i class="ri-add-line dash-button__icon"></i>
-              Dodaj
+              <%= t(".tags.new") %>
             <% end %>
           </div>
         </header>
@@ -153,7 +153,7 @@
               <% end %>
             </ul>
           <% else %>
-            <p class="dash-group__text">Na razie nie dodałeś żadnych tagów</p>
+            <p class="dash-group__text"><%= t(".tags.no_results") %></p>
           <% end %>
           <div class="dash-pagination">
             <div class="dash-pagination__controls">

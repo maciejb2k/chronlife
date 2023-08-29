@@ -7,12 +7,12 @@
     <div class="dash-header__right">
       <%= link_to edit_note_path, class: "dash-button dash-button--info" do %>
         <i class="ri-edit-2-line dash-button__icon"></i>
-        Edytuj
+        <%= t(".button.edit") %>
       <% end %>
       <%= button_to @note, class: "dash-button dash-button--delete",
-          method: :delete, form: { data: { turbo_confirm: 'Czy na pewno chcesz usunąć?' } } do %>
+          method: :delete, form: { data: { turbo_confirm: t(".button.delete.turbo.confirm") } } do %>
         <i class="ri-close-line"></i>
-        Usuń
+        <%= t(".button.delete.title") %>
       <% end %>
       <%= link_to notes_path, class: "dash-button dash-button--back" do %>
         <i class="ri-arrow-left-line dash-button__icon"></i>
@@ -27,7 +27,10 @@
   <div class="page-note__content">
     <div class="page-note__left">
       <div class="note">
-        <p class="note__label">Utworzono <%= @note.created_at.strftime("%d.%m.%Y") %> - Edytowano <%= time_ago_in_words(@note.updated_at) %> temu</p>
+        <p class="note__label">
+          <%= t(".created_at", date: @note.created_at.strftime("%d.%m.%Y")) %> -
+          <%= t(".edited_at", date: time_ago_in_words(@note.updated_at)) %>
+        </p>
         <div class="note__body">
           <%= simple_format(@note.content) %>
         </div>
@@ -38,14 +41,14 @@
         <header class="dash-group__header">
           <h2 class="dash-group__title">
             <i class="ri-hashtag dash-group__title__icon"></i>
-            Przypisz tagi
+            <%= t(".assign_tags") %>
           </h2>
           <div class="dash-group__actions"></div>
         </header>
         <div class="dash-group__content">
           <%= turbo_frame_tag :add_note_tag_association, src: new_note_note_tag_association_path(@note) %>
           <%= turbo_frame_tag :note_tag_associations, src: note_note_tag_associations_path(@note) do %>
-            <p>Ładowanie ...</p>
+            <p><%= t(".turbo.loading") %></p>
           <% end %>
         </div>
       </div>

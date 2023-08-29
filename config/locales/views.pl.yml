@@ -478,3 +478,66 @@ pl:
         title: Data pomiaru
         description: Kiedy został wykonany pomiar.
       submit: Zapisz
+  notes:
+    index:
+      title: Notatki
+      pinned_notes: Przypięte notatki
+      empty_pinned_notes: Na razie nie przypiąłeś żadnych notatek.
+      all_notes: Wszystkie notatki
+      tags:
+        title: Tagi
+        clear: Wyczyść
+        new: Dodaj
+        no_results: Na razie nie dodałeś zadnych tagów.
+    show:
+      button:
+        edit: Edytuj
+        delete:
+          title: Usuń
+          turbo:
+            confirm: Czy na pewno chcesz usunąć tą notatkę?
+      created_at: Utworzono %{date}
+      edited_at: Edytowano %{date}
+      assign_tags: Przypisz tagi
+      turbo:
+        loading: Pobieranie...
+    new:
+      title: Dodaj nową notatkę
+    edit:
+      title: Edytuj notatkę
+    form:
+      title:
+        title: Tytuł
+        description: Podaj tytuł notatki.
+        placeholder: Notatka z wizyty u lekarza.
+      content:
+        title: Treść
+        description: Za pomocą poniższego edytora możesz napisać notatkę.
+        placeholder: Wpisz tutaj cokolwiek.
+      pinned:
+        title: Przypięta
+        description: Czy chcesz przypiąć tą notatkę?
+        label: Czy notatka ma być przypięta?
+      submit: Zapisz
+  note_tags:
+    new:
+      title: Dodaj nowy tag
+    edit:
+      title: Edytuj tag
+      button:
+        delete:
+          title: Usuń tag
+          turbo:
+            confirm: Czy na pewno chcesz usunąć ten tag?
+    form:
+      name:
+        title: Nazwa
+        description: Podaj nazwę tagu.
+        placeholder: Nazwa tagu
+  note_tag_associations:
+    no_results:
+      text: Na przypisałeś na razie żadnych tagów.
+    form:
+      note_tag_id:
+        label: Tag
+      submit: Dodaj
