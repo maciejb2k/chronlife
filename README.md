@@ -1,10 +1,8 @@
 # ChronLife
 
-This repository contains my full-stack side project, which is a social platform for people with chronic diseases.
+This repository contains my full-stack side project, which is a social platform for people with chronic diseases. The purpose of this project is to learn how to build full-stack applications using Ruby on Rails.
 
-The purpose of this project is to learn how to build full-stack applications using Ruby on Rails and it's my final year project for my bachelor's degree in Computer Science.
-
-**NOTICE**: This project is currently available only in the Polish language due to university requirements (the code is in English, no worries), but I18n is already configured, only the translation files are missing. I will add the translations in the future.
+This application is **I18n-ready**, offering full translation support for both **Polish** and **English** languages. The screenshots shows the application in Polish.
 
 Technologies used in this project:
 
@@ -58,6 +56,7 @@ bundle install
 # Run the application:
 ./bin/dev
 ```
+
 ## Design
 
 I've came up with the design of this application by myself. I am not using any tools like Figma to create UI. I'm just creating the design on the fly. While working by myself, [I really like this approach](https://world.hey.com/dhh/design-for-the-web-without-figma-4bc3a218).
