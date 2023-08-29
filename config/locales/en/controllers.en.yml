@@ -220,3 +220,26 @@ en:
       success: Photo has been updated.
     destroy:
       success: Photo has been deleted.
+  settings:
+    breadcrumbs:
+      index: settings
+    account:
+      breadcrumbs:
+        show: account settings
+      update:
+        success: Account settings have been updated.
+      delete_profile_picture:
+        success: Profile picture deleted successfully.
+    security:
+      breadcrumbs:
+        show: privacy and security
+    two_factor_authentication:
+      otp:
+        destroy:
+          success: Two-factor authentication has been successfully disabled.
+      confirmations:
+        breadcrumbs:
+          new: setup 2FA
+        create:
+          success: Two-factor authentication has been successfully enabled.
+          error: Invalid OTP code. Try again.

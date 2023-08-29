@@ -11,8 +11,7 @@ class Settings::TwoFactorAuthentication::OtpController < BaseController
   def destroy
     current_user.disable_two_factor!
 
-    redirect_to settings_security_path,
-                notice: "Dwuskładnikowe uwierzytelnianie zostało pomyślnie wyłączone."
+    redirect_to settings_security_path, notice: t(".success")
   end
 
   private

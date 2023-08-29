@@ -10,7 +10,6 @@ class Auth::OmniauthCallbacksController < Devise::OmniauthCallbacksController
   private
 
   def handle_omniauth_callback(provider)
-    # You need to implement the method below in your model (e.g. app/models/user.rb)
     @user = User.from_omniauth!(request.env["omniauth.auth"])
 
     unless @user.persisted?

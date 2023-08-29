@@ -220,3 +220,26 @@ pl:
       success: Zdjęcie zostało zaktualizowane.
     destroy:
       success: Zdjęcie zostało usunięte.
+  settings:
+    breadcrumbs:
+      index: ustawienia
+    account:
+      breadcrumbs:
+        show: ustawienia konta
+      update:
+        success: Ustawienia konta zostały zaktualizowane.
+      delete_profile_picture:
+        success: Poprawnie usunięto zdjęcie profilowe.
+    security:
+      breadcrumbs:
+        show: prywatność i bezpieczeństwo
+    two_factor_authentication:
+      otp:
+        destroy:
+          success: Dwuskładnikowe uwierzytelnianie zostało pomyślnie wyłączone.
+      confirmations:
+        breadcrumbs:
+          new: skonfiguruj 2FA
+        create:
+          success: Poprawnie włączono dwuskładnikowe uwierzytelnianie.
+          error: Nieprawidłowy kod weryfikacyjny. Spróbuj ponownie.

@@ -1,6 +1,4 @@
 class Settings::SecurityController < BaseController
-  layout "dashboard"
-
   before_action :set_breadcrumbs
 
   def show
@@ -10,8 +8,8 @@ class Settings::SecurityController < BaseController
   private
 
   def set_breadcrumbs
-    add_breadcrumb("home", authenticated_root_path)
-    add_breadcrumb("ustawienia", settings_settings_path)
-    add_breadcrumb("zabezpieczenia", settings_security_path)
+    add_breadcrumb t("breadcrumbs.home"), authenticated_root_path
+    add_breadcrumb t("settings.breadcrumbs.index"), settings_settings_path
+    add_breadcrumb t(".breadcrumbs.show"), settings_security_path
   end
 end

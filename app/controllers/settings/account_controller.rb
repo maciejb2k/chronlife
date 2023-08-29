@@ -1,16 +1,11 @@
 class Settings::AccountController < BaseController
-  layout "dashboard"
-
-  before_action :set_breadcrumbs
-
   before_action :set_account
   before_action :set_education_options, only: %i[show update]
-
-  def show; end
+  before_action :set_breadcrumbs
 
   def update
     if @account.update(account_params)
-      redirect_to settings_account_path, notice: "Zaktualizowano ustawienia konta"
+      redirect_to settings_account_path, notice: t(".success")
     else
       render :account, status: :unprocessable_entity
     end
@@ -20,7 +15,7 @@ class Settings::AccountController < BaseController
     @account.image = nil
     @account.save!
 
-    redirect_to settings_account_path, notice: "Zaktualizowano zdjęcie profilowe"
+    redirect_to settings_account_path, notice: t(".success")
   end
 
   private
@@ -35,9 +30,9 @@ class Settings::AccountController < BaseController
   end
 
   def set_breadcrumbs
-    add_breadcrumb("home", authenticated_root_path)
-    add_breadcrumb("ustawienia", settings_settings_path)
-    add_breadcrumb("konto", settings_account_path)
+    add_breadcrumb t("breadcrumbs.home"), authenticated_root_path
+    add_breadcrumb t("settings.breadcrumbs.index"), settings_settings_path
+    add_breadcrumb t(".breadcrumbs.show"), settings_account_path
   end
 
   def set_education_options
