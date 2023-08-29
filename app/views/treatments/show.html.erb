@@ -7,12 +7,12 @@
     <div class="dash-header__right">
       <%= link_to edit_treatment_path, class: "dash-button dash-button--info" do %>
         <i class="ri-edit-2-line dash-button__icon"></i>
-        Edytuj
+        <%= t(".button.edit") %>
       <% end %>
       <%= button_to @treatment, class: "dash-button dash-button--delete",
-          method: :delete, form: { data: { turbo_confirm: 'Czy na pewno chcesz usunąć?' } } do %>
+          method: :delete, form: { data: { turbo_confirm: t(".button.delete.turbo.confirm") } } do %>
         <i class="ri-close-line dash-button__icon"></i>
-        Usuń
+        <%= t(".button.delete.title") %>
       <% end %>
       <%= link_to treatments_path, class: "dash-button dash-button--back" do %>
         <i class="ri-arrow-left-line dash-button__icon"></i>
@@ -28,12 +28,12 @@
     <div class="page-treatment__content__left">
       <div class="dash-group dash-group--border">
         <header class="dash-group__header">
-          <h2 class="dash-group__title">Aktualizacje</h2>
+          <h2 class="dash-group__title"><%= t(".updates.title") %></h2>
           <div class="dash-group__actions">
             <%= link_to new_treatment_treatment_update_path(@treatment),
                 class: "dash-button dash-button--new dash-button--small" do %>
               <i class="ri-add-line dash-button__icon"></i>
-              Dodaj
+              <%= t(".updates.button.new") %>
             <% end %>
           </div>
         </header>
@@ -86,11 +86,13 @@
                           >
                             <%= link_to edit_treatment_treatment_update_path(@treatment, treatment_update),
                                 data: { action: "dropdown#toggle" }, class: "dash-dropdown__item" do %>
-                              <i class="ri-edit-line dash-dropdown__item__icon"></i> Edytuj
+                              <i class="ri-edit-line dash-dropdown__item__icon"></i>
+                              <%= t(".updates.update.edit") %>
                             <% end %>
                             <%= button_to [@treatment, treatment_update], method: :delete, class: "dash-dropdown__item",
-                                data: { action: "dropdown#toggle", confirm: "Are you sure?", turbo_confirm: "Are you sure?" } do %>
-                              <i class="ri-close-line dash-dropdown__item__icon dash-dropdown__item__icon--delete"></i> Usuń
+                                data: { action: "dropdown#toggle", turbo_confirm: t(".updates.update.delete.turbo.confirm") } do %>
+                              <i class="ri-close-line dash-dropdown__item__icon dash-dropdown__item__icon--delete"></i>
+                              <%= t(".updates.update.delete.title") %>
                             <% end %>
                           </div>
                         </div>
@@ -107,7 +109,7 @@
             </div>
           <% else %>
             <p class="no-results">
-              Na razie nie dodałeś żadnych aktualizacji.
+              <%= t(".updates.no_results") %>
             </p>
           <% end %>
         </div>
@@ -124,15 +126,15 @@
     <div class="page-treatment__content__right">
       <div class="dash-group dash-group--border">
         <header class="dash-group__header">
-          <h2 class="dash-group__title">Informacje</h2>
+          <h2 class="dash-group__title"><%= t(".info.title") %></h2>
           <div class="dash-group__actions"></div>
         </header>
         <div class="dash-group__content">
           <div class="dash-info">
             <div class="dash-info__group">
               <div class="dash-info__group__left">
-                <div class="dash-info__group__label">Nazwa</div>
-                <div class="dash-info__group__desc">Pełna nazwa terapii.</div>
+                <div class="dash-info__group__label"><%= t(".info.name.title") %></div>
+                <div class="dash-info__group__desc"><%= t(".info.name.description") %></div>
               </div>
               <div class="dash-info__group__right">
                 <div class="dash-info__group__value"><%= @treatment.title %></div>
@@ -140,8 +142,8 @@
             </div>
             <div class="dash-info__group">
               <div class="dash-info__group__left">
-                <div class="dash-info__group__label">Opis</div>
-                <div class="dash-info__group__desc">Dokładny opis terapii.</div>
+                <div class="dash-info__group__label"><%= t(".info.desc.title") %></div>
+                <div class="dash-info__group__desc"><%= t(".info.desc.description") %></div>
               </div>
               <div class="dash-info__group__right">
                 <div class="dash-info__group__value">
@@ -151,8 +153,8 @@
             </div>
             <div class="dash-info__group">
               <div class="dash-info__group__left">
-                <div class="dash-info__group__label">Trwanie terapii</div>
-                <div class="dash-info__group__desc">Od kiedy trwa terapia.</div>
+                <div class="dash-info__group__label"><%= t(".info.duration.title") %></div>
+                <div class="dash-info__group__desc"><%= t(".info.duration.description") %></div>
               </div>
               <div class="dash-info__group__right">
                 <div class="dash-info__group__value">
@@ -160,22 +162,22 @@
                   <% if @treatment.end_date? %>
                     <%= @treatment.end_date %>
                   <% else %>
-                    W toku
+                    <%= t(".info.duration.ongoing") %>
                   <% end %>
                 </div>
               </div>
             </div>
             <div class="dash-info__group">
               <div class="dash-info__group__left">
-                <div class="dash-info__group__label">Czy terapia trwa?</div>
-                <div class="dash-info__group__desc">Czy nadal leczysz się tą terapią.</div>
+                <div class="dash-info__group__label"><%= t(".info.is_active.title") %></div>
+                <div class="dash-info__group__desc"><%= t(".info.is_active.description") %></div>
               </div>
               <div class="dash-info__group__right">
                 <div class="dash-info__group__value">
                   <% if @treatment.is_finished? %>
-                    Nie
+                    <%= t(".info.is_active.finished") %>
                   <% else %>
-                    Tak
+                    <%= t(".info.is_active.not_finished") %>
                   <% end %>
                 </div>
               </div>
@@ -185,12 +187,12 @@
       </div>
       <div class="dash-group">
         <header class="dash-group__header">
-          <h2 class="dash-group__title">Przypisane choroby</h2>
+          <h2 class="dash-group__title"><%= t(".diseases.title") %></h2>
           <div class="dash-group__actions">
             <%= link_to new_treatment_treatment_disease_path(@treatment),
                 class: "dash-button dash-button--new dash-button--small" do %>
               <i class="ri-add-line dash-button__icon"></i>
-              Dodaj
+              <%= t(".diseases.button.new") %>
             <% end %>
           </div>
         </header>
@@ -206,8 +208,8 @@
                     <% end %>
                   </div>
                   <div class="treatment-disease__right">
-                    <%= button_to [@treatment, treatment_disease], class: " treatment-disease__delete",
-                      method: :delete, form: { data: { turbo_confirm: 'Czy na pewno chcesz usunąć?' } } do %>
+                    <%= button_to [@treatment, treatment_disease], class: "treatment-disease__delete",
+                        method: :delete, form: { data: { turbo_confirm: t(".diseases.delete.turbo.confirm") } } do %>
                       <i class="ri-close-line"></i>
                     <% end %>
                   </div>
@@ -215,7 +217,7 @@
               <% end %>
             <% else %>
               <p class="no-results">
-                Na razie nie przypisałeś żadnych chorób.
+                <%= t(".diseases.no_results") %>
               </p>
             <% end %>
           </div>

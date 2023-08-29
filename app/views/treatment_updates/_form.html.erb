@@ -3,12 +3,12 @@
     <div class="dash-form__group">
       <div class="dash-form__group__container">
         <div class="dash-form__group__left">
-          <div class="dash-form__group__title">Tytuł</div>
-          <p class="dash-form__group__description">Ogólna nazwa zmiany w terapii.</p>
+          <div class="dash-form__group__title"><%= t(".name.title") %></div>
+          <p class="dash-form__group__description"><%= t(".name.description") %></p>
         </div>
         <div class="dash-form__group__right">
           <%= form.text_field :name, class: "dash-form__input",
-              placeholder: "Wyjazd do sanatorium" %>
+              placeholder: t(".name.placeholder") %>
         </div>
       </div>
       <%= render DashFormErrorComponent.new(model: @treatment_update, field: :name) %>
@@ -19,12 +19,12 @@
     <div class="dash-form__group">
       <div class="dash-form__group__container">
         <div class="dash-form__group__left">
-          <div class="dash-form__group__title">Opis</div>
-          <p class="dash-form__group__description">Opisz co się zmieniło w terapii.</p>
+          <div class="dash-form__group__title"><%= t(".description.title") %></div>
+          <p class="dash-form__group__description"><%= t(".description.description") %></p>
         </div>
         <div class="dash-form__group__right">
           <%= form.text_area :description, class: "dash-form__input dash-form__textarea",
-              placeholder: "Jest to dieta polegająca na spożywaniu tylko tłuszczy i białek." %>
+              placeholder: t(".description.placeholder") %>
         </div>
       </div>
       <%= render DashFormErrorComponent.new(model: @treatment_update, field: :description) %>
@@ -35,8 +35,8 @@
     <div class="dash-form__group">
       <div class="dash-form__group__container">
         <div class="dash-form__group__left">
-          <div class="dash-form__group__title">Nazwa choroby</div>
-          <p class="dash-form__group__description">Wybierz jedną z listy predefiniowanych.</p>
+          <div class="dash-form__group__title"><%= t(".status.title") %></div>
+          <p class="dash-form__group__description"><%= t(".status.description") %></p>
         </div>
         <div class="dash-form__group__right">
           <%= form.select :status, options_for_select(@treatment_status_options, @treatment_update.status),
@@ -51,8 +51,8 @@
     <div class="dash-form__group">
       <div class="dash-form__group__container">
         <div class="dash-form__group__left">
-          <div class="dash-form__group__title">Data aktualizacji</div>
-          <p class="dash-form__group__description">W którym dniu chcesz dodać aktualizację.</p>
+          <div class="dash-form__group__title"><%= t(".update_date.title") %></div>
+          <p class="dash-form__group__description"><%= t(".update_date.description") %></p>
         </div>
         <div class="dash-form__group__right">
           <%= form.datetime_field :update_date, class: "dash-form__input" %>
@@ -63,6 +63,6 @@
   </div>
 
   <div class="dash-form__group">
-    <%= form.submit "Zapisz", class: "dash-form__submit dash-button dash-button--new" %>
+    <%= form.submit t("dash_form.submit"), class: "dash-form__submit dash-button dash-button--new" %>
   </div>
 <% end %>

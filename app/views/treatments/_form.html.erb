@@ -3,11 +3,11 @@
     <div class="dash-form__group">
       <div class="dash-form__group__container">
         <div class="dash-form__group__left">
-          <div class="dash-form__group__title">Nazwa terapii</div>
-          <p class="dash-form__group__description">Jak się nazywa twoja terapia.</p>
+          <div class="dash-form__group__title"><%= t(".title.title") %></div>
+          <p class="dash-form__group__description"><%= t(".title.description") %></p>
         </div>
         <div class="dash-form__group__right">
-          <%= form.text_field :title, class: "dash-form__input", placeholder: "Dieta ketogeniczna" %>
+          <%= form.text_field :title, class: "dash-form__input", placeholder: t(".title.description") %>
         </div>
       </div>
       <%= render DashFormErrorComponent.new(model: @treatment, field: :title) %>
@@ -17,12 +17,12 @@
     <div class="dash-form__group">
       <div class="dash-form__group__container">
         <div class="dash-form__group__left">
-          <div class="dash-form__group__title">Opis terapii</div>
-          <p class="dash-form__group__description">Co to jest za terapia.</p>
+          <div class="dash-form__group__title"><%= t(".description.title") %></div>
+          <p class="dash-form__group__description"><%= t(".description.description") %></p>
         </div>
         <div class="dash-form__group__right">
           <%= form.text_area :description, class: "dash-form__input dash-form__textarea",
-              placeholder: "Jest to dieta polegająca na spożywaniu tylko tłuszczy i białek." %>
+              placeholder: t(".description.placeholder") %>
         </div>
       </div>
       <%= render DashFormErrorComponent.new(model: @treatment, field: :description) %>
@@ -32,8 +32,8 @@
     <div class="dash-form__group">
       <div class="dash-form__group__container">
         <div class="dash-form__group__left">
-          <div class="dash-form__group__title">Data rozpoczęcia</div>
-          <p class="dash-form__group__description">Kiedy rozpocząłeś swoją terapie.</p>
+          <div class="dash-form__group__title"><%= t(".start_date.title") %></div>
+          <p class="dash-form__group__description"><%= t(".start_date.description") %></p>
         </div>
         <div class="dash-form__group__right">
           <%= form.date_field :start_date, class: "dash-form__input" %>
@@ -46,8 +46,8 @@
     <div class="dash-form__group">
       <div class="dash-form__group__container">
         <div class="dash-form__group__left">
-          <div class="dash-form__group__title">Dat zakończenia</div>
-          <p class="dash-form__group__description">Kiedy zakończyła się terapia lub kiedy ją zakończysz.</p>
+          <div class="dash-form__group__title"><%= t(".end_date.title") %></div>
+          <p class="dash-form__group__description"><%= t(".end_date.description") %></p>
         </div>
         <div class="dash-form__group__right">
           <%= form.date_field :end_date, class: "dash-form__input" %>
@@ -60,8 +60,8 @@
     <div class="dash-form__group">
       <div class="dash-form__group__container">
         <div class="dash-form__group__left">
-          <div class="dash-form__group__title">Efektywność</div>
-          <p class="dash-form__group__description">W skali od 1 do 5 jak oceniasz efektywność tej terapii.</p>
+          <div class="dash-form__group__title"><%= t(".effectiveness.title") %></div>
+          <p class="dash-form__group__description"><%= t(".effectiveness.description") %></p>
         </div>
         <div class="dash-form__group__right">
           <div class="dash-form__range" data-controller="range-slider">
@@ -78,14 +78,14 @@
     <div class="dash-form__group">
       <div class="dash-form__group__container">
         <div class="dash-form__group__left">
-          <div class="dash-form__group__title">Zakończono</div>
-          <p class="dash-form__group__description">Niezależnie od rezultatu, czy terapia jeszcze trwa.</p>
+          <div class="dash-form__group__title"><%= t(".is_finished.title") %></div>
+          <p class="dash-form__group__description"><%= t(".is_finished.description") %></p>
         </div>
         <div class="dash-form__group__right">
           <div class="dash-form__checkbox">
             <%= form.check_box :is_finished, class: "dash-form__checkbox__input" %>
             <%= form.label :is_finished, class: "dash-form__checkbox__label" do %>
-              Czy terapia dobiegła końca?
+              <%= t(".is_finished.label") %>
             <% end %>
           </div>
         </div>

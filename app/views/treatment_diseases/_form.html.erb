@@ -3,8 +3,8 @@
     <div class="dash-form__group">
       <div class="dash-form__group__container">
         <div class="dash-form__group__left">
-          <div class="dash-form__group__title">Nazwa choroby</div>
-          <p class="dash-form__group__description">Wybierz jedną z listy predefiniowanych.</p>
+          <div class="dash-form__group__title"><%= t(".disease_id.title") %></div>
+          <p class="dash-form__group__description"><%= t(".disease_id.description") %></p>
         </div>
         <div class="dash-form__group__right">
           <%= f.select :disease_id, options_for_select(@diseases), { include_blank: false },
@@ -15,6 +15,6 @@
     </div>
   </div>
   <div class="dash-form__group">
-    <%= f.submit "Zapisz", class: "dash-form__submit dash-button dash-button--new" %>
+    <%= f.submit t("dash_form.submit"), class: "dash-form__submit dash-button dash-button--new" %>
   </div>
 <% end %>

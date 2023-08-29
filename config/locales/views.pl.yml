@@ -692,3 +692,110 @@ pl:
         title: Wszyscy specjaliści na platformie
         visit: Zobacz
         no_results: Na razie na platformie nie zarejestrowali się żadni specjaliści.
+  treatments:
+    index:
+      title: Terapie
+      button:
+        new: Dodaj terapię
+      treatment:
+        diseases_treated: "Leczone choroby: %{diseases}"
+        duration: "Terapia trwa %{duration} dni"
+        details: Zobacz
+      no_results: Na razie nie dodano żadnych terapii.
+    new:
+      title: Dodaj nową terapię
+    edit:
+      title: Edytuj terapię
+    show:
+      button:
+        edit: Edytuj
+        delete:
+          title: Usuń
+          turbo:
+            confirm: Czy na pewno chcesz usunąć tą terapię?
+      updates:
+        title: Aktualizacje
+        button:
+          new: Dodaj
+        update:
+          edit: Edytuj
+          delete:
+            title: Usuń
+            turbo:
+              confirm: Czy na pewno chcesz usunąć tą aktualizację?
+        no_results: Na razie nie dodałeś żadnych aktualizacji.
+      info:
+        title: Informacje
+        name:
+          title: Nazwa
+          description: Pełna nazwa terapii.
+        desc:
+          title: Opis
+          description: Opisz dokładnie jak przebiega terapia.
+        duration:
+          title: Czas trwania
+          description: Jak długo trwa terapia.
+          ongoing: W toku
+        is_active:
+          title: Czy terapia trwa?
+          description: Czy nadal leczysz się tą terapią.
+          finished: Tak
+          not_finished: Nie
+      diseases:
+        title: Przypisane choroby
+        button:
+          new: Dodaj chorobę
+        no_results: Na razie nie dodano żadnych chorób.
+        delete:
+          turbo:
+            confirm: Czy na pewno chcesz usunąć tą chorobę?
+    form:
+      title:
+        title: Nazwa terapii
+        description: Jak się nazywa twoja terapia.
+        placeholder: Dieta ketogeniczna
+      description:
+        title: Opis terapi
+        description: Co to jest za terapia.
+        placeholder: Jest to dieta polegająca na spożywaniu tylko tłuszczy i białek.
+      start_date:
+        title: Data rozpoczęcia
+        description: Kiedy rozpocząłeś terapię.
+      end_date:
+        title: Data zakończenia
+        description: Kiedy zakończyłeś lub planujesz zakończyć terapię.
+      effectiveness:
+        title: Skuteczność
+        description: W skali od 1 do 5 jak oceniasz efektywność tej terapii.
+      is_finished:
+        title: Czy zakończono?
+        description: Czy nadal leczysz się tą terapią.
+        label: Czy terapia dobiegła końca?
+  treatment_updates:
+    new:
+      title: Dodaj aktualizację terapii
+    edit:
+      title: Edytuj aktualizację
+    form:
+      name:
+        title: Tytuł
+        description: Ogólna nazwa zmiany w terapii.
+        placeholder: Wyjazd do sanatorium
+      description:
+        title: Opis
+        description: Opisz dokładnie jak zmieniła się twoja terapia.
+        placeholder: W sanatorium stosowano inną dietę.
+      status:
+        title: Status
+        description: Jak oceniasz skuteczność tej terapii.
+      update_date:
+        title: Data aktualizacji
+        description: W którym dniu chcesz dodać aktualizację.
+  treatment_diseases:
+    new:
+      title: Dodaj chorobę do terapii
+    form:
+      disease_id:
+        title: Nazwa choroby
+        description: Wybierz jedną z listy predefiniowanych.
+
