@@ -2,15 +2,15 @@
   <div class="auth__content">
     <header class="auth__header">
       <%= link_to root_path do %>
-        <%= image_tag "logo_light_pl.png", class: "auth__header__logo", alt: "" %>
+        <%= localized_logo_image_tag class: "auth__header__logo", alt: "" %>
       <% end %>
-      <%= link_to 'Strona Główna', root_path, class: "auth__header__link" %>
+      <%= link_to t(".home"), root_path, class: "auth__header__link" %>
     </header>
 
     <div class="auth__main">
       <div class=auth__heading>
-        <h1 class="auth__title">Zaloguj się</h1>
-        <p class="auth__desc">Rozpocznij już teraz, w pełni bezpłatnie.</p>
+        <h1 class="auth__title"><%= t(".title") %></h1>
+        <p class="auth__desc"><%= t(".description") %></p>
       </div>
 
       <div class="auth__social">
@@ -22,14 +22,14 @@
 
       <p class="auth__separator">
         <span class="auth__separator__line"></span>
-        <span class="auth__separator__text">lub</span>
+        <span class="auth__separator__text"><%= t(".separator") %></span>
         <span class="auth__separator__line"></span>
       </p>
 
       <%= form_for(resource, as: resource_name, url: session_path(resource_name), html: { class: "auth-form" }) do |f| %>
         <% if resource.errors.any? %>
           <div class="auth-form__error" data-turbo-cache="false">
-            <h2 class="auth-form__error__title">Nie można wysłać formularza:</h2>
+            <h2 class="auth-form__error__title"><%= t(".form.error") %></h2>
             <ul class="auth-form__error__list">
               <% resource.errors.full_messages.each do |message| %>
                 <li class="auth-form__error__item"><%= message %></li>
@@ -51,41 +51,41 @@
         <% end %>
 
         <div class="auth-form__group">
-          <%= f.label :email, "E-Mail", class: "auth-form__label" %>
+          <%= f.label :email, t(".form.email.label"), class: "auth-form__label" %>
           <%= f.email_field :email, autofocus: true, autocomplete: "email",
-          class: "auth-form__input", placeholder: "jan.kowalski@gmail.com" %>
+                class: "auth-form__input", placeholder: t(".form.email.placeholder") %>
         </div>
 
         <div class="auth-form__group">
-          <%= f.label :password, "Hasło", class: "auth-form__label" %>
+          <%= f.label :password, t(".form.password.label"), class: "auth-form__label" %>
           <%= f.password_field :password, autocomplete: "new-password",
-          class: "auth-form__input", placeholder: "•••••••••••••" %>
+                class: "auth-form__input", placeholder: t(".form.password.placeholder") %>
         </div>
 
         <% if devise_mapping.rememberable? %>
           <div class="auth-form__group">
             <%= f.check_box :remember_me, class: "auth-form__checkbox-input" %>
             <%= f.label :remember_me, class: "auth-form__checkbox-label" do %>
-              Zapamiętaj mnie
+              <%= t(".form.remember_me.label") %>
             <% end %>
           </div>
         <% end %>
 
-        <%= f.submit "Zaloguj się", class: "auth-form__submit" %>
+        <%= f.submit t(".form.submit"), class: "auth-form__submit" %>
       <% end %>
 
       <%- if devise_mapping.recoverable? && controller_name != 'passwords' && controller_name != 'registrations' %>
         <p class="auth__text">
-          Zapomniałeś hasła? <%= link_to "Zresetuj swoje hasło", new_password_path(resource_name), class: "auth__link" %>
+          <%= t(".forgot_password") %> <%= link_to t(".reset_password"), new_password_path(resource_name), class: "auth__link" %>
         </p>
       <% end %>
 
       <p class="auth__text">
-        Nie masz jeszcze konta? <%= link_to "Zarejestruj się", new_user_registration_path, class: "auth__link" %>
+        <%= t(".not_registered") %> <%= link_to t(".sign_up"), new_user_registration_path, class: "auth__link" %>
       </p>
     </div>
   </div>
   <div class="auth__sidebar">
-    <%= link_to "Ilustracja pikisuperstar z Freepik", "https://www.freepik.com/free-vector/flat-design-people-with-disability-room_10627406.htm#page=11&position=15&from_view=author", class: "auth__credits" %>
+    <%= link_to t(".credits"), "https://www.freepik.com/free-vector/flat-design-people-with-disability-room_10627406.htm#page=11&position=15&from_view=author", class: "auth__credits" %>
   </div>
 </div>

@@ -2,27 +2,27 @@
   <div class="auth__content">
     <header class="auth__header">
       <%= link_to root_path do %>
-        <%= image_tag "logo_light_pl.png", class: "auth__header__logo", alt: "" %>
+        <%= localized_logo_image_tag class: "auth__header__logo", alt: "" %>
       <% end %>
-      <%= link_to 'Strona Główna', root_path, class: "auth__header__link" %>
+      <%= link_to t(".home"), root_path, class: "auth__header__link" %>
     </header>
 
     <div class="auth__main">
       <div class=auth__heading>
-        <h1 class="auth__title">Dołącz do nas!</h1>
-        <p class="auth__desc">Rozpocznij już teraz, w pełni bezpłatnie.</p>
+        <h1 class="auth__title"><%= t(".title") %></h1>
+        <p class="auth__desc"><%= t(".description") %></p>
       </div>
 
       <div class="auth__social">
         <%= link_to user_google_oauth2_omniauth_authorize_path, method: :post, class: "auth__social-link" do %>
           <%= image_tag "google_logo.svg", class: "auth__social-icon", alt: "" %>
-          <span class="auth__social-text">Zaloguj się przez Google</span>
+          <span class="auth__social-text"><%= t(".google") %></span>
         <% end %>
       </div>
 
       <p class="auth__separator">
         <span class="auth__separator__line"></span>
-        <span class="auth__separator__text">lub</span>
+        <span class="auth__separator__text"><%= t(".separator") %></span>
         <span class="auth__separator__line"></span>
       </p>
 
@@ -34,11 +34,11 @@
               model: resource,
               type: :text_field,
               field: :email,
-              label: "E-Mail",
+              label: t(".form.email.label"),
               options: {
                 autofocus: true,
                 autocomplete: "email",
-                placeholder: "jan.kowalski@gmail.com"
+                placeholder: t(".form.email.placeholder")
               }
             ))
           %>
@@ -51,10 +51,10 @@
               model: resource,
               type: :password_field,
               field: :password,
-              label: "Hasło",
+              label: t(".form.password.label"),
               options: {
                 autocomplete: "new-password",
-                placeholder: "•••••••••••••"
+                placeholder: t(".form.password.placeholder")
               }
             ))
           %>
@@ -67,10 +67,10 @@
               model: resource,
               type: :password_field,
               field: :password_confirmation,
-              label: "Potwierdź hasło",
+              label: t(".form.password_confirmation.label"),
               options: {
                 autocomplete: "new-password",
-                placeholder: "•••••••••••••"
+                placeholder: t(".form.password_confirmation.placeholder")
               }
             ))
           %>
@@ -79,18 +79,22 @@
         <div class="auth-form__group">
           <%= f.check_box :remember_me, class: "auth-form__checkbox-input" %>
           <%= f.label :remember_me, class: "auth-form__checkbox-label" do %>
-            Akceptuję <%= link_to "regulamin", root_path, class: "auth__link" %> i <%= link_to "politykę platformy", new_user_session_path, class: "auth__link" %>
+            <%= t(
+              ".form.terms",
+              terms_link: link_to("regulamin", root_path, class: "auth__link"),
+              privacy_link: link_to("politykę platformy", new_user_session_path, class: "auth__link")
+            ).html_safe %>
           <% end %>
         </div>
 
-        <%= f.submit "Zarejestruj się", class: "auth-form__submit" %>
+        <%= f.submit t(".form.submit"), class: "auth-form__submit" %>
       <% end %>
       <p class="auth__text">
-        Masz już konto? <%= link_to "Zaloguj się", new_user_session_path, class: "auth__link" %>
+        <%= t(".already_registered") %> <%= link_to t(".sign_in"), new_user_session_path, class: "auth__link" %>
       </p>
     </div>
   </div>
   <div class="auth__sidebar">
-    <%= link_to "Ilustracja z Freepik", "https://www.freepik.com/free-vector/hand-drawn-crowd-people-walking-illustration_21559642.htm?epik=dj0yJnU9MTNQbzBTLTAxTTNyTmppcnZKYXJJckZObUVmNEhoVXEmcD0wJm49ZDZIMVNIMnhlbzFINlBCVnNmdHhMQSZ0PUFBQUFBR1NxU0lj", class: "auth__credits" %>
+    <%= link_to t(".credits"), "https://www.freepik.com/free-vector/hand-drawn-crowd-people-walking-illustration_21559642.htm?epik=dj0yJnU9MTNQbzBTLTAxTTNyTmppcnZKYXJJckZObUVmNEhoVXEmcD0wJm49ZDZIMVNIMnhlbzFINlBCVnNmdHhMQSZ0PUFBQUFBR1NxU0lj", class: "auth__credits" %>
   </div>
 </div>

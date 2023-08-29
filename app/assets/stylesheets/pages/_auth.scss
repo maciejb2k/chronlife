@@ -145,9 +145,6 @@
   gap: 16px;
   padding-bottom: 30px;
 
-  &__group {
-  }
-
   &__link {
     text-decoration: underline;
   }
@@ -175,7 +172,7 @@
     padding-bottom: 20px;
 
     &__title {
-      font-size: var(--20px);
+      font-size: var(--16px);
       padding-bottom: 10px;
     }
 
@@ -183,10 +180,10 @@
       list-style-type: circle;
       list-style-position: inside;
       padding: 10px 20px;
-      background: #ff5556;
-      border: 2px solid black;
-      border-radius: 10px;
-      font-weight: 500;
+      background: #ffaeae;
+      color: #000000;
+      border-radius: 3px;
+      font-weight: 400;
     }
   }
 

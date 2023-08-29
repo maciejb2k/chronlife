@@ -81,6 +81,92 @@ pl:
       body:
         title: Treść
         description: Za pomocą poniższego edytora możesz napisać artykuł..
+  auth:
+    otp:
+      new:
+        title: Uwierzytelnianie dwuskładnikowe
+        description: Podaj 6-cyfrowy kod z aplikacji.
+        credits: Ilustracja pikisuperstar z Freepik
+        form:
+          otp_attempt:
+            label: Kod jednorazowy
+            placeholder: "123456"
+          submit: Wyślij
+    passwords:
+      new:
+        home: Strona główna
+        title: Zresetuj hasło
+        description: Podaj nowe hasło do platformy.
+        credits: Ilustracja z Freepik
+        remember_password: Pamiętasz jednak hasło?
+        form:
+          error: "Nie można wysłać formularza:"
+          email:
+            label: "E-Mail"
+            placeholder: "jan.kowalski@gmail.com"
+          submit: Przypomnij hasło
+        sign_in: Zaloguj się
+      edit:
+        home: Strona główna
+        title: Zresetuj hasło
+        description: Podaj nowe hasło do platformy.
+        credits: Ilustracja z Freepik
+        form:
+          error: "Nie można wysłać formularza:"
+          password:
+            label: Hasło
+            placeholder: "•••••••••••••"
+          password_confirmation:
+            label: Potwierdź hasło
+            placeholder: "•••••••••••••"
+          submit: Zmień hasło
+        reminded: Jednak pamiętasz hasło?
+        sign_in: Zaloguj się
+    registrations:
+      new:
+        home: Strona główna
+        title: Dołącz do nas!
+        description: Rozpocznij już teraz, w pełni bezpłatnie.
+        credits: Ilustracja z Freepik
+        google: Zarejestruj się przez Google
+        separator: lub
+        form:
+          email:
+            label: "E-Mail"
+            placeholder: "jan.kowalski@gmail.com"
+          password:
+            label: Hasło
+            placeholder: "•••••••••••••"
+          password_confirmation:
+            label: Potwierdź hasło
+            placeholder: "•••••••••••••"
+          terms: Akceptuję %{terms_link} i %{privacy_link}
+          submit: Zarejestruj się
+        already_registered: Masz już konto?
+        sign_in: Zaloguj się
+    sessions:
+      new:
+        home: Strona główna
+        title: Zaloguj się
+        description: Rozpocznij już teraz, w pełni bezpłatnie.
+        credits: Ilustracja z Freepik
+        google: Zaloguj się przez Google
+        separator: lub
+        form:
+          error: "Nie można wysłać formularza:"
+          email:
+            label: E-Mail
+            placeholder: "jan.kowalski@gmail.com"
+          password:
+            label: Hasło
+            placeholder: "•••••••••••••"
+          remember_me:
+            label: Zapamiętaj mnie
+          submit: Zaloguj się
+        forgot_password: Zapomniałeś hasła?
+        reset_password: Zresetuj swoje hasło
+        not_registered: Nie masz jeszcze konta?
+        sign_up: Zarejestruj się
   dashboard:
     index:
       welcome: Witaj, %{name}!
