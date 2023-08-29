@@ -39,7 +39,7 @@ RSpec.describe Friendship, type: :model do
       it do
         is_expected.to(
           validate_uniqueness_of(:account_id).scoped_to(:friend_id)
-          .case_insensitive.with_message("zostało już zajęte")
+          .case_insensitive.with_message(:taken)
         )
       end
     end

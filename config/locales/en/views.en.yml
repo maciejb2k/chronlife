@@ -22,7 +22,7 @@ en:
         account: "Your Account:"
         settings: Settings
         logout: Logout
-      footer: 2023 - ChronicPatients.com
+      footer: 2023 - ChronLife
       header:
         diseases: My Diseases
         search:
@@ -536,7 +536,7 @@ en:
     show_by_day:
       title: Measurement List
       measurement:
-        hour: "Hour:"
+        hour: "at:"
       no_results: No measurements on this day.
     show:
       title: "Measurement from %{date}"
