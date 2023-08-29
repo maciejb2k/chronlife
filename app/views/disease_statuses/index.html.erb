@@ -3,14 +3,14 @@
     <div class="dash-header__left">
       <h1 class="dash-header__title">
         <i class="ri-hearts-line dash-header__title__icon"></i>
-        Stan zdrowia
+        <%= t(".title") %>
       </h1>
       <%= render "shared/breadcrumbs" %>
     </div>
     <div class="dash-header__right">
       <%= link_to new_disease_status_path, class: "dash-button dash-button--new" do %>
         <i class="ri-add-line dash-button__icon"></i>
-        Dodaj aktualizację
+        <%= t(".button.new") %>
       <% end %>
       <%= link_to @disease, class: "dash-button dash-button--back" do %>
         <i class="ri-arrow-left-line dash-button__icon"></i>
@@ -32,7 +32,7 @@
       <% end %>
     <% else %>
       <p class="no-results">
-        Na razie nie dodałeś żadnych aktualizacji.
+        <%= t(".no_results") %>
       </p>
     <% end %>
   </div>

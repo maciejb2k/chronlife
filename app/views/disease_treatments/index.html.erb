@@ -3,7 +3,7 @@
     <div class="dash-header__left">
       <h1 class="dash-header__title">
         <i class="ri-hospital-line dash-header__title__icon"></i>
-        Terapie
+        <%= t(".title") %>
       </h1>
       <%= render "shared/breadcrumbs" %>
     </div>
@@ -34,20 +34,20 @@
             <% end %>
           </h2>
           <p class="treatment-card__diseases">
-            Leczone choroby: <%= @treatments.size %>
+            <%= t(".treatment.diseases_treated", diseases: @treatments.size) %>
           </p>
           <div class="treatment-card__footer">
             <span class="treatment-card__date">
               <i class="ri-calendar-line treatment-card__icon"></i>
-              Terapia trwa <%= treatment.days_difference %> dni
+              <%= t(".treatment.duration", duration: treatment.days_difference) %>
             </span>
-            <%= link_to "Zobacz", treatment, class: "treatment-card__button" %>
+            <%= link_to t(".treatment.details"), treatment, class: "treatment-card__button" %>
           </div>
         </div>
       <% end %>
     <% else %>
       <p class="no-results">
-        Na razie nie dodałeś żadnych terapii.
+        <%= t(".no_results") %>
       </p>
     <% end %>
   </div>

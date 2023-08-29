@@ -14,4 +14,4 @@
 
 <%= turbo_stream.update :dash_toast,
                         partial: "shared/dash_toast",
-                        locals: { message: "Poprawnie usunięto komentarz", icon: "success" } %>
+                        locals: { message: t(".toast.success"), icon: "success" } %>

@@ -126,4 +126,195 @@ pl:
       severity:
         title: Nasilenie
         description: W skali od 1 do 5 jak mocno wpływa na ciebie ten czynnik.
+  disease_status_comments:
+    update:
+      toast:
+        success: Poprawnie edytowano komentarz
+    create:
+      toast:
+        success: Poprawnie dodano komentarz
+    destroy:
+      toast:
+        success: Poprawnie usunięto komentarz
+    form:
+      cancel:
+        title: Anuluj
+      submit:
+        title: Zapisz
+  disease_statuses:
+    index:
+      title: Stan zdrowia
+      button:
+        new: Dodaj aktualizację
+      no_results: Na razie nie dodano żadnych aktualizacji.
+    new:
+      title: Dodaj aktualizację
+    edit:
+      title: Edytuj aktualizację
+    form:
+      status:
+        title: Stan
+        description: Jak oceniasz stan swojej choroby
+      content:
+        title: Opis
+        description: Opisz, co się z tobą dzieje.
+        placeholder: Dzisiaj czuję się lepiej niż wczoraj.
+      mood:
+        title: Samopoczucie
+        description: Jak się dzisiaj czujesz?
+    load_more_comments:
+      more: Załaduj więcej komentarzy
+    empty_comments:
+      no_comments: Brak komentarzy
+    disease_status:
+      mood:
+        unhappy: Pogorszenie
+        normal: Bez zmian
+        happy: Poprawa
+        unknown: Nieznane
+      option:
+        edit: Edytuj
+        report: Zgłoś
+        delete:
+          turbo:
+            confirm: Czy na pewno chcesz usunąć tą aktualizację?
+    comment:
+      button:
+        edit: Edytuj
+        report: Zgłoś
+        delete:
+          title: Usuń
+          turbo:
+            confirm: Czy na pewno chcesz usunąć ten komentarz?
+    comment_date:
+      ago: temu
+    add_comment_form:
+      body:
+        placeholder: Dodaj komentarz
+  disease_symptom_updates:
+    form:
+      intensity:
+        title: Intensywność (1-5)
+      update_date:
+        title: Data aktualizacji
+      submit: Dodaj
+    symptom_update:
+      intensity_change: "Zmiana intensywności:"
+      intensity_info: "%{intensity}/5"
+      update_date: "w dniu %{update_date}"
+      button:
+        delete:
+          turbo:
+            confirm: Czy na pewno chcesz usunąć tą aktualizację?
+    latest_update:
+      no_updates: Brak aktualizacji
+    no_results:
+      no_results: Na razie nie dodałeś żadnych aktualizacji objawu.
+  disease_symptoms:
+    index:
+      title: Objawy
+      button:
+        new: Dodaj nowy objaw
+      predefined_symptoms: Predefiniowane objawy
+      custom_symptoms: Własne objawy
+      symptom:
+        details: Szczegóły objawu
+      no_results: Na razie nie dodano żadnych objawów.
+    edit:
+      title: Edytuj objaw
+    new:
+      title: Dodaj nowy objaw
+    form:
+      predefined_symptom_id:
+        title: Objawy choroby
+        description: Wybierz jeden z listy objawów tej choroby.
+        label: Nie ma twojego objawu na liście?
+      name:
+        title: Własny objaw
+        description: Nazwij krótko towarzyszący ci objaw.
+        placeholder: Ból głowy
+      description:
+        title: Opis
+        description: Opisz dokładnie jak przejawia się ten objaw.
+        placeholder: Ból głowy występujący w okolicy czoła.
+      first_noticed_at:
+        title: Od kiedy to trwa?
+        description: Kiedy pierwszy raz zaobserwowałeś dany objaw.
+    show:
+      button:
+        edit: Edytuj
+        delete:
+          title: Usuń
+          turbo:
+            confirm: Czy na pewno chcesz usunąć?
+      info: Informacje
+      desc:
+        title: Opis
+        description: Opisz dokładnie jak przejawia się ten objaw.
+      first_noticed_at:
+        title: Od kiedy to trwa?
+        description: Kiedy pierwszy raz zaobserwowałeś dany objaw.
+        empty: Nie podano daty
+      intensity:
+        title: Intensywność objawy
+        description: Jak mocno odczuwasz ten objaw?
+      turbo:
+        loading: Pobieranie...
+      chart: Wykres zmian intensywności objawu
+      change_intensity: Zmień intensywność objawu
+      intensity_changes: Zmiany intensywność objawu
+  disease_treatments:
+    index:
+      title: Terapie
+      treatment:
+        diseases_treated: "Leczone choroby: %{diseases}"
+        duration: "Terapia trwa %{duration} dni"
+      details: Zobacz
+      no_results: Na razie nie dodano żadnych terapii.
+  diseases:
+    severity:
+      one: Łagodne
+      two: Umiarkowane
+      three: Dotkliwe
+      four: Utrudniające życie
+      five: Rujnujące życie
+      unknown: Nieznane
+    index:
+      title: Choroby
+      button:
+        new: Dodaj nową chorobę
+      disease:
+        diagnosed: Zdiagnozowane przez lekarza
+        more: Przejdź do choroby
+      no_results: Na razie nie dodano żadnych chorób.
+    new:
+      title: Dodaj nową chorobę
+    edit:
+      title: Edytuj chorobę
+    form:
+      predefined_disease_id:
+        title: Nazwa choroby
+        description: Wybierz jedną z listy predefiniowanych.
+      diagnosed_by_hp:
+        title: Diagnoza
+        description: Skąd wiesz o swojej chorobie.
+        label: Czy choroba została zdiagnozowana przez lekarza?
+      diagnosed_at:
+        title: Od kiedy to trwa?
+        description: Kiedy pierwszy raz zaobserwowałeś objawy choroby.
+      severity:
+        title: Dotkliwość
+        description: W skali od 1 do 5 jak mocno wpływa na ciebie ta choroba.
+      color:
+        title: Kolor
+        description: Wybierz kolor, którym będzie oznaczona twoją chorobę.
+    show:
+      show_more: Kliknij by przejść
+      statuses: Stan zdrowia
+      symptoms: Objawy
+      treatments: Terapie
+      risk_factors: Czynniki ryzyka
+      photos: Zdjęcia
+      edit: Edytuj chorobę
+
 

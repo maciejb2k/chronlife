@@ -6,16 +6,16 @@
     ) do |form|
 %>
   <div class="dash-form__simple-group">
-    <%= form.label :intensity, "Intensywność (1-5)", class: "dash-form__label" %>
-    <%= form.number_field :intensity, min: 1, max: 7, value: 1, class: "dash-form__input" %>
+    <%= form.label :intensity, t(".intensity.title"), class: "dash-form__label" %>
+    <%= form.number_field :intensity, min: 1, max: 5, value: 1, class: "dash-form__input" %>
     <%= render DashFormErrorComponent.new(model: @disease_symptom_update, field: :intensity) %>
   </div>
 
   <div class="dash-form__simple-group">
-    <%= form.label :update_date, "Data", class: "dash-form__label" %>
+    <%= form.label :update_date, t(".update_date.title"), class: "dash-form__label" %>
     <%= form.date_field :update_date, class: "dash-form__input" %>
     <%= render DashFormErrorComponent.new(model: @disease_symptom_update, field: :update_date) %>
   </div>
 
-  <%= form.submit "Dodaj", class: "dash-form__submit dash-button dash-button--new" %>
+  <%= form.submit t(".submit"), class: "dash-form__submit dash-button dash-button--new" %>
 <% end %>

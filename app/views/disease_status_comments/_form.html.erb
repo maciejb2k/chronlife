@@ -4,8 +4,8 @@
         class: "comment-edit-form__body" %>
   </div>
   <div class="comment-edit-form__actions">
-    <%= link_to "Anuluj", disease_status_comment_path(@disease, @disease_status, @comment),
+    <%= link_to t(".cancel.title"), disease_status_comment_path(@disease, @disease_status, @comment),
         class: "dash-button dash-button--small dash-button--gray" %>
-    <%= form.submit "Edytuj", class: "dash-button dash-button--small dash-button--new" %>
+    <%= form.submit t(".submit.title"), class: "dash-button dash-button--small dash-button--new" %>
   </div>
 <% end %>

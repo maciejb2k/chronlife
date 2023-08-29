@@ -4,7 +4,7 @@
 
 <%= turbo_stream.update :dash_toast,
                         partial: "shared/dash_toast",
-                        locals: { message: "Poprawnie edytowano komentarz", icon: "success" } %>
+                        locals: { message: t(".toast.success"), icon: "success" } %>
 
 <%= turbo_stream.update "comment_date_#{@comment.id}" do %>
   <%= render partial: "disease_statuses/comment_date", locals: { comment: @comment } %>

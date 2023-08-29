@@ -31,16 +31,19 @@
             <%= link_to edit_disease_status_comment_path(@disease, @disease_status, comment),
                 class: "dash-dropdown__item", data: { turbo_frame: "comment_body_#{comment.id}",
                 action: "dropdown#toggle" } do %>
-              <i class="ri-edit-line dash-dropdown__item__icon dash-dropdown__item__icon--edit"></i> Edytuj
+              <i class="ri-edit-line dash-dropdown__item__icon dash-dropdown__item__icon--edit"></i>
+              <%= t(".button.edit") %>
             <% end %>
             <%= button_to disease_status_comment_path(@disease, @disease_status, comment),
                 method: :delete, class: "dash-dropdown__item", data: { action: "dropdown#toggle",
-                confirm: "Are you sure?", turbo_confirm: "Are you sure?" } do %>
-              <i class="ri-close-line dash-dropdown__item__icon dash-dropdown__item__icon--delete"></i> Usuń
+                confirm: t(".button.delete.turbo.confirm"), turbo_confirm: t(".button.delete.turbo.confirm") } do %>
+              <i class="ri-close-line dash-dropdown__item__icon dash-dropdown__item__icon--delete"></i>
+              <%= t(".button.delete.title") %>
             <% end %>
           <% else %>
             <div class="dash-dropdown__item">
-              <i class="ri-alert-line dash-dropdown__item__icon"></i> Zgłoś
+              <i class="ri-alert-line dash-dropdown__item__icon"></i>
+              <%= t(".button.report") %>
             </div>
           <% end %>
         </div>

@@ -3,8 +3,8 @@
     <div class="dash-form__group">
       <div class="dash-form__group__container">
         <div class="dash-form__group__left">
-          <div class="dash-form__group__title">Status</div>
-          <p class="dash-form__group__description">Jak oceniasz stan swojej choroby.</p>
+          <div class="dash-form__group__title"><%= t(".status.title") %></div>
+          <p class="dash-form__group__description"><%= t(".status.description") %>.</p>
         </div>
         <div class="dash-form__group__right">
           <%= form.select :status, options_for_select(@disease_status_options, @disease_status.status),
@@ -18,11 +18,12 @@
     <div class="dash-form__group">
       <div class="dash-form__group__container">
         <div class="dash-form__group__left">
-          <div class="dash-form__group__title">Opis</div>
-          <p class="dash-form__group__description">Opisz jak się czujesz.</p>
+          <div class="dash-form__group__title"><%= t(".content.title") %></div>
+          <p class="dash-form__group__description"><%= t(".content.description") %></p>
         </div>
         <div class="dash-form__group__right">
-          <%= form.text_area :content, class: "dash-form__input dash-form__textarea" %>
+          <%= form.text_area :content, class: "dash-form__input dash-form__textarea",
+              placeholder: t(".content.placeholder") %>
         </div>
       </div>
       <%= render DashFormErrorComponent.new(model: @disease_status, field: :content) %>
@@ -32,8 +33,8 @@
     <div class="dash-form__group">
       <div class="dash-form__group__container">
         <div class="dash-form__group__left">
-          <div class="dash-form__group__title">Samopoczucie</div>
-          <p class="dash-form__group__description">Jak się dzisiaj czujesz?</p>
+          <div class="dash-form__group__title"><%= t(".mood.title") %></div>
+          <p class="dash-form__group__description"><%= t(".mood.description") %></p>
         </div>
         <div class="dash-form__group__right">
           <div class="dash-form__smiley">
@@ -47,6 +48,6 @@
     </div>
   </div>
   <div class="dash-form__group">
-    <%= form.submit "Zapisz", class: "dash-form__submit dash-button dash-button--new" %>
+    <%= form.submit t("dash_form.submit"), class: "dash-form__submit dash-button dash-button--new" %>
   </div>
 <% end %>

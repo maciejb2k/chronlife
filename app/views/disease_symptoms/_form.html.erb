@@ -4,8 +4,8 @@
       <div class="dash-form__group">
         <div class="dash-form__group__container">
           <div class="dash-form__group__left">
-            <div class="dash-form__group__title">Objawy choroby</div>
-            <p class="dash-form__group__description">Wybierz jeden z listy objawów tej choroby.</p>
+            <div class="dash-form__group__title"><%= t(".predefined_symptom_id.title") %></div>
+            <p class="dash-form__group__description"><%= t(".predefined_symptom_id.description") %></p>
           </div>
           <div class="dash-form__group__right" >
             <%= f.select :predefined_symptom_id, options_for_select(@predefined_symptoms, @disease_symptom.predefined_symptom_id),
@@ -14,7 +14,7 @@
             <div class="dash-form__checkbox" >
               <%= check_box_tag :custom_symptom, 0, @disease_symptom.name.present?, class: "dash-form__checkbox__input",
                   data: { toggle_input_target: "checkbox", action: "input->toggle-input#toggle" }%>
-              <%= label_tag :custom_symptom, "Nie ma twojego objawu na liście?", class: "dash-form__checkbox__label" %>
+              <%= label_tag :custom_symptom, t(".predefined_symptom_id.label"), class: "dash-form__checkbox__label" %>
             </div>
           </div>
         </div>
@@ -25,8 +25,8 @@
       <div class="dash-form__group">
         <div class="dash-form__group__container">
           <div class="dash-form__group__left">
-            <div class="dash-form__group__title">Własny objaw</div>
-            <p class="dash-form__group__description">Nazwij krótko towarzyszący ci objaw.</p>
+            <div class="dash-form__group__title"><%= t(".name.title") %></div>
+            <p class="dash-form__group__description"><%= t(".name.description") %></p>
           </div>
           <div class="dash-form__group__right">
             <%= f.text_field :name, class: "dash-form__input", data: { toggle_input_target: "input" } %>
@@ -40,8 +40,8 @@
     <div class="dash-form__group">
       <div class="dash-form__group__container">
         <div class="dash-form__group__left">
-          <div class="dash-form__group__title">Opis objawu</div>
-          <p class="dash-form__group__description">Opisz swoimi słowami, skąd wiesz o tym objawie i jak bardzo ci on przeszkadza.</p>
+          <div class="dash-form__group__title"><%= t(".description.title") %></div>
+          <p class="dash-form__group__description"><%= t(".description.description") %></p>
         </div>
         <div class="dash-form__group__right">
           <%= f.text_area :description, class: "dash-form__input dash-form__textarea" %>
@@ -54,8 +54,8 @@
     <div class="dash-form__group">
       <div class="dash-form__group__container">
         <div class="dash-form__group__left">
-          <div class="dash-form__group__title">Od kiedy to trwa?</div>
-          <p class="dash-form__group__description">Kiedy pierwszy raz zaobserwowałeś dany objaw.</p>
+          <div class="dash-form__group__title"><%= t(".first_noticed_at.title") %></div>
+          <p class="dash-form__group__description"><%= t(".first_noticed_at.description") %></p>
         </div>
         <div class="dash-form__group__right">
           <%= f.date_field :first_noticed_at, class: "dash-form__input dash-form__input-date" %>
@@ -65,6 +65,6 @@
     </div>
   </div>
   <div class="dash-form__group">
-    <%= f.submit "Zapisz", class: "dash-form__submit dash-button dash-button--new" %>
+    <%= f.submit t("dash_form.submit"), class: "dash-form__submit dash-button dash-button--new" %>
   </div>
 <% end %>

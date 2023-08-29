@@ -24,42 +24,42 @@
         <%= link_to disease_statuses_path(@disease), class: "navigation__item" do %>
           <i class="ri-hearts-line navigation__item__icon"></i>
           <div>
-            <p class="navigation__item__text">Stan zdrowia</p>
-            <p class="navigation__item__link">Kliknij by przejść</p>
+            <p class="navigation__item__text"><%= t(".statuses") %></p>
+            <p class="navigation__item__link"><%= t(".show_more") %></p>
           </div>
         <% end %>
         <%= link_to disease_symptoms_path(@disease), class: "navigation__item" do %>
           <i class="ri-thermometer-line navigation__item__icon"></i>
           <div>
-            <p class="navigation__item__text">Objawy</p>
-            <p class="navigation__item__link">Kliknij by przejść</p>
+            <p class="navigation__item__text"><%= t(".symptoms") %></p>
+            <p class="navigation__item__link"><%= t(".show_more") %></p>
           </div>
         <% end %>
         <%= link_to disease_risk_factors_path(@disease), class: "navigation__item" do %>
           <i class="ri-fire-line navigation__item__icon"></i>
           <div>
-            <p class="navigation__item__text">Czynniki ryzyka</p>
-            <p class="navigation__item__link">Kliknij by przejść</p>
+            <p class="navigation__item__text"><%= t(".risk_factors") %></p>
+            <p class="navigation__item__link"><%= t(".show_more") %></p>
           </div>
         <% end %>
         <%= link_to disease_treatments_path(@disease), class: "navigation__item" do %>
           <i class="ri-hospital-line navigation__item__icon"></i>
           <div>
-            <p class="navigation__item__text">Terapie</p>
-            <p class="navigation__item__link">Kliknij by przejść</p>
+            <p class="navigation__item__text"><%= t(".treatments") %></p>
+            <p class="navigation__item__link"><%= t(".show_more") %></p>
           </div>
         <% end %>
         <%= link_to disease_photos_path(@disease), class: "navigation__item" do %>
           <i class="ri-camera-3-line navigation__item__icon"></i>
           <div>
-            <p class="navigation__item__text">Zdjęcia</p>
-            <p class="navigation__item__link">Kliknij by przejść</p>
+            <p class="navigation__item__text"><%= t(".photos") %></p>
+            <p class="navigation__item__link"><%= t(".show_more") %></p>
           </div>
         <% end %>
         <%= link_to edit_disease_path(@disease), class: "navigation__item navigation__item--edit" do %>
           <i class="ri-edit-box-line navigation__item__icon"></i>
           <div>
-            <p class="navigation__item__text">Edytuj chorobę</p>
+            <p class="navigation__item__text"><%= t(".edit") %></p>
           </div>
         <% end %>
       </nav>

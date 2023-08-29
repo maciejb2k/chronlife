@@ -3,14 +3,14 @@
     <div class="dash-header__left">
       <h1 class="dash-header__title">
         <i class="ri-thermometer-line dash-header__title__icon"></i>
-        Objawy
+        <%= t(".title") %>
       </h1>
       <%= render "shared/breadcrumbs" %>
     </div>
     <div class="dash-header__right">
       <%= link_to new_disease_symptom_path, class: "dash-button dash-button--new" do %>
         <i class="ri-add-line dash-button__icon"></i>
-        Dodaj nowy objaw
+        <%= t(".button.new") %>
       <% end %>
       <%= link_to @disease, class: "dash-button dash-button--back" do %>
         <i class="ri-arrow-left-line dash-button__icon"></i>
@@ -25,7 +25,7 @@
   <div class="page-disease-symptoms__content">
     <div class="dash-group">
       <header class="dash-group__header">
-        <h2 class="dash-group__title">Predefiniowane objawy</h2>
+        <h2 class="dash-group__title"><%= t(".predefined_symptoms") %></h2>
         <div class="dash-group__actions"></div>
       </header>
       <div class="dash-group__content">
@@ -82,7 +82,7 @@
                       <%= disease_symptom.name %>
                     </span>
                     <span class="symptom__link">
-                      Szczegóły objawu
+                      <%= t(".symptom.details") %>
                     </span>
                   </div>
                 </div>
@@ -92,7 +92,7 @@
           </div>
         <% else %>
           <p class="no-results">
-            Na razie nie dodałeś żadnych własnych objawów.
+            <%= t(".no_results") %>
           </p>
         <% end %>
       </div>

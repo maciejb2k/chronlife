@@ -3,14 +3,14 @@
     <div class="dash-header__left">
       <h1 class="dash-header__title">
         <i class="ri-stethoscope-line dash-header__title__icon"></i>
-        <span class="dash-header__title__text">Choroby</span>
+        <span class="dash-header__title__text"><%= t(".title") %></span>
       </h1>
       <%= render "shared/breadcrumbs" %>
     </div>
     <div class="dash-header__right">
       <%= link_to new_disease_path, class: "dash-button dash-button--new" do %>
         <i class="ri-add-line dash-button__icon"></i>
-        Dodaj nową chorobę
+        <%= t(".button.new") %>
       <% end %>
     </div>
   </header>
@@ -24,23 +24,22 @@
       <div class="diseases">
         <% @diseases.each do |disease| %>
           <%= link_to disease, class: "disease" do %>
-            <!-- <div class="disease__ribbon" style="background: <%= disease.color %>;"></div> -->
             <div class="disease__content">
               <h3 class="disease__title">
                 <%= disease.predefined_disease.name %>
                 <% if disease.diagnosed_by_hp? %>
-                  <div class="disease__diagnosed" title="Zdiagnozowane przez lekarza">
+                  <div class="disease__diagnosed" title="<%= t(".disease.diagnosed") %>">
                     <i class="ri-check-line"></i>
                   </div>
                 <% end %>
               </h3>
               <div class="disease__badges">
                 <div class="disease__badge disease__badge--severity-<%= disease.severity %>">
-                  <%= severity_to_string disease.severity %>
+                  <%= severity_to_string(disease.severity) %>
                 </div>
               </div>
               <div class="disease__more">
-                Przejdź do choroby
+                <%= t(".disease.more") %>
               </div>
             </div>
           <% end %>
@@ -48,7 +47,7 @@
       </div>
     <% else %>
       <p class="no-results">
-        Na razie nie dodałeś żadnych chorób.
+        <%= t(".no_results") %>
       </p>
     <% end %>
   </div>

@@ -3,8 +3,8 @@
     <div class="dash-form__group">
       <div class="dash-form__group__container">
         <div class="dash-form__group__left">
-          <div class="dash-form__group__title">Nazwa choroby</div>
-          <p class="dash-form__group__description">Wybierz jedną z listy predefiniowanych.</p>
+          <div class="dash-form__group__title"><%= t(".predefined_disease_id.title") %></div>
+          <p class="dash-form__group__description"><%= t(".predefined_disease_id.description") %></p>
         </div>
         <div class="dash-form__group__right">
           <%= f.select :predefined_disease_id, options_for_select(@predefined_diseases, @selected_disease_id),
@@ -18,14 +18,14 @@
     <div class="dash-form__group">
       <div class="dash-form__group__container">
         <div class="dash-form__group__left">
-          <div class="dash-form__group__title">Diagnoza</div>
-          <p class="dash-form__group__description">Skąd wiesz o swojej chorobie.</p>
+          <div class="dash-form__group__title"><%= t(".diagnosed_by_hp.title") %></div>
+          <p class="dash-form__group__description"><%= t(".diagnosed_by_hp.description") %></p>
         </div>
         <div class="dash-form__group__right">
           <div class="dash-form__checkbox">
             <%= f.check_box :diagnosed_by_hp, class: "dash-form__checkbox__input" %>
             <%= f.label :diagnosed_by_hp, class: "dash-form__checkbox__label" do %>
-              Czy choroba została zdiagnozowana przez lekarza?
+              <%= t(".diagnosed_by_hp.label") %>
             <% end %>
           </div>
         </div>
@@ -37,8 +37,8 @@
     <div class="dash-form__group">
       <div class="dash-form__group__container">
         <div class="dash-form__group__left">
-          <div class="dash-form__group__title">Od kiedy to trwa?</div>
-          <p class="dash-form__group__description">Kiedy pierwszy raz zaobserwowałeś objawy choroby.</p>
+          <div class="dash-form__group__title"><%= t(".diagnosed_at.title") %></div>
+          <p class="dash-form__group__description"><%= t(".diagnosed_at.description") %></p>
         </div>
         <div class="dash-form__group__right">
           <%= f.date_field :diagnosed_at, class: "dash-form__input dash-form__input-date" %>
@@ -51,12 +51,13 @@
     <div class="dash-form__group">
       <div class="dash-form__group__container">
         <div class="dash-form__group__left">
-          <div class="dash-form__group__title">Dotkliwość</div>
-          <p class="dash-form__group__description">W skali od 1 do 5 jak bardzo poważna jest dla ciebie ta choroba.</p>
+          <div class="dash-form__group__title"><%= t(".severity.title") %></div>
+          <p class="dash-form__group__description"><%= t(".severity.description") %></p>
         </div>
         <div class="dash-form__group__right">
           <div class="dash-form__range" data-controller="range-slider">
-            <%= f.range_field :severity, min: 1, max: 5, step: 1, class: "dash-form__range__input", data: { range_slider_target: "value", action: "input->range-slider#updateValue"} %>
+            <%= f.range_field :severity, min: 1, max: 5, step: 1, class: "dash-form__range__input",
+                data: { range_slider_target: "value", action: "input->range-slider#updateValue"} %>
             <span class="dash-form__range__value" data-range-slider-target="output">1</span>
           </div>
         </div>
@@ -68,8 +69,8 @@
     <div class="dash-form__group">
       <div class="dash-form__group__container">
         <div class="dash-form__group__left">
-          <div class="dash-form__group__title">Kolor</div>
-          <p class="dash-form__group__description">Jakim kolorem chcesz, aby ta choroba była oznaczona na twoim profilu.</p>
+          <div class="dash-form__group__title"><%= t(".color.title") %></div>
+          <p class="dash-form__group__description"><%= t(".color.description") %></p>
         </div>
         <div class="dash-form__group__right">
           <div class="dash-form__checkbox">
@@ -81,6 +82,6 @@
     </div>
   </div>
   <div class="dash-form__group">
-    <%= f.submit "Zapisz", class: "dash-form__submit dash-button dash-button--new" %>
+    <%= f.submit t("dash_form.submit"), class: "dash-form__submit dash-button dash-button--new" %>
   </div>
 <% end %>

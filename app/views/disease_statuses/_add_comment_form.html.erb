@@ -4,7 +4,7 @@
     data: { controller: "reset-form", action: "turbo:submit-end->reset-form#clear" } do |f| %>
   <div class="add-comment-form__group">
     <%= f.text_area :body, data: { controller: "textarea-autogrow" },
-            class: "add-comment-form__body", placeholder: "Dodaj komentarz" %>
+        class: "add-comment-form__body", placeholder: t(".body.placeholder") %>
     <footer class="add-comment-form__footer">
       <div class="add-comment-form__actions">
         <span class="add-comment-form__action">
