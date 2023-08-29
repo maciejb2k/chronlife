@@ -1,6 +1,32 @@
 pl:
   dash_form:
     submit: Zapisz
+  layouts:
+    dashboard:
+      nav:
+        quick_access: "Szybki dostęp:"
+        home: Strona główna
+        health: "Twoje zdrowie:"
+        diseases: Choroby
+        groups: Grupy chorych
+        treatments: Terapie
+        measurements: Monitorowanie zdrowia
+        lab_results: Wyniki badań
+        notes: Notatki
+        social: "Społeczność:"
+        friends: Twoi znajomi
+        friend_requests: Zaproszenia
+        accounts: Wszystkie osoby
+        specialists: Specjaliści
+        articles: Strefa wiedzy
+        account: "Twoje konto:"
+        settings: Ustawienia
+        logout: Wyloguj
+      footer: 2023 - Przewlekli.pl
+      header:
+        diseases: Moje choroby
+        search:
+          placeholder: Szukaj
   accounts:
     unauthorized: Nie możesz wyświetlić tych informacji, ponieważ nie jesteście znajomymi.
     index:
@@ -394,3 +420,61 @@ pl:
         title: Wszystkie zdjęcia
         description: Poniżej znajdują się wszystkie zdjęcia, które użytkownicy dodali sami.
         no_results: Uzytkownicy nie dodali na razie żadnych zdjęć.
+  measurements:
+    index:
+      title: Monitorowanie zdrowia
+      latest:
+        title: Ostatnie pomiary
+      no_measurement: Brak pomiaru
+      add_new: Dodaj nowy pomiar
+      calendar:
+        title: Kalendarz
+        day:
+          one: 1 pomiar
+          few: "%{count} pomiary"
+          other: "%{count} pomiarów"
+    new:
+      weight: Dodaj nowy pomiar wagi
+      heart_beat: Dodaj nowy pomiar tętna
+      blood_pressure: Dodaj nowy pomiar ciśnienia
+      sugar: Dodaj nowy pomiar cukru
+      spo2: Dodaj nowy pomiar saturacji krwi
+      other: Dodaj nowy pomiar
+    edit:
+      weight: Edytuj pomiar wagi
+      heart_beat: Edytuj pomiar tętna
+      blood_pressure: Edytuj pomiar ciśnienia
+      sugar: Edytuj pomiar cukru
+      spo2: Edytuj pomiar saturacji krwi
+      other: Edytuj pomiar
+    show_by_day:
+      title: Lista pomiarów
+      measurement:
+        hour: "Godzina:"
+      no_results: Brak pomiarów w tym dniu.
+    show:
+      title: "Pomiar z %{date}"
+      button:
+        edit: Edytuj
+        delete:
+          title: Usuń
+          turbo:
+            confirm: Czy na pewno chcesz usunąć ten pomiar?
+      about: Informacje
+      info:
+        title: Informacje
+        description: Informacje o pomiarze
+      value:
+        title: Wartość
+        description: Zmierzona wartość podczas pomiaru.
+      measurement_date:
+        title: Data pomiaru
+        description: Kiedy został wykonany pomiar.
+    form:
+      value:
+        title: Wartość
+        description: Podaj zmierzoną wartość.
+      measurement_date:
+        title: Data pomiaru
+        description: Kiedy został wykonany pomiar.
+      submit: Zapisz

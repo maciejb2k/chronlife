@@ -4,8 +4,8 @@
     <div class="dash-form__group">
       <div class="dash-form__group__container">
         <div class="dash-form__group__left">
-          <div class="dash-form__group__title">Wartość</div>
-          <p class="dash-form__group__description">Podaj wartość obecnego pomiaru.</p>
+          <div class="dash-form__group__title"><%= t(".value.title") %></div>
+          <p class="dash-form__group__description"><%= t(".value.description") %></p>
         </div>
         <div class="dash-form__group__right">
           <div class="dash-form__input-container">
@@ -24,8 +24,8 @@
     <div class="dash-form__group">
       <div class="dash-form__group__container">
         <div class="dash-form__group__left">
-          <div class="dash-form__group__title">Data pomiaru</div>
-          <p class="dash-form__group__description">Kiedy dokonałeś pomiaru.</p>
+          <div class="dash-form__group__title"><%= t(".measurement_date.title") %></div>
+          <p class="dash-form__group__description"><%= t(".measurement_date.description") %></p>
         </div>
         <div class="dash-form__group__right">
           <%= f.datetime_field :measurement_date, class: "dash-form__input" %>
@@ -36,6 +36,6 @@
   </div>
 
   <div class="dash-form__group">
-    <%= f.submit "Zapisz", class: "dash-form__submit dash-button dash-button--new" %>
+    <%= f.submit t("dash_form.submit"), class: "dash-form__submit dash-button dash-button--new" %>
   </div>
 <% end %>

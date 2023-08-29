@@ -2,17 +2,17 @@
   <header class="dash-header">
     <div class="dash-header__left">
       <% if @measurement.measurement_type.name == 'weight' %>
-        <h1 class="dash-header__title">Edytuj pomiar wagi</h1>
+        <h1 class="dash-header__title"><%= t(".weight") %></h1>
       <% elsif @measurement.measurement_type.name == 'heart_beat' %>
-        <h1 class="dash-header__title">Edytuj pomiar tętna</h1>
+        <h1 class="dash-header__title"><%= t(".heart_beat") %></h1>
       <% elsif @measurement.measurement_type.name == 'blood_pressure' %>
-        <h1 class="dash-header__title">Edytuj pomiar ciśnienia krwi</h1>
+        <h1 class="dash-header__title"><%= t(".blood_pressure") %></h1>
       <% elsif @measurement.measurement_type.name == 'sugar' %>
-        <h1 class="dash-header__title">Edytuj pomiar cukru</h1>
+        <h1 class="dash-header__title"><%= t(".sugar") %></h1>
       <% elsif @measurement.measurement_type.name == 'spo2' %>
-        <h1 class="dash-header__title">Edytuj pomiar saturacji krwi</h1>
+        <h1 class="dash-header__title"><%= t(".spo2") %></h1>
       <% else%>
-        <h1 class="dash-header__title">Edytuj pomiar</h1>
+        <h1 class="dash-header__title"><%= t(".other") %></h1>
       <% end %>
       <%= render "shared/breadcrumbs" %>
     </div>

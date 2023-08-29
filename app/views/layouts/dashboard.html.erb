@@ -18,13 +18,13 @@
       </div>
       <nav class="sidebar__nav">
         <div class="sidebar__nav__group">
-          <p class="sidebar__nav__title">Szybki dostęp:</p>
+          <p class="sidebar__nav__title"><%= t(".nav.quick_access") %></p>
           <ul class="sidebar__items">
             <li class="sidebar__item">
               <%= link_to authenticated_root_path, class: "sidebar__link" do %>
                 <div class="sidebar__link__group">
                   <i class="ri-home-3-line sidebar__link__icon"></i>
-                  <span class="sidebar__link__text">Strona główna</span>
+                  <span class="sidebar__link__text"><%= t(".nav.home") %></span>
                 </div>
                 <i class="ri-arrow-right-s-line sidebar__link__icon"></i>
               <% end %>
@@ -33,13 +33,13 @@
         </div>
 
         <div class="sidebar__nav__group">
-          <p class="sidebar__nav__title">Twoje zdrowie:</p>
+          <p class="sidebar__nav__title"><%= t(".nav.health") %></p>
           <ul class="sidebar__items">
             <li class="sidebar__item">
               <%= link_to diseases_path, class: "sidebar__link" do %>
                 <div class="sidebar__link__group">
                   <i class="ri-stethoscope-line sidebar__link__icon"></i>
-                  <span class="sidebar__link__text">Choroby</span>
+                  <span class="sidebar__link__text"><%= t(".nav.diseases") %></span>
                 </div>
                 <i class="ri-arrow-right-s-line sidebar__link__icon"></i>
               <% end %>
@@ -48,7 +48,7 @@
               <%= link_to groups_path, class: "sidebar__link" do %>
                 <div class="sidebar__link__group">
                   <i class="ri-group-line sidebar__link__icon"></i>
-                  <span class="sidebar__link__text">Grupy chorych</span>
+                  <span class="sidebar__link__text"><%= t(".nav.groups") %></span>
                 </div>
                 <i class="ri-arrow-right-s-line sidebar__link__icon"></i>
               <% end %>
@@ -57,7 +57,7 @@
               <%= link_to treatments_path, class: "sidebar__link" do %>
                 <div class="sidebar__link__group">
                   <i class="ri-hospital-line sidebar__link__icon"></i>
-                  <span class="sidebar__link__text">Terapie</span>
+                  <span class="sidebar__link__text"><%= t(".nav.treatments") %></span>
                 </div>
                 <i class="ri-arrow-right-s-line sidebar__link__icon"></i>
               <% end %>
@@ -66,7 +66,7 @@
               <%= link_to measurements_path, class: "sidebar__link" do %>
                 <div class="sidebar__link__group">
                   <i class="ri-heart-pulse-line sidebar__link__icon"></i>
-                  <span class="sidebar__link__text">Monitorowanie zdrowia</span>
+                  <span class="sidebar__link__text"><%= t(".nav.measurements") %></span>
                 </div>
                 <i class="ri-arrow-right-s-line sidebar__link__icon"></i>
               <% end %>
@@ -75,7 +75,7 @@
               <%= link_to authenticated_root_path, class: "sidebar__link" do %>
                 <div class="sidebar__link__group">
                   <i class="ri-test-tube-line sidebar__link__icon"></i>
-                  <span class="sidebar__link__text">Wyniki badań</span>
+                  <span class="sidebar__link__text"><%= t(".nav.lab_results") %></span>
                 </div>
                 <i class="ri-arrow-right-s-line sidebar__link__icon"></i>
               <% end %>
@@ -84,7 +84,7 @@
               <%= link_to notes_path, class: "sidebar__link" do %>
                 <div class="sidebar__link__group">
                   <i class="ri-sticky-note-line sidebar__link__icon"></i>
-                  <span class="sidebar__link__text">Notatki</span>
+                  <span class="sidebar__link__text"><%= t(".nav.notes") %></span>
                 </div>
                 <i class="ri-arrow-right-s-line sidebar__link__icon"></i>
               <% end %>
@@ -93,13 +93,13 @@
         </div>
 
         <div class="sidebar__nav__group sidebar__nav__group--social">
-          <p class="sidebar__nav__title">Społeczność:</p>
+          <p class="sidebar__nav__title"><%= t(".nav.social") %></p>
           <ul class="sidebar__items">
             <li class="sidebar__item">
               <%= link_to account_friends_path(current_account), class: "sidebar__link" do %>
                 <div class="sidebar__link__group">
                   <i class="ri-contacts-line sidebar__link__icon"></i>
-                  <span class="sidebar__link__text">Twoi znajomi</span>
+                  <span class="sidebar__link__text"><%= t(".nav.friends") %></span>
                 </div>
                 <i class="ri-arrow-right-s-line sidebar__link__icon"></i>
               <% end %>
@@ -108,7 +108,7 @@
               <%= link_to friend_requests_path, class: "sidebar__link" do %>
                 <div class="sidebar__link__group">
                   <i class="ri-inbox-2-line  sidebar__link__icon"></i>
-                  <span class="sidebar__link__text">Zaproszenia</span>
+                  <span class="sidebar__link__text"><%= t(".nav.friend_requests") %></span>
                 </div>
                 <i class="ri-arrow-right-s-line sidebar__link__icon"></i>
               <% end %>
@@ -117,7 +117,7 @@
               <%= link_to accounts_path, class: "sidebar__link" do %>
                 <div class="sidebar__link__group">
                   <i class="ri-group-2-line sidebar__link__icon"></i>
-                  <span class="sidebar__link__text">Wszystkie osoby</span>
+                  <span class="sidebar__link__text"><%= t(".nav.accounts") %></span>
                 </div>
                 <i class="ri-arrow-right-s-line sidebar__link__icon"></i>
               <% end %>
@@ -126,7 +126,7 @@
               <%= link_to specialists_path, class: "sidebar__link" do %>
                 <div class="sidebar__link__group">
                   <i class="ri-nurse-line sidebar__link__icon"></i>
-                  <span class="sidebar__link__text">Specjaliści</span>
+                  <span class="sidebar__link__text"><%= t(".nav.specialists") %></span>
                 </div>
                 <i class="ri-arrow-right-s-line sidebar__link__icon"></i>
               <% end %>
@@ -135,7 +135,7 @@
               <%= link_to articles_path, class: "sidebar__link" do %>
                 <div class="sidebar__link__group">
                   <i class="ri-profile-line sidebar__link__icon"></i>
-                  <span class="sidebar__link__text">Strefa wiedzy</span>
+                  <span class="sidebar__link__text"><%= t(".nav.articles") %></span>
                 </div>
                 <i class="ri-arrow-right-s-line sidebar__link__icon"></i>
               <% end %>
@@ -144,13 +144,13 @@
         </div>
 
         <div class="sidebar__nav__group sidebar__nav__group--account">
-          <p class="sidebar__nav__title">Twoje konto:</p>
+          <p class="sidebar__nav__title"><%= t(".nav.account") %></p>
           <ul class="sidebar__items">
             <li class="sidebar__item">
               <%= link_to settings_settings_path, class: "sidebar__link" do %>
                 <div class="sidebar__link__group">
                   <i class="ri-settings-3-line sidebar__link__icon"></i>
-                  <span class="sidebar__link__text">Ustawienia</span>
+                  <span class="sidebar__link__text"><%= t(".nav.settings") %></span>
                 </div>
                 <i class="ri-arrow-right-s-line sidebar__link__icon"></i>
               <% end %>
@@ -160,7 +160,7 @@
                 <div class="sidebar__link">
                   <div class="sidebar__link__group">
                     <i class="ri-logout-box-line sidebar__link__icon"></i>
-                    <span class="sidebar__link__text">Wyloguj</span>
+                    <span class="sidebar__link__text"><%= t(".nav.logout") %></span>
                   </div>
                   <i class="ri-arrow-right-s-line sidebar__link__icon"></i>
                 </div>
@@ -170,7 +170,7 @@
         </div>
       </nav>
       <div class="sidebar__footer">
-        <p class="sidebar__footer__text" >&copy; 2023 - Przewlekli.pl</p>
+        <p class="sidebar__footer__text" >&copy; <%= t(".footer") %></p>
       </div>
     </div>
 
@@ -182,13 +182,13 @@
         <div class="header__right">
           <%= link_to diseases_path, class: "header__main-button" do %>
             <i class="ri-stethoscope-line header__main-button__icon"></i>
-            Moje choroby
+            <%= t(".header.diseases") %>
           <% end %>
           <div class="header__search">
             <div class="header__search__icon-container">
               <i class="ri-search-line header__search__icon"></i>
             </div>
-            <input type="text" class="header__search__input" placeholder="Szukaj">
+            <input type="text" class="header__search__input" placeholder="<%= t(".header.search.placeholder") %>">
           </div>
           <div class="header__buttons">
             <button class="header__button">
