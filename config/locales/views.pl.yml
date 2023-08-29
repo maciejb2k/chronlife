@@ -642,3 +642,53 @@ pl:
         success:
           title: Kody zapasowe
           desc: Poprawnie skonfigurowano 2FA. Poniżej wygenerowano listę kodów zapasowych, którymi możesz odzyskać konto, jeżeli stracisz dostęp do telefonu. Zapisz je na później.
+  setup_account:
+    new:
+      title: Uzupełnij profil
+      desc: Żeby zacząć korzystać z platformy, musisz uzupełnić profil swoimi danymi.
+      credits: Illustracja z Freepik
+    form:
+      first_name:
+        label: Imię
+        placeholder: Jan
+      last_name:
+        label: Nazwisko
+        placeholder: Kowalski
+      username:
+        label: Nazwa użytkownika
+        placeholder: jan.kowalski
+      submit: Rozpocznij
+  specialist_requests:
+    index:
+      title: Wnioski o status specjalisty
+      button:
+        new: Wyślij wniosek
+      request:
+        id: "Wniosek od ID: %{id}"
+        date: "Złożono dnia %{date}"
+      no_results: Na razie nie złożyłeś żadnych wniosków o status specjalisty.
+    new:
+      title: Złóż wniosek o status specjalisty
+    form:
+      field_of_expertise:
+        title: Wykształcenie
+        description: Z jakiej dziedziny nauki jesteś specjalistą.
+        placeholder: Lekarz
+      specialization:
+        title: Specjalizacja
+        description: W jakiej dziedzinie jesteś specjalistą.
+        placeholder: Dermatolog
+      description:
+        title: Opis
+        description: Opisz swoje doświadczenie.
+        placeholder: Jestem lekarzem z 10 letnim doświadczeniem.
+  specialists:
+    index:
+      title: Specjaliści
+      button:
+        new: Złóż wniosek o status specjalisty
+      specialists:
+        label: Specjalizacja
+        title: Wszyscy specjaliści na platformie
+        visit: Zobacz
+        no_results: Na razie na platformie nie zarejestrowali się żadni specjaliści.

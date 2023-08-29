@@ -2,15 +2,15 @@
   <div class="auth__content">
     <header class="auth__header">
       <%= link_to root_path do %>
-        <%= image_tag "logo_light_pl.png", class: "auth__header__logo", alt: "" %>
+        <%= localized_logo_image_tag class: "auth__header__logo", alt: "" %>
       <% end %>
       <%= link_to 'Wyloguj się', root_path, class: "auth__header__link" %>
     </header>
 
     <div class="auth__main">
       <div class=auth__heading>
-        <h1 class="auth__title">Uzupełnij profil</h1>
-        <p class="auth__desc">Żeby zacząć korzystać z platformy, musisz uzupełnić profil swoimi danymi.</p>
+        <h1 class="auth__title"><%= t(".title") %></h1>
+        <p class="auth__desc"><%= t(".desc") %></p>
       </div>
 
       <%= render "form", account: @account %>
@@ -18,6 +18,6 @@
   </div>
 
   <div class="auth__sidebar">
-    <%= link_to "Ilustracja z Freepik", "https://www.freepik.com/free-vector/flat-pension-people-walk-park-kids-playing-riding-bicycle_27869309.htm#query=people&position=20&from_view=search&track=sph", class: "auth__credits" %>
+    <%= link_to t(".credits"), "https://www.freepik.com/free-vector/flat-pension-people-walk-park-kids-playing-riding-bicycle_27869309.htm#query=people&position=20&from_view=search&track=sph", class: "auth__credits" %>
   </div>
 </div>

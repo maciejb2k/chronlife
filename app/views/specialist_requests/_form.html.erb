@@ -3,12 +3,12 @@
     <div class="dash-form__group">
       <div class="dash-form__group__container">
         <div class="dash-form__group__left">
-          <div class="dash-form__group__title">Wykształcenie</div>
-          <p class="dash-form__group__description">Z jakiej dziedziny nauki jesteś specjalistą.</p>
+          <div class="dash-form__group__title"><%= t(".field_of_expertise.title") %></div>
+          <p class="dash-form__group__description"><%= t(".field_of_expertise.description") %></p>
         </div>
         <div class="dash-form__group__right">
           <%= f.text_field :field_of_expertise, class: "dash-form__input",
-              placeholder: "Lekarz" %>
+              placeholder: t(".field_of_expertise.placeholder") %>
         </div>
       </div>
       <%= render DashFormErrorComponent.new(model: @specialist_request,
@@ -20,12 +20,12 @@
     <div class="dash-form__group">
       <div class="dash-form__group__container">
         <div class="dash-form__group__left">
-          <div class="dash-form__group__title">Specjalizacja</div>
-          <p class="dash-form__group__description">W czym się specjalizujesz</p>
+          <div class="dash-form__group__title"><%= t(".specialization.title") %></div>
+          <p class="dash-form__group__description"><%= t(".specialization.description") %>z</p>
         </div>
         <div class="dash-form__group__right">
           <%= f.text_field :specialization, class: "dash-form__input",
-              placeholder: "Kardiolog" %>
+              placeholder: t(".specialization.placeholder") %>
         </div>
       </div>
       <%= render DashFormErrorComponent.new(model: @specialist_request, field: :specialization) %>
@@ -36,12 +36,12 @@
     <div class="dash-form__group">
       <div class="dash-form__group__container">
         <div class="dash-form__group__left">
-          <div class="dash-form__group__title">Opis</div>
-          <p class="dash-form__group__description">Opisz w kilku słowach czym się zajmujesz.</p>
+          <div class="dash-form__group__title"><%= t(".description.title") %></div>
+          <p class="dash-form__group__description"><%= t(".description.description") %></p>
         </div>
         <div class="dash-form__group__right">
           <%= f.text_area :specialization_description, class: "dash-form__input dash-form__textarea",
-              placeholder: "Opis specjalizacji" %>
+              placeholder: t(".description.placeholder") %>
         </div>
       </div>
       <%= render DashFormErrorComponent.new(model: @specialist_request,
@@ -50,6 +50,6 @@
   </div>
 
   <div class="dash-form__group">
-    <%= f.submit "Wyślij", class: "dash-form__submit dash-button dash-button--new" %>
+    <%= f.submit t("dash_form.submit"), class: "dash-form__submit dash-button dash-button--new" %>
   </div>
 <% end %>

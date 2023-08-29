@@ -3,14 +3,14 @@
     <div class="dash-header__left">
       <h1 class="dash-header__title">
         <i class="ri-nurse-line dash-header__title__icon"></i>
-        Specjaliści
+        <%= t(".title") %>
       </h1>
       <%= render "shared/breadcrumbs" %>
     </div>
     <div class="dash-header__right">
       <%= link_to specialist_requests_path, class: "dash-button dash-button--blue" do %>
         <i class="ri-article-line dash-button__icon"></i>
-        Złóż wniosek o status specjalisty
+        <%= t(".button.new") %>
       <% end %>
       <%= link_to authenticated_root_path, class: "dash-button dash-button--back" do %>
         <i class="ri-arrow-left-line dash-button__icon"></i>
@@ -27,7 +27,7 @@
       <header class="dash-group__header">
         <h2 class="dash-group__title">
           <i class="ri-group-line dash-group__title__icon""></i>
-          Wszyscy specjaliści na platformie
+          <%= t(".specialists.title") %>
         </h2>
         <div class="dash-group__actions"></div>
       </header>
@@ -41,12 +41,12 @@
                 <p class="specialist__speciality"><%= specialist.specialist.field_of_expertise %></p>
                 <footer class="specialist__footer">
                   <div class="specialist__footer__left">
-                    <p class="specialist__label">Specjalizacja</p>
+                    <p class="specialist__label"><%= t(".specialists.label") %></p>
                     <p class="specialist__desc"><%= specialist.specialist.specialization %></p>
                   </div>
                   <div class="specialist__footer__right">
                     <%= link_to account_path(specialist.account), class: "specialist__button" do %>
-                      Zobacz <i class="ri-arrow-right-line"></i>
+                      <%= t(".specialists.visit") %> <i class="ri-arrow-right-line"></i>
                     <% end %>
                   </div>
                 </footer>
@@ -55,9 +55,10 @@
           </div>
         <% else %>
           <p class="no-results">
-            Na razie na platformie nie zarejestrowali się żadni specjaliści.
+            <%= t(".specialists.no_results") %>
           </p>
-        <% end %>      </div>
+        <% end %>
+      </div>
     </div>
 
   </div>

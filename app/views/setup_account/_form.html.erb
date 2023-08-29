@@ -18,9 +18,9 @@
         model: @account,
         type: :text_field,
         field: :first_name,
-        label: "Imię",
+        label: t(".first_name.label"),
         options: {
-          placeholder: "Jan"
+          placeholder: t(".first_name.placeholder")
         }
       ))
     %>
@@ -33,9 +33,9 @@
         model: @account,
         type: :text_field,
         field: :last_name,
-        label: "Nazwisko",
+        label: t(".last_name.label"),
         options: {
-          placeholder: "Kowalski"
+          placeholder: t(".last_name.placeholder")
         }
       ))
     %>
@@ -48,13 +48,13 @@
         model: @account,
         type: :text_field,
         field: :username,
-        label: "Nazwa użytkownika",
+        label: t(".username.label"),
         options: {
-          placeholder: "jan.kowalski"
+          placeholder: t(".username.placeholder")
         }
       ))
     %>
   </div>
 
-  <%= f.submit "Rozpocznij", class: "auth-form__submit" %>
+  <%= f.submit t(".submit"), class: "auth-form__submit" %>
 <% end %>
