@@ -16,7 +16,7 @@
       <div class="auth__social">
         <%= link_to user_google_oauth2_omniauth_authorize_path, method: :post, class: "auth__social-link" do %>
           <%= image_tag "google_logo.svg", class: "auth__social-icon", alt: "" %>
-          <span class="auth__social-text">Zaloguj się przez Google</span>
+          <span class="auth__social-text"><%= t(".google") %></span>
         <% end %>
       </div>
 

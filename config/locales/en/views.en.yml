@@ -1,0 +1,886 @@
+en:
+  dash_form:
+    submit: Save
+  layouts:
+    dashboard:
+      nav:
+        quick_access: "Quick Access:"
+        home: Home
+        health: "Your Health:"
+        diseases: Diseases
+        groups: Patient Groups
+        treatments: Treatments
+        measurements: Health Monitoring
+        lab_results: Lab Results
+        notes: Notes
+        social: "Community:"
+        friends: Your Friends
+        friend_requests: Friend Requests
+        accounts: All People
+        specialists: Specialists
+        articles: Knowledge Zone
+        account: "Your Account:"
+        settings: Settings
+        logout: Logout
+      footer: 2023 - ChronicPatients.com
+      header:
+        diseases: My Diseases
+        search:
+          placeholder: Search
+  accounts:
+    unauthorized: You cannot view this information as you are not friends.
+    index:
+      title: All People
+      your_profile: Your Profile
+      message: Message
+      friend: Friend
+      accept_request: Accept Invitation
+      request_sent: Invitation Sent
+      add_friend: Add Friend
+    card:
+      send_message: Send Message
+      accept_request: Accept Invitation
+      request_sent: Invitation Sent
+      add_friend: Add Friend
+      report: Report
+      specialization: Specializations
+      informations: Information
+      friends: Friends
+      disease_statuses: Health Updates
+    show:
+      title: Information
+      text: Lorem ipsum dolor sit amet consectetur adipisicing elit. Vero, quam.
+      unauthorized: You cannot view this information as you are not friends.
+  articles:
+    index:
+      title: Knowledge Zone
+      button:
+        new: Add New Article
+        sort: Sort
+        filter: Filter
+      all: All Articles
+      article:
+        body: Lorem ipsum dolor sit amet consectetur adipisicing elit. Mollitia est eligendi quisquam voluptates ipsum aut ea quam consequatur amet repellendus.
+      no_results: No articles have been added yet.
+    edit:
+      title: Edit Article
+      button:
+        delete: Delete
+      turbo:
+        confirm: Are you sure you want to delete this article?
+    new:
+      title: Add New Article
+    show:
+      button:
+        edit: Edit
+    form:
+      title:
+        title: Title
+        description: Enter the article title
+        placeholder: Review of medications.
+      body:
+        title: Content
+        description: You can write an article using the editor below.
+  auth:
+    otp:
+      new:
+        title: Two-Factor Authentication
+        description: Enter the 6-digit code from the app.
+        credits: Illustration by pikisuperstar from Freepik
+        form:
+          otp_attempt:
+            label: One-Time Code
+            placeholder: "123456"
+          submit: Submit
+    passwords:
+      new:
+        home: Home
+        title: Reset Password
+        description: Enter a new password for the platform.
+        credits: Illustration from Freepik
+        remember_password: Remember your password after all?
+        form:
+          error: "Form submission failed:"
+          email:
+            label: "E-Mail"
+            placeholder: "jan.kowalski@gmail.com"
+          submit: Remind Password
+        sign_in: Sign In
+      edit:
+        home: Home
+        title: Reset Password
+        description: Enter a new password for the platform.
+        credits: Illustration from Freepik
+        form:
+          error: "Form submission failed:"
+          password:
+            label: Password
+            placeholder: "•••••••••••••"
+          password_confirmation:
+            label: Confirm Password
+            placeholder: "•••••••••••••"
+          submit: Change Password
+        reminded: However, do you remember your password?
+        sign_in: Sign In
+    registrations:
+      new:
+        home: Home
+        title: Join Us!
+        description: Start now, completely free of charge.
+        credits: Illustration from Freepik
+        google: Register with Google
+        separator: or
+        form:
+          email:
+            label: "E-Mail"
+            placeholder: "jan.kowalski@gmail.com"
+          password:
+            label: Password
+            placeholder: "•••••••••••••"
+          password_confirmation:
+            label: Confirm Password
+            placeholder: "•••••••••••••"
+          terms: I accept %{terms_link} and %{privacy_link}
+          submit: Register
+        already_registered: Already have an account?
+        sign_in: Sign In
+    sessions:
+      new:
+        home: Home
+        title: Sign In
+        description: Start now, completely free of charge.
+        credits: Illustration from Freepik
+        google: Sign in with Google
+        separator: or
+        form:
+          error: "Form submission failed:"
+          email:
+            label: E-Mail
+            placeholder: "jan.kowalski@gmail.com"
+          password:
+            label: Password
+            placeholder: "•••••••••••••"
+          remember_me:
+            label: Remember Me
+          submit: Sign In
+        forgot_password: Forgot your password?
+        reset_password: Reset your password
+        not_registered: Don't have an account yet?
+        sign_up: Sign Up
+  dashboard:
+    index:
+      welcome: Welcome, %{name}!
+      welcome_back: Great to see you again on our platform.
+      new_posts: Latest Posts
+      button:
+        add_post: Add New Post
+        adjust_stats: Adjust Tiles
+      fetching_posts: Fetching posts...
+      stats: Your Statistics
+      diseases: diseases
+      groups: groups
+      treatments: treatments
+      measurements: measurements
+      lab_results: lab results
+      notes: notes
+  disease_photos:
+    index:
+      title: Photos
+      button:
+        new: Add New Photo
+      photo:
+        turbo:
+          confirm: Are you sure you want to delete this photo?
+    new:
+      title: Add New Photo
+    form:
+      image:
+        title: Photo
+        description: Select a photo related to the disease.
+      caption:
+        title: Caption
+        description: Provide a caption for the photo.
+        placeholder: Photo taken at the hospital.
+  disease_risk_factors:
+    index:
+      title: Risk Factors
+      button:
+        new: Add New Risk Factor
+      no_results: No risk factors have been added yet.
+    new:
+      title: Add New Risk Factor
+    edit:
+      title: Edit Risk Factor
+    show:
+      button:
+        edit: Edit
+        delete: Delete
+        turbo:
+          confirm: Are you sure you want to delete?
+      info: Information
+      name:
+        title: Name
+        description: Name of the risk factor
+      desc:
+        title: Description
+        description: How this factor affects your symptoms.
+      severity:
+        title: Severity
+        description: How much this factor affects your symptoms.
+    form:
+      name:
+        title: Name
+        description: What triggers symptom exacerbation.
+        placeholder: Peanuts
+      desc:
+        title: Description
+        description: Describe how this factor exacerbates symptoms.
+        placeholder: Experiencing worsening rash the next day.
+      severity:
+        title: Severity
+        description: On a scale of 1 to 5, how much does this factor affect you.
+  disease_status_comments:
+    update:
+      toast:
+        success: Comment edited successfully
+    create:
+      toast:
+        success: Comment added successfully
+    destroy:
+      toast:
+        success: Comment deleted successfully
+    form:
+      cancel:
+        title: Cancel
+      submit:
+        title: Save
+  disease_statuses:
+    index:
+      title: Health Status
+      button:
+        new: Add Update
+      no_results: No updates have been added yet.
+    new:
+      title: Add Update
+    edit:
+      title: Edit Update
+    form:
+      status:
+        title: Status
+        description: How do you rate your disease status?
+      content:
+        title: Description
+        description: Describe what you're experiencing.
+        placeholder: Feeling better than yesterday.
+      mood:
+        title: Mood
+        description: How are you feeling today?
+    load_more_comments:
+      more: Load more comments
+    empty_comments:
+      no_comments: No comments yet
+    disease_status:
+      mood:
+        unhappy: Worsening
+        normal: No Change
+        happy: Improvement
+        unknown: Unknown
+      option:
+        edit: Edit
+        report: Report
+        delete:
+          turbo:
+            confirm: Are you sure you want to delete this update?
+    comment:
+      button:
+        edit: Edit
+        report: Report
+        delete:
+          title: Delete
+          turbo:
+            confirm: Are you sure you want to delete this comment?
+    comment_date:
+      ago: ago
+    add_comment_form:
+      body:
+        placeholder: Add a comment
+  disease_symptom_updates:
+    form:
+      intensity:
+        title: Intensity (1-5)
+      update_date:
+        title: Update Date
+      submit: Add
+    symptom_update:
+      intensity_change: "Intensity Change:"
+      intensity_info: "%{intensity}/5"
+      update_date: "on %{update_date}"
+      button:
+        delete:
+          turbo:
+            confirm: Are you sure you want to delete this update?
+    latest_update:
+      no_updates: No updates
+    no_results:
+      no_results: You haven't added any symptom updates yet.
+  disease_symptoms:
+    index:
+      title: Symptoms
+      button:
+        new: Add New Symptom
+      predefined_symptoms: Predefined Symptoms
+      custom_symptoms: Custom Symptoms
+      symptom:
+        details: Symptom Details
+      no_results: No symptoms have been added yet.
+    edit:
+      title: Edit Symptom
+    new:
+      title: Add New Symptom
+    form:
+      predefined_symptom_id:
+        title: Disease Symptoms
+        description: Choose from the list of predefined symptoms for this disease.
+        label: Don't see your symptom in the list?
+      name:
+        title: Custom Symptom
+        description: Name the symptom briefly.
+        placeholder: Headache
+      description:
+        title: Description
+        description: Describe how this symptom manifests.
+        placeholder: Forehead headache.
+      first_noticed_at:
+        title: When Did It Start?
+        description: When did you first notice this symptom?
+    show:
+      button:
+        edit: Edit
+        delete:
+          title: Delete
+          turbo:
+            confirm: Are you sure you want to delete?
+      info: Information
+      desc:
+        title: Description
+        description: Describe how this symptom manifests.
+      first_noticed_at:
+        title: When Did It Start?
+        description: When did you first notice this symptom?
+        empty: Not provided
+      intensity:
+        title: Symptom Intensity
+        description: How strong is this symptom?
+      turbo:
+        loading: Loading...
+      chart: Symptom Intensity Changes Chart
+      change_intensity: Change Symptom Intensity
+      intensity_changes: Symptom Intensity Changes
+  disease_treatments:
+    index:
+      title: Treatments
+      treatment:
+        diseases_treated: "Treats diseases: %{diseases}"
+        duration: "Treatment duration: %{duration} days"
+      details: View
+      no_results: No treatments have been added yet.
+  diseases:
+    severity:
+      one: Mild
+      two: Moderate
+      three: Severe
+      four: Life-Altering
+      five: Life-Destroying
+      unknown: Unknown
+    index:
+      title: Diseases
+      button:
+        new: Add New Disease
+      disease:
+        diagnosed: Diagnosed by a doctor
+        more: Go to disease
+      no_results: No diseases have been added yet.
+    new:
+      title: Add New Disease
+    edit:
+      title: Edit Disease
+    form:
+      predefined_disease_id:
+        title: Disease Name
+        description: Choose from the list of predefined diseases.
+      diagnosed_by_hp:
+        title: Diagnosis
+        description: How do you know about your disease?
+        label: Was the disease diagnosed by a doctor?
+      diagnosed_at:
+        title: When Did It Start?
+        description: When did you first notice symptoms of the disease?
+      severity:
+        title: Severity
+        description: On a scale of 1 to 5, how much does this disease affect you?
+      color:
+        title: Color
+        description: Choose a color to represent your disease.
+    show:
+      show_more: Click to view
+      statuses: Health Updates
+      symptoms: Symptoms
+      treatments: Treatments
+      risk_factors: Risk Factors
+      photos: Photos
+      edit: Edit Disease
+  friend_requests:
+    index:
+      title: Friend Requests
+      recieved_requests: Received Requests
+      no_recieved_requests: No received requests
+      outgoing_requests: Outgoing Requests
+    outgoing_requests:
+      no_outgoing_requests: No outgoing requests
+  friends:
+    index:
+      title: Friends
+      button:
+        show: Browse Invitations
+      no_results: No friends added yet.
+  groups:
+    index:
+      title: Patient Groups
+      assigned: Assigned Diseases
+      available: Available Diseases
+      button:
+        assign: Add Diseases
+      group:
+        desc: Group for people with this disease only.
+        leave: Leave Group
+        no_members: No members in the group.
+        members:
+          one: member
+          other: "members"
+        open: Go to
+        join: Join
+      no_assigned_groups: No groups you've been added to.
+      no_available_groups: No available groups to join.
+    header:
+      overtitle: "Community of patients with:"
+      leave: Leave
+    nav:
+      posts: Posts
+      statuses: Health Updates
+      symptoms: Symptoms
+      risk_factors: Risk Factors
+      treatments: Treatments
+      photos: Photos
+    treatments:
+      index:
+        title: All Treatments
+        description: Below are all treatments users are trying to use to manage the disease.
+        no_results: Users haven't added any treatments yet.
+        treatment:
+          show: View
+          duration: "Treatment duration: %{duration} days"
+    disease_symptoms:
+      index:
+        predefined:
+          title: Symptoms Present in Patients
+          description: Below are all symptoms that users with this disease have reported.
+          no_results: Users haven't added any symptoms yet.
+        custom:
+          title: Custom Symptoms
+          description: Below are all symptoms users have added themselves.
+          no_results: Users haven't added any symptoms yet.
+    disease_risk_factors:
+      index:
+        title: All Risk Factors
+        description: Below are all risk factors users have added themselves.
+        no_results: Users haven't added any risk factors yet.
+    disease_statuses:
+      index:
+        title: All Updates
+        description: Below are all updates users have added themselves.
+        no_results: Users haven't added any updates yet.
+        turbo:
+          fetching: Fetching...
+    disease_photos:
+      index:
+        title: All Photos
+        description: Below are all photos users have added themselves.
+        no_results: Users haven't added any photos yet.
+  measurements:
+    index:
+      title: Health Monitoring
+      latest:
+        title: Latest Measurements
+      no_measurement: No measurement
+      add_new: Add New Measurement
+      calendar:
+        title: Calendar
+        day:
+          one: 1 measurement
+          few: "%{count} measurements"
+          other: "%{count} measurements"
+    new:
+      weight: Add New Weight Measurement
+      heart_beat: Add New Heart Rate Measurement
+      blood_pressure: Add New Blood Pressure Measurement
+      sugar: Add New Blood Sugar Measurement
+      spo2: Add New Blood Oxygen Saturation Measurement
+      other: Add New Measurement
+    edit:
+      weight: Edit Weight Measurement
+      heart_beat: Edit Heart Rate Measurement
+      blood_pressure: Edit Blood Pressure Measurement
+      sugar: Edit Blood Sugar Measurement
+      spo2: Edit Blood Oxygen Saturation Measurement
+      other: Edit Measurement
+    show_by_day:
+      title: Measurement List
+      measurement:
+        hour: "Hour:"
+      no_results: No measurements on this day.
+    show:
+      title: "Measurement from %{date}"
+      button:
+        edit: Edit
+        delete:
+          title: Delete
+          turbo:
+            confirm: Are you sure you want to delete this measurement?
+      about: About
+      info:
+        title: Information
+        description: Information about the measurement
+      value:
+        title: Value
+        description: Value measured during the measurement.
+      measurement_date:
+        title: Measurement Date
+        description: When the measurement was taken.
+    form:
+      value:
+        title: Value
+        description: Enter the measured value.
+      measurement_date:
+        title: Measurement Date
+        description: When the measurement was taken.
+      submit: Save
+  notes:
+    index:
+      title: Notes
+      pinned_notes: Pinned Notes
+      empty_pinned_notes: You haven't pinned any notes yet.
+      all_notes: All Notes
+      tags:
+        title: Tags
+        clear: Clear
+        new: Add
+        no_results: You haven't added any tags yet.
+    show:
+      button:
+        edit: Edit
+        delete:
+          title: Delete
+          turbo:
+            confirm: Are you sure you want to delete this note?
+      created_at: Created %{date}
+      edited_at: Edited %{date}
+      assign_tags: Assign Tags
+      turbo:
+        loading: Loading...
+    new:
+      title: Add New Note
+    edit:
+      title: Edit Note
+    form:
+      title:
+        title: Title
+        description: Enter the title of the note.
+        placeholder: Note from doctor's visit.
+      content:
+        title: Content
+        description: Use the editor below to write your note.
+        placeholder: Write something here.
+      pinned:
+        title: Pinned
+        description: Do you want to pin this note?
+        label: Should the note be pinned?
+      submit: Save
+  note_tags:
+    new:
+      title: Add New Tag
+    edit:
+      title: Edit Tag
+      button:
+        delete:
+          title: Delete Tag
+          turbo:
+            confirm: Are you sure you want to delete this tag?
+    form:
+      name:
+        title: Name
+        description: Enter the tag name.
+        placeholder: Tag name
+  note_tag_associations:
+    no_results:
+      text: You haven't assigned any tags yet.
+    form:
+      note_tag_id:
+        label: Tag
+      submit: Add
+  pages:
+    home:
+      nav:
+        patients: Patients
+        specialists: Specialists
+        social: Social Community
+        sign_in: Sign In
+        sign_up: Join Us
+      hero:
+        overtitle: "#1 Platform in Poland"
+        title:
+          non_color: Feel like at
+          color: home
+        desc: Join the community of people struggling with health problems together.
+        link: Learn about our platform
+      showcase:
+        monitoring: Health Monitoring
+        security: Security
+      footer:
+        text: Copyright © 2023 by Maciej Biel. All rights reserved.
+  posts:
+    index:
+      title: All Health Updates
+      no_posts: No health updates added yet.
+      turbo:
+        fetching: Fetching health updates...
+  settings:
+    nav:
+      account: Account
+      security: Privacy
+    account:
+      show:
+        title: Account Settings
+        personal_data:
+          title: Your Data
+        avatar:
+          title: Profile Picture
+        address:
+          title: Address Data
+        education:
+          title: Education
+      account_form:
+        first_name:
+          label: First Name
+          placeholder: Jan
+        last_name:
+          label: Last Name
+          placeholder: Kowalski
+        username:
+          label: Username
+          placeholder: jan.kowalski
+          desc: You can't change your username.
+        birthday:
+          label: Birthday
+          placeholder: 01-01-2000
+      address_form:
+        city:
+          label: City
+          placeholder: Rzeszów
+        country:
+          label: Country
+          placeholder: Poland
+      avatar_form:
+        image:
+          new_label: New Profile Picture
+          change_label: Change Profile Picture
+        delete: Delete Profile Picture
+      education_form:
+        education:
+          label: Education
+    security:
+      show:
+        title: Security
+        password:
+          title: Change Password
+          disabled: This option is disabled for you since you registered through an external provider.
+          not_available: This option is currently unavailable.
+        two_factor:
+          title: Two-Factor Authentication
+          enabled: Two-factor authentication is enabled on your account.
+          not_enabled: Two-factor authentication is disabled on your account.
+          button:
+            enable: Enable
+            codes: Generate New Backup Codes
+            disable:
+              title: Disable
+              turbo:
+                confirm: Are you sure you want to disable two-factor authentication?
+    two_factor_authentication:
+      confirmations:
+        new:
+          title: Set Up Two-Factor Authentication
+          desc: "If you can't scan the QR code, copy the text below to the app:"
+        form:
+          otp_attempt:
+            label: One-Time Code
+          submit: Confirm
+      recovery_codes:
+        success:
+          title: Backup Codes
+          desc: 2FA has been successfully configured. Below is a list of backup codes you can use to recover your account if you lose access to your phone. Save them for later.
+  setup_account:
+    new:
+      title: Complete Profile
+      desc: To start using the platform, you need to complete your profile with your details.
+      credits: Illustration by Freepik
+    form:
+      first_name:
+        label: First Name
+        placeholder: Jan
+      last_name:
+        label: Last Name
+        placeholder: Kowalski
+      username:
+        label: Username
+        placeholder: jan.kowalski
+      submit: Get Started
+  specialist_requests:
+    index:
+      title: Specialist Status Requests
+      button:
+        new: Send Request
+      request:
+        id: "Request from ID: %{id}"
+        date: "Submitted on %{date}"
+      no_results: You haven't submitted any specialist status requests yet.
+    new:
+      title: Apply for Specialist Status
+    form:
+      field_of_expertise:
+        title: Field of Expertise
+        description: What field of study are you a specialist in?
+        placeholder: Doctor
+      specialization:
+        title: Specialization
+        description: What area are you a specialist in?
+        placeholder: Dermatologist
+      description:
+        title: Description
+        description: Describe your experience.
+        placeholder: I am a doctor with 10 years of experience.
+  specialists:
+    index:
+      title: Specialists
+      button:
+        new: Apply for Specialist Status
+      specialists:
+        label: Specialization
+        title: All specialists on the platform
+        visit: Visit
+        no_results: No specialists have registered on the platform yet.
+  treatments:
+    index:
+      title: Treatments
+      button:
+        new: Add Treatment
+      treatment:
+        diseases_treated: "Treated diseases: %{diseases}"
+        duration: "Treatment lasts %{duration} days"
+        details: View
+      no_results: No treatments added yet.
+    new:
+      title: Add New Treatment
+    edit:
+      title: Edit Treatment
+    show:
+      button:
+        edit: Edit
+        delete:
+          title: Delete
+          turbo:
+            confirm: Are you sure you want to delete this treatment?
+      updates:
+        title: Updates
+        button:
+          new: Add
+        update:
+          edit: Edit
+          delete:
+            title: Delete
+            turbo:
+              confirm: Are you sure you want to delete this update?
+        no_results: You haven't added any updates yet.
+      info:
+        title: Information
+        name:
+          title: Name
+          description: Full name of the treatment.
+        desc:
+          title: Description
+          description: Describe how the treatment is conducted.
+        duration:
+          title: Duration
+          description: How long the treatment lasts.
+          ongoing: Ongoing
+        is_active:
+          title: Is Ongoing?
+          description: Is the treatment still ongoing?
+          finished: Yes
+          not_finished: No
+      diseases:
+        title: Assigned Diseases
+        button:
+          new: Add Disease
+        no_results: No diseases have been added yet.
+        delete:
+          turbo:
+            confirm: Are you sure you want to delete this disease?
+    form:
+      title:
+        title: Treatment Name
+        description: What's the name of your treatment.
+        placeholder: Ketogenic Diet
+      description:
+        title: Treatment Description
+        description: What is the treatment about.
+        placeholder: It's a diet based on consuming only fats and proteins.
+      start_date:
+        title: Start Date
+        description: When did you start the treatment.
+      end_date:
+        title: End Date
+        description: When did you finish or plan to finish the treatment.
+      effectiveness:
+        title: Effectiveness
+        description: Rate the effectiveness of this treatment on a scale of 1 to 5.
+      is_finished:
+        title: Is Finished?
+        description: Are you done with this treatment?
+        label: Has the treatment concluded?
+  treatment_updates:
+    new:
+      title: Add Treatment Update
+    edit:
+      title: Edit Update
+    form:
+      name:
+        title: Title
+        description: General name for the change in treatment.
+        placeholder: Sanatorium Visit
+      description:
+        title: Description
+        description: Describe how your treatment changed in detail.
+        placeholder: A different diet was used at the sanatorium.
+      status:
+        title: Status
+        description: How effective is this treatment change.
+      update_date:
+        title: Update Date
+        description: On which day do you want to add the update.
+  treatment_diseases:
+    new:
+      title: Add Disease to Treatment
+    form:
+      disease_id:
+        title: Disease Name
+        description: Choose from the list of predefined diseases.

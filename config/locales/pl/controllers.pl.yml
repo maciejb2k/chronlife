@@ -1,6 +1,4 @@
 pl:
-  site:
-    title: Przewlekli.pl
   breadcrumbs:
     home: home
   accounts:
@@ -222,80 +220,3 @@ pl:
       success: Zdjęcie zostało zaktualizowane.
     destroy:
       success: Zdjęcie zostało usunięte.
-  activerecord:
-    errors:
-      models:
-        disease:
-          attributes:
-            predefined_disease_id:
-              taken: już przypisałeś tę chorobę do swojego profilu
-        disease_symptom:
-          set_name_or_predefined: wybierz z listy albo podaj własną nazwę objawu
-          only_name_or_predefined: tylko jedno pole może być wypełnione
-          attributes:
-            predefined_symptom_id:
-              taken: objaw już został dodany do tej choroby
-        friend_request:
-          cannot_send_to_yourself: nie możesz wysłać zaproszenia do siebie
-          already_friend: jesteście już znajomymi
-          already_sent: zaproszenie zostało już wysłane
-        friendship:
-          cannot_friend_yourself: nie możesz dodać siebie do znajomych
-        note_tag_association:
-          attributes:
-            note_tag_id:
-              taken: Tag został już przypisany do notatki.
-        treatment:
-          days_difference_errror: Niepoprawny format daty.
-        treatment_disease:
-          attributes:
-            disease_id:
-              taken: choroba już została dodana do tej terapii
-        measurement:
-          attributes:
-            value:
-              invalid_measurement_blood_pressure: "powinno być w formacie 120/80"
-    attributes:
-      treatment_update:
-        statuses:
-          improvement: 🙂 Poprawa
-          no_change: 😐 Brak zmian
-          worsening: 🙁 Pogorszenie
-          unknown: ❓ Nieznany
-      disease_status:
-        statuses:
-          diagnosed: Zdiagnozowana
-          suspicion: Podejrzenie
-          deterioration: Pogorszenie
-          significant_deterioration: Znaczne pogorszenie
-          improvement: Poprawa
-          significant_improvement: Znaczna poprawa
-          cured: Wyleczona
-          relapsed: Nawrót
-          unknown: Nieznany
-      specialist_request:
-        statuses:
-          pending: Oczekuje na weryfikację
-          approved: Wniosek został zaakceptowany
-          rejected: Wniosek został odrzucony
-      account:
-        education:
-          one: education
-          none: Brak
-          primary: Podstawowe
-          secondary: Średnie
-          bachelor: Licencjat
-          master: Magister
-          doctorate: Doktorat
-      measurement_types:
-        height: Wzrost
-        weight: Waga
-        temperature: Temperatura
-        blood_pressure: Ciśnienie krwi
-        heart_beat: Tętno
-        respiratory_rate: Częstość oddechów
-        spo2: Saturacja krwi
-        pain: Ból
-        sugar: Cukier
-        other: Inne
-

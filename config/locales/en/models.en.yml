@@ -1,0 +1,77 @@
+en:
+  activerecord:
+    errors:
+      models:
+        disease:
+          attributes:
+            predefined_disease_id:
+              taken: you have already assigned this disease to your profile
+        disease_symptom:
+          set_name_or_predefined: choose from the list or provide your own symptom name
+          only_name_or_predefined: only one field can be filled
+          attributes:
+            predefined_symptom_id:
+              taken: symptom has already been added to this disease
+        friend_request:
+          cannot_send_to_yourself: you cannot send a friend request to yourself
+          already_friend: you are already friends
+          already_sent: the invitation has already been sent
+        friendship:
+          cannot_friend_yourself: you cannot add yourself as a friend
+        note_tag_association:
+          attributes:
+            note_tag_id:
+              taken: Tag has already been assigned to the note.
+        treatment:
+          days_difference_errror: Invalid date format.
+        treatment_disease:
+          attributes:
+            disease_id:
+              taken: disease has already been added to this treatment
+        measurement:
+          attributes:
+            value:
+              invalid_measurement_blood_pressure: "should be in the format 120/80"
+    attributes:
+      treatment_update:
+        statuses:
+          improvement: 🙂 Improvement
+          no_change: 😐 No change
+          worsening: 🙁 Worsening
+          unknown: ❓ Unknown
+      disease_status:
+        statuses:
+          diagnosed: Diagnosed
+          suspicion: Suspected
+          deterioration: Deterioration
+          significant_deterioration: Significant deterioration
+          improvement: Improvement
+          significant_improvement: Significant improvement
+          cured: Cured
+          relapsed: Relapsed
+          unknown: Unknown
+      specialist_request:
+        statuses:
+          pending: Awaiting verification
+          approved: Request has been approved
+          rejected: Request has been rejected
+      account:
+        education:
+          one: education
+          none: None
+          primary: Primary
+          secondary: Secondary
+          bachelor: Bachelor's
+          master: Master's
+          doctorate: Doctorate
+      measurement_types:
+        height: Height
+        weight: Weight
+        temperature: Temperature
+        blood_pressure: Blood Pressure
+        heart_beat: Heart Rate
+        respiratory_rate: Respiratory Rate
+        spo2: Blood Oxygen Saturation
+        pain: Pain
+        sugar: Blood Sugar
+        other: Other

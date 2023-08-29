@@ -1,0 +1,222 @@
+en:
+  breadcrumbs:
+    home: home
+  accounts:
+    breadcrumbs:
+      index: users
+  articles:
+    breadcrumbs:
+      index: knowledge base
+      new: add article
+      edit: edit article
+    create:
+      success: Article has been added.
+    update:
+      success: Article has been updated.
+    destroy:
+      success: Article has been deleted.
+  friend_requests:
+    breadcrumbs:
+      index: friend requests
+  groups:
+    breadcrumbs:
+      index: patient groups
+    join_group:
+      success: Successfully joined the group.
+    leave_group:
+      success: You have successfully left the group.
+    base_controller:
+      breadcrumbs:
+        index: patient groups
+        new: add group
+        edit: edit group
+    posts_controller:
+      breadcrumbs:
+        index: posts
+      create:
+        success: Post has been added.
+    disease_photos_controller:
+      breadcrumbs:
+        index: photos
+    disease_risk_factors_controller:
+      breadcrumbs:
+        index: risk factors
+    disease_statuses_controller:
+      breadcrumbs:
+        index: health updates
+    disease_symptoms_controller:
+      breadcrumbs:
+        index: symptoms
+    treatments_controller:
+      breadcrumbs:
+        index: therapies
+  measurements:
+    breadcrumbs:
+      index: measurements
+      new:
+        weight: weight measurement
+        heart_beat: heart rate measurement
+        blood_pressure: blood pressure measurement
+        sugar: blood sugar measurement
+        spo2: blood oxygen saturation measurement
+      edit: edit measurement
+      show: measurement from %{date}
+      show_by_day: measurements from %{date}
+    create:
+      success: Measurement has been added successfully.
+    update:
+      success: Measurement has been updated successfully.
+    destroy:
+      success: Measurement has been deleted successfully.
+    show_by_day:
+      invalid_date: Invalid measurement date.
+  notes:
+    breadcrumbs:
+      index: notes
+      new: add note
+      edit: edit note
+    create:
+      success: Note has been added.
+    update:
+      success: Note has been updated.
+    destroy:
+      success: Note has been deleted.
+  note_tags:
+    breadcrumbs:
+      index: tags
+      new: add tag
+      edit: edit tag
+    create:
+      success: Tag has been added.
+    update:
+      success: Tag has been updated.
+    destroy:
+      success: Tag has been deleted.
+  note_tag_associations:
+    create:
+      success: Tag has been added to the note.
+    destroy:
+      success: Tag has been removed from the note.
+  specialists:
+    breadcrumbs:
+      index: specialists
+  specialist_requests:
+    check_request_sent: Specialist status request has already been sent.
+    breadcrumbs:
+      index: specialist status requests
+      new: add request
+      edit: edit request
+    create:
+      success: Request has been added.
+    update:
+      success: Request has been updated.
+    destroy:
+      success: Request has been deleted.
+  treatments:
+    breadcrumbs:
+      index: therapies
+      new: add therapy
+      edit: edit therapy
+    create:
+      success: Therapy has been added.
+    update:
+      success: Therapy has been updated.
+    destroy:
+      success: Therapy has been deleted.
+  treatment_updates:
+    breadcrumbs:
+      index: updates
+      new: add update
+      edit: edit update
+    create:
+      success: Update has been added.
+    update:
+      success: Update has been updated.
+    destroy:
+      success: Update has been deleted.
+  treatment_diseases:
+    breadcrumbs:
+      index: diseases
+      new: add disease
+      edit: edit disease
+    create:
+      success: Disease has been added.
+    update:
+      success: Disease has been updated.
+    destroy:
+      success: Disease has been deleted.
+  diseases:
+    breadcrumbs:
+      home: home
+      index: diseases
+      new: add disease
+      edit: edit disease
+    create:
+      success: Disease has been added.
+    update:
+      success: Disease has been updated.
+    destroy:
+      success: Disease has been deleted.
+  disease_statuses:
+    breadcrumbs:
+      index: health status
+      new: add new health status
+      show: Health status from %{date}
+      edit: edit status
+    create:
+      success: Health status has been added.
+    update:
+      success: Health status has been updated.
+    destroy:
+      success: Health status has been deleted.
+  disease_status_comments:
+    create:
+      success: New comment added successfully.
+    update:
+      success: Comment updated successfully.
+    destroy:
+      success: Comment deleted successfully.
+  disease_symptoms:
+    breadcrumbs:
+      index: symptoms
+      new: add symptom
+      edit: edit symptom
+    index:
+      title: Symptoms
+      new: Add symptom
+      no_results: You haven't added any symptoms yet.
+    create:
+      success: Symptom has been added.
+    update:
+      success: Symptom has been updated.
+    destroy:
+      success: Symptom has been deleted.
+  disease_symptom_updates:
+    create:
+      success: Update has been added.
+    destroy:
+      success: Update has been deleted.
+  disease_treatments:
+    breadcrumbs:
+      index: therapies
+  disease_risk_factors:
+    breadcrumbs:
+      index: risk factors
+      new: add risk factor
+      edit: edit risk factor
+    create:
+      success: Risk factor has been added.
+    update:
+      success: Risk factor has been updated.
+    destroy:
+      success: Risk factor has been deleted.
+  disease_photos:
+    breadcrumbs:
+      index: photos
+      new: add photo
+    create:
+      success: Photo has been added.
+    update:
+      success: Photo has been updated.
+    destroy:
+      success: Photo has been deleted.
