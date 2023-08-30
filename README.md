@@ -133,7 +133,7 @@ Below is a list of features that I've already implemented or I'm planning to imp
 
 ![disease_symptoms](screenshots/en/disease_symptoms.png)
 ![disease_symptom](screenshots/en/disease_symptom.png)
-![add_disease_symptom](screenshots/en/add_disease_symptom.png)
+![new_disease_symptom](screenshots/en/new_disease_symptom.png)
 
 #### Disease Risk Factors
 - [x] Users can add disease risk factors, with the intensity of their influence on the disease
