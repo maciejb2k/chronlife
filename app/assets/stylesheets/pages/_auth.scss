@@ -249,7 +249,7 @@
   background: #fff7f7;
 
   .auth__sidebar {
-    background: url("auth-sidebar-signup.jpg") no-repeat center center;
+    background: image-url("auth-sidebar-signup.jpg") no-repeat center center;
     background-size: cover;
   }
 
@@ -266,7 +266,7 @@
   background: #fffdf7;
 
   .auth__sidebar {
-    background: url("/assets/auth-sidebar-login.jpg") no-repeat center center;
+    background: image-url("auth-sidebar-login.jpg") no-repeat center center;
     background-size: cover;
   }
 
@@ -283,7 +283,7 @@
   background: #fff4ec;
 
   .auth__sidebar {
-    background: url("/assets/auth-sidebar-reset.jpg") no-repeat center center;
+    background: image-url("auth-sidebar-reset.jpg") no-repeat center center;
     background-size: cover;
   }
 
@@ -300,7 +300,7 @@
   background: #fffbee;
 
   .auth__sidebar {
-    background: url("/assets/auth-sidebar-change.jpg") no-repeat center center;
+    background: image-url("auth-sidebar-change.jpg") no-repeat center center;
     background-size: cover;
   }
 
@@ -317,7 +317,7 @@
   background: #f6fbff;
 
   .auth__sidebar {
-    background: url("/assets/auth-sidebar-setup.jpg") no-repeat center right;
+    background: image-url("auth-sidebar-setup.jpg") no-repeat center right;
     background-size: cover;
   }
 
@@ -334,7 +334,7 @@
   background: #f5f9ff;
 
   .auth__sidebar {
-    background: url("/assets/auth-sidebar-2fa.jpg") no-repeat center center;
+    background: image-url("auth-sidebar-2fa.jpg") no-repeat center center;
     background-size: cover;
   }
 

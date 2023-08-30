@@ -30,9 +30,6 @@ gem "redis", "~> 5.0.6"
 # DSL for json structures
 gem "jbuilder", "~> 2.11.5"
 
-# Sass support
-gem "sassc-rails", "~> 2.1.2"
-
 # Tailwind CSS support
 gem "cssbundling-rails", "~> 1.2.0"
 
