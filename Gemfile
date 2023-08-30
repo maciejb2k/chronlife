@@ -27,6 +27,9 @@ gem "view_component-contrib", "~> 0.1.4"
 # Redis support
 gem "redis", "~> 5.0.6"
 
+# Background jobs
+gem "sidekiq", "~> 7.1.2"
+
 # DSL for json structures
 gem "jbuilder", "~> 2.11.5"
 

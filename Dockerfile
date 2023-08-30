@@ -6,12 +6,9 @@ ARG RUBY_VERSION=3.2.0
 # Base image
 FROM ruby:$RUBY_VERSION-alpine AS base
 
-# Set environment variables for the username,
-# app directory, and the language.
+# Set environment variables
 ENV USER app
 ENV APP_DIR /app
-
-# Set env variables for dev
 ENV BUNDLER_VERSION 2.4.7
 ENV GEM_HOME=/usr/local/bundle
 ENV BUNDLE_PATH=$GEM_HOME
@@ -23,15 +20,16 @@ ENV BUNDLE_CACHE_ALL true
 ENV RACK_ENV production
 ENV RAILS_ENV production
 ENV RAILS_SERVE_STATIC_FILES true
-ENV RAILS_LOG_TO_STDOUT=true
+ENV RAILS_LOG_TO_STDOUT=1
 ENV PATH=$APP_DIR/bin:$PATH
 ENV LANG C.UTF-8
 
-# Add PostgreSQL, timezone libraries,
-# and git for development.
+# Add PostgreSQL, timezone libraries, nodejs and yarn.
 RUN apk add --no-cache --update \
       libpq-dev \
       tzdata \
+      nodejs \
+      yarn \
     && rm -rf /var/cache/apk/*
 
 # Start building a new image called "dependencies"
@@ -41,12 +39,12 @@ FROM base AS dependencies
 # Add libraries required for installing gems.
 RUN apk add --no-cache  --update \
     build-base \
-    git && \
-    rm -rf /var/cache/apk/*
+    git \
+    && rm -rf /var/cache/apk/*
 
 # Copy the Gemfile and Gemfile.lock
 # files to the current directory.
-COPY Gemfile Gemfile.lock ./
+COPY Gemfile Gemfile.lock package.json yarn.lock ./
 
 # Install bundler with specified version.
 RUN gem install bundler -v $BUNDLER_VERSION
@@ -59,6 +57,7 @@ RUN gem install bundler -v $BUNDLER_VERSION
 # remove unnecessary files from gems.
 RUN bundle config --global frozen 1 && \
     bundle install && \
+    yarn install --frozen-lockfile && \
     rm -rf $BUNDLE_PATH/cache/*.gem && \
     rm -rf $BUNDLE_PATH/ruby/*/cache && \
     find $BUNDLE_PATH/gems/ -name "*.c" -delete && \
@@ -88,12 +87,18 @@ USER $USER
 
 # Copy the bundle directory from the "dependencies"
 # image and copy all files to the current directory,
-# setting the ownership to the specified user.
+# copy the node_modules directory from the "dependencies"
+# sets the ownership to the specified user.
 COPY --from=dependencies $BUNDLE_PATH $BUNDLE_PATH
+COPY --chown=$USER --from=dependencies /node_modules/ node_modules/
 COPY --chown=$USER . ./
+
+# Precompile assets.
+# Pass dummy value to SECRET_KEY_BASE as a workaround for error
+RUN SECRET_KEY_BASE=1 bundle exec rake assets:precompile
 
 # Expose port 3000 for the application.
 EXPOSE 3000
 
 # Run the command to start the Rails server.
-CMD ["rails", "server", "-b", "0.0.0.0", "-p", "3000"]
+CMD ["./bin/rails", "s"]

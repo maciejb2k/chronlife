@@ -19,3 +19,14 @@ postgres15
 redis
 elasticsearch
 chart
+screenshots
+coverage
+/log/*
+/tmp/*
+!/log/.keep
+!/tmp/.keep
+/public/uploads
+/public/packs
+/public/packs-test
+/public/assets
+doc
