@@ -1,8 +1,6 @@
 # ChronLife
 
-This repository contains my full-stack side project, which is a social platform for people with chronic diseases. The purpose of this project is to learn how to build full-stack applications using Ruby on Rails.
-
-This application is **I18n-ready**, offering full translation support for both **Polish** and **English** languages. The screenshots shows the application in Polish.
+This repository contains my full-stack side project, which is a social platform for people with chronic diseases.
 
 Technologies used in this project:
 
@@ -57,7 +55,6 @@ bundle install
 ./bin/dev
 ```
 
-If you want to change the locale of the application, you can do it by changing the `I18n.locale` value in the `config/initializers/locale.rb` file. Remember to reset and seed the database again after changing the locale, if you want to see the data in the new language.
 ## Design
 
 I've came up with the design of this application by myself. I am not using any tools like Figma to create UI. I'm just creating the design on the fly. While working by myself, [I really like this approach](https://world.hey.com/dhh/design-for-the-web-without-figma-4bc3a218).
@@ -75,6 +72,12 @@ I haven't used the Turbo features in the whole project, but only in a few places
 ## RSpec
 
 Right now, there are only [model specs](https://github.com/maciejb2k/chronlife/tree/main/spec/models) (`393 examples, 0 failures`), but I'm planning to add system specs in the future.
+
+## I18n
+
+This application is **I18n-ready**, offering full translation support for both **Polish** and **English** languages.
+
+If you want to change the locale of the application, you can do it by changing the `I18n.locale` value in the `config/initializers/locale.rb` file. Remember to reset and seed the database again after changing the locale, if you want to see the data in the new language.
 
 ## Application overview
 

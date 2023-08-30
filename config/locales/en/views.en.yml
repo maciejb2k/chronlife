@@ -541,8 +541,9 @@ en:
       spo2: Edit Blood Oxygen Saturation Measurement
       other: Edit Measurement
     show_by_day:
-      title: Measurement List
+      title: Measurements from %{date}
       measurement:
+        title: Measurements list
         hour: "at:"
       no_results: No measurements on this day.
     show:

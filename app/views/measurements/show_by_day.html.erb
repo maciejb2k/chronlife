@@ -1,7 +1,9 @@
 <div class="page-measurements-by-day">
   <header class="dash-header">
     <div class="dash-header__left">
-      <h1 class="dash-header__title">Pomiary z <%= l(@selected_datetime, format: ' %d %B %Yr.') %></h1>
+      <h1 class="dash-header__title">
+        <%= t(".title", date: l(@selected_datetime, format: ' %d %B %Y')) %>
+      </h1>
       <%= render "shared/breadcrumbs" %>
     </div>
     <div class="dash-header__right">
@@ -18,7 +20,7 @@
   <div class="page-measurements-by-day__content">
     <div class="dash-group dash-group--border">
       <header class="dash-group__header">
-        <h2 class="dash-group__title"><%= t(".title") %></h2>
+        <h2 class="dash-group__title"><%= t(".measurement.title") %></h2>
         <div class="dash-group__actions"></div>
       </header>
       <div class="dash-group__content">

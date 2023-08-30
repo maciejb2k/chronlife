@@ -541,8 +541,9 @@ pl:
       spo2: Edytuj pomiar saturacji krwi
       other: Edytuj pomiar
     show_by_day:
-      title: Lista pomiarów
+      title: Pomiary z %{date}
       measurement:
+        title: Lista pomiarów
         hour: "Godzina:"
       no_results: Brak pomiarów w tym dniu.
     show:
