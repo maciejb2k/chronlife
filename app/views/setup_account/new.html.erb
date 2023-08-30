@@ -4,7 +4,7 @@
       <%= link_to root_path do %>
         <%= localized_logo_image_tag class: "auth__header__logo", alt: "" %>
       <% end %>
-      <%= link_to 'Wyloguj się', root_path, class: "auth__header__link" %>
+      <%= link_to t(".logout"), root_path, class: "auth__header__link" %>
     </header>
 
     <div class="auth__main">

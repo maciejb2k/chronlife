@@ -81,8 +81,8 @@
           <%= f.label :remember_me, class: "auth-form__checkbox-label" do %>
             <%= t(
               ".form.terms",
-              terms_link: link_to("regulamin", root_path, class: "auth__link"),
-              privacy_link: link_to("politykę platformy", new_user_session_path, class: "auth__link")
+              terms_link: link_to(t(".terms"), root_path, class: "auth__link"),
+              privacy_link: link_to(t(".privacy"), new_user_session_path, class: "auth__link")
             ).html_safe %>
           <% end %>
         </div>

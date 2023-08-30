@@ -15,7 +15,7 @@ Technologies used in this project:
   <img src="https://img.shields.io/badge/docker-%230db7ed.svg?style=for-the-badge&logo=docker&logoColor=white" alt="Docker">
 </p>
 
-![homepage showing hero section of the platform](screenshots/home.png)
+![homepage showing hero section of the platform](screenshots/en/home.png)
 
 ## What is this project about?
 
@@ -58,7 +58,6 @@ bundle install
 ```
 
 If you want to change the locale of the application, you can do it by changing the `I18n.locale` value in the `config/initializers/locale.rb` file. Remember to reset and seed the database again after changing the locale, if you want to see the data in the new language.
-
 ## Design
 
 I've came up with the design of this application by myself. I am not using any tools like Figma to create UI. I'm just creating the design on the fly. While working by myself, [I really like this approach](https://world.hey.com/dhh/design-for-the-web-without-figma-4bc3a218).
@@ -88,154 +87,160 @@ Below is a list of features that I've already implemented or I'm planning to imp
 - [x] 2FA authentication
 - [ ] Sing in using backup codes
 
-![sign up screen](screenshots/register.png)
-
-![sign in screen](screenshots/login.png)
-
-![sign in screen](screenshots/password.png)
-
-![two factor authentication screen](screenshots/2fa_setup.png)
-
-![two factor authentication screen](screenshots/2fa.png)
+![sign up screen](screenshots/en/register.png)
+![sign in screen](screenshots/en/login.png)
+![reset password](screenshots/en/reset_password.png)
+![two factor authentication screen](screenshots/en/2fa_setup.png)
+![two factor authentication screen](screenshots/en/2fa.png)
 
 ### Dashboard
 - [x] Showing feed from friends
 - [x] Showing common statistics
 
-![dash_home](screenshots/dash_home.png)
+![dash_home](screenshots/en/dash_home.png)
 
 ### Diseases
 - [x] Users can add disease from the list of predefined diseases
 
-![diseases](screenshots/diseases.png)
-![add_disease](screenshots/add_disease.png)
+![diseases](screenshots/en/diseases.png)
+![add_disease](screenshots/en/add_disease.png)
 
 ### Disease Panel
 - [x] Users have access to the disease panel, where they can manage their disease statuses, symptoms, risk factors, therapies and photos
 
-![disease](screenshots/disease.png)
-![edit_disease](screenshots/edit_disease.png)
+![disease](screenshots/en/disease.png)
+![edit_disease](screenshots/en/edit_disease.png)
 
 #### Disease Statuses
 - [x] Users can share short updates about their disease and related well-being
 
-![disease_statuses](screenshots/disease_statuses.png)
-![edit_disease_status](screenshots/edit_disease_status.png)
+![disease_statuses](screenshots/en/disease_statuses.png)
+![edit_disease_status](screenshots/en/edit_disease_status.png)
 
 ### Disease Statuses - Comments and Likes
 - [x] Friends and group members can comment and like disease statuses
 - [x] Comments and likes features are implemented using Hotwire
 
-![disease_status](screenshots/disease_status.png)
+![disease_status](screenshots/en/disease_status.png)
 
 #### Disease Symptoms
 - [x] Users can add disease symptoms with updates of their severity in time
 - [x] Users can add predefined symptoms
 - [x] Users can add their own symptoms
 
-![disease_symptoms](screenshots/disease_symptoms.png)
-![disease_symptom](screenshots/disease_symptom.png)
-![add_disease_symptom](screenshots/add_disease_symptom.png)
+![disease_symptoms](screenshots/en/disease_symptoms.png)
+![disease_symptom](screenshots/en/disease_symptom.png)
+![add_disease_symptom](screenshots/en/add_disease_symptom.png)
 
 #### Disease Risk Factors
 - [x] Users can add disease risk factors, with the intensity of their influence on the disease
 
-![disease_risk_factors](screenshots/disease_risk_factors.png)
-![disease_risk_factor](screenshots/disease_risk_factor.png)
+![disease_risk_factors](screenshots/en/disease_risk_factors.png)
+![disease_risk_factor](screenshots/en/disease_risk_factor.png)
 
 #### Disease Treatments
 - [x] Users can add disease treatments
 - [x] Multiple diseases can be assigned to the same treatment
 - [x] Users can post updates about the effectiveness of the treatment with simple statuses
 
-![treatments](screenshots/treatments.png)
-![treatment](screenshots/treatment.png)
-![edit_treatment](screenshots/edit_treatment.png)
+![treatments](screenshots/en/treatments.png)
+![treatment](screenshots/en/treatment.png)
+![edit_treatment](screenshots/en/edit_treatment.png)
 
 #### Disease Photos
 - [x] Users can add photos related to their diseases
 
-![disease_photos](screenshots/disease_photos.png)
-![disease_photo](screenshots/disease_photo.png)
+![disease_photos](screenshots/en/disease_photos.png)
+![disease_photo](screenshots/en/disease_photo.png)
 
 ### Groups
 - [x] Users can only join groups related to their diseases
 - [x] When users join a group, they can see all of the disease statuses, symptoms, risk factors, therapies and photos from all of the users with the same disease. This way, users can compare their disease statuses, symptoms, therapies, etc. with other people.
 
-![groups](screenshots/groups.png)
+![groups](screenshots/en/groups.png)
 
 #### Group Posts
 - [x] Users can share posts in groups about anything related to their disease
 
-![group_posts](screenshots/group_posts.png)
+![group_posts](screenshots/en/group_posts.png)
 
 #### Group Disease Statuses
 - [x] All of the disease statuses from all of the users with the same disease are aggregated in one place
 
-![group_disease_statuses](screenshots/group_disease_statuses.png)
+![group_disease_statuses](screenshots/en/group_disease_statuses.png)
 
 #### Group Disease Symptoms
 - [x] All of the disease symptoms from all of the users with the same disease are aggregated in one place
 - [x] There are simple statistics about predefined symptoms assigned to the disease by all of the users
 
-![group_disease_symptoms](screenshots/group_disease_symptoms.png)
+![group_disease_symptoms](screenshots/en/group_disease_symptoms.png)
 
 #### Group Disease Risk Factors
 - [x] All of the disease risk factors from all of the users with the same disease are aggregated in one place
 
-![group_risk_factors](screenshots/group_risk_factors.png)
+![group_risk_factors](screenshots/en/group_disease_risk_factors.png)
 
 #### Group Disease Treatments
 - [x] All of the disease treatments from all of the users with the same disease are aggregated in one place
 
-![group_treatments](screenshots/group_treatments.png)
+![group_treatments](screenshots/en/group_disease_treatments.png)
 
 #### Group Disease Photos
 - [x] All of the disease photos from all of the users with the same disease are aggregated in one place
 
-![group_disease_photos](screenshots/group_disease_photos.png)
+![group_disease_photos](screenshots/en/group_disease_photos.png)
 
 ### Measurements
 - [x] Users can easily add common measurements like blood pressure, blood sugar, weight, etc.
 - [x] Users can track their measurements in time
 - [x] Users can easily view all health measurements from a specific day using the calendar view.
 
-![measurements](screenshots/measurements.png)
-![measurements_calendar](screenshots/measurements_calendar.png)
-![measurements_by_day](screenshots/measurements_by_day.png)
-![measurement](screenshots/measurement.png)
+![measurements](screenshots/en/measurements.png)
+![measurements_calendar](screenshots/en/measurements_calendar.png)
+![measurements_by_day](screenshots/en/measurements_by_day.png)
+![measurement](screenshots/en/measurement.png)
 
 ### Notes
 - [x] Users can add simple notes
 - [x] Users can pin or unpin notes
 - [x] Users can add tags to notes
 
-![notes](screenshots/notes.png)
-![note](screenshots/note.png)
-![add_note](screenshots/add_note.png)
+![notes](screenshots/en/notes.png)
+![note](screenshots/en/note.png)
+![new_note](screenshots/en/new_note.png)
+
+### Account
+- [x] Users can view their or others accounts
+
+![account](screenshots/en/account.png)
+
+### All users
+- [x] Users can look for other users
+- [ ] Users can search for other users
+
+![accounts](screenshots/en/accounts.png)
+
+### Friends
+- [x] Users can send friend requests to other users
+
+![friend_requests](screenshots/en/friend_requests.png)
 
 ### Specialists
 - [x] Users can submit a request for a specialist role, which will grant them a special status on the platform and enable them to write articles.
 - [x] Specialist requests are verified by the administrators, which can accept or reject the request.
 
-![specialists](screenshots/specialists.png)
-![specialist_profile](screenshots/specialist_profile.png)
-![specialists_requests](screenshots/specialists_requests.png)
+![specialists](screenshots/en/specialists.png)
+![specialist_profile](screenshots/en/specialist.png)
+![specialists_requests](screenshots/en/specialist_requests.png)
 
 ### Articles
 - [x] Specialists can write articles on the platform
 - [ ] Articles can be filtered by tags
 - [ ] Articles can be commented and liked by users
 
-![articles](screenshots/articles.png)
-![new_article](screenshots/new_article.png)
-![article](screenshots/article.png)
-
-### All users
-- [x] Users can look for other users
-- [ ] Users can search for other users
-
-![accounts](screenshots/accounts.png)
+![articles](screenshots/en/articles.png)
+![new_article](screenshots/en/new_article.png)
+![article](screenshots/en/article.png)
 
 ### Settings
 - [x] Users can change their personal data
@@ -243,9 +248,9 @@ Below is a list of features that I've already implemented or I'm planning to imp
 - [x] Users can enable two factor authentication
 - [ ] Users can change their password when signed in
 
-![settings](screenshots/settings.png)
-![settings_privacy](screenshots/settings_privacy.png)
-![settings_backup_codes](screenshots/settings_backup_codes.png)
+![settings](screenshots/en/account_settings.png)
+![settings_privacy](screenshots/en/security_settings.png)
+![settings_backup_codes](screenshots/en/2fa_backup_codes.png)
 
 ## ERD Diagram
 
@@ -271,8 +276,8 @@ Below is the current ERD diagram of the application.
 - [x] Add controller translations
 - [x] Add models translations
 - [x] Refactor controllers
+- [x] Add views translations
 - [ ] Refactor routes
-- [ ] Add views translations
 - [ ] Refactor ugly if statements
 - [ ] Move from importmaps to `jsbundling-rails`
 - [ ] Add RWD

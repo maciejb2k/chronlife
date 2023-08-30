@@ -142,6 +142,8 @@ pl:
             placeholder: "•••••••••••••"
           terms: Akceptuję %{terms_link} i %{privacy_link}
           submit: Zarejestruj się
+        terms: regulamin
+        privacy: politykę prywatności
         already_registered: Masz już konto?
         sign_in: Zaloguj się
     sessions:
@@ -404,6 +406,11 @@ pl:
       title: Dodaj nową chorobę
     edit:
       title: Edytuj chorobę
+      button:
+        delete:
+          title: Usuń
+          turbo:
+            confirm: Czy na pewno chcesz usunąć tą chorobę?
     form:
       predefined_disease_id:
         title: Nazwa choroby
@@ -733,6 +740,7 @@ pl:
       title: Uzupełnij profil
       desc: Żeby zacząć korzystać z platformy, musisz uzupełnić profil swoimi danymi.
       credits: Illustracja z Freepik
+      logout: Wyloguj się
     form:
       first_name:
         label: Imię
