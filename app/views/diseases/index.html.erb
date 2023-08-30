@@ -19,44 +19,46 @@
       <%= render "shared/dash_flash" %>
     <% end %>
   </div>
-  <div class="page-diseases__content">
-    <% if @diseases.to_a.any? %>
-      <div class="diseases">
-        <% @diseases.each do |disease| %>
-          <%= link_to disease, class: "disease" do %>
-            <div class="disease__content">
-              <h3 class="disease__title">
-                <%= disease.predefined_disease.name %>
-                <% if disease.diagnosed_by_hp? %>
-                  <div class="disease__diagnosed" title="<%= t(".disease.diagnosed") %>">
-                    <i class="ri-check-line"></i>
+  <%= turbo_frame_tag :diseases do %>
+    <div class="page-diseases__content">
+      <% if @diseases.to_a.any? %>
+        <div class="diseases">
+          <% @diseases.each do |disease| %>
+            <%= link_to disease, class: "disease", target: "_top" do %>
+              <div class="disease__content">
+                <h3 class="disease__title">
+                  <%= disease.predefined_disease.name %>
+                  <% if disease.diagnosed_by_hp? %>
+                    <div class="disease__diagnosed" title="<%= t(".disease.diagnosed") %>">
+                      <i class="ri-check-line"></i>
+                    </div>
+                  <% end %>
+                </h3>
+                <div class="disease__badges">
+                  <div class="disease__badge disease__badge--severity-<%= disease.severity %>">
+                    <%= severity_to_string(disease.severity) %>
                   </div>
-                <% end %>
-              </h3>
-              <div class="disease__badges">
-                <div class="disease__badge disease__badge--severity-<%= disease.severity %>">
-                  <%= severity_to_string(disease.severity) %>
+                </div>
+                <div class="disease__more">
+                  <%= t(".disease.more") %>
                 </div>
               </div>
-              <div class="disease__more">
-                <%= t(".disease.more") %>
-              </div>
-            </div>
+            <% end %>
           <% end %>
-        <% end %>
+        </div>
+      <% else %>
+        <p class="no-results">
+          <%= t(".no_results") %>
+        </p>
+      <% end %>
+    </div>
+    <div class="dash-pagination">
+      <div class="dash-pagination__controls">
+        <%== pagy_nav(@pagy, link_extra: 'data-turbo-action="advance"') if @pagy.pages > 1 %>
       </div>
-    <% else %>
-      <p class="no-results">
-        <%= t(".no_results") %>
-      </p>
-    <% end %>
-  </div>
-  <div class="dash-pagination">
-    <div class="dash-pagination__controls">
-      <%== pagy_nav(@pagy) if @pagy.pages > 1 %>
+      <div class="dash-pagination__info">
+        <%== pagy_info(@pagy) %>
+      </div>
     </div>
-    <div class="dash-pagination__info">
-      <%== pagy_info(@pagy) %>
-    </div>
-  </div>
+  <% end %>
 </div>

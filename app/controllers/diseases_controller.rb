@@ -15,7 +15,8 @@ class DiseasesController < BaseController
         .diseases
         .includes(:predefined_disease)
         .order(severity: :desc)
-      )
+      ),
+      items: 6
     )
   end
 
