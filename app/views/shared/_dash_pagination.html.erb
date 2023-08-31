@@ -1,6 +1,6 @@
 <div class="dash-pagination">
   <div class="dash-pagination__controls">
-    <%== pagy_nav(pagy) if pagy.pages > 1 %>
+    <%== pagy_nav(pagy, link_extra: 'data-turbo-action="advance"') if pagy.pages > 1 %>
   </div>
   <div class="dash-pagination__info">
     <%== pagy_info(pagy) %>

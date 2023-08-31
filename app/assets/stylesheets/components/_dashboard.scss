@@ -480,6 +480,17 @@
   }
 }
 
+@keyframes fade-out {
+  from {
+    opacity: 1;
+    display: flex;
+  }
+  to {
+    opacity: 0;
+    display: none;
+  }
+}
+
 .dash-alert {
   display: flex;
   align-items: center;
@@ -493,6 +504,10 @@
   width: 100%;
   background: #dcf3ff;
   color: #0b4561;
+
+  &--hidden {
+    animation: slide-down-in 0.2s ease-in-out forwards;
+  }
 
   &--success {
     border: 1px solid #b5e2ca;

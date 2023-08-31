@@ -64,6 +64,7 @@
         border-radius: 3px;
         background: #ffffff;
         min-width: 260px;
+        font-size: var(--14px);
       }
 
       &__icon-container {
@@ -137,7 +138,7 @@
 
   .sidebar {
     border-right: 1px solid $dash-base-border;
-    width: 380px;
+    width: 350px;
     background: $dash-sidebar;
     flex-shrink: 0;
     display: flex;

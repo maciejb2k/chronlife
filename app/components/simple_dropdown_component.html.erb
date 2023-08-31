@@ -1,6 +1,6 @@
 <div class="simple-dropdown" data-controller="simple-dropdown">
   <button
-    class="simple-dropdown__button"
+    class="simple-dropdown__button <%= @button_class %>"
     data-simple-dropdown-target="button"
     data-action="click->simple-dropdown#toggle click@window->simple-dropdown#handleOutsideClick">
     <i class="<%= @icon %>"></i>

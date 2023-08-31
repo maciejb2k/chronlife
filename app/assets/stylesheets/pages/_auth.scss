@@ -151,21 +151,22 @@
 
   &__flash {
     padding: 10px 15px;
-    background: #9cffae;
-    // box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
-    border: 1px solid $dash-base-border;
+    background: #9ce8ff;
     border-radius: 3px;
     font-weight: 500;
     margin-bottom: 20px;
     text-align: center;
+    font-size: var(--14px);
   }
 
   &__success {
-    background: #95d430;
+    background: #caffa8;
+    color: #244d0a;
   }
 
   &__alert {
-    background: #ff9494;
+    background: #ffc0c0;
+    color: #6d1616;
   }
 
   &__error {
@@ -180,8 +181,8 @@
       list-style-type: circle;
       list-style-position: inside;
       padding: 10px 20px;
-      background: #ffaeae;
-      color: #000000;
+      background: #ffc0c0;
+      color: #6d1616;
       border-radius: 3px;
       font-weight: 400;
     }

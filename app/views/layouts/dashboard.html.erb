@@ -96,6 +96,24 @@
           <p class="sidebar__nav__title"><%= t(".nav.social") %></p>
           <ul class="sidebar__items">
             <li class="sidebar__item">
+              <%= link_to specialists_path, class: "sidebar__link" do %>
+                <div class="sidebar__link__group">
+                  <i class="ri-nurse-line sidebar__link__icon"></i>
+                  <span class="sidebar__link__text"><%= t(".nav.specialists") %></span>
+                </div>
+                <i class="ri-arrow-right-s-line sidebar__link__icon"></i>
+              <% end %>
+            </li>
+            <li class="sidebar__item">
+              <%= link_to articles_path, class: "sidebar__link" do %>
+                <div class="sidebar__link__group">
+                  <i class="ri-profile-line sidebar__link__icon"></i>
+                  <span class="sidebar__link__text"><%= t(".nav.articles") %></span>
+                </div>
+                <i class="ri-arrow-right-s-line sidebar__link__icon"></i>
+              <% end %>
+            </li>
+            <li class="sidebar__item">
               <%= link_to account_friends_path(current_account), class: "sidebar__link" do %>
                 <div class="sidebar__link__group">
                   <i class="ri-contacts-line sidebar__link__icon"></i>
@@ -118,24 +136,6 @@
                 <div class="sidebar__link__group">
                   <i class="ri-group-2-line sidebar__link__icon"></i>
                   <span class="sidebar__link__text"><%= t(".nav.accounts") %></span>
-                </div>
-                <i class="ri-arrow-right-s-line sidebar__link__icon"></i>
-              <% end %>
-            </li>
-            <li class="sidebar__item">
-              <%= link_to specialists_path, class: "sidebar__link" do %>
-                <div class="sidebar__link__group">
-                  <i class="ri-nurse-line sidebar__link__icon"></i>
-                  <span class="sidebar__link__text"><%= t(".nav.specialists") %></span>
-                </div>
-                <i class="ri-arrow-right-s-line sidebar__link__icon"></i>
-              <% end %>
-            </li>
-            <li class="sidebar__item">
-              <%= link_to articles_path, class: "sidebar__link" do %>
-                <div class="sidebar__link__group">
-                  <i class="ri-profile-line sidebar__link__icon"></i>
-                  <span class="sidebar__link__text"><%= t(".nav.articles") %></span>
                 </div>
                 <i class="ri-arrow-right-s-line sidebar__link__icon"></i>
               <% end %>
@@ -191,18 +191,25 @@
             <input type="text" class="header__search__input" placeholder="<%= t(".header.search.placeholder") %>">
           </div>
           <div class="header__buttons">
-            <button class="header__button">
-              <i class="ri-team-line header__button__icon"></i>
-            </button>
+            <%= link_to groups_path, class: "header__button" do %>
+              <i class="ri-team-line"></i>
+            <% end %>
             <button class="header__button">
               <i class="ri-chat-3-line"></i>
             </button>
             <button class="header__button">
               <i class="ri-notification-3-line"></i>
             </button>
-            <button class="header__button">
-              <i class="ri-more-fill"></i>
-            </button>
+            <%= render SimpleDropdownComponent.new(icon: "ri-more-line", button_class: "header__button") do %>
+              <%= link_to settings_settings_path, class: "simple-dropdown__link" do %>
+                <i class="ri-settings-3-line simple-dropdown__link__icon"></i>
+                <%= t(".header.settings") %>
+              <% end %>
+              <%= button_to destroy_user_session_path, method: :delete, class: "simple-dropdown__link" do %>
+                <i class="ri-logout-box-line simple-dropdown__link__icon"></i>
+                <%= t(".header.logout") %>
+              <% end %>
+            <% end %>
           </div>
         </div>
       </header>

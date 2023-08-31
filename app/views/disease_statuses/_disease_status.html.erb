@@ -77,8 +77,8 @@
   </div>
   <div class="dash-post__interactions">
     <%= link_to disease_status_comments_path(disease, disease_status),
-         data: { turbo_frame: "comments_section_#{disease_status.id}" },
-         class: "dash-post__interaction dash-post__interaction--comment" do %>
+        data: { turbo_frame: "comments_section_#{disease_status.id}" },
+        class: "dash-post__interaction dash-post__interaction--comment" do %>
       <i class="ri-chat-3-line dash-post__interaction__icon"></i>
       <span class="dash-post__interaction__count" id="comments_count_<%= disease_status.id %>">
         <%= disease_status.comments.size %>
