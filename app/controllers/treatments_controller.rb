@@ -3,7 +3,7 @@ class TreatmentsController < BaseController
   before_action :set_breadcrumbs
 
   def index
-    @pagy, @treatments = pagy(current_account.treatments.all)
+    @pagy, @treatments = pagy(current_account.treatments.includes(:treatment_diseases).all)
   end
 
   def show
