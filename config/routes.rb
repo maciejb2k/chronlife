@@ -56,7 +56,13 @@ Rails.application.routes.draw do
     collection do
       get "new/:measurement_type", to: "measurements#new", as: :new
       post "create/:measurement_type", to: "measurements#create", as: :create
-      get "show_by_day/:day", to: "measurements#show_by_day", as: :show_by_day
+      get "day/:day", to: "measurements#show_by_day", as: :show_by_day
+    end
+  end
+
+  resources :measurement_raports, only: %i[index show destroy] do
+    collection do
+      post :generate_for_day
     end
   end
 

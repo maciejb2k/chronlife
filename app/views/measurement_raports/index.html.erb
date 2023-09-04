@@ -1,0 +1,66 @@
+<div class="page-measurement-raports">
+  <header class="dash-header">
+    <div class="dash-header__left">
+      <h1 class="dash-header__title">
+        <i class="ri-file-chart-line dash-header__title__icon"></i>
+        <%= t(".title") %>
+      </h1>
+      <%= render "shared/breadcrumbs" %>
+    </div>
+    <div class="dash-header__right">
+      <%= link_to measurements_path, class: "dash-button dash-button--back" do %>
+        <i class="ri-arrow-left-line dash-button__icon"></i>
+      <% end %>
+    </div>
+  </header>
+  <div class="dash-flash-messages">
+    <%= turbo_frame_tag "flash" do %>
+      <%= render "shared/dash_flash" %>
+    <% end %>
+  </div>
+  <div class="page-measurement-raports__content">
+    <div class="dash-group">
+      <header class="dash-group__header">
+        <h2 class="dash-group__title">
+          <i class="ri-health-book-line dash-group__title__icon"></i>
+          <%= t(".raports.title") %>
+        </h2>
+        <div class="dash-group__actions"></div>
+      </header>
+      <div class="dash-group__content">
+        <% if @raports.present? %>
+          <ul class="raports-list">
+            <% @raports.each do |raport| %>
+              <li class="raport">
+                <div class="raport__left">
+                  <i class="ri-file-line raport__icon"></i>
+                  <div>
+                    <p class="raport__id"><%= raport.id %></p>
+                    <%= link_to raport.attachment_url, class: "raport__name" do %>
+                      <%= raport.name %>
+                    <% end %>
+                  </div>
+                </div>
+                <div class="raport__right">
+                  <%= button_to raport, method: :delete do %>
+                    <i class="ri-close-line raport__delete-icon"></i>
+                  <% end %>
+                </div>
+              </li>
+            <% end %>
+          </ul>
+        <% else %>
+          <p class="no-results"><%= t(".raports.no_results") %></p>
+        <% end %>
+      </div>
+      <div class="dash-pagination">
+        <div class="dash-pagination__controls">
+          <%== pagy_nav(@pagy) if @pagy.pages > 1 %>
+        </div>
+        <div class="dash-pagination__info">
+          <%== pagy_info(@pagy) %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

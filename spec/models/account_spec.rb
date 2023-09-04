@@ -64,6 +64,7 @@ RSpec.describe Account, type: :model do
     it { is_expected.to have_many(:note_groups).dependent(:destroy) }
     it { is_expected.to have_many(:note_tags).dependent(:destroy) }
     it { is_expected.to have_many(:measurements).dependent(:destroy) }
+    it { is_expected.to have_many(:measurement_raports).dependent(:destroy) }
 
     it { is_expected.to have_many(:specialist_requests).dependent(:destroy) }
     it { is_expected.to have_many(:articles).dependent(:destroy) }

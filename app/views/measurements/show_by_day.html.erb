@@ -7,6 +7,11 @@
       <%= render "shared/breadcrumbs" %>
     </div>
     <div class="dash-header__right">
+      <%= button_to generate_for_day_measurement_raports_path(day: params[:day]), method: :post,
+          class: "dash-button dash-button--back" do %>
+        <i class="ri-file-chart-line dash-button__icon"></i>
+        <%= t(".button.generate_raport") %>
+      <% end %>
       <%= link_to measurements_path, class: "dash-button dash-button--back" do %>
         <i class="ri-arrow-left-line dash-button__icon"></i>
       <% end %>

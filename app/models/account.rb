@@ -54,6 +54,7 @@ class Account < ApplicationRecord
   has_many :note_groups, dependent: :destroy
   has_many :note_tags, dependent: :destroy
   has_many :measurements, dependent: :destroy
+  has_many :measurement_raports, dependent: :destroy
 
   has_many :specialist_requests, dependent: :destroy
   has_many :articles, dependent: :destroy

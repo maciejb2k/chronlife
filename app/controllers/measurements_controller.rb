@@ -1,5 +1,6 @@
 class MeasurementsController < BaseController
   before_action :set_measurement, only: %i[show edit update destroy]
+  before_action :set_datetime, only: %i[show_by_day generate_raport_by_day]
   before_action :set_breadcrumbs
 
   def index
@@ -24,17 +25,14 @@ class MeasurementsController < BaseController
   end
 
   def show_by_day
-    @selected_datetime = Date.parse(params[:day])
     @pagy, @measurements = pagy(
-      current_account
-      .measurements
-      .includes(measurement_type: :unit)
-      .where(measurement_date: @selected_datetime.all_day)
-      .order(measurement_date: :asc)
+      @measurements =
+        current_account
+        .measurements
+        .includes(measurement_type: :unit)
+        .where(measurement_date: @selected_datetime.all_day)
+        .order(measurement_date: :asc)
     )
-  rescue ArgumentError, TypeError
-    flash[:error] = t(".invalid_date")
-    redirect_to measurements_path
   end
 
   def new
@@ -96,6 +94,21 @@ class MeasurementsController < BaseController
     "measurement_#{measurement_type}".to_sym
   end
 
+  def set_datetime
+    @selected_datetime = parse_date(params[:day])
+
+    return unless @selected_datetime.nil?
+
+    flash[:error] = t(".invalid_date")
+    redirect_to measurements_path
+  end
+
+  def parse_date(date)
+    Date.parse(date)
+  rescue TypeError, Date::Error
+    nil
+  end
+
   def set_breadcrumbs
     add_breadcrumb t("breadcrumbs.home"), authenticated_root_path
     add_breadcrumb t(".breadcrumbs.index"), measurements_path
@@ -110,7 +123,7 @@ class MeasurementsController < BaseController
       )
     when :show_by_day
       add_breadcrumb(
-        t(".breadcrumbs.show_by_day", date: Date.parse(params[:day])),
+        t(".breadcrumbs.show_by_day", date: parse_date(params[:day])),
         show_by_day_measurements_path(day: params[:day])
       )
     end

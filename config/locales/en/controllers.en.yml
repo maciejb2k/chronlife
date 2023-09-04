@@ -70,6 +70,13 @@ en:
       success: Measurement has been deleted successfully.
     show_by_day:
       invalid_date: Invalid measurement date.
+  measurement_raports:
+    breadcrumbs:
+      index: measurement raports
+    generate_for_day:
+      success: "Measurement raport is being generated. Check your raports in a moment."
+    destroy:
+      success: Measurement raport has been deleted successfully.
   notes:
     breadcrumbs:
       index: notes

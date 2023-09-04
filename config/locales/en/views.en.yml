@@ -27,6 +27,8 @@ en:
         diseases: My Diseases
         search:
           placeholder: Search
+        settings: Settings
+        logout: Logout
   accounts:
     unauthorized: You cannot view this information as you are not friends.
     index:
@@ -516,6 +518,8 @@ en:
   measurements:
     index:
       title: Health Monitoring
+      button:
+        raports: View Raports
       latest:
         title: Latest Measurements
       no_measurement: No measurement
@@ -542,6 +546,8 @@ en:
       other: Edit Measurement
     show_by_day:
       title: Measurements from %{date}
+      button:
+        generate_raport: Generate PDF
       measurement:
         title: Measurements list
         hour: "at:"
@@ -572,6 +578,12 @@ en:
         title: Measurement Date
         description: When the measurement was taken.
       submit: Save
+  measurement_raports:
+    index:
+      title: Measurement Raports
+      raports:
+        title: All raports
+        no_results: No raports have been generated yet.
   notes:
     index:
       title: Notes

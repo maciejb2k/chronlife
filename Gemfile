@@ -92,6 +92,9 @@ gem "avo", "~> 2.39.0"
 # Dynamically apply scopes
 gem "has_scope", "~> 0.8.1"
 
+# PDF generation
+gem "prawn", "~> 2.4.0"
+
 group :development, :test do
   gem "debug", "~> 1.8.0", platforms: %i[ mri mingw x64_mingw ]
   gem "faker", "~> 3.2.0"

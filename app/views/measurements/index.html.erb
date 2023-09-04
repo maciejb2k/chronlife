@@ -8,6 +8,10 @@
       <%= render "shared/breadcrumbs" %>
     </div>
     <div class="dash-header__right">
+      <%= link_to measurement_raports_path, class: "dash-button" do %>
+        <i class="ri-file-chart-line dash-button__icon"></i>
+        <%= t(".button.raports") %>
+      <% end %>
       <%= link_to authenticated_root_path, class: "dash-button dash-button--back" do %>
         <i class="ri-arrow-left-line dash-button__icon"></i>
       <% end %>

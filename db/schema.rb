@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_08_24_054749) do
+ActiveRecord::Schema[7.0].define(version: 2023_09_03_071540) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pgcrypto"
   enable_extension "plpgsql"
@@ -230,6 +230,17 @@ ActiveRecord::Schema[7.0].define(version: 2023_08_24_054749) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["predefined_disease_id"], name: "index_groups_on_predefined_disease_id"
+  end
+
+  create_table "measurement_raports", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
+    t.string "raport_type", default: "", null: false
+    t.string "name", default: "", null: false
+    t.jsonb "attachment_data"
+    t.uuid "account_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["account_id"], name: "index_measurement_raports_on_account_id"
+    t.index ["attachment_data"], name: "index_measurement_raports_on_attachment_data", using: :gin
   end
 
   create_table "measurement_types", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
@@ -483,6 +494,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_08_24_054749) do
   add_foreign_key "group_posts", "accounts"
   add_foreign_key "group_posts", "groups"
   add_foreign_key "groups", "predefined_diseases"
+  add_foreign_key "measurement_raports", "accounts"
   add_foreign_key "measurement_types", "units"
   add_foreign_key "measurements", "accounts"
   add_foreign_key "measurements", "measurement_types"

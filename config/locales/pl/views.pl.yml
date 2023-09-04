@@ -27,6 +27,8 @@ pl:
         diseases: Moje choroby
         search:
           placeholder: Szukaj
+        settings: Ustawienia
+        logout: Wyloguj
   accounts:
     unauthorized: Nie możesz wyświetlić tych informacji, ponieważ nie jesteście znajomymi.
     index:
@@ -516,6 +518,8 @@ pl:
   measurements:
     index:
       title: Monitorowanie zdrowia
+      button:
+        raports: Zobacz raporty
       latest:
         title: Ostatnie pomiary
       no_measurement: Brak pomiaru
@@ -542,6 +546,8 @@ pl:
       other: Edytuj pomiar
     show_by_day:
       title: Pomiary z %{date}
+      button:
+        generate_raport: Wygeneruj PDF
       measurement:
         title: Lista pomiarów
         hour: "Godzina:"
@@ -572,6 +578,12 @@ pl:
         title: Data pomiaru
         description: Kiedy został wykonany pomiar.
       submit: Zapisz
+  measurement_raports:
+    index:
+      title: Raporty z pomiarów zdrowia
+      raports:
+        title: Wszystkie raporty
+        no_results: Nie wygenerowano jeszcze żadnych raportów.
   notes:
     index:
       title: Notatki

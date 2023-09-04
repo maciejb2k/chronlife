@@ -70,6 +70,13 @@ pl:
       success: Pomiar został poprawnie usunięty.
     show_by_day:
       invalid_date: Nieprawidłowa data pomiaru.
+  measurement_raports:
+    breadcrumbs:
+      index: Raporty z pomiarów zdrowia
+    generate_for_day:
+      success: Raport jest właśnie generowany. Zobaczysz go za chwilę.
+    destroy:
+      success: Raport został usunięty.
   notes:
     breadcrumbs:
       index: notatki

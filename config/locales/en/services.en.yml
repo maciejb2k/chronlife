@@ -1,0 +1,5 @@
+en:
+  services:
+    measurements:
+      generate_day_raport_service:
+        raport_name: 'Measurement raport from day %{date}'
