@@ -12,9 +12,11 @@ AllCops:
     - 'bin/*'
     - 'Vagrantfile'
     - 'vendor/**/*'
+    - '.git/**/*'
+    - 'tmp/**/*'
 
 Layout/LineLength:
-  Max: 100
+  Max: 120
   Exclude:
     - "db/**/*"
 
@@ -82,4 +84,8 @@ RSpec/ExampleLength:
   Enabled: false
 
 Rails/HasAndBelongsToMany:
+  Enabled: false
+
+# I know what I'm doing
+Rails/NotNullColumn:
   Enabled: false

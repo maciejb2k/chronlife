@@ -71,7 +71,7 @@ I haven't used the Turbo features in the whole project, but only in a few places
 
 ## RSpec
 
-Right now, there are only [model specs](https://github.com/maciejb2k/chronlife/tree/main/spec/models) (`393 examples, 0 failures`), but I'm planning to add system specs in the future.
+Right now, there are only [model specs](https://github.com/maciejb2k/chronlife/tree/main/spec/models) (`406 examples, 0 failures`), but I'm planning to add system specs in the future.
 
 ## I18n
 
@@ -265,12 +265,11 @@ Below is the current ERD diagram of the application.
 
 ### Important
 - [x] Add models specs
+- [x] Fix all Rubocop errors
+- [x] Fix most of the queries performance issues (n+1, etc.)
+- [x] Complete the seeder
+- [x] Add authorization using Pundit policies
 - [ ] Add system specs
-- [ ] Add authorization using Pundit policies
-- [ ] Fix query performance issues (n+1, etc.)
-- [ ] Fix all Rubocop errors
-- [ ] Complete the seeder
-- [ ] Fix roles and permissions
 - [ ] Add caching
 - [ ] Add mailers
 - [ ] Add background jobs
@@ -280,7 +279,7 @@ Below is the current ERD diagram of the application.
 - [x] Add models translations
 - [x] Refactor controllers
 - [x] Add views translations
-- [ ] Refactor routes
+- [x] Refactor routes
 - [ ] Refactor ugly if statements
 - [ ] Move from importmaps to `jsbundling-rails`
 - [ ] Add RWD

@@ -19,7 +19,14 @@ class Measurements::GenerateDayRaportService
     begin
       pdf_file = Prawn::Document.new do |pdf|
         measurements.each do |measurement|
-          pdf.text "#{measurement.measurement_type.name}: #{measurement.value} #{measurement.measurement_type.unit.name} - #{measurement.measurement_date}"
+          type = I18n.t(
+            "activerecord.attributes.measurement_types.#{measurement.measurement_type.name}"
+          )
+          value = measurement.value
+          unit = measurement.measurement_type.unit.symbol
+          date = I18n.l(measurement.measurement_date, format: "%H:%M, %d %B %Y")
+
+          pdf.text "#{type}: #{value} #{unit} - #{date}"
         end
       end
       pdf_string = StringIO.new(pdf_file.render)

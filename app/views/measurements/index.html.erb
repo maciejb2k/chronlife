@@ -58,7 +58,7 @@
                     <%= link_to show_by_day_measurements_path(@latest[measurement].measurement_date.to_date),
                       class: "measurement__date" do %>
                       <i class="ri-calendar-line"></i>
-                      <%= l(@latest[measurement].measurement_date, format: '%H:%M - %d %B %Yr.') %>
+                      <%= l(@latest[measurement].measurement_date, format: '%H:%M - %d %B %Y') %>
                     <% end %>
                   <% else %>
                     <p class="measurement__date">
