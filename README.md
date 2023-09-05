@@ -1,5 +1,7 @@
 # ChronLife
 
+[![Ruby on Rails CI](https://github.com/maciejb2k/chronlife/actions/workflows/rubyonrails.yml/badge.svg)](https://github.com/maciejb2k/chronlife/actions/workflows/rubyonrails.yml)
+
 This repository contains my full-stack side project, which is a social platform for people with chronic diseases.
 
 Technologies used in this project:
@@ -69,9 +71,11 @@ This application is my first take on **Turbo** (I've used **Stimulus** before, s
 
 I haven't used the Turbo features in the whole project, but only in a few places, where the application required **eager-loaded frames** or some **interactivity**, like the comments section and reactions for disease statuses, friend requests, some of the forms and flash messages.
 
-## RSpec
+## RSpec & Rubocop
 
 Right now, there are only [model specs](https://github.com/maciejb2k/chronlife/tree/main/spec/models) (`406 examples, 0 failures`), but I'm planning to add system specs in the future.
+
+If the GitHub CI passes, it means that there all specs are passing and there are no Rubocop offenses in the codebase.
 
 ## I18n
 
