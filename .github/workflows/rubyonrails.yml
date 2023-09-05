@@ -28,6 +28,7 @@ jobs:
           bundler-cache: true
       - name: Set up database schema
         run: |
+          bin/rails db:encryption:init
           bin/rails db:schema:load
           bin/rails db:seed
       - name: Run tests
