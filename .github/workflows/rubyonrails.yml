@@ -19,6 +19,9 @@ jobs:
     env:
       RAILS_ENV: test
       DATABASE_URL: "postgres://rails:password@localhost:5432/rails_test"
+      ACTIVE_RECORD_ENCRYPTION_PRIMARY_KEY: ${{ secrets.ACTIVE_RECORD_ENCRYPTION_PRIMARY_KEY }}
+      ACTIVE_RECORD_ENCRYPTION_DETERMINISTIC_KEY: ${{ secrets.ACTIVE_RECORD_ENCRYPTION_DETERMINISTIC_KEY }}
+      ACTIVE_RECORD_ENCRYPTION_KEY_DERIVATION_SALT: ${{ secrets.ACTIVE_RECORD_ENCRYPTION_KEY_DERIVATION_SALT }}
     steps:
       - name: Checkout code
         uses: actions/checkout@v3
@@ -28,7 +31,6 @@ jobs:
           bundler-cache: true
       - name: Set up database schema
         run: |
-          bin/rails db:encryption:init
           bin/rails db:schema:load
           bin/rails db:seed
       - name: Run tests
