@@ -5,13 +5,9 @@ class Admin::SpecialistRequestsController < Admin::BaseController
     @admin_specialist_requests = SpecialistRequest.where(status: "pending").all
   end
 
-  def show; end
-
   def new
     @admin_specialist_request = SpecialistRequest.new
   end
-
-  def edit; end
 
   def create
     @admin_specialist_request = SpecialistRequest.new(admin_specialist_request_params)
@@ -19,8 +15,7 @@ class Admin::SpecialistRequestsController < Admin::BaseController
     respond_to do |format|
       if @admin_specialist_request.save
         format.html do
-          redirect_to admin_specialist_request_url(@admin_specialist_request),
-                      notice: "Specialist request was successfully created."
+          redirect_to admin_specialist_request_url(@admin_specialist_request), notice: t(".success")
         end
       else
         format.html { render :new, status: :unprocessable_entity }
@@ -32,8 +27,7 @@ class Admin::SpecialistRequestsController < Admin::BaseController
     respond_to do |format|
       if @admin_specialist_request.update(admin_specialist_request_params)
         format.html do
-          redirect_to admin_specialist_request_url(@admin_specialist_request),
-                      notice: "Specialist request was successfully updated."
+          redirect_to admin_specialist_request_url(@admin_specialist_request), notice: t(".success")
         end
       else
         format.html { render :edit, status: :unprocessable_entity }
@@ -46,8 +40,7 @@ class Admin::SpecialistRequestsController < Admin::BaseController
 
     respond_to do |format|
       format.html do
-        redirect_to admin_specialist_requests_url,
-                    notice: "Specialist request was successfully destroyed."
+        redirect_to admin_specialist_requests_url, notice: t(".success")
       end
     end
   end
@@ -57,8 +50,7 @@ class Admin::SpecialistRequestsController < Admin::BaseController
 
     respond_to do |format|
       format.html do
-        redirect_to admin_specialist_requests_url,
-                    notice: "Specialist request was successfully approved."
+        redirect_to admin_specialist_requests_url, notice: t(".success")
       end
     end
   end
@@ -68,8 +60,7 @@ class Admin::SpecialistRequestsController < Admin::BaseController
 
     respond_to do |format|
       format.html do
-        redirect_to admin_specialist_requests_url,
-                    notice: "Specialist request was successfully rejected."
+        redirect_to admin_specialist_requests_url, notice: t(".success")
       end
     end
   end

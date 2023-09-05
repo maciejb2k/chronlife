@@ -40,7 +40,7 @@
                 <i class="ri-user-line"></i>
                 <%= t(".your_profile") %>
               <% end %>
-            <% elsif friend?(account) %>
+            <% elsif friend?(@friends, account) %>
               <%= link_to account_path(account), class: "account__button account__button--friend" do %>
                 <i class="ri-user-shared-line"></i>
                 <%= t(".friend") %>
@@ -49,12 +49,12 @@
                 <i class="ri-chat-4-line"></i>
                 <%= t(".message") %>
               <% end %>
-            <% elsif received_friend_request?(account) %>
+            <% elsif friend?(@received_friend_requests, account) %>
               <%= link_to account_path(account), class: "account__button account__button--accept" do %>
                 <i class="ri-mail-send-line"></i>
                 <%= t(".accept_request") %>
               <% end %>
-            <% elsif sent_friend_request?(account) %>
+            <% elsif friend?(@sent_friend_requests, account) %>
               <div class="account__button account__button account__button--send">
                 <i class="ri-mail-send-line"></i>
                 <%= t(".request_sent") %>

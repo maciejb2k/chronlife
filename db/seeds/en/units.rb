@@ -1,4 +1,4 @@
-puts "Seeding units ..."
+Rails.logger.debug "Seeding units ..."
 
 # Units
 
@@ -212,4 +212,4 @@ Unit.create(
   ]
 )
 
-puts "Seeding units done."
+Rails.logger.debug "Seeding units done."

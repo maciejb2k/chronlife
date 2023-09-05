@@ -1,4 +1,4 @@
-puts "Seeding measurement types ..."
+Rails.logger.debug "Seeding measurement types ..."
 
 MeasurementType.create(
   [
@@ -33,4 +33,4 @@ MeasurementType.create(
   ]
 )
 
-puts "Seeding measurement types done."
+Rails.logger.debug "Seeding measurement types done."

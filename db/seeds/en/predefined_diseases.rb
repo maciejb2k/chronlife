@@ -1,4 +1,4 @@
-puts "Seeding predefined diseases ..."
+Rails.logger.debug "Seeding predefined diseases ..."
 
 PredefinedDisease.create(
   [
@@ -61,4 +61,4 @@ PredefinedDisease.create(
   ]
 )
 
-puts "Seeding predefined diseases done."
+Rails.logger.debug "Seeding predefined diseases done."

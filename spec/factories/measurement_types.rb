@@ -25,35 +25,35 @@ FactoryBot.define do
 
     factory :weight_measurement_type do
       name { "weight" }
-      association :unit, factory: %i[unit kg]
+      unit factory: %i[unit kg]
     end
 
     factory :sugar_measurement_type do
       name { "sugar" }
       lower_limit { 70 }
       upper_limit { 99 }
-      association :unit, factory: %i[unit mgdl]
+      unit factory: %i[unit mgdl]
     end
 
     factory :heart_rate_measurement_type do
       name { "heart_rate" }
       lower_limit { 60 }
       upper_limit { 100 }
-      association :unit, factory: %i[unit bpm]
+      unit factory: %i[unit bpm]
     end
 
     factory :blood_pressure_measurement_type do
       name { "blood_pressure" }
       lower_limit { "100/60" }
       upper_limit { "139/89" }
-      association :unit, factory: %i[unit mmhg]
+      unit factory: %i[unit mmhg]
     end
 
     factory :spo2_measurement_type do
       name { "spo2" }
       lower_limit { 90 }
       upper_limit { 100 }
-      association :unit, factory: %i[unit percent]
+      unit factory: %i[unit percent]
     end
   end
 end

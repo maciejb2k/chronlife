@@ -1,4 +1,4 @@
-puts "Seeding random users ..."
+Rails.logger.debug "Seeding random users ..."
 
 100.times do
   first_name = Faker::Name.first_name
@@ -46,4 +46,4 @@ puts "Seeding random users ..."
   end
 end
 
-puts "Seeding random users completed."
+Rails.logger.debug "Seeding random users completed."

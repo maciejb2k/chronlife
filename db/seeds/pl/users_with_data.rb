@@ -1,4 +1,4 @@
-puts "Seeding users with the data ..."
+Rails.logger.debug "Seeding users with the data ..."
 
 # User & Account
 
@@ -329,4 +329,4 @@ treatments[4].updates.create!(
   ]
 )
 
-puts "Seeding users with the data done."
+Rails.logger.debug "Seeding users with the data done."

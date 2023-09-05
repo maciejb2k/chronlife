@@ -13,6 +13,7 @@ class Groups::TreatmentsController < Groups::BaseController
   private
 
   def set_breadcrumbs
-    add_breadcrumb t("groups.treatments_controller.breadcrumbs.index"), group_treatments_path(@group)
+    add_breadcrumb t("groups.treatments_controller.breadcrumbs.index"),
+                   group_treatments_path(@group)
   end
 end

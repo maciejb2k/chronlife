@@ -1,6 +1,18 @@
 pl:
   breadcrumbs:
     home: home
+  admin:
+    specialist_requests:
+      create:
+        success: Wniosek został utworzony.
+      update:
+        success: Wniosek został zaktualizowany.
+      destroy:
+        success: Wniosek został usunięty.
+      approve:
+        success: Wniosek został zaakceptowany.
+      reject:
+        success: Wniosek został odrzucony.
   accounts:
     breadcrumbs:
       index: użytkownicy
@@ -20,6 +32,13 @@ pl:
   friend_requests:
     breadcrumbs:
       index: zaproszenia do znajomych
+    create:
+      success: Zaproszenie zostało wysłane.
+      error: Wystąpił błąd podczas wysyłania zaproszenia.
+    update:
+      success: Zaproszenie zostało zaakceptowane.
+    destroy:
+      success: Zaproszenie zostało usunięte.
   groups:
     breadcrumbs:
       index: grupy chorych

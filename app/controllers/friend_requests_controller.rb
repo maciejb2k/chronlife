@@ -13,9 +13,9 @@ class FriendRequestsController < BaseController
 
     respond_to do |format|
       if @friend_request.save
-        format.html { redirect_to accounts_path, notice: "Wysłano zaproszenie do grona znajomych" }
+        format.html { redirect_to accounts_path, notice: t(".success") }
       else
-        format.html { render :index, notice: "Nie udało się wysłać zaproszenia." }
+        format.html { render :index, status: :unprocessable_entity }
       end
     end
   end
@@ -25,7 +25,7 @@ class FriendRequestsController < BaseController
     respond_to do |format|
       if @friend_request.accept
         format.html do
-          redirect_to friend_requests_path, notice: "Zaproszenie zostało poprawnie zaakceptowane."
+          redirect_to friend_requests_path, notice: t(".success")
         end
       else
         format.html { render :edit, status: :unprocessable_entity }
@@ -37,7 +37,7 @@ class FriendRequestsController < BaseController
     @friend_request.destroy
 
     respond_to do |format|
-      message = "Zaproszenie zostało poprawnie usunięte."
+      message = t(".success")
 
       format.turbo_stream do
         flash.now[:notice] = message

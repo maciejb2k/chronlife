@@ -1,4 +1,4 @@
-puts "Seeding predefined symptoms ..."
+Rails.logger.debug "Seeding predefined symptoms ..."
 
 azs = PredefinedDisease.find_by(name: "atopowe zapalenie skóry")
 azs.predefined_symptoms.create(
@@ -190,4 +190,4 @@ hypothyroidism.predefined_symptoms.create(
   ]
 )
 
-puts "Seeding predefined symptoms done."
+Rails.logger.debug "Seeding predefined symptoms done."

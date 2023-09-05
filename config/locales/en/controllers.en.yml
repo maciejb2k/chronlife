@@ -1,6 +1,18 @@
 en:
   breadcrumbs:
     home: home
+  admin:
+    specialist_requests:
+      create:
+        success: Specialist request has been added.
+      update:
+        success: Specialist request has been updated.
+      destroy:
+        success: Specialist request has been deleted.
+      approve:
+        success: Specialist request has been approved.
+      reject:
+        success: Specialist request has been rejected.
   accounts:
     breadcrumbs:
       index: users
@@ -20,6 +32,13 @@ en:
   friend_requests:
     breadcrumbs:
       index: friend requests
+    create:
+      success: Friend request has been sent.
+      error: There was an error while sending friend request.
+    update:
+      success: Friend request has been accepted.
+    destroy:
+      success: Friend request has been removed.
   groups:
     breadcrumbs:
       index: patient groups

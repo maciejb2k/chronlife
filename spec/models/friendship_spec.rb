@@ -18,7 +18,7 @@
 #  fk_rails_...  (account_id => accounts.id)
 #  fk_rails_...  (friend_id => accounts.id)
 #
-require 'rails_helper'
+require "rails_helper"
 
 RSpec.describe Friendship, type: :model do
   describe "factory" do

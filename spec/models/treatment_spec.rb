@@ -33,8 +33,8 @@ RSpec.describe Treatment, type: :model do
 
     it do
       is_expected.to(
-        have_many(:updates).dependent(:destroy).
-        class_name("TreatmentUpdate").inverse_of(:treatment)
+        have_many(:updates).dependent(:destroy)
+        .class_name("TreatmentUpdate").inverse_of(:treatment)
       )
     end
 
@@ -57,10 +57,10 @@ RSpec.describe Treatment, type: :model do
       it { is_expected.to validate_presence_of(:effectiveness) }
 
       it do
-        is_expected.to validate_numericality_of(:effectiveness).
-          only_integer.
-          is_greater_than_or_equal_to(1).
-          is_less_than_or_equal_to(5)
+        is_expected.to validate_numericality_of(:effectiveness)
+          .only_integer
+          .is_greater_than_or_equal_to(1)
+          .is_less_than_or_equal_to(5)
       end
     end
 

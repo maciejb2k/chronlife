@@ -26,6 +26,10 @@ class DiseaseStatusesController < BaseController
     @url = disease_statuses_path
   end
 
+  def edit
+    @url = disease_statuses_path
+  end
+
   def create
     @disease_status = @disease.statuses.build(disease_status_params)
 
@@ -36,10 +40,6 @@ class DiseaseStatusesController < BaseController
         format.html { render :new, status: :unprocessable_entity }
       end
     end
-  end
-
-  def edit
-    @url = disease_statuses_path
   end
 
   def update

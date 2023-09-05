@@ -1,7 +1,6 @@
-puts "Seeding roles ..."
+Rails.logger.debug "Seeding roles ..."
 
 Role.create(name: "patient")
 Role.create(name: "specialist")
 
-puts "Seeding roles completed."
-
+Rails.logger.debug "Seeding roles completed."

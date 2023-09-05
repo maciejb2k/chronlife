@@ -7,9 +7,16 @@ require:
 AllCops:
   NewCops: enable
   TargetRubyVersion: 3.2.0
+  Exclude:
+    - db/schema.rb
+    - 'bin/*'
+    - 'Vagrantfile'
+    - 'vendor/**/*'
 
 Layout/LineLength:
   Max: 100
+  Exclude:
+    - "db/**/*"
 
 Style/Documentation:
   Enabled: false
@@ -72,4 +79,7 @@ RSpec/ImplicitSubject:
   Enabled: false
 
 RSpec/ExampleLength:
+  Enabled: false
+
+Rails/HasAndBelongsToMany:
   Enabled: false

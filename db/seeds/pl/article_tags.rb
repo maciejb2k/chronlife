@@ -1,4 +1,4 @@
-puts "Seeding article tags ..."
+Rails.logger.debug "Seeding article tags ..."
 
 ArticleTag.create(
   [
@@ -20,4 +20,4 @@ ArticleTag.create(
   ]
 )
 
-puts "Seeding article tags done."
+Rails.logger.debug "Seeding article tags done."

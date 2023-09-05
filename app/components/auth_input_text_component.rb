@@ -1,11 +1,11 @@
 class AuthInputTextComponent < ViewComponent::Base
-  def initialize(form:, model:, type:, field:, label: nil, options: {})
-    @form = form
-    @model = model
-    @type = type
-    @field = field
-    @label = label
-    @options = options
+  def initialize(options = {})
+    @form = options[:form]
+    @model = options[:model]
+    @type = options[:type]
+    @field = options[:field]
+    @label = options[:label]
+    @options = options[:options] || {}
 
     set_default_options
   end

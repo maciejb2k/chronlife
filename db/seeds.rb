@@ -1,11 +1,11 @@
-puts "Seeding ..."
+Rails.logger.debug "Seeding ..."
 
 locale = I18n.locale.to_s
 
 if locale == "pl"
-  puts "Seeding Polish version"
+  Rails.logger.debug "Seeding Polish version"
 elsif locale == "en"
-  puts "Seeding English version"
+  Rails.logger.debug "Seeding English version"
 else
   raise "Unknown locale: #{locale}"
 end
@@ -24,4 +24,4 @@ if Rails.env.development?
   load Rails.root.join("db", "seeds", locale, "random_users.rb")
 end
 
-puts "Seeding done."
+Rails.logger.debug "Seeding done."

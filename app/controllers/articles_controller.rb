@@ -15,6 +15,10 @@ class ArticlesController < BaseController
     authorize @article, :new?
   end
 
+  def edit
+    authorize @article, :edit?
+  end
+
   def create
     @article = Article.new(article_params)
     @article.account = current_account
@@ -28,10 +32,6 @@ class ArticlesController < BaseController
         format.html { render :new, status: :unprocessable_entity }
       end
     end
-  end
-
-  def edit
-    authorize @article, :edit?
   end
 
   def update

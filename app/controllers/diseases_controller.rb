@@ -24,6 +24,10 @@ class DiseasesController < BaseController
     @disease = Disease.new
   end
 
+  def edit
+    @selected_disease_id = @disease.predefined_disease.id
+  end
+
   def create
     @disease = current_account.diseases.build(disease_params)
 
@@ -34,10 +38,6 @@ class DiseasesController < BaseController
         format.html { render :new, status: :unprocessable_entity }
       end
     end
-  end
-
-  def edit
-    @selected_disease_id = @disease.predefined_disease.id
   end
 
   def update
