@@ -8,9 +8,11 @@
       <%= render "shared/breadcrumbs" %>
     </div>
     <div class="dash-header__right">
-      <%= link_to new_article_path, class: "dash-button dash-button--new" do %>
-        <i class="ri-add-line dash-button__icon"></i>
-        <%= t(".button.new") %>
+      <% if role_specialist? current_account.user %>
+        <%= link_to new_article_path, class: "dash-button dash-button--new" do %>
+          <i class="ri-add-line dash-button__icon"></i>
+          <%= t(".button.new") %>
+        <% end %>
       <% end %>
       <%= link_to authenticated_root_path, class: "dash-button dash-button--back" do %>
         <i class="ri-arrow-left-line dash-button__icon"></i>

@@ -14,13 +14,13 @@
     </div>
     <div class="dash-alert__text">
       <% if @type == "error" %>
-        <div class="dash-alert__title">Wystąpił błąd:</div>
+        <div class="dash-alert__title"><%= I18n.t("dash_alert_component.error") %></div>
       <% elsif @type == "success" %>
-        <div class="dash-alert__title">Sukces!</div>
+        <div class="dash-alert__title"><%= I18n.t("dash_alert_component.success") %></div>
       <% elsif @type == "info" %>
-        <div class="dash-alert__title">Informacja:</div>
+        <div class="dash-alert__title"><%= I18n.t("dash_alert_component.info") %></div>
       <% else %>
-        <div class="dash-alert__title">Informacja:</div>
+        <div class="dash-alert__title"><%= I18n.t("dash_alert_component.info") %></div>
       <% end %>
       <div class="dash-alert__content">
         <%= content %>

@@ -12,11 +12,14 @@ class ArticlesController < BaseController
 
   def new
     @article = Article.new
+    authorize @article, :new?
   end
 
   def create
     @article = Article.new(article_params)
     @article.account = current_account
+
+    authorize @article, :create?
 
     respond_to do |format|
       if @article.save
@@ -27,7 +30,13 @@ class ArticlesController < BaseController
     end
   end
 
+  def edit
+    authorize @article, :edit?
+  end
+
   def update
+    authorize @article, :update?
+
     respond_to do |format|
       if @article.update(article_params)
         format.html { redirect_to article_url(@article), notice: t(".success") }
@@ -38,6 +47,7 @@ class ArticlesController < BaseController
   end
 
   def destroy
+    authorize @article, :destroy?
     @article.destroy
 
     respond_to do |format|

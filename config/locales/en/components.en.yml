@@ -1,0 +1,5 @@
+en:
+  dash_alert_component:
+    error: "Error:"
+    success: "Success!"
+    info: "Notice:"

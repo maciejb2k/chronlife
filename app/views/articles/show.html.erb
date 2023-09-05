@@ -5,9 +5,11 @@
       <%= render "shared/breadcrumbs" %>
     </div>
     <div class="dash-header__right">
-      <%= link_to edit_article_path(@article), class: "dash-button dash-button--edit" do %>
-        <i class="ri-edit-line dash-button__icon"></i>
-        <%= t(".button.edit") %>
+      <% if policy(@article).owner? %>
+        <%= link_to edit_article_path(@article), class: "dash-button dash-button--edit" do %>
+          <i class="ri-edit-line dash-button__icon"></i>
+          <%= t(".button.edit") %>
+        <% end %>
       <% end %>
       <%= link_to articles_path, class: "dash-button dash-button--back" do %>
         <i class="ri-arrow-left-line dash-button__icon"></i>

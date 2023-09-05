@@ -4,6 +4,8 @@ en:
   accounts:
     breadcrumbs:
       index: users
+  application:
+    not_authorized: You are not authorized to perform this action.
   articles:
     breadcrumbs:
       index: knowledge base

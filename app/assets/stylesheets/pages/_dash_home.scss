@@ -8,7 +8,7 @@
     justify-content: space-between;
     align-items: center;
     padding-bottom: 30px;
-    margin-bottom: 40px;
+    margin-bottom: 30px;
     border-bottom: 1px solid $dash-base-border;
 
     &__right {
@@ -43,6 +43,10 @@
         color: $dash-base;
       }
     }
+  }
+
+  &__flash {
+    margin-bottom: 30px;
   }
 
   &__text {

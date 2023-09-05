@@ -1,0 +1,5 @@
+pl:
+  dash_alert_component:
+    error: "Błąd:"
+    success: "Sukces!"
+    info: "Informacja:"

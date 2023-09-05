@@ -21,7 +21,7 @@ class ApplicationController < ActionController::Base
   private
 
   def user_not_authorized
-    message = "Nie masz uprawnień do wykonania tej akcji."
+    message = t("application.not_authorized")
 
     respond_to do |format|
       format.turbo_stream do
@@ -30,6 +30,10 @@ class ApplicationController < ActionController::Base
           partial: "shared/dash_toast",
           locals: { message:, icon: "error" }
         )
+      end
+      format.html do
+        flash[:error] = message
+        redirect_to root_path
       end
     end
   end

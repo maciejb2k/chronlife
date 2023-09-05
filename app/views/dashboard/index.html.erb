@@ -19,6 +19,11 @@
         </p>
       </div>
     </header>
+    <div class="dash-home__flash">
+      <%= turbo_frame_tag "flash" do %>
+        <%= render "shared/dash_flash" %>
+      <% end %>
+    </div>
     <div class="dash-home__group">
       <div class="dash-home__group__left">
         <div class="dash-group">

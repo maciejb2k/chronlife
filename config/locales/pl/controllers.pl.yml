@@ -4,6 +4,8 @@ pl:
   accounts:
     breadcrumbs:
       index: użytkownicy
+  application:
+    not_authorized: Nie masz uprawnień do wykonania tej akcji.
   articles:
     breadcrumbs:
       index: strefa wiedzy
