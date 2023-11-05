@@ -75,13 +75,27 @@ I haven't used the Turbo features in the whole project, but only in a few places
 
 Right now, there are only [model specs](https://github.com/maciejb2k/chronlife/tree/main/spec/models) (`406 examples, 0 failures`), but I'm planning to add system specs in the future.
 
-If the GitHub CI passes, it means that there all specs are passing and there are no Rubocop offenses in the codebase.
+If the **GitHub CI** passes, it means that there all specs are passing and there are no Rubocop offenses in the codebase.
+
+Note: The test database requires seeding. Also, if you are switching between locales, you need to seed the test database again:
+
+```bash
+RAILS_ENV=test bin/rails db:reset
+```
 
 ## I18n
 
 This application is **I18n-ready**, offering full translation support for both **Polish** and **English** languages.
 
-If you want to change the locale of the application, you can do it by changing the `I18n.locale` value in the `config/initializers/locale.rb` file. Remember to reset and seed the database again after changing the locale, if you want to see the data in the new language.
+If you want to change the locale of the application, you can do it by changing the `I18n.locale` value in the `config/initializers/locale.rb` file.
+
+```ruby
+# config/initializers/locale.rb
+
+I18n.default_locale = :pl
+```
+
+Remember to reset and seed the database again after changing the locale, if you want to see the data in the new language.
 
 ## Application overview
 
@@ -273,10 +287,11 @@ Below is the current ERD diagram of the application.
 - [x] Fix most of the queries performance issues (n+1, etc.)
 - [x] Complete the seeder
 - [x] Add authorization using Pundit policies
+- [x] Add background jobs
 - [ ] Add system specs
 - [ ] Add caching
 - [ ] Add mailers
-- [ ] Add background jobs
+- [ ] Add notifications
 
 ### Less important, but also important
 - [x] Add controller translations
@@ -284,7 +299,6 @@ Below is the current ERD diagram of the application.
 - [x] Refactor controllers
 - [x] Add views translations
 - [x] Refactor routes
-- [ ] Refactor ugly if statements
 - [ ] Move from importmaps to `jsbundling-rails`
 - [ ] Add RWD
 
