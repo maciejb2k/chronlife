@@ -22,7 +22,7 @@ class Settings::AccountController < BaseController
 
   def account_params
     params.require(:account).permit(:first_name, :last_name, :email, :birthday, :phone_number,
-                                    :country, :city, :education, :image)
+                                    :country, :city, :education, :image, :is_hidden)
   end
 
   def set_account

@@ -78,7 +78,6 @@
         </div>
       </div>
     </div>
-
     <div class="dash-group">
       <header class="dash-group__header">
         <h2 class="dash-group__title">
@@ -90,13 +89,16 @@
       <div class="dash-group__content">
         <div class="measurements-calendar">
           <%= month_calendar do |date| %>
-            <span class="date-day"><%= date.strftime("%d") %></span>
-            <% measurements_count = @measurements[date] || 0 %>
-            <% if measurements_count > 0 %>
-              <%= link_to show_by_day_measurements_path(date), class: "measurements-num" do %>
-                <%= t("measurements.index.calendar.day", count: measurements_count) %>
+            <div data-controller="popover" data-popover-url-value="<%= details_measurements_path(date)%>">
+              <span class="date-day"><%= date.strftime("%d") %></span>
+              <% measurements_count = @measurements[date] || 0 %>
+              <% if measurements_count > 0 %>
+                <%= link_to show_by_day_measurements_path(date), class: "measurements-num",
+                    data: { action: "mouseenter->popover#show mouseleave->popover#hide" } do %>
+                  <%= t("measurements.index.calendar.day", count: measurements_count) %>
+                <% end %>
               <% end %>
-            <% end %>
+            </div>
           <% end %>
         </div>
       </div>

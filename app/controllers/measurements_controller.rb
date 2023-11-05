@@ -1,6 +1,6 @@
 class MeasurementsController < BaseController
   before_action :set_measurement, only: %i[show edit update destroy]
-  before_action :set_datetime, only: %i[show_by_day generate_raport_by_day]
+  before_action :set_datetime, only: %i[details show_by_day generate_raport_by_day]
   before_action :set_breadcrumbs
 
   def index
@@ -22,6 +22,19 @@ class MeasurementsController < BaseController
     end
 
     @measurements = current_account.measurements.group_by_day(:measurement_date).count
+  end
+
+  def details
+    @measurements =
+      current_account
+      .measurements
+      .includes(measurement_type: :unit)
+      .where(measurement_date: @selected_datetime.all_day)
+      .group_by(&:measurement_type).map do |type, measurements|
+        [type.name, measurements.count]
+      end
+
+    render partial: "measurements/details", locals: { date: @selected_datetime, measurements: @measurements }
   end
 
   def show_by_day

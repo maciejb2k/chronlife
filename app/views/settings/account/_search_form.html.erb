@@ -1,0 +1,12 @@
+<%= form_with(model: [:settings, @account], html: { class: "settings-form" } ) do |f| %>
+  <div class="settings-form__group">
+    <div class="settings-form__checkbox">
+      <%= f.check_box :is_hidden, class: "settings-form__checkbox__input" %>
+      <%= f.label :is_hidden, t(".search.label"), class: "settings-form__checkbox__label" %>
+      <%= render DashFormErrorComponent.new(model: @account, field: :is_hidden) %>
+    </div>
+  </div>
+  <div class="settings-form__group">
+    <%= f.submit t("dash_form.submit"), class: "dash-button dash-button--new settings-form__submit" %>
+  </div>
+<% end %>

@@ -688,6 +688,8 @@ en:
           title: Address Data
         education:
           title: Education
+        search:
+          title: Search
       account_form:
         first_name:
           label: First Name
@@ -717,6 +719,9 @@ en:
       education_form:
         education:
           label: Education
+      search_form:
+        search:
+          label: Don't include my profile in search results
     security:
       show:
         title: Security

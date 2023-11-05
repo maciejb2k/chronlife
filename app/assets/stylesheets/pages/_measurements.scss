@@ -18,6 +18,23 @@
     gap: 10px;
   }
 
+  .measurement-popover {
+    width: 100%;
+    position: absolute;
+    bottom: calc(100% + 5px);
+    left: 0;
+    background: #ffffff;
+    padding: 10px;
+    border-radius: 3px;
+    border: 1px solid #e7e1d8;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    text-align: left;
+    font-size: var(--12px);
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
   .add-measurement {
     font-size: var(--12px);
     text-align: center;

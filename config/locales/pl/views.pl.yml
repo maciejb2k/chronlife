@@ -688,6 +688,8 @@ pl:
           title: Dane adresowe
         education:
           title: Wykształcenie
+        search:
+          title: Wyszukiwanie
       account_form:
         first_name:
           label: Imię
@@ -717,6 +719,9 @@ pl:
       education_form:
         education:
           label: Wykształcenie
+      search_form:
+        search:
+          label: Nie uwzględniaj mojego profilu w wynikach wyszukiwania
     security:
       show:
         title: Zabezpieczenia

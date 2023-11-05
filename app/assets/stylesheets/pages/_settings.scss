@@ -149,6 +149,18 @@
       }
     }
 
+    &__checkbox {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+
+      &__label {
+      }
+
+      &__input {
+      }
+    }
+
     &__submit {
       padding: 0 50px;
     }

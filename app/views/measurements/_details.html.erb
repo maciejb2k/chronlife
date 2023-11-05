@@ -1,0 +1,7 @@
+<div data-popover-target="card" class="measurement-popover">
+  <% measurements.each do |measurement| %>
+    <div class="measurement--<%= measurement[0] %>">
+      <p class="measurement__title"><%= I18n.t("activerecord.attributes.measurement_types.#{measurement[0]}") %> - <b><%= measurement[1] %></b></p>
+    </div>
+  <% end %>
+</div>

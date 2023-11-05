@@ -7,6 +7,7 @@ class AccountsController < BaseController
       Account
       .joins(user: :roles)
       .includes(user: :roles)
+      .where(is_hidden: false)
       .order(:username)
       .all
     )
