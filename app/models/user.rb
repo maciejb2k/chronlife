@@ -51,6 +51,8 @@ class User < ApplicationRecord
   has_many :roles, through: :user_roles
   has_one :specialist, dependent: :destroy, inverse_of: :user, required: false
 
+  validates :tos_agreement, acceptance: true, on: :create
+
   after_create :set_patient_role!
 
   # 2FA

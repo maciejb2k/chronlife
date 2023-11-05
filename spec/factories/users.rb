@@ -45,6 +45,7 @@ FactoryBot.define do
     uid { SecureRandom.uuid }
     email { Faker::Internet.email }
     password { "password" }
+    tos_agreement { true }
 
     after(:build) do |user, evaluator|
       user.skip_confirmation! if evaluator.skip_confirmation

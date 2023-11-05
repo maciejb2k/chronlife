@@ -2,7 +2,7 @@ class Auth::RegistrationsController < Devise::RegistrationsController
   protected
 
   def sign_up_params_attributes
-    [:email, :password, :password_confirmation,
+    [:email, :password, :password_confirmation, :tos_agreement,
      { account_attributes: %i[first_name last_name username birthday] }]
   end
 

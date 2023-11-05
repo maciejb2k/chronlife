@@ -77,13 +77,20 @@
         </div>
 
         <div class="auth-form__group">
-          <%= f.check_box :remember_me, class: "auth-form__checkbox-input" %>
-          <%= f.label :remember_me, class: "auth-form__checkbox-label" do %>
-            <%= t(
+          <div class="auth-form__checkbox">
+            <%= f.check_box :tos_agreement, class: "auth-form__checkbox-input" %>
+            <%= f.label :tos_agreement, class: "auth-form__checkbox-label" do %>
+              <%= t(
               ".form.terms",
               terms_link: link_to(t(".terms"), root_path, class: "auth__link"),
               privacy_link: link_to(t(".privacy"), root_path, class: "auth__link")
             ).html_safe %>
+            <% end %>
+          </div>
+          <% if resource.errors[:tos_agreement].present? %>
+            <span class="auth-form__error-message">
+              <%= resource.errors[:tos_agreement].first %>
+            </span>
           <% end %>
         </div>
 

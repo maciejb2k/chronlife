@@ -237,6 +237,12 @@
     }
   }
 
+  &__checkbox {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+  }
+
   &__checkbox-input {
     margin-right: 5px;
   }
