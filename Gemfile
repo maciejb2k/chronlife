@@ -94,6 +94,7 @@ gem "has_scope", "~> 0.8.1"
 
 # PDF generation
 gem "prawn", "~> 2.4.0"
+gem "prawn-table", "~> 0.2.2"
 
 group :development, :test do
   gem "debug", "~> 1.8.0", platforms: %i[mri mingw x64_mingw]

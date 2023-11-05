@@ -16,23 +16,33 @@ class Measurements::GenerateDayRaportService
       .order(measurement_date: :asc)
 
     # Generate PDF file with measurements
-    begin
-      pdf_file = Prawn::Document.new do |pdf|
-        measurements.each do |measurement|
-          type = I18n.t(
-            "activerecord.attributes.measurement_types.#{measurement.measurement_type.name}"
-          )
-          value = measurement.value
-          unit = measurement.measurement_type.unit.symbol
-          date = I18n.l(measurement.measurement_date, format: "%H:%M, %d %B %Y")
+    pdf_file = Prawn::Document.new do |pdf|
+      pdf.font Rails.root.join("app/assets/fonts/Roboto-Regular.ttf"), style: :normal
 
-          pdf.text "#{type}: #{value} #{unit} - #{date}"
-        end
+      pdf.text "#{@account.full_name} (#{@account.user.email})"
+      pdf.move_down 20
+
+      pdf.text "Raport pomiarów z dnia: #{I18n.l(@date, format: '%d %B %Y')}"
+      pdf.text "Wygenerowano: #{I18n.l(Time.zone.now, format: '%H:%M, %d %B %Y')}"
+      pdf.move_down 20
+
+      table_data = [["Typ pomiaru", "Wartość", "Jednostka", "Godzina"]]
+
+      measurements.each do |measurement|
+        type = I18n.t("activerecord.attributes.measurement_types.#{measurement.measurement_type.name}")
+        value = measurement.value
+        unit = measurement.measurement_type.unit.symbol
+        date = I18n.l(measurement.measurement_date, format: "%H:%M")
+
+        table_data << [type, value, unit, date]
       end
-      pdf_string = StringIO.new(pdf_file.render)
-    rescue StandardError
-      raise PDFGenerationError
+
+      pdf.table(table_data, header: true) do
+        columns(1..3).align = :right
+      end
     end
+
+    pdf_string = StringIO.new(pdf_file.render)
 
     # Build a new measurement raport with the generated PDF file
     raport_name = I18n.t(
