@@ -39,7 +39,9 @@
               <%= "measurement--dangerous" if @latest[measurement] and !@latest[measurement].is_within_limits %>">
                 <div class="measurement__header">
                   <p class="measurement__title">
-                    <%= I18n.t("activerecord.attributes.measurement_types.#{measurement}") %>
+                    <%= link_to all_measurements_path(measurement) do %>
+                      <%= I18n.t("activerecord.attributes.measurement_types.#{measurement}") %>
+                    <% end %>
                   </p>
                   <% if @latest[measurement] and !@latest[measurement].is_within_limits %>
                     <p class="measurement__warning">!</p>

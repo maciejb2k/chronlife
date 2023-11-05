@@ -2,99 +2,100 @@
   &__content {
     padding: 30px 0;
   }
+}
 
-  .measurements-list {
-    max-width: 500px;
+.measurements-list {
+  max-width: 500px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.measurement-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  background: #ffffff;
+  border: 1px solid $dash-base-border;
+  border-radius: 3px;
+  padding: 5px 5px;
+
+  &--dangerous {
+    .measurement-item__value {
+      color: #f15a5a;
+    }
+  }
+
+  &__warning {
+    font-size: var(--12px);
+    text-align: center;
+    color: $dash-text-light;
+    padding: 3px 8px;
+    font-weight: 500;
+    color: #ffffff;
+    background: #f15a5a;
+    border-radius: 3px;
+  }
+
+  &__label {
+    font-size: var(--12px);
+    text-align: center;
+    color: $dash-text-light;
+    padding: 5px 20px;
+    font-weight: 500;
+    color: #1d5583;
+    background: #e9f5ff;
+    border-radius: 3px;
+    width: 130px;
+  }
+
+  &__time {
+    font-size: var(--14px);
+    font-family: monospace;
+    color: $dash-text-light;
+  }
+
+  &__value {
+    font-size: var(--14px);
+    font-weight: 500;
+    color: $dash-text-dark;
+  }
+
+  &__left {
     display: flex;
-    flex-direction: column;
+    align-items: center;
     gap: 10px;
   }
 
-  .measurement-item {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 20px;
-    background: #ffffff;
-    border: 1px solid $dash-base-border;
-    border-radius: 3px;
-    padding: 10px 10px;
-
-    &--dangerous {
-      .measurement-item__value {
-        color: #f15a5a;
-      }
+  &--weight {
+    .measurement-item__label {
+      color: #36831d;
+      background: #e5ffdd;
     }
-
-    &__warning {
-      font-size: var(--12px);
-      text-align: center;
-      color: $dash-text-light;
-      padding: 3px 10px;
-      font-weight: 500;
-      color: #ffffff;
-      background: #f15a5a;
-      border-radius: 3px;
+  }
+  &--blood_pressure {
+    .measurement-item__label {
+      color: #531d83;
+      background: #f4e7ff;
     }
-
-    &__label {
-      font-size: var(--12px);
-      text-align: center;
-      color: $dash-text-light;
-      padding: 3px 20px;
-      font-weight: 500;
+  }
+  &--heart_beat {
+    .measurement-item__label {
+      color: #831d1d;
+      background: #ffe9e9;
+    }
+  }
+  &--sugar {
+    .measurement-item__label {
+      color: #685e11;
+      background: #fffad3;
+    }
+  }
+  &--spo2 {
+    .measurement-item__label {
       color: #1d5583;
       background: #e9f5ff;
-      border-radius: 3px;
-      width: 130px;
-    }
-
-    &__time {
-      font-size: var(--14px);
-      color: $dash-text-light;
-    }
-
-    &__value {
-      font-size: var(--14px);
-      font-weight: 500;
-      color: $dash-text-dark;
-    }
-
-    &__left {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-    }
-
-    &--weight {
-      .measurement-item__label {
-        color: #36831d;
-        background: #e5ffdd;
-      }
-    }
-    &--blood_pressure {
-      .measurement-item__label {
-        color: #531d83;
-        background: #f4e7ff;
-      }
-    }
-    &--heart_beat {
-      .measurement-item__label {
-        color: #831d1d;
-        background: #ffe9e9;
-      }
-    }
-    &--sugar {
-      .measurement-item__label {
-        color: #685e11;
-        background: #fffad3;
-      }
-    }
-    &--spo2 {
-      .measurement-item__label {
-        color: #1d5583;
-        background: #e9f5ff;
-      }
     }
   }
 }

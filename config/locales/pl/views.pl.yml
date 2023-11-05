@@ -378,7 +378,7 @@ pl:
         description: Jak mocno odczuwasz ten objaw?
       turbo:
         loading: Pobieranie...
-      chart: Wykres zmian intensywności objawu
+      chart: Tygodniowy wykres zmian intensywności objawu
       change_intensity: Zmień intensywność objawu
       intensity_changes: Zmiany intensywność objawu
   disease_treatments:
@@ -553,6 +553,23 @@ pl:
         title: Lista pomiarów
         hour: "Godzina:"
       no_results: Brak pomiarów w tym dniu.
+    all:
+      measurements:
+        title: Wszystkie pomiary
+        week_title: Tydzień od %{start} do %{end}
+      charts:
+        title: Wykresy pomiarów
+        count:
+          title: Ilość pomiarów
+          desc: Ilość wykonanych pomiarów w każdym tygodniu.
+          xtitle: Ilość pomiarów
+          ytitle: Tygodnie
+        monthly:
+          title: Pomiary z ostatniego miesiąca
+          desc: Wyniki ostatnich pomiarów z każdego dnia z ostatniego miesiąca.
+          xtitle: Dni pomiarów
+          ytitle: Wartość pomiaru
+      no_results: Brak pomiarów.
     show:
       title: "Pomiar z %{date}"
       button:

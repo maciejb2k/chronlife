@@ -54,6 +54,7 @@ Rails.application.routes.draw do
 
   resources :measurements, only: %i[index show edit update destroy] do
     collection do
+      get "all/:measurement_type", to: "measurements#all", as: :all
       get "details/:day", to: "measurements#details", as: :details
       get "new/:measurement_type", to: "measurements#new", as: :new
       post "create/:measurement_type", to: "measurements#create", as: :create

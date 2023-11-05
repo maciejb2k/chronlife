@@ -83,6 +83,7 @@ en:
       edit: edit measurement
       show: measurement from %{date}
       show_by_day: measurements from %{date}
+      all: "%{measurement_type}"
     create:
       success: Measurement has been added successfully.
     update:
@@ -91,6 +92,8 @@ en:
       success: Measurement has been deleted successfully.
     show_by_day:
       invalid_date: Invalid measurement date.
+    all:
+      invalid_measurement_type: Invalid measurement type.
   measurement_raports:
     breadcrumbs:
       index: measurement raports

@@ -378,7 +378,7 @@ en:
         description: How strong is this symptom?
       turbo:
         loading: Loading...
-      chart: Symptom Intensity Changes Chart
+      chart: Weekly Symptoms Intensity Changes Chart
       change_intensity: Change Symptom Intensity
       intensity_changes: Symptom Intensity Changes
   disease_treatments:
@@ -553,6 +553,23 @@ en:
         title: Measurements list
         hour: "at:"
       no_results: No measurements on this day.
+    all:
+      measurements:
+        title: All measurements
+        week_title: Week from %{start} to %{end}
+      charts:
+        title: Charts and Statistics
+        count:
+          title: Number of measurements
+          desc: Number of measurements taken in the last month.
+          xtitle: Number of measurements
+          ytitle: Weeks
+        monthly:
+          title: Monthly measurements
+          desc: Results of the latest measurements from each day of the last month.
+          xtitle: Mesaurment dates
+          ytitle: Measurement values
+      no_results: No measurements have been added yet.
     show:
       title: "Measurement from %{date}"
       button:

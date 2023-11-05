@@ -8,7 +8,8 @@ Rails.logger.debug "Seeding random users ..."
   user = User.new(
     email: "#{first_name}.#{last_name}@gmail.com",
     password: "password",
-    password_confirmation: "password"
+    password_confirmation: "password",
+    tos_agreement: true
   )
   user.skip_confirmation!
   user.save!

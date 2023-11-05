@@ -1,0 +1,58 @@
+.page-measurements-all {
+  &__content {
+    padding: 30px 0;
+    display: flex;
+    gap: 50px;
+  }
+
+  &__left,
+  &__right {
+    width: 50%;
+  }
+
+  .measurements-group {
+    &:not(:last-child) {
+      margin-bottom: 30px;
+    }
+
+    &__title {
+      font-size: var(--18px);
+      font-weight: 500;
+      color: $dash-text-dark;
+      margin-bottom: 20px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+
+      &__icon {
+        color: $dash-text-light;
+      }
+    }
+  }
+
+  .measurements-chart {
+    background: #ffffff;
+    border: 1px solid $dash-base-border;
+    border-radius: 3px;
+    padding: 20px 20px;
+
+    &:not(:last-child) {
+      margin-bottom: 30px;
+    }
+
+    &__title {
+      font-size: var(--18px);
+      font-weight: 500;
+      color: $dash-text-dark;
+    }
+
+    &__desc {
+      margin-bottom: 20px;
+      font-size: var(--14px);
+      color: $dash-text-light;
+    }
+
+    &__drawing {
+    }
+  }
+}

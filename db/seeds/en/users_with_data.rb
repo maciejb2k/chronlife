@@ -5,7 +5,8 @@ Rails.logger.debug "Seeding users with the data ..."
 user = User.new(
   email: "john.doe@gmail.com",
   password: "password",
-  password_confirmation: "password"
+  password_confirmation: "password",
+  tos_agreement: true
 )
 user.skip_confirmation!
 user.save!

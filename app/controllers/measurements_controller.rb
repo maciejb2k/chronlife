@@ -1,6 +1,7 @@
 class MeasurementsController < BaseController
   before_action :set_measurement, only: %i[show edit update destroy]
   before_action :set_datetime, only: %i[details show_by_day generate_raport_by_day]
+  before_action :set_measurements, only: %i[all]
   before_action :set_breadcrumbs
 
   def index
@@ -47,6 +48,8 @@ class MeasurementsController < BaseController
         .order(measurement_date: :asc)
     )
   end
+
+  def all; end
 
   def new
     measurement_type = MeasurementType.find_by!(name: params[:measurement_type])
@@ -116,6 +119,37 @@ class MeasurementsController < BaseController
     redirect_to measurements_path
   end
 
+  def set_measurements
+    measurement_type = MeasurementType.find_by!(name: params[:measurement_type])
+
+    common_query =
+      current_account
+      .measurements
+      .includes(measurement_type: :unit)
+      .joins(measurement_type: :unit)
+      .where(measurement_type:)
+
+    @measurements =
+      common_query
+      .order(measurement_date: :desc)
+      .group_by_week(week_start: :monday, reverse: true, &:measurement_date)
+
+    @count_chart =
+      common_query
+      .group_by_week(:measurement_date, reverse: true, week_start: :monday)
+      .count
+
+    @monthly_chart =
+      common_query
+      .where(measurement_date: 1.month.ago..Time.zone.now)
+      .order(:measurement_date)
+      .pluck(:measurement_date, :value)
+      .map { |date, value| [l(date, format: "%d %b"), value] }
+  rescue ActiveRecord::RecordNotFound
+    flash[:error] = t(".invalid_measurement_type")
+    redirect_to measurements_path
+  end
+
   def parse_date(date)
     Date.parse(date)
   rescue TypeError, Date::Error
@@ -138,6 +172,12 @@ class MeasurementsController < BaseController
       add_breadcrumb(
         t(".breadcrumbs.show_by_day", date: parse_date(params[:day])),
         show_by_day_measurements_path(day: params[:day])
+      )
+    when :all
+      add_breadcrumb(
+        t(".breadcrumbs.all",
+          measurement_type: I18n.t("activerecord.attributes.measurement_types.#{params[:measurement_type]}")),
+        all_measurements_path(measurement_type: params[:measurement_type])
       )
     end
   end

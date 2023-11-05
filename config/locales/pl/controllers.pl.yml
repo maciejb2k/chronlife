@@ -83,6 +83,7 @@ pl:
       edit: edytuj pomiar
       show: pomiar z dnia %{date}
       show_by_day: pomiary z dnia %{date}
+      all: "%{measurement_type}"
     create:
       success: Pomiar został poprawnie dodany.
     update:
@@ -91,6 +92,8 @@ pl:
       success: Pomiar został poprawnie usunięty.
     show_by_day:
       invalid_date: Nieprawidłowa data pomiaru.
+    all:
+      invalid_measurement_type: Nieprawidłowy typ pomiaru.
   measurement_raports:
     breadcrumbs:
       index: Raporty z pomiarów zdrowia

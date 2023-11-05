@@ -114,7 +114,8 @@ SPECIALIZATIONS = {
   user = User.new(
     email: "#{first_name}.#{last_name}@gov.pl",
     password: "password",
-    password_confirmation: "password"
+    password_confirmation: "password",
+    tos_agreement: true
   )
   user.skip_confirmation!
 

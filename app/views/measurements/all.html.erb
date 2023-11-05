@@ -1,0 +1,103 @@
+<div class="page-measurements-all">
+  <header class="dash-header">
+    <div class="dash-header__left">
+      <h1 class="dash-header__title">
+        <%= I18n.t("activerecord.attributes.measurement_types.#{params[:measurement_type]}") %>
+      </h1>
+      <%= render "shared/breadcrumbs" %>
+    </div>
+    <div class="dash-header__right">
+      <%= link_to measurements_path, class: "dash-button dash-button--back" do %>
+        <i class="ri-arrow-left-line dash-button__icon"></i>
+      <% end %>
+    </div>
+  </header>
+  <div class="dash-flash-messages">
+    <%= turbo_frame_tag "flash" do %>
+      <%= render "shared/dash_flash" %>
+    <% end %>
+  </div>
+  <div class="page-measurements-all__content">
+    <div class="page-measurements-all__left">
+      <div class="dash-group">
+        <header class="dash-group__header">
+          <h2 class="dash-group__title">
+            <i class="ri-stack-line dash-group__title__icon"></i>
+            <%= t(".measurements.title") %>
+          </h2>
+          <div class="dash-group__actions"></div>
+        </header>
+        <div class="dash-group__content">
+          <% if @measurements.present? %>
+            <% @measurements.each do |date, measurements| %>
+              <% start_date = l(date.beginning_of_week, format: '%d.%m.%Y') %>
+              <% end_date = l(date.end_of_week, format: '%d.%m.%Y') %>
+
+              <div class="measurements-group">
+                <h3 class="measurements-group__title">
+                  <i class="ri-calendar-2-line measurements-group__title__icon"></i>
+                  <%= t(".measurements.week_title", start: start_date, end: end_date) %>
+                </h3>
+                <ul class="measurements-list">
+                  <% measurements.each do |measurement| %>
+                    <% measurement_name = measurement.measurement_type.name %>
+                    <%= link_to measurement_path(measurement),
+                        class: "measurement-item measurement-item--#{measurement_name}
+                        #{"measurement-item--dangerous" unless measurement.is_within_limits}" do %>
+                      <div class="measurement-item__left">
+                        <div class="measurement-item__label">
+                          <%= I18n.t("activerecord.attributes.measurement_types.#{measurement_name}") %>
+                        </div>
+                        <div class="measurement-item__value">
+                          <%= measurement.value %>
+                          <span class="measurement-item__symbol">
+                            <%= measurement.measurement_type.unit.symbol %>
+                          </span>
+                        </div>
+                        <% unless measurement.is_within_limits %>
+                          <p class="measurement-item__warning">!</p>
+                        <% end %>
+                      </div>
+                      <div class="measurement-item__time">
+                        <%= l(measurement.measurement_date, format: "%H:%M, %d-%m-%Y") %>
+                      </div>
+                    <% end %>
+                  <% end %>
+                </ul>
+              </div>
+            <% end %>
+          <% else %>
+            <p><%= t(".no_results") %></p>
+          <% end %>
+        </div>
+      </div>
+    </div>
+    <div class="page-measurements-all__right">
+      <div class="dash-group">
+        <header class="dash-group__header">
+          <h2 class="dash-group__title">
+            <i class="ri-bar-chart-line dash-group__title__icon"></i>
+            <%= t(".charts.title") %>
+          </h2>
+          <div class="dash-group__actions"></div>
+        </header>
+        <div class="dash-group__content">
+          <div class="measurements-chart">
+            <h3 class="measurements-chart__title"><%= t(".charts.monthly.title") %></h3>
+            <p class="measurements-chart__desc"><%= t(".charts.monthly.desc") %></p>
+            <div class="measurements-chart__data">
+              <%= area_chart @monthly_chart, xtitle: t(".charts.monthly.xtitle"), ytitle: t(".charts.monthly.ytitle") %>
+            </div>
+          </div>
+          <div class="measurements-chart">
+            <h3 class="measurements-chart__title"><%= t(".charts.count.title") %></h3>
+            <p class="measurements-chart__desc"><%= t(".charts.count.desc") %></p>
+            <div class="measurements-chart__data">
+              <%= bar_chart @count_chart,  xtitle: t(".charts.count.xtitle"), ytitle: t(".charts.count.ytitle") %>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

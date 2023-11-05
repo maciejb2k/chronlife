@@ -1,1 +1,1 @@
-<%= line_chart @disease_symptom_updates.group_by_day(:update_date).average(:intensity), min: 0, max: 5, curve: true %>
+<%= line_chart @disease_symptom_updates.where(update_date: 1.week.ago..Time.zone.now).group_by_day(:update_date).average(:intensity), min: 0, max: 5, curve: true %>

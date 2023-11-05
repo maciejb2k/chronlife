@@ -8,7 +8,7 @@ class Auth::SessionsController < Devise::SessionsController
       sign_out(resource)
       session[:otp_user_id] = resource.id
 
-      redirect_to user_two_factor_authentication_path
+      redirect_to users_sign_in_otp_path
     else
       set_flash_message!(:notice, :signed_in)
       sign_in(resource_name, resource)

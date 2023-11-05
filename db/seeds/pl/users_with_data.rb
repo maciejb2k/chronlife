@@ -37,7 +37,8 @@ EXAMPLE_STATUSES = [
 user = User.new(
   email: "tomasz.nowak@gmail.com",
   password: "password",
-  password_confirmation: "password"
+  password_confirmation: "password",
+  tos_agreement: true
 )
 user.skip_confirmation!
 user.save!
@@ -161,6 +162,17 @@ diseases_eczema.symptoms.create!(
     }
   ]
 )
+
+single_symptom = diseases_eczema.symptoms.find_by(predefined_symptom: PredefinedSymptom.find_by(name: "swędzenie"))
+
+7.times do |n|
+  single_symptom.updates.create!(
+    {
+      intensity: rand(1..5),
+      update_date: DateTime.now - n.days
+    }
+  )
+end
 
 diseases_eczema.risk_factors.create!(
   [
