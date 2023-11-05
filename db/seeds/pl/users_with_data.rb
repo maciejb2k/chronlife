@@ -1,5 +1,37 @@
 Rails.logger.debug "Seeding users with the data ..."
 
+EXAMPLE_STATUSES = [
+  "Dziś jestem w doskonałym nastroju, czuję się zdrowo i pełen energii.",
+  "Niestety, dziś trochę przemęczony, ale mam nadzieję, że to minie szybko.",
+  "Zacząłem nową dietę i czuję się świetnie!",
+  "Jestem wdzięczna za zdrowie i możliwość aktywności fizycznej.",
+  "Dzisiaj jestem pełen wigoru, gotowy na nowe wyzwania.",
+  "Słońce świeci, a to poprawia nastrój i zdrowie.",
+  "Mój organizm daje znać, że potrzebuje trochę odpoczynku.",
+  "Warto dbać o zdrowie, to nasz największy skarb.",
+  "Dzisiejszy dzień upłynął bez żadnych problemów zdrowotnych.",
+  "Zdrowie jest najważniejsze, pamiętajmy o nim codziennie.",
+  "Czuję się zrelaksowany po długiej spacerze na świeżym powietrzu.",
+  "Regularna aktywność fizyczna ma korzystny wpływ na zdrowie.",
+  "Dobrze zrozumieć swoje ciało i reagować na jego sygnały.",
+  "Zdrowie psychiczne jest równie ważne jak fizyczne, dbajmy o nie oba.",
+  "Dziś dzień bez stresu i nerwów - zdrowie psychiczne na wagę złota.",
+  "Jedzenie pełne witamin i minerałów to klucz do dobrej kondycji.",
+  "Czas na chwilę relaksu i regeneracji organizmu.",
+  "Cieszę się, że mogę cieszyć się zdrowiem i aktywnością fizyczną.",
+  "Dobrze się czuję w swojej skórze - zdrowe ciało, zdrowy umysł.",
+  "Nigdy nie jest za późno, aby zadbać o zdrowy tryb życia.",
+  "Każdy dzień jest okazją do poprawy zdrowia i samopoczucia.",
+  "Dziś jestem pełen wdzięczności za swoje zdrowie.",
+  "Zdrowie to bogactwo, którego nie można kupić.",
+  "Odpoczynek i sen to klucz do utrzymania dobrej kondycji.",
+  "Jestem gotowy na nowy dzień, pełen energii i zdrowia.",
+  "Zdrowie to fundament, na którym budujemy swoje życie.",
+  "Dobrze się czuję, a to jest najważniejsze.",
+  "Zdrowy umysł to klucz do szczęścia i dobrej jakości życia.",
+  "Dziś mam wystarczająco energii, aby zrealizować swoje cele."
+].freeze
+
 # User & Account
 
 user = User.new(
@@ -24,6 +56,31 @@ obesity = PredefinedDisease.find_by(name: "nadwaga")
 diabetes = PredefinedDisease.find_by(name: "cukrzyca")
 asthma = PredefinedDisease.find_by(name: "astma")
 hypothyroidism = PredefinedDisease.find_by(name: "niedoczynność tarczycy")
+
+# Account Friends with sample posts to show on the account dashboard
+
+account_friends = Account.where.not(id: account.id).sample(5)
+
+account_friends.each do |friend|
+  account.friends << friend
+
+  friend.diseases.all.sample.statuses.create!(
+    [
+      {
+        content: EXAMPLE_STATUSES.sample,
+        mood: rand(1..3),
+        status: "diagnosed"
+      },
+      {
+        content: EXAMPLE_STATUSES.sample,
+        mood: rand(1..3),
+        status: "diagnosed"
+      }
+    ]
+  )
+end
+
+# Account Diseases
 
 diseases_eczema = Disease.create!(
   account:,
@@ -354,5 +411,69 @@ measurement_spo2 = MeasurementType.find_by(name: "spo2")
     ]
   )
 end
+
+# Notes
+
+account.note_tags.create!(
+  [
+    {
+      name: "Leczenie"
+    },
+    {
+      name: "Dieta"
+    },
+    {
+      name: "Inne"
+    }
+  ]
+)
+
+account.notes.create!(
+  [
+    {
+      title: "Zioła",
+      content: "Zioła są niezwykle wszechstronnymi roślinami, które można wykorzystać zarówno do poprawy smaku potraw, jak i w celach leczniczych. Często stosowane w ziołolecznictwie, mogą pomóc w łagodzeniu dolegliwości takich jak ból brzucha czy bezsenność. Przykłady ziół to mięta, melisa, lub majeranek.",
+      is_pinned: true
+    },
+    {
+      title: "Porady od Dietetyka",
+      content: "Konsultacja z dietetykiem może pomóc w osiągnięciu zdrowszej diety i utrzymaniu prawidłowej wagi ciała. Dietetyk może dostosować plan żywieniowy do indywidualnych potrzeb, pomóc w kontrolowaniu spożycia kalorii, a także udzielać wskazówek dotyczących odpowiedniego łączenia składników odżywczych.",
+      is_pinned: true
+    },
+    {
+      title: "Pieczywo bezglutenowe",
+      content: "Pieczywo bezglutenowe jest idealnym rozwiązaniem dla osób cierpiących na nietolerancję glutenu lub celiakię. Może być przygotowywane z mąki ryżowej, ziemniaczanej, kukurydzianej lub innych alternatywnych mąk. Warto zwrócić uwagę na etykiety produktów, aby upewnić się, że są one odpowiednie dla osób z nietolerancją glutenu."
+    },
+    {
+      title: "Sny",
+      content: "Sny są fascynującym aspektem ludzkiego życia, pełnym tajemnicy i znaczeń. Interpretacja snów może pomóc w zrozumieniu własnych emocji, obaw i pragnień. Różne symbole w snach mogą mieć różne znaczenia, dlatego warto prowadzić dziennik snów, aby śledzić zmiany i powtarzające się motywy."
+    },
+    {
+      title: "Interpretacja badań",
+      content: "Interpretacja wyników badań medycznych jest kluczowa dla zrozumienia stanu zdrowia pacjenta. Warto skonsultować się z lekarzem lub specjalistą, aby dokładnie zrozumieć wyniki badań, ich implikacje i ewentualne dalsze kroki. Niezrozumienie wyników może prowadzić do niepotrzebnego niepokoju lub zaniedbania ważnych aspektów zdrowia."
+    }
+  ]
+)
+
+# Associate notes with tags
+
+first_tag = account.note_tags.find_by(name: "Leczenie")
+second_tag = account.note_tags.find_by(name: "Dieta")
+third_tag = account.note_tags.find_by(name: "Inne")
+
+first_note = account.notes.find_by(title: "Zioła")
+first_note.tags << first_tag
+
+second_note = account.notes.find_by(title: "Porady od Dietetyka")
+second_note.tags << second_tag
+
+third_note = account.notes.find_by(title: "Pieczywo bezglutenowe")
+third_note.tags << second_tag
+
+fourth_note = account.notes.find_by(title: "Sny")
+fourth_note.tags << third_tag
+
+fifth_note = account.notes.find_by(title: "Interpretacja badań")
+fifth_note.tags << third_tag
 
 Rails.logger.debug "Seeding users with the data done."

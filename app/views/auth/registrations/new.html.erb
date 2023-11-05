@@ -82,7 +82,7 @@
             <%= t(
               ".form.terms",
               terms_link: link_to(t(".terms"), root_path, class: "auth__link"),
-              privacy_link: link_to(t(".privacy"), new_user_session_path, class: "auth__link")
+              privacy_link: link_to(t(".privacy"), root_path, class: "auth__link")
             ).html_safe %>
           <% end %>
         </div>

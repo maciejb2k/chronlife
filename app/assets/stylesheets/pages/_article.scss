@@ -12,6 +12,11 @@
     &__image-container {
     }
 
+    &__author {
+      text-decoration: underline;
+      color: $dash-base;
+    }
+
     &__image {
       width: 100%;
       height: 200px;

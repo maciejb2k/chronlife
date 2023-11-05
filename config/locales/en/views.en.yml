@@ -51,7 +51,7 @@ en:
       disease_statuses: Health Updates
     show:
       title: Information
-      text: Lorem ipsum dolor sit amet consectetur adipisicing elit. Vero, quam.
+      text: There are no information to show about this user.
       unauthorized: You cannot view this information as you are not friends.
   articles:
     index:
@@ -179,6 +179,7 @@ en:
       button:
         add_post: Add New Post
         adjust_stats: Adjust Tiles
+      no_posts: No posts have been added yet.
       fetching_posts: Fetching posts...
       stats: Your Statistics
       diseases: diseases
@@ -663,8 +664,14 @@ en:
         desc: Join the community of people struggling with health problems together.
         link: Learn about our platform
       showcase:
-        monitoring: Health Monitoring
-        security: Security
+        monitoring:
+          title: Health Monitoring
+          content: Health monitoring is the key to a long and fulfilling life! Thanks to modern technologies and applications, we can track our health parameters and take even better care of ourselves.
+          link: Learn more
+        security:
+          title: Safety
+          content: With monitoring systems, we can track our health and respond immediately to potential threats. This is a crucial matter that allows us to enjoy life with the assurance that we are protected. It gives us peace of mind, knowing that our health is under control and that we can take action at the right moment.
+          link: Learn more
       footer:
         text: Copyright © 2023 by Maciej Biel. All rights reserved.
   posts:

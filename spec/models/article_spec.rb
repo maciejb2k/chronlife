@@ -38,7 +38,7 @@ RSpec.describe Article, type: :model do
     end
 
     describe "description" do
-      it { is_expected.to validate_length_of(:description).is_at_most(100) }
+      it { is_expected.to validate_length_of(:description).is_at_most(200) }
       it { is_expected.to allow_value("").for(:description) }
     end
 

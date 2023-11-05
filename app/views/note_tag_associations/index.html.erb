@@ -5,13 +5,11 @@
         <%= render "no_results" %>
       <% end %>
     <% end %>
-    <ul class="assigned-tags__list">
-      <%= turbo_frame_tag :list_note_tag_associations do %>
-        <% @note_tags.to_a.each do |tag| %>
-          <%= render partial: "note_tag_association", locals: { tag: tag } %>
-        <% end %>
+    <%= turbo_frame_tag :list_note_tag_associations, class: "assigned-tags__list" do %>
+      <% @note_tags.to_a.each do |tag| %>
+        <%= render partial: "note_tag_association", locals: { tag: tag } %>
       <% end %>
-    </ul>
+    <% end %>
   </div>
   <%= turbo_frame_tag :pagination_note_tag_associations do %>
     <%= render "pagination" %>

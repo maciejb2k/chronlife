@@ -20,8 +20,9 @@ load Rails.root.join("db", "seeds", locale, "article_tags.rb")
 
 # Seeds for local development
 if Rails.env.development?
-  load Rails.root.join("db", "seeds", locale, "users_with_data.rb")
   load Rails.root.join("db", "seeds", locale, "random_users.rb")
+  load Rails.root.join("db", "seeds", locale, "users_with_data.rb")
+  load Rails.root.join("db", "seeds", locale, "specialists.rb")
 end
 
 Rails.logger.debug "Seeding done."

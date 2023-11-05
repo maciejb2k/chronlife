@@ -51,7 +51,7 @@ pl:
       disease_statuses: Aktualizacje zdrowia
     show:
       title: Informacje
-      text: Lorem, ipsum dolor sit amet consectetur adipisicing elit. Vero, quam.
+      text: Nie ma jeszcze żadnych informacji do wyświetlenia.
       unauthorized: Nie możesz wyświetlić tych informacji, ponieważ nie jesteście znajomymi.
   articles:
     index:
@@ -179,6 +179,7 @@ pl:
       button:
         add_post: Dodaj nowy wpis
         adjust_stats: Dostosuj kafelki
+      no_posts: Na razie nie dodano żadnych wpisów.
       fetching_posts: Pobieranie wpisów...
       stats: Twoje statystyki
       diseases: choroby
@@ -663,8 +664,14 @@ pl:
         desc: Dołącz do społeczności osób wspólnie zmagającymi się ze swoimi problemami zdrowotnymi.
         link: Poznaj naszą platformę
       showcase:
-        monitoring: Monitorowanie zdrowia
-        security: Bezpieczeństwo
+        monitoring:
+          title: Monitorowanie zdrowia
+          content: Monitorowanie zdrowia to klucz do długiego i pełnego życia! Dzięki nowoczesnym technologiom i aplikacjom, jesteśmy w stanie śledzić nasze parametry zdrowotne i dbać o siebie jeszcze lepiej.
+          link: Dowiedz się więcej
+        security:
+          title: Bezpieczeństwo
+          content: Dzięki systemom monitorującym możemy śledzić nasze zdrowie i natychmiast reagować na ewentualne zagrożenia. To kluczowa kwestia, która pozwala nam cieszyć się życiem z pewnością, że jesteśmy chronieni. Zapewnia nam to spokój, wiedząc, że nasze zdrowie jest pod kontrolą i że możemy podjąć kroki w odpowiednim momencie.
+          link: Dowiedz się więcej
       footer:
         text: Copyright © 2023 by Maciej Biel. Wszelkie prawa zastrzeżone.
   posts:

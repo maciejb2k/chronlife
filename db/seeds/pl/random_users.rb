@@ -16,7 +16,8 @@ Rails.logger.debug "Seeding random users ..."
   account = user.build_account(
     first_name:,
     last_name:,
-    username:
+    username:,
+    is_hidden: [true, false].sample
   )
   account.save!
 

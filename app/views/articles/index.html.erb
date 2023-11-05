@@ -65,7 +65,7 @@
                       <%= article.updated_at.strftime("%d.%m.%Y") %>
                     </div>
                   </div>
-                  <p class="article__content__text"><%= t(".article.body") %></p>
+                  <p class="article__content__text"><%= article.description %></p>
                 </div>
               <% end %>
             <% end %>

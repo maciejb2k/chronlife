@@ -4,7 +4,9 @@
       <%= image_tag "avatar-placeholder.png", alt: "Logo", class: "dash-post__photo" %>
       <div class="dash-post__header__user">
         <h3 class="dash-post__header__title">
-          <%= disease_status.disease.account.full_name %>
+          <%= link_to account_path(disease_status.disease.account), data: { turbo_frame: "_top" } do %>
+            <%= disease_status.disease.account.full_name %>
+          <% end %>
           <% if role_specialist? disease_status.disease.account.user %>
             <span class="mark-specialist">
               <i class="ri-check-line"></i>

@@ -4,7 +4,9 @@
       <%= link_to root_path do %>
         <%= localized_logo_image_tag class: "auth__header__logo", alt: "" %>
       <% end %>
-      <%= link_to t(".logout"), root_path, class: "auth__header__link" %>
+      <%= button_to destroy_user_session_path, method: :delete, class: "auth__header__link" do %>
+        <%= t(".logout") %>
+      <% end %>
     </header>
 
     <div class="auth__main">

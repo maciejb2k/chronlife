@@ -28,9 +28,11 @@
       </div>
       <div class="article-preview__content">
         <div class="article-preview__content__info">
-          <div class="article-preview__content__info__item">
+          <div class="article-preview__content__info__item article-preview__author">
             <i class="ri-user-line article-preview__content__info__item__icon"></i>
-            <%= @article.account.full_name %>
+            <%= link_to account_path(@article.account) do %>
+              <%= @article.account.full_name %>
+            <% end %>
           </div>
           &bull;
           <div class="article-preview__content__info__item">
