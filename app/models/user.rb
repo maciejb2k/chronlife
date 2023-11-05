@@ -16,7 +16,7 @@
 #  last_sign_in_ip        :string
 #  locked_at              :datetime
 #  otp_backup_codes       :string           is an Array
-#  otp_required_for_login :boolean          default(FALSE)
+#  otp_required_for_login :boolean          default(FALSE), not null
 #  otp_secret             :string
 #  provider               :string
 #  remember_created_at    :datetime

@@ -461,7 +461,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_09_03_071540) do
     t.datetime "updated_at", null: false
     t.string "otp_secret"
     t.integer "consumed_timestep"
-    t.boolean "otp_required_for_login", default: false
+    t.boolean "otp_required_for_login", default: false, null: false
     t.string "otp_backup_codes", array: true
     t.string "provider"
     t.string "uid"

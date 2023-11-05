@@ -4,59 +4,59 @@ PredefinedDisease.create(
   [
     {
       name: "atopowe zapalenie skóry",
-      description: "Lorem ipsum dolor sit amet."
+      description: "Choroba skóry charakteryzująca się wysypkami i świądem."
     },
     {
       name: "stwardnienie rozsiane",
-      description: "Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet."
+      description: "Choroba układu nerwowego powodująca uszkodzenie osłonki mielinowej nerwów."
     },
     {
       name: "nadwaga",
-      description: "Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet."
+      description: "Stan związany z nadmierną ilością tkanki tłuszczowej w organizmie."
     },
     {
       name: "cukrzyca",
-      description: "Lorem ipsum dolor sit amet."
+      description: "Choroba metaboliczna, która wpływa na poziom cukru we krwi."
     },
     {
       name: "niewydolność serca",
-      description: "Lorem ipsum dolor sit amet."
+      description: "Stan, w którym serce nie jest w stanie pompować krwi wystarczająco skutecznie."
     },
     {
       name: "osteoporoza",
-      description: "Lorem ipsum dolor sit amet."
+      description: "Choroba układu kostnego charakteryzująca się utratą masy kostnej."
     },
     {
       name: "nadciśnienie tętnicze",
-      description: "Lorem ipsum dolor sit amet."
+      description: "Wysokie ciśnienie krwi, które zwiększa ryzyko chorób serca."
     },
     {
       name: "niedoczynność tarczycy",
-      description: "Lorem ipsum dolor sit amet."
+      description: "Stan, w którym tarczyca nie produkuje wystarczającej ilości hormonów."
     },
     {
       name: "astma",
-      description: "Lorem ipsum dolor sit amet."
+      description: "Choroba układu oddechowego, która powoduje skurcze oskrzeli."
     },
     {
       name: "celiakia",
-      description: "Lorem ipsum dolor sit amet."
+      description: "Choroba trzewna, która utrudnia trawienie glutenu."
     },
     {
       name: "łuszczyca",
-      description: "Lorem ipsum dolor sit amet."
+      description: "Choroba skóry charakteryzująca się plackami i łuskami."
     },
     {
       name: "choroba leśniowskiego-crohna",
-      description: "Lorem ipsum dolor sit amet."
+      description: "Przewlekła choroba zapalna jelit."
     },
     {
       name: "choroba parkinsona",
-      description: "Lorem ipsum dolor sit amet."
+      description: "Choroba neurodegeneracyjna, która wpływa na kontrolę ruchów."
     },
     {
       name: "endometrioza",
-      description: "Lorem ipsum dolor sit amet."
+      description: "Choroba ginekologiczna, w której tkanka macicy rośnie poza nią."
     }
   ]
 )
