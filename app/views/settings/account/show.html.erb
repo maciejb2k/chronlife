@@ -63,6 +63,24 @@
           <%= render "search_form" %>
         </div>
       </div>
+      <div class="settings-group">
+        <header class="settings-group__header">
+          <h3 class="settings-group__header__title"><%= t(".language.title") %></h3>
+        </header>
+        <div class="settings-group__content">
+          <% if I18n.locale == :pl %>
+            <%= link_to url_for(locale: 'en', only_path: true), rel: 'alternate', hreflang: 'en',
+                                        class: "dash-button dash-button--back", title: t(".language.switch_english") do %>
+              <%= image_tag "en.svg", class: "flag", alt: "" %> <%= t(".language.switch_english") %>
+            <% end %>
+          <% elsif I18n.locale == :en %>
+            <%= link_to url_for(locale: 'pl', only_path: true), rel: 'alternate', hreflang: 'pl',
+                                        class: "dash-button dash-button--back", title: t(".language.switch_polish") do %>
+              <%= image_tag "pl.svg", class: "flag", alt: "" %> <%= t(".language.switch_polish") %>
+            <% end %>
+          <% end %>
+        </div>
+      </div>
     </div>
   </div>
 </div>

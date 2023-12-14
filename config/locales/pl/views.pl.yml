@@ -714,6 +714,10 @@ pl:
           title: Wykształcenie
         search:
           title: Wyszukiwanie
+        language:
+          title: Language
+          switch_polish: Switch language to Polish
+          switch_english: Zmień język na Angielski
       account_form:
         first_name:
           label: Imię

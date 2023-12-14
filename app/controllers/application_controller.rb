@@ -2,12 +2,18 @@ class ApplicationController < ActionController::Base
   include Pagy::Backend
   include Pundit::Authorization
 
+  before_action :set_locale
+
   rescue_from Pundit::NotAuthorizedError, with: :user_not_authorized
 
   helper_method :breadcrumbs
 
   def current_account
     @current_account ||= current_user.account
+  end
+
+  def default_url_options
+    { locale: I18n.locale }
   end
 
   def breadcrumbs
@@ -19,6 +25,10 @@ class ApplicationController < ActionController::Base
   end
 
   private
+
+  def set_locale
+    I18n.locale = params[:locale] || I18n.default_locale
+  end
 
   def user_not_authorized
     message = t("application.not_authorized")

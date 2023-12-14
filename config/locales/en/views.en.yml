@@ -714,6 +714,10 @@ en:
           title: Education
         search:
           title: Search
+        language:
+          title: Language
+          switch_polish: Switch language to Polish
+          switch_english: Zmień język na Angielski
       account_form:
         first_name:
           label: First Name

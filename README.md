@@ -57,6 +57,19 @@ bundle install
 ./bin/dev
 ```
 
+5. Sign in to the app:
+
+Depending on the locale, the seed data will be different. For each locale (`:en` is default one), there is a predefined user with the following credentials (the Atopic Dematitis disease in the panel has some predefined data):
+
+`:en` locale:
+- **Email:** `john.doe@gmail.com`
+- **Password:** `password`
+
+`:pl` locale:
+- **Email:** `tomasz.nowak@gmail.com`
+- **Password:** `password`
+
+
 ## Design
 
 I've came up with the design of this application by myself. I am not using any tools like Figma to create UI. I'm just creating the design on the fly. While working by myself, [I really like this approach](https://world.hey.com/dhh/design-for-the-web-without-figma-4bc3a218).
@@ -92,7 +105,7 @@ If you want to change the locale of the application, you can do it by changing t
 ```ruby
 # config/initializers/locale.rb
 
-I18n.default_locale = :pl
+I18n.default_locale = :en
 ```
 
 Remember to reset and seed the database again after changing the locale, if you want to see the data in the new language.
@@ -215,11 +228,15 @@ Below is a list of features that I've already implemented or I'm planning to imp
 - [x] Users can easily add common measurements like blood pressure, blood sugar, weight, etc.
 - [x] Users can track their measurements in time
 - [x] Users can easily view all health measurements from a specific day using the calendar view.
+- [x] Users can view their measurements in a chart
+- [x] Users can generate a PDF report with all of their measurements from a specific day
 
 ![measurements](screenshots/en/measurements.png)
 ![measurements_calendar](screenshots/en/measurements_calendar.png)
+![measurements_charts](screenshots/en/measurements_charts.png)
 ![measurements_by_day](screenshots/en/measurements_by_day.png)
 ![measurement](screenshots/en/measurement.png)
+![measurement_raports](screenshots/en/measurements_raports.png)
 
 ### Notes
 - [x] Users can add simple notes
