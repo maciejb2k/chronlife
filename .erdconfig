@@ -1,4 +1,9 @@
 polymorphism: false
 filename: erd
 filetype: png
-indirect: true
+indirect: false
+orientation: vertical
+attributes:
+  - content
+  - foreign_keys
+  - inheritance

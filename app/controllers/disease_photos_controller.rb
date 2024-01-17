@@ -56,7 +56,7 @@ class DiseasePhotosController < BaseController
 
     case action_name.to_sym
     when :new, :create
-      add_breadcrumb t(".breadcrumbs.new"), new_disease_photo_path(@disease, @disease_photo)
+      add_breadcrumb t(".breadcrumbs.new"), new_disease_photo_path
     end
   end
 end

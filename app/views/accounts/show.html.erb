@@ -14,7 +14,32 @@
       </header>
       <div class="card-group__content">
         <% if policy(@account).show? %>
-          <p class="card-group__text"><%= t(".text") %></p>
+          <div class="grid grid-cols-3 gap-2">
+            <div>
+              <h3 class="text-base">Miejsce zamieszkania:</h3>
+              <% if @account.city.present? && @account.country.present? %>
+                <p class="text-sm"><%= @account.city %>, <%= @account.country %></p>
+              <% else %>
+                <p class="text-sm">Brak informacji</p>
+              <% end %>
+            </div>
+            <div>
+              <h3 class="text-base">Wykształcenie:</h3>
+              <% if @account.education.present? %>
+                <p class="text-sm"><%= education_to_string @account.education %></p>
+              <% else %>
+                <p class="text-sm">Brak informacji</p>
+              <% end %>
+            </div>
+            <div>
+              <h3 class="text-base">Data urodzin:</h3>
+              <% if @account.birthday.present? %>
+                <p class="text-sm"><%= @account.birthday %></p>
+              <% else %>
+                <p class="text-sm">Brak informacji</p>
+              <% end %>
+            </div>
+          </div>
         <% else %>
           <p class="dash-text"><%= t(".unauthorized") %></p>
         <% end %>

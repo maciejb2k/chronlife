@@ -21,5 +21,6 @@
     "erb": "html"
   },
 
-  "rubyLsp.rubyVersionManager": "chruby"
+  "rubyLsp.rubyVersionManager": "chruby",
+  "workbench.iconTheme": "material-icon-theme"
 }

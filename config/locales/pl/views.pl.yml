@@ -924,7 +924,7 @@ pl:
       description:
         title: Opis
         description: Opisz dokładnie jak zmieniła się twoja terapia.
-        placeholder: W sanatorium stosowano inną dietę.
+        placeholder: Dzięki wyjazdowi do sanatorium udało mi się zregenerować i odpocząć.
       status:
         title: Status
         description: Jak oceniasz skuteczność tej terapii.
